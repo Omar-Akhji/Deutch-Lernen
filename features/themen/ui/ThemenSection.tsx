@@ -1,0 +1,245 @@
+"use client";
+import { useState, useTransition, type ReactNode } from "react";
+import { themenData } from "../api/data";
+import { ThemaCard } from "./ThemaCard";
+import {
+  Utensils,
+  Cpu,
+  Users,
+  GraduationCap,
+  Activity,
+  Palmtree,
+  Leaf,
+  Briefcase,
+  ArrowUp,
+  Lightbulb,
+  LayoutGrid,
+} from "lucide-react";
+
+const categoryConfig: Record<
+  string,
+  { label: string; icon: ReactNode; color: string }
+> = {
+  essen: {
+    label: "Essen & Trinken",
+    icon: <Utensils size={24} />,
+    color: "orange-500",
+  },
+  tech: {
+    label: "Technik & Medien",
+    icon: <Cpu size={24} />,
+    color: "blue-500",
+  },
+  gesellschaft: {
+    label: "Gesellschaft",
+    icon: <Users size={24} />,
+    color: "purple-500",
+  },
+  bildung: {
+    label: "Bildung & Beruf",
+    icon: <GraduationCap size={24} />,
+    color: "emerald-500",
+  },
+  gesundheit: {
+    label: "Gesundheit",
+    icon: <Activity size={24} />,
+    color: "red-500",
+  },
+  freizeit: {
+    label: "Freizeit & Reisen",
+    icon: <Palmtree size={24} />,
+    color: "pink-500",
+  },
+  umwelt: {
+    label: "Umwelt",
+    icon: <Leaf size={24} />,
+    color: "green-500",
+  },
+  arbeit: {
+    label: "Arbeitswelt",
+    icon: <Briefcase size={24} />,
+    color: "cyan-500",
+  },
+};
+
+interface ThemenSectionProps {
+  isEmbedded?: boolean;
+}
+
+export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
+
+  const groupedThemen = Object.keys(categoryConfig).reduce(
+    (acc, cat) => {
+      const themes = themenData.filter((t) => t.cat === cat);
+      if (themes.length > 0) {
+        acc[cat] = themes;
+      }
+      return acc;
+    },
+    {} as Record<string, typeof themenData>,
+  );
+
+  const filteredGroups = !activeCategory
+    ? groupedThemen
+    : { [activeCategory]: groupedThemen[activeCategory] || [] };
+
+  const handleCategoryChange = (id: string | null) => {
+    startTransition(() => {
+      setActiveCategory(id);
+    });
+  };
+
+  return (
+    <div className={`space-y-16 py-8 ${!isEmbedded ? "min-h-screen" : ""}`}>
+      {!isEmbedded && (
+        <div className="mx-auto max-w-2xl space-y-4 text-center">
+          <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
+            Sprechen & Schreiben Themen
+          </h2>
+          <p className="text-lg text-slate-400">
+            Bereite dich auf das Goethe-Zertifikat B1 vor. Hier findest du 58
+            Themen mit Pro- und Contra-Argumenten für deine Präsentation oder
+            deinen Diskussionsbeitrag.
+          </p>
+        </div>
+      )}
+
+      {/* Internal Navigation Bar */}
+      <div className="rounded-2xl border border-white/5 bg-slate-950/50 px-4 py-4 shadow-xl backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-2">
+          <button
+            onClick={() => handleCategoryChange(null)}
+            className={`flex items-center gap-2 rounded-full px-4 pbs-2 pbe-2 text-sm font-medium transition-all ${
+              activeCategory === null
+                ? "bg-amber-500 text-slate-950 shadow-lg"
+                : "bg-white/5 text-slate-400 hover:bg-white/10"
+            } ${isPending && activeCategory !== null ? "opacity-50" : ""}`}
+          >
+            <span
+              className={`scale-75 transition-transform ${activeCategory === null ? "" : "opacity-70 group-hover:opacity-100"}`}
+            >
+              <LayoutGrid size={24} />
+            </span>
+            Alle
+          </button>
+          {Object.entries(categoryConfig).map(([id, config]) => (
+            <button
+              key={id}
+              onClick={() => handleCategoryChange(id)}
+              className={`flex items-center gap-2 rounded-full px-4 pbs-2 pbe-2 text-sm font-medium transition-all ${
+                activeCategory === id
+                  ? "shadow-lg shadow-black/20"
+                  : "bg-white/5 text-slate-400 hover:bg-white/10"
+              } ${isPending && activeCategory !== id ? "opacity-50" : ""}`}
+              style={
+                activeCategory === id
+                  ? {
+                      backgroundColor: `var(--color-${config.color})`,
+                      color: "#020617", // slate-950 equivalent for contrast
+                    }
+                  : {}
+              }
+            >
+              <span
+                className="scale-75 transition-transform group-hover:scale-110"
+                style={{
+                  color:
+                    activeCategory === id
+                      ? "inherit"
+                      : `var(--color-${config.color})`,
+                }}
+              >
+                {config.icon}
+              </span>
+              {config.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div
+        className={`space-y-24 transition-opacity duration-300 ${isPending ? "opacity-40" : "opacity-100"}`}
+      >
+        {Object.entries(filteredGroups).map(([catId, themes]) => {
+          const config = categoryConfig[catId];
+          if (!config) return null;
+
+          return (
+            <section key={catId} id={catId} className="scroll-mbs-32">
+              <div className="mb-10 flex items-center gap-4">
+                <div
+                  className="flex h-14 w-14 items-center justify-center rounded-full border-3 shadow-inner"
+                  style={{
+                    borderColor: `var(--color-${config.color})`,
+                    color: `var(--color-${config.color})`,
+                  }}
+                >
+                  {config.icon}
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-white capitalize">
+                    {config.label}
+                  </h3>
+                  <p className="text-sm text-slate-400">
+                    {themes.length} Themen zur Vorbereitung
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {themes.map((thema) => (
+                  <ThemaCard key={thema.id} thema={thema} />
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+
+      <div className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
+        <h3 className="mb-4 flex items-center gap-2 text-2xl font-bold text-white">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border-3 border-indigo-400 text-indigo-400">
+            <Lightbulb size={20} />
+          </span>
+          Prüfungstipp für Sprechen Teil 2
+        </h3>
+        <ul className="grid gap-4 text-slate-300 md:grid-cols-2">
+          <li className="flex gap-3">
+            <span className="font-bold text-indigo-400">1.</span>
+            Stell das Thema kurz vor und begründe deine Wahl.
+          </li>
+          <li className="flex gap-3">
+            <span className="font-bold text-indigo-400">2.</span>
+            Berichte von deinen persönlichen Erfahrungen (Ich-Perspektive).
+          </li>
+          <li className="flex gap-3">
+            <span className="font-bold text-indigo-400">3.</span>
+            Beschreibe die Situation in deinem Heimatland.
+          </li>
+          <li className="flex gap-3">
+            <span className="font-bold text-indigo-400">4.</span>
+            Nenne mindestens zwei Vorteile und zwei Nachteile.
+          </li>
+          <li className="flex gap-3">
+            <span className="font-bold text-indigo-400">5.</span>
+            Äußere deine eigene Meinung klar am Ende.
+          </li>
+          <li className="flex gap-3">
+            <span className="font-bold text-indigo-400">6.</span>
+            Bedanke dich am Ende und bitte um Fragen.
+          </li>
+        </ul>
+      </div>
+
+      {/* Scroll to Top */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed right-8 bottom-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500 text-slate-950 shadow-2xl transition-all hover:scale-110 active:scale-95"
+      >
+        <ArrowUp size={28} />
+      </button>
+    </div>
+  );
+}

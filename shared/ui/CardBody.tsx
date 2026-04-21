@@ -1,0 +1,92 @@
+import { getFirstLetter } from "@/shared/lib/utils";
+
+interface CardBodyProps {
+  title: string;
+  subtitle?: string | undefined;
+  description?: string | undefined;
+  category?: string | undefined;
+  badge?: string | undefined;
+  gradient: string;
+  icon?: string | undefined;
+  stats?: Array<{ label: string; value: string }> | undefined;
+  variant?: "default" | "large" | undefined;
+}
+
+export const CardBody = ({
+  title,
+  subtitle,
+  description,
+  category,
+  badge,
+  gradient,
+  icon,
+  stats,
+  variant = "default",
+}: CardBodyProps) => {
+  const iconText = icon || getFirstLetter(title);
+
+  return (
+    <article className="h-full">
+      <div
+        className="group card-link relative z-1 flex cursor-pointer flex-col overflow-hidden rounded-3xl border-none bg-transparent px-4 pbs-4 pbe-4 text-left no-underline shadow-xl ring-1 ring-black/5 transition-transform duration-300 block-full inline-full hover:-translate-y-1.25"
+        aria-label={`${title} ${subtitle || ""}`}
+      >
+        <figure className="m-0 aspect-video w-full overflow-hidden rounded-2xl">
+          <div
+            className="flex h-full w-full items-center justify-center transition-transform duration-500 group-hover:scale-110"
+            style={{ background: gradient }}
+            aria-hidden="true"
+          >
+            <span
+              className={`${variant === "large" ? "text-64px" : "text-5xl"} font-bold text-white/40 drop-shadow-md drop-shadow-white/20 transition-transform duration-500 group-hover:scale-110`}
+            >
+              {iconText}
+            </span>
+          </div>
+        </figure>
+
+        <div className="flex flex-1 flex-col px-2 pbs-5 pbe-2">
+          {(category || badge) && (
+            <div className="m-0 mbe-3 flex items-center gap-2 text-mist-500">
+              {category && (
+                <span className="rounded-full border border-yellow/30 bg-yellow/20 px-3 py-1 font-bold text-yellow">
+                  {category}
+                </span>
+              )}
+              {badge && (
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 pbs-1 pbe-1 text-xs font-semibold text-mist-500">
+                  {badge}
+                </span>
+              )}
+              {subtitle && <span className="font-medium">• {subtitle}</span>}
+            </div>
+          )}
+
+          <h3
+            className={`m-0 mbe-2 ${variant === "large" ? "text-2xl" : "text-xl"} font-bold text-white transition-colors duration-300 text-shadow-sm group-hover:text-yellow`}
+          >
+            {title}
+          </h3>
+          {description && (
+            <p className="m-0 mbe-4 text-sm leading-relaxed text-mist-500">
+              {description}
+            </p>
+          )}
+
+          {stats && stats.length > 0 && (
+            <div className="mbs-auto flex gap-8 border-bs border-(--glass-border) pbs-4">
+              {stats.map((stat) => (
+                <div key={stat.label} className="flex flex-col">
+                  <span className="stat-value text-2xl font-bold text-orange">
+                    {stat.value}
+                  </span>
+                  <span className="text-xs text-text-muted">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+};
