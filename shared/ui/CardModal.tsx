@@ -13,7 +13,7 @@ interface CardModalProps {
 
 const EMPTY_PREVIEW_TITLES: string[] = [];
 
-export const CardModal = ({
+export function CardModal({
   isOpen,
   onClose,
   title,
@@ -21,24 +21,24 @@ export const CardModal = ({
   description,
   href,
   previewTitles = EMPTY_PREVIEW_TITLES,
-}: CardModalProps) => {
+}: CardModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const router = useRouter();
 
-  // Sync dialog state and body scroll
+  // Side Effect: Sync dialog state and manage body scroll lock (Outside the room)
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (!dialog) return;
+    if (!dialog || !isOpen) return;
 
-    if (isOpen) {
-      dialog.showModal();
-      document.body.style.overflow = "hidden";
-    } else if (dialog.open) {
-      dialog.close();
-    }
+    // "Setting up the room" after render
+    dialog.showModal();
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
+    // "Cleanup function" when moving out or re-rendering
     return () => {
-      document.body.style.overflow = "unset";
+      dialog.close();
+      document.body.style.overflow = originalOverflow || "unset";
     };
   }, [isOpen]);
 
@@ -159,4 +159,4 @@ export const CardModal = ({
       </div>
     </dialog>
   );
-};
+}
