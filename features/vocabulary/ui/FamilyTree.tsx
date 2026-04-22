@@ -1,5 +1,6 @@
 import { Heart } from "lucide-react";
 import { FamilyMember } from "../model/types";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface FamilyTreeProps {
   members: FamilyMember[];
@@ -50,7 +51,12 @@ export const FamilyTree = ({ members }: FamilyTreeProps) => {
         const groups = groupIntoCouples(levelMembers);
 
         return (
-          <div key={level} className="flex w-full flex-col items-center">
+          <AnimateOnScroll
+            key={level}
+            animation="fade-up"
+            delay={levelIdx * 150}
+            className="flex w-full flex-col items-center"
+          >
             {/* Level label */}
             <div className="mb-3 text-xs font-semibold tracking-widest text-mist-500 uppercase">
               {levelLabels[level] ?? `Generation ${level}`}
@@ -87,7 +93,7 @@ export const FamilyTree = ({ members }: FamilyTreeProps) => {
                 <div className="h-full w-px bg-linear-to-b from-white/20 to-white/5" />
               </div>
             )}
-          </div>
+          </AnimateOnScroll>
         );
       })}
     </div>

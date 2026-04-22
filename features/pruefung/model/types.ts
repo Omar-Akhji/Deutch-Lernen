@@ -10,6 +10,8 @@ export interface ExamPart {
     taskType: string;
     items: number;
     points: number;
+    description?: string;
+    checklist?: string[];
   }[];
 }
 
@@ -24,8 +26,14 @@ export interface ExamLevel {
   sections: ExamPart[];
 }
 
+export interface PhraseGroup {
+  label: string;
+  badge?: string;
+  phrases: (string | PhraseGroup)[];
+}
+
 export interface RedemittelCategory {
-  [key: string]: string[];
+  [key: string]: PhraseGroup[];
 }
 
 export interface RedemittelData {

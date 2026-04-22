@@ -2,6 +2,7 @@
 import { useState, useTransition, type ReactNode } from "react";
 import { themenData } from "../api/data";
 import { ThemaCard } from "./ThemaCard";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import {
   Utensils,
   Cpu,
@@ -95,14 +96,18 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
     <div className={`space-y-16 py-8 ${!isEmbedded ? "min-h-screen" : ""}`}>
       {!isEmbedded && (
         <div className="mx-auto max-w-2xl space-y-4 text-center">
-          <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
-            Sprechen & Schreiben Themen
-          </h2>
-          <p className="text-lg text-slate-400">
-            Bereite dich auf das Goethe-Zertifikat B1 vor. Hier findest du 58
-            Themen mit Pro- und Contra-Argumenten für deine Präsentation oder
-            deinen Diskussionsbeitrag.
-          </p>
+          <AnimateOnScroll animation="fade-up">
+            <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
+              Sprechen & Schreiben Themen
+            </h2>
+          </AnimateOnScroll>
+          <AnimateOnScroll animation="fade-up" delay={100}>
+            <p className="text-lg text-slate-400">
+              Bereite dich auf das Goethe-Zertifikat B1 vor. Hier findest du 58
+              Themen mit Pro- und Contra-Argumenten für deine Präsentation oder
+              deinen Diskussionsbeitrag.
+            </p>
+          </AnimateOnScroll>
         </div>
       )}
 
@@ -189,8 +194,14 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
               </div>
 
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {themes.map((thema) => (
-                  <ThemaCard key={thema.id} thema={thema} />
+                {themes.map((thema, index) => (
+                  <AnimateOnScroll
+                    key={thema.id}
+                    animation="fade-up"
+                    delay={(index % 3) * 100}
+                  >
+                    <ThemaCard thema={thema} />
+                  </AnimateOnScroll>
                 ))}
               </div>
             </section>
@@ -198,40 +209,42 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
         })}
       </div>
 
-      <div className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
-        <h3 className="mb-4 flex items-center gap-2 text-2xl font-bold text-white">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full border-3 border-indigo-400 text-indigo-400">
-            <Lightbulb size={20} />
-          </span>
-          Prüfungstipp für Sprechen Teil 2
-        </h3>
-        <ul className="grid gap-4 text-slate-300 md:grid-cols-2">
-          <li className="flex gap-3">
-            <span className="font-bold text-indigo-400">1.</span>
-            Stell das Thema kurz vor und begründe deine Wahl.
-          </li>
-          <li className="flex gap-3">
-            <span className="font-bold text-indigo-400">2.</span>
-            Berichte von deinen persönlichen Erfahrungen (Ich-Perspektive).
-          </li>
-          <li className="flex gap-3">
-            <span className="font-bold text-indigo-400">3.</span>
-            Beschreibe die Situation in deinem Heimatland.
-          </li>
-          <li className="flex gap-3">
-            <span className="font-bold text-indigo-400">4.</span>
-            Nenne mindestens zwei Vorteile und zwei Nachteile.
-          </li>
-          <li className="flex gap-3">
-            <span className="font-bold text-indigo-400">5.</span>
-            Äußere deine eigene Meinung klar am Ende.
-          </li>
-          <li className="flex gap-3">
-            <span className="font-bold text-indigo-400">6.</span>
-            Bedanke dich am Ende und bitte um Fragen.
-          </li>
-        </ul>
-      </div>
+      <AnimateOnScroll animation="zoom-in" delay={200}>
+        <div className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
+          <h3 className="mb-4 flex items-center gap-2 text-2xl font-bold text-white">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border-3 border-indigo-400 text-indigo-400">
+              <Lightbulb size={20} />
+            </span>
+            Prüfungstipp für Sprechen Teil 2
+          </h3>
+          <ul className="grid gap-4 text-slate-300 md:grid-cols-2">
+            <li className="flex gap-3">
+              <span className="font-bold text-indigo-400">1.</span>
+              Stell das Thema kurz vor und begründe deine Wahl.
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold text-indigo-400">2.</span>
+              Berichte von deinen persönlichen Erfahrungen (Ich-Perspektive).
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold text-indigo-400">3.</span>
+              Beschreibe die Situation in deinem Heimatland.
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold text-indigo-400">4.</span>
+              Nenne mindestens zwei Vorteile und zwei Nachteile.
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold text-indigo-400">5.</span>
+              Äußere deine eigene Meinung klar am Ende.
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold text-indigo-400">6.</span>
+              Bedanke dich am Ende und bitte um Fragen.
+            </li>
+          </ul>
+        </div>
+      </AnimateOnScroll>
 
       {/* Scroll to Top */}
       <button

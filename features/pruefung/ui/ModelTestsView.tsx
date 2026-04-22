@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import {
   BookOpen,
@@ -12,6 +11,7 @@ import {
 } from "lucide-react";
 import { Hero } from "@/shared/ui/Hero";
 import { Card } from "@/shared/ui/Card";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface ModelTestsViewProps {
   level: string;
@@ -75,33 +75,43 @@ export default function ModelTestsView({ level }: ModelTestsViewProps) {
         />
 
         <div className="mt-8 mb-12 flex justify-center">
-          <Link
-            href={`/pruefung/${level}`}
-            className="flex items-center gap-2 rounded-full border border-white/20 px-6 py-2 text-sm transition-colors hover:bg-white/10"
-          >
-            <span>←</span> Zurück zur Übersicht
-          </Link>
+          <AnimateOnScroll animation="fade-up" delay={400}>
+            <Link
+              href={`/pruefung/${level}`}
+              className="flex items-center gap-2 rounded-full border border-white/20 px-6 py-2 text-sm transition-colors hover:bg-white/10"
+            >
+              <span>←</span> Zurück zur Übersicht
+            </Link>
+          </AnimateOnScroll>
         </div>
 
         <div className="grid gap-12">
-          {skills.map((skill) => (
+          {skills.map((skill, skillIdx) => (
             <section key={skill.id}>
-              <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-white">
-                <skill.icon size={32} className="text-white" />
-                <span className="text-white">{skill.title}</span>
-              </h2>
+              <AnimateOnScroll animation="fade-right" delay={skillIdx * 100}>
+                <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-white">
+                  <skill.icon size={32} className="text-white" />
+                  <span className="text-white">{skill.title}</span>
+                </h2>
+              </AnimateOnScroll>
 
               <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
-                {modelTests.map((testId) => (
-                  <Card
+                {modelTests.map((testId, testIdx) => (
+                  <AnimateOnScroll
                     key={`${skill.id}-${testId}`}
-                    title={`Modelltest ${testId}`}
-                    subtitle="Übung"
-                    description={`Vollständiger ${skill.title}-Teil für das ${level.toUpperCase()}-Zertifikat.`}
-                    href={`/quiz/${level}/${skill.id}/${testId}`}
-                    gradient={`bg-linear-to-br ${skill.color}`}
-                    variant="default"
-                  />
+                    animation="fade-up"
+                    delay={(testIdx % 3) * 100}
+                    className="h-full"
+                  >
+                    <Card
+                      title={`Modelltest ${testId}`}
+                      subtitle="Übung"
+                      description={`Vollständiger ${skill.title}-Teil für das ${level.toUpperCase()}-Zertifikat.`}
+                      href={`/quiz/${level}/${skill.id}/${testId}`}
+                      gradient={`bg-linear-to-br ${skill.color}`}
+                      variant="default"
+                    />
+                  </AnimateOnScroll>
                 ))}
               </div>
             </section>

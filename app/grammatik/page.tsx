@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function GrammatikPage() {
   return (
     <main className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+      <h1 className="sr-only">Grammatik Übersicht</h1>
       <GrammarSectionCards sectionId="verben" />
       <GrammarSectionCards sectionId="nomen" />
       <GrammarSectionCards sectionId="praepositionen" />

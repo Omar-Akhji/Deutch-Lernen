@@ -958,4 +958,64 @@ export const themenData: Thema[] = [
     ],
     text: undefined,
   },
+  {
+    id: "freund",
+    label: "Freundschaft",
+    cat: "gesellschaft",
+    pro: [
+      "Freunde unterstützen uns in schwierigen Zeiten.",
+      "Freundschaft macht das Leben glücklicher und weniger einsam.",
+      "Man kann mit Freunden Hobbys teilen und Spaß haben.",
+    ],
+    con: [
+      "Freundschaften brauchen viel Zeit und Pflege.",
+      "Es kann zu Enttäuschungen oder Streit kommen.",
+      "Manchmal ist es schwierig, echte Freunde zu finden.",
+    ],
+  },
+  {
+    id: "heirat",
+    label: "Heiraten",
+    cat: "gesellschaft",
+    pro: [
+      "Die Ehe bietet Sicherheit und Stabilität für die Familie.",
+      "Man zeigt seine Liebe und Verbundenheit offiziell.",
+      "Es gibt rechtliche und steuerliche Vorteile.",
+    ],
+    con: [
+      "Eine Hochzeit ist oft sehr teuer und stressig.",
+      "Man verliert ein Stück seiner Unabhängigkeit.",
+      "Viele Ehen enden leider in einer Scheidung.",
+    ],
+  },
+  {
+    id: "video",
+    label: "Videospiele",
+    cat: "freizeit",
+    pro: [
+      "Videospiele fördern die Konzentration und das strategische Denken.",
+      "Man kann online mit Freunden spielen und neue Leute kennenlernen.",
+      "Es ist eine gute Möglichkeit, sich nach der Arbeit zu entspannen.",
+    ],
+    con: [
+      "Zu viel Spielen kann süchtig machen und die Gesundheit schaden.",
+      "Man vernachlässigt oft soziale Kontakte im echten Leben.",
+      "Einige Spiele sind sehr gewalttätig und für Kinder nicht geeignet.",
+    ],
+  },
+  {
+    id: "reise",
+    label: "Reisen",
+    cat: "freizeit",
+    pro: [
+      "Man entdeckt neue Kulturen, Sprachen und Lebensweisen.",
+      "Reisen erweitert den Horizont und macht offener.",
+      "Man kann sich vom Alltagsstress erholen und neue Energie tanken.",
+    ],
+    con: [
+      "Reisen ist oft teuer (Flug, Hotel, Verpflegung).",
+      "Massentourismus schadet der Umwelt und dem Klima.",
+      "Man kann Heimweh bekommen oder Probleme im Ausland haben.",
+    ],
+  },
 ];

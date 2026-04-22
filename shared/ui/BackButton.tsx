@@ -10,6 +10,7 @@ export function BackButton() {
       type="button"
       className="bs-10 is-10 hover:-translate-is-1 tablet:bs-auto tablet:is-auto inline-flex cursor-pointer items-center justify-center rounded-full border border-(--glass-border) bg-card text-sm font-semibold text-text transition-all duration-200 hover:bg-white/10 tablet:px-6 tablet:py-2 tablet:text-base"
       onClick={() => router.back()}
+      aria-label="Zurück"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

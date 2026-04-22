@@ -37,7 +37,7 @@ export const CardWithModal = ({
       <button
         type="button"
         onClick={handleClick}
-        className="w-full cursor-pointer border-none bg-transparent p-0 text-left"
+        className="h-full w-full cursor-pointer border-none bg-transparent p-0 text-left"
         aria-label={`${bodyProps.title} öffnen`}
       >
         <CardBody {...bodyProps} />

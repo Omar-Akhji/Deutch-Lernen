@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function VokabelnPage() {
   return (
     <main className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+      <h1 className="sr-only">Vokabeln Übersicht</h1>
       <VocabularySection />
     </main>
   );

@@ -28,7 +28,7 @@ export const CardBody = ({
   return (
     <article className="h-full">
       <div
-        className="group card-link relative z-1 flex cursor-pointer flex-col overflow-hidden rounded-3xl border-none bg-transparent px-4 pbs-4 pbe-4 text-left no-underline shadow-xl ring-1 ring-black/5 transition-transform duration-300 block-full inline-full hover:-translate-y-1.25"
+        className="group card-link relative z-1 flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl border-none bg-transparent p-4 text-left no-underline shadow-xl ring-1 ring-black/5 transition-transform duration-300 hover:-translate-y-1.25"
         aria-label={`${title} ${subtitle || ""}`}
       >
         <figure className="m-0 aspect-video w-full overflow-hidden rounded-2xl">
@@ -45,7 +45,7 @@ export const CardBody = ({
           </div>
         </figure>
 
-        <div className="flex flex-1 flex-col px-2 pbs-5 pbe-2">
+        <div className="flex flex-1 flex-col px-2 pt-5 pb-2">
           {(category || badge) && (
             <div className="m-0 mbe-3 flex items-center gap-2 text-mist-500">
               {category && (
@@ -54,7 +54,7 @@ export const CardBody = ({
                 </span>
               )}
               {badge && (
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 pbs-1 pbe-1 text-xs font-semibold text-mist-500">
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-mist-500">
                   {badge}
                 </span>
               )}
@@ -74,16 +74,16 @@ export const CardBody = ({
           )}
 
           {stats && stats.length > 0 && (
-            <div className="mbs-auto flex gap-8 border-bs border-(--glass-border) pbs-4">
+            <dl className="mbs-auto flex gap-8 border-bs border-(--glass-border) pbs-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col">
-                  <span className="stat-value text-2xl font-bold text-orange">
+                  <dd className="stat-value m-0 text-2xl font-bold text-orange">
                     {stat.value}
-                  </span>
-                  <span className="text-xs text-text-muted">{stat.label}</span>
+                  </dd>
+                  <dt className="text-xs text-text-muted">{stat.label}</dt>
                 </div>
               ))}
-            </div>
+            </dl>
           )}
         </div>
       </div>

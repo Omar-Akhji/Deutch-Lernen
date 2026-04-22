@@ -19,14 +19,14 @@ export const Card = ({ href, ...bodyProps }: CardProps) => {
 
   if (isExternal) {
     return (
-      <a href={href} className="no-underline">
+      <a href={href} className="block h-full no-underline">
         <CardBody {...bodyProps} />
       </a>
     );
   }
 
   return (
-    <Link href={href} className="no-underline">
+    <Link href={href} className="block h-full no-underline">
       <CardBody {...bodyProps} />
     </Link>
   );
