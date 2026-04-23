@@ -96,7 +96,7 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
           {!isStarted ? (
             <QuizStart
               title={`${skillTitle} – Übungsprüfung ${testId}`}
-              description={`Goethe-Zertifikat ${level.toUpperCase()} – ${skillTitle}. Bearbeiten Sie die Aufgaben wie in der echten Prüfung.`}
+              description={`Goethe / ÖSD Zertifikat ${level.toUpperCase()} – ${skillTitle}. Bearbeiten Sie die Aufgaben wie in der echten Prüfung.`}
               questionCount={questions.length}
               duration={getDuration()}
               onStart={startQuiz}

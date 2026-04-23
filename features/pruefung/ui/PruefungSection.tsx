@@ -24,7 +24,8 @@ export const PruefungSection = async () => {
         </AnimateOnScroll>
         <AnimateOnScroll animation="fade-up" delay={100}>
           <p className="m-0 text-lg text-text-muted">
-            Strukturierte Vorbereitung auf die Goethe-Zertifikate B1 und B2
+            Strukturierte Vorbereitung auf die Goethe & ÖSD Zertifikate B1 und
+            B2
           </p>
         </AnimateOnScroll>
       </header>

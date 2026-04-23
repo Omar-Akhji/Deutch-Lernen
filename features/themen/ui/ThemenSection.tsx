@@ -97,15 +97,15 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
       {!isEmbedded && (
         <div className="mx-auto max-w-2xl space-y-4 text-center">
           <AnimateOnScroll animation="fade-up">
-            <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
+            <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
               Sprechen & Schreiben Themen
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll animation="fade-up" delay={100}>
             <p className="text-lg text-slate-400">
-              Bereite dich auf das Goethe-Zertifikat B1 vor. Hier findest du 58
-              Themen mit Pro- und Contra-Argumenten für deine Präsentation oder
-              deinen Diskussionsbeitrag.
+              Bereite dich auf das Goethe & ÖSD Zertifikat B1 vor. Hier findest
+              du 58 Themen mit Pro- und Contra-Argumenten für deine Präsentation
+              oder deinen Diskussionsbeitrag.
             </p>
           </AnimateOnScroll>
         </div>
@@ -184,7 +184,7 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
                   {config.icon}
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold text-white capitalize">
+                  <h3 className="text-2xl font-bold text-white capitalize">
                     {config.label}
                   </h3>
                   <p className="text-sm text-slate-400">

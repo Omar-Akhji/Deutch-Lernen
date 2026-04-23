@@ -22,7 +22,7 @@ export const QuizStart = ({
       {/* Exam badge */}
       <AnimateOnScroll animation="fade-up">
         <div className="mx-auto mbe-6 inline-flex items-center gap-2 rounded-full border border-yellow/30 bg-yellow/10 px-4 py-1.5 text-sm font-medium text-yellow">
-          <ClipboardList size={16} /> Goethe-Zertifikat
+          <ClipboardList size={16} /> Goethe / ÖSD Zertifikat
         </div>
       </AnimateOnScroll>
 

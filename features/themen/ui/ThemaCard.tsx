@@ -44,7 +44,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
           >
             {thema.cat}
           </span>
-          <h3 className="text-xl font-bold text-white transition-colors group-hover:text-amber-400">
+          <h3 className="text-base font-bold text-white transition-colors group-hover:text-amber-400">
             {thema.label}
           </h3>
         </div>
@@ -118,7 +118,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
 
       <div className="mbs-6 flex justify-end border-bs border-white/5 pbs-4 opacity-0 transition-opacity group-hover:opacity-100">
         <span className="font-mono text-[10px] text-slate-500 uppercase">
-          Goethe B1 Topic #{thema.id}
+          Zertifikat B1 Topic #{thema.id}
         </span>
       </div>
     </div>

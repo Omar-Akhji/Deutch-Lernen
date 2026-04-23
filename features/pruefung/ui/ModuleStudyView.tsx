@@ -5,7 +5,6 @@ import { Hero } from "@/shared/ui/Hero";
 import { Clock, CheckCircle2, MessageCircle, ChevronDown } from "lucide-react";
 import { ThemenSection } from "@/features/themen/ui/ThemenSection";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { CopyButton } from "@/shared/ui/CopyButton";
 import { useState } from "react";
 
 interface ModuleStudyViewProps {
@@ -81,7 +80,7 @@ export function ModuleStudyView({
                       <span className="rounded-lg bg-amber-400/20 px-3 py-1 text-xs font-bold text-amber-400 backdrop-blur-md">
                         {part.name}
                       </span>
-                      <h2 className="text-3xl font-bold text-white">
+                      <h2 className="text-2xl font-bold text-white">
                         {part.taskType}
                       </h2>
                     </div>
@@ -115,7 +114,7 @@ export function ModuleStudyView({
                       </div>
 
                       <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                        <div className="border-b border-white/10 bg-white/5 px-6 py-4">
+                        <div className="border-b border-white/10 bg-white/5 px-6 py-3">
                           <h3 className="flex items-center gap-2 text-sm font-bold tracking-widest text-amber-400 uppercase">
                             <CheckCircle2
                               size={16}
@@ -168,7 +167,7 @@ export function ModuleStudyView({
         ) && (
           <section className="border-t border-white/10 pt-16">
             <AnimateOnScroll animation="fade-right">
-              <h2 className="mbe-8 flex items-center gap-3 text-2xl font-bold text-white">
+              <h2 className="mbe-8 flex items-center gap-3 text-xl font-bold text-white">
                 <MessageCircle className="text-amber-400" size={24} />
                 Wortschatz & Konnektoren
               </h2>
@@ -208,7 +207,7 @@ export function ModuleStudyView({
       <section className="border-t border-white/10 pt-12">
         <div className="mb-10">
           <AnimateOnScroll animation="fade-up">
-            <h2 className="mb-2 bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-4xl font-black text-transparent">
+            <h2 className="mb-2 bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-black text-transparent">
               Sprechen & Schreiben Themen
             </h2>
           </AnimateOnScroll>
@@ -253,7 +252,7 @@ function PhraseGroupCard({
             setIsOpen(!isOpen);
           }
         }}
-        className={`flex w-full cursor-pointer items-center justify-between px-6 py-5 text-left transition-colors select-none focus:outline-none ${
+        className={`flex w-full cursor-pointer items-center justify-between px-6 py-3.5 text-left transition-colors select-none focus:outline-none ${
           isChecklistItem
             ? "hover:bg-white/5 focus-visible:bg-white/10"
             : "hover:bg-white/5 focus-visible:bg-white/10"
@@ -261,12 +260,12 @@ function PhraseGroupCard({
       >
         <div className="flex items-center gap-4">
           {group.label.match(/\d+/) && (
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-amber-400/20 bg-amber-400/20 text-xs font-black text-amber-400 backdrop-blur-md">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-amber-400/20 bg-amber-400/20 text-[10px] font-black text-amber-400 backdrop-blur-md">
               {group.label.match(/\d+/)?.[0]}
             </span>
           )}
           <h4
-            className={`text-lg font-bold transition-colors ${
+            className={`text-[15px] font-bold transition-colors ${
               isChecklistItem
                 ? "text-slate-200 group-hover:text-amber-400"
                 : "text-white group-hover:text-amber-400"
@@ -317,37 +316,55 @@ function PhraseGroupCard({
 }
 
 function RenderPhrases({ phrases }: { phrases: (string | PhraseGroup)[] }) {
+  const strings = phrases.filter((p): p is string => typeof p === "string");
+  if (strings.length === 0) return null;
+
+  // Split phrases into groups by separators (e.g., --- Title ---)
+  const groups: { title: string | null; items: string[] }[] = [];
+  let currentGroup: { title: string | null; items: string[] } = {
+    title: null,
+    items: [],
+  };
+
+  strings.forEach((str) => {
+    if (str.startsWith("---") && str.endsWith("---")) {
+      if (currentGroup.items.length > 0 || currentGroup.title) {
+        groups.push(currentGroup);
+      }
+      currentGroup = { title: str.replace(/---/g, "").trim(), items: [] };
+    } else {
+      currentGroup.items.push(str);
+    }
+  });
+  if (currentGroup.items.length > 0 || currentGroup.title) {
+    groups.push(currentGroup);
+  }
+
   return (
-    <div className="divide-y divide-white/5 overflow-hidden rounded-xl border border-white/5 bg-black/20">
-      {phrases.map((item, idx) => {
-        if (typeof item === "string") {
-          return (
-            <div
-              key={idx}
-              className="group/item flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-white/3"
-            >
-              <div className="flex items-center gap-4">
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center">
-                  <div className="h-1.5 w-1.5 rounded-full bg-amber-400/30 transition-colors group-hover/item:bg-amber-400" />
+    <div className="space-y-6">
+      {groups.map((group, gIdx) => (
+        <div key={gIdx} className="space-y-3">
+          {group.title && (
+            <h5 className="px-1 text-[11px] font-black tracking-widest text-slate-500 uppercase">
+              {group.title}
+            </h5>
+          )}
+          <div className="rounded-xl border border-white/5 bg-black/20 p-4">
+            <div className="space-y-4">
+              {group.items.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-4">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center">
+                    <div className="h-1.5 w-1.5 rounded-full bg-amber-400/30" />
+                  </div>
+                  <p className="text-[15px] leading-relaxed whitespace-pre-line text-slate-300">
+                    {item}
+                  </p>
                 </div>
-                <p className="text-[15px] leading-relaxed text-slate-300 transition-colors group-hover/item:text-white">
-                  {item}
-                </p>
-              </div>
-              <div
-                className="opacity-0 transition-opacity group-hover/item:opacity-100"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <CopyButton
-                  text={item}
-                  className="h-8 w-8 rounded-lg bg-white/5 hover:bg-white/10"
-                />
-              </div>
+              ))}
             </div>
-          );
-        }
-        return null;
-      })}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
