@@ -7,7 +7,7 @@
   /* Modern oklch colors for P3 gamut displays */
   --color-yellow: oklch(84% 0.18 90deg);
   --color-orange: oklch(72% 0.17 35deg);
-  --color-bg: oklch(16% 0.01 240deg);
+  --color-bg: oklch(14.1% 0.01 240deg);
   --color-card: oklch(100% 0 0deg / 5%);
   --color-text: oklch(100% 0 0deg);
   --color-text-muted: oklch(100% 0 0deg / 60%);
@@ -39,7 +39,7 @@
   body {
     min-height: 100%;
     margin: 0;
-    background: radial-gradient(circle at top right, #2c2c2e, var(--color-bg));
+    background: var(--color-bg);
     background-attachment: fixed;
 
     /* Shadcn defaults mixed in */
@@ -121,7 +121,7 @@
     inset: 3px;
     z-index: -1;
     content: "";
-    background: hsl(240deg 2% 13%);
+    background: oklch(19% 0.01 240deg);
     border-radius: inherit;
   }
 }
@@ -251,9 +251,9 @@
 }
 
 .dark {
-  --background: oklch(14.5% 0 0deg);
+  --background: oklch(14.1% 0.01 240deg);
   --foreground: oklch(98.5% 0 0deg);
-  --card: oklch(20.5% 0 0deg);
+  --card: oklch(19% 0.01 240deg);
   --card-foreground: oklch(98.5% 0 0deg);
   --popover: oklch(20.5% 0 0deg);
   --popover-foreground: oklch(98.5% 0 0deg);
