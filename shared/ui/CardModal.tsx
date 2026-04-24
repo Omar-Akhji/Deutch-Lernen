@@ -81,11 +81,7 @@ export function CardModal({
       <div
         role="document"
         aria-labelledby="modal-title"
-        className="relative z-10 flex flex-col overflow-hidden rounded-xl border-2 border-gray-400/30 shadow-2xl inline-full max-block-[90vh] max-inline-lg sm:max-block-[85vh]"
-        style={{
-          background:
-            "radial-gradient(circle at top right, #2c2c2e, var(--color-bg))",
-        }}
+        className="relative z-10 flex flex-col overflow-hidden rounded-xl border-2 border-gray-400/30 bg-[#0a0a0a] shadow-2xl inline-full max-block-[90vh] max-inline-lg sm:max-block-[85vh]"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={(e) => e.stopPropagation()}
       >
