@@ -63,9 +63,9 @@ export function ThemaCard({ thema }: ThemaCardProps) {
       <div className="min-h-30 animate-in duration-300 fade-in slide-in-from-bottom-2">
         {activeTab === "pro" && thema.pro && (
           <ul className="space-y-3">
-            {thema.pro.map((point, index) => (
+            {thema.pro.map((point) => (
               <li
-                key={index}
+                key={point}
                 className="flex gap-3 text-sm leading-relaxed text-slate-300"
               >
                 <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
@@ -76,9 +76,9 @@ export function ThemaCard({ thema }: ThemaCardProps) {
         )}
         {activeTab === "con" && thema.con && (
           <ul className="space-y-3">
-            {thema.con.map((point, index) => (
+            {thema.con.map((point) => (
               <li
-                key={index}
+                key={point}
                 className="flex gap-3 text-sm leading-relaxed text-slate-300"
               >
                 <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500" />

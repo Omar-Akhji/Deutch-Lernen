@@ -8,9 +8,10 @@ interface FamilyTreeProps {
 
 export const FamilyTree = ({ members }: FamilyTreeProps) => {
   // Group members by level
-  const levels = [1, 2, 3, 4]
-    .map((lvl) => members.filter((m) => m.level === lvl))
-    .filter((group) => group.length > 0);
+  const levels = [1, 2, 3, 4].flatMap((lvl) => {
+    const group = members.filter((m) => m.level === lvl);
+    return group.length > 0 ? [group] : [];
+  });
 
   // Group members into couples (by partnerId) and singles within a level
   const groupIntoCouples = (levelMembers: FamilyMember[]) => {

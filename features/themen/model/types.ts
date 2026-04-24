@@ -8,14 +8,3 @@ export interface Thema {
   isTextOnly?: boolean | undefined;
   sampleText?: string | undefined;
 }
-
-export type ThemaCategory =
-  | "all"
-  | "essen"
-  | "tech"
-  | "gesellschaft"
-  | "bildung"
-  | "gesundheit"
-  | "freizeit"
-  | "umwelt"
-  | "arbeit";

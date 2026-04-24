@@ -78,32 +78,6 @@ export default function PruefungDetailLoading() {
             ))}
           </div>
         </section>
-
-        {/* Redemittel — matches grid of category cards */}
-        <section className="mb-12">
-          <div className="mb-8 flex items-center gap-4">
-            <Skeleton className="h-12 w-12 rounded-full bg-white/10" />
-            <Skeleton className="h-8 w-36 bg-white/8" />
-          </div>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <article
-                key={i}
-                className="rounded-2xl border border-(--glass-border) bg-card p-6"
-              >
-                <Skeleton className="mb-4 h-5 w-32 bg-white/10" />
-                <div className="space-y-2">
-                  {Array.from({ length: 4 }).map((_, j) => (
-                    <div key={j} className="flex items-start gap-2">
-                      <Skeleton className="mt-2 h-1 w-1 shrink-0 rounded-full bg-white/10" />
-                      <Skeleton className="h-4 w-full bg-white/5" />
-                    </div>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
       </main>
     </div>
   );

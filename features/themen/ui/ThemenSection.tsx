@@ -119,7 +119,7 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
             onClick={() => handleCategoryChange(null)}
             className={`flex items-center gap-2 rounded-full px-4 pbs-2 pbe-2 text-sm font-medium transition-all ${
               activeCategory === null
-                ? "bg-amber-500 text-slate-950 shadow-lg"
+                ? "bg-amber-500 text-black shadow-lg"
                 : "bg-white/5 text-slate-400 hover:bg-white/10"
             } ${isPending && activeCategory !== null ? "opacity-50" : ""}`}
           >
@@ -143,7 +143,7 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
                 activeCategory === id
                   ? {
                       backgroundColor: `var(--color-${config.color})`,
-                      color: "#020617", // slate-950 equivalent for contrast
+                      color: "#000000", // black for contrast
                     }
                   : {}
               }
@@ -250,7 +250,7 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
       {/* Scroll to Top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed right-8 bottom-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500 text-slate-950 shadow-2xl transition-all hover:scale-110 active:scale-95"
+        className="fixed right-8 bottom-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500 text-black shadow-2xl transition-all hover:scale-110 active:scale-95"
       >
         <ArrowUp size={28} />
       </button>

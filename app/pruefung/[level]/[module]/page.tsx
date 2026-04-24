@@ -40,7 +40,7 @@ export async function generateMetadata({
   const moduleTitle = module.charAt(0).toUpperCase() + module.slice(1);
   return {
     title: `${currentExam.level} ${moduleTitle} - Vorbereitung`,
-    description: `Redemittel und Themen für den ${moduleTitle}-Teil der ${currentExam.level} Prüfung.`,
+    description: `Struktur-Checkliste und Themen für den ${moduleTitle}-Teil der ${currentExam.level} Prüfung.`,
   };
 }
 

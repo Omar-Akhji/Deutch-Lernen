@@ -95,11 +95,7 @@ export function PhraseGroupCard({
   );
 }
 
-export function RenderPhrases({
-  phrases,
-}: {
-  phrases: (string | PhraseGroup)[];
-}) {
+function RenderPhrases({ phrases }: { phrases: (string | PhraseGroup)[] }) {
   const strings = phrases.filter((p): p is string => typeof p === "string");
   if (strings.length === 0) return null;
 
@@ -126,7 +122,7 @@ export function RenderPhrases({
   return (
     <div className="space-y-6">
       {groups.map((group, gIdx) => (
-        <div key={gIdx} className="space-y-3">
+        <div key={group.title || gIdx} className="space-y-3">
           {group.title && (
             <h5 className="px-1 text-[11px] font-black tracking-widest text-slate-500 uppercase">
               {group.title}
@@ -134,8 +130,8 @@ export function RenderPhrases({
           )}
           <div className="rounded-xl border border-white/5 bg-black/20 p-4">
             <div className="space-y-4">
-              {group.items.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-4">
+              {group.items.map((item) => (
+                <div key={item} className="flex items-start gap-4">
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center">
                     <div className="h-1.5 w-1.5 rounded-full bg-amber-400/30" />
                   </div>

@@ -1,5 +1,9 @@
-import { useRef, useEffect, type MouseEvent } from "react";
+"use client";
+
+import { useRef, useEffect, type MouseEvent as ReactMouseEvent } from "react";
 import { useRouter } from "next/navigation";
+
+const EMPTY_ARRAY: string[] = [];
 
 interface CardModalProps {
   isOpen: boolean;
@@ -18,7 +22,7 @@ export function CardModal({
   subtitle,
   description,
   href,
-  previewTitles = [],
+  previewTitles = EMPTY_ARRAY,
 }: CardModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const router = useRouter();
@@ -45,7 +49,7 @@ export function CardModal({
     router.push(href);
   };
 
-  const handleBackdropClick = (e: MouseEvent<HTMLDialogElement>) => {
+  const handleBackdropClick = (e: ReactMouseEvent<HTMLDialogElement>) => {
     if (e.target === dialogRef.current) {
       onClose();
     }

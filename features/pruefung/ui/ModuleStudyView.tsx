@@ -1,8 +1,8 @@
 "use client";
 
-import { ExamLevel, RedemittelCategory, PhraseGroup } from "../model/types";
+import { ExamLevel, RedemittelCategory } from "../model/types";
 import { Hero } from "@/shared/ui/Hero";
-import { Clock, CheckCircle2, MessageCircle } from "lucide-react";
+import { Clock, CheckCircle2 } from "lucide-react";
 import { ThemenSection } from "@/features/themen/ui/ThemenSection";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { PhraseGroupCard } from "./PhraseGroupCard";
@@ -120,7 +120,7 @@ export function ModuleStudyView({
                               size={16}
                               className="text-amber-400"
                             />
-                            Struktur-Checkliste & Redemittel
+                            Struktur-Checkliste
                           </h3>
                         </div>
                         <div className="divide-y divide-white/10">
@@ -129,21 +129,21 @@ export function ModuleStudyView({
                               if (
                                 group.phrases.some((p) => typeof p !== "string")
                               ) {
-                                return group.phrases
-                                  .map((p) => {
-                                    if (typeof p === "string") return null;
-                                    return {
+                                return group.phrases.flatMap((p) => {
+                                  if (typeof p === "string") return [];
+                                  return [
+                                    {
                                       ...p,
                                       label: `${group.label}: ${p.label}`,
-                                    };
-                                  })
-                                  .filter(Boolean) as PhraseGroup[];
+                                    },
+                                  ];
+                                });
                               }
                               return [group];
                             })
-                            .map((group, groupIdx) => (
+                            .map((group) => (
                               <PhraseGroupCard
-                                key={groupIdx}
+                                key={group.label}
                                 group={group}
                                 isChecklistItem
                               />
@@ -157,50 +157,6 @@ export function ModuleStudyView({
             </section>
           );
         })}
-
-        {/* Global Vocabulary / Connectors */}
-        {filteredRedemittel.some(
-          ([cat]) =>
-            cat.toLowerCase().includes("konnektoren") ||
-            cat.toLowerCase().includes("zeitausdrücke") ||
-            cat.toLowerCase().includes("wortschatz"),
-        ) && (
-          <section className="border-t border-white/10 pt-16">
-            <AnimateOnScroll animation="fade-right">
-              <h2 className="mbe-8 flex items-center gap-3 text-xl font-bold text-white">
-                <MessageCircle className="text-amber-400" size={24} />
-                Wortschatz & Konnektoren
-              </h2>
-            </AnimateOnScroll>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {filteredRedemittel
-                .filter(
-                  ([cat]) =>
-                    cat.toLowerCase().includes("konnektoren") ||
-                    cat.toLowerCase().includes("zeitausdrücke") ||
-                    cat.toLowerCase().includes("wortschatz"),
-                )
-                .map(([category, groups], idx) => (
-                  <AnimateOnScroll
-                    key={category}
-                    animation="fade-up"
-                    delay={idx * 100}
-                  >
-                    <div className="space-y-4">
-                      <h4 className="text-xs font-bold tracking-widest text-slate-500 uppercase">
-                        {category}
-                      </h4>
-                      <div className="space-y-4">
-                        {groups.map((group, gIdx) => (
-                          <PhraseGroupCard key={gIdx} group={group} />
-                        ))}
-                      </div>
-                    </div>
-                  </AnimateOnScroll>
-                ))}
-            </div>
-          </section>
-        )}
       </div>
 
       {/* Topics Integration */}
@@ -208,7 +164,7 @@ export function ModuleStudyView({
         <div className="mb-10">
           <AnimateOnScroll animation="fade-up">
             <h2 className="mb-2 bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-black text-transparent">
-              Sprechen & Schreiben Themen
+              Prüfungsthemen (Teil 2)
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll animation="fade-up" delay={100}>

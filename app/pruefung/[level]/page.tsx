@@ -7,11 +7,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
-import {
-  getExamLevels,
-  getExamLevel,
-  getRedemittel,
-} from "@/features/pruefung";
+import { getExamLevels, getExamLevel } from "@/features/pruefung";
 import { Hero } from "@/shared/ui/Hero";
 import { BackButton } from "@/shared/ui/BackButton";
 import { getGradient } from "@/shared/lib/utils";
@@ -45,10 +41,7 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function PruefungDetailPage({ params }: PageProps) {
   const { level } = await params;
 
-  const [currentExam, redemittel] = await Promise.all([
-    getExamLevel(level),
-    getRedemittel(level),
-  ]);
+  const currentExam = await getExamLevel(level);
 
   if (!currentExam) {
     return (
@@ -198,41 +191,6 @@ export default async function PruefungDetailPage({ params }: PageProps) {
 
                       {(section.id.includes("sprechen") ||
                         section.id.includes("schreiben")) && (
-                        <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                          <h4 className="m-0 mb-3 flex items-center gap-2 text-sm font-semibold text-text">
-                            <MessageCircle
-                              size={16}
-                              className="text-amber-400"
-                            />{" "}
-                            Wichtige Redemittel
-                          </h4>
-                          <ul className="m-0 space-y-2">
-                            {Object.entries(redemittel)
-                              .filter(([cat]) =>
-                                section.id.includes("sprechen")
-                                  ? cat.toLowerCase().includes("sprechen")
-                                  : cat.toLowerCase().includes("schreiben"),
-                              )
-                              .slice(0, 1)
-                              .map(([, groups]) =>
-                                groups.slice(0, 4).map((group, i) => (
-                                  <li
-                                    key={i}
-                                    className="flex items-start gap-2 text-sm text-slate-300"
-                                  >
-                                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-amber-400" />
-                                    <span className="flex-1">
-                                      {group.label}
-                                    </span>
-                                  </li>
-                                )),
-                              )}
-                          </ul>
-                        </div>
-                      )}
-
-                      {(section.id.includes("sprechen") ||
-                        section.id.includes("schreiben")) && (
                         <Link
                           href={`/pruefung/${level}/${
                             section.id.split("-")[1]
@@ -248,45 +206,6 @@ export default async function PruefungDetailPage({ params }: PageProps) {
                       )}
                     </div>
                   </div>
-                </article>
-              </AnimateOnScroll>
-            ))}
-          </div>
-        </section>
-
-        {/* Redemittel */}
-        <section className="mb-12">
-          <AnimateOnScroll animation="fade-right">
-            <h2 className="mb-8 flex items-center gap-4 text-[1.75rem] font-bold text-text">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
-                <MessageCircle size={24} strokeWidth={2} />
-              </span>
-              Redemittel
-            </h2>
-          </AnimateOnScroll>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
-            {Object.entries(redemittel).map(([category, phrases], idx) => (
-              <AnimateOnScroll
-                key={category}
-                animation="fade-up"
-                delay={(idx % 3) * 100}
-                className="h-full"
-              >
-                <article className="h-full rounded-2xl border border-(--glass-border) bg-card p-6">
-                  <h3 className="m-0 mb-4 text-base font-bold text-yellow capitalize">
-                    {category}
-                  </h3>
-                  <ul className="m-0 space-y-2">
-                    {phrases.map((group) => (
-                      <li
-                        key={group.label}
-                        className="flex items-start gap-2 text-sm leading-relaxed text-slate-300"
-                      >
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-yellow" />
-                        <span className="flex-1">{group.label}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </article>
               </AnimateOnScroll>
             ))}
