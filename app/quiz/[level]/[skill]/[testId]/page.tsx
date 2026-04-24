@@ -1,6 +1,6 @@
 import { QuizView, getQuizStaticParams } from "@/features/quiz";
 import { Suspense } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/shared/ui/Skeleton";
 
 interface PageProps {
   params: Promise<{

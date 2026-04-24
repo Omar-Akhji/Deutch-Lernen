@@ -3,6 +3,7 @@ import { useState, useTransition, type ReactNode } from "react";
 import { themenData } from "../api/data";
 import { ThemaCard } from "./ThemaCard";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { THEMEN_CATEGORY_COLORS } from "../lib/categoryConfig";
 import {
   Utensils,
   Cpu,
@@ -24,42 +25,42 @@ const categoryConfig: Record<
   essen: {
     label: "Essen & Trinken",
     icon: <Utensils size={24} />,
-    color: "orange-500",
+    color: THEMEN_CATEGORY_COLORS["essen"]!,
   },
   tech: {
     label: "Technik & Medien",
     icon: <Cpu size={24} />,
-    color: "blue-500",
+    color: THEMEN_CATEGORY_COLORS["tech"]!,
   },
   gesellschaft: {
     label: "Gesellschaft",
     icon: <Users size={24} />,
-    color: "purple-500",
+    color: THEMEN_CATEGORY_COLORS["gesellschaft"]!,
   },
   bildung: {
     label: "Bildung & Beruf",
     icon: <GraduationCap size={24} />,
-    color: "emerald-500",
+    color: THEMEN_CATEGORY_COLORS["bildung"]!,
   },
   gesundheit: {
     label: "Gesundheit",
     icon: <Activity size={24} />,
-    color: "red-500",
+    color: THEMEN_CATEGORY_COLORS["gesundheit"]!,
   },
   freizeit: {
     label: "Freizeit & Reisen",
     icon: <Palmtree size={24} />,
-    color: "pink-500",
+    color: THEMEN_CATEGORY_COLORS["freizeit"]!,
   },
   umwelt: {
     label: "Umwelt",
     icon: <Leaf size={24} />,
-    color: "green-500",
+    color: THEMEN_CATEGORY_COLORS["umwelt"]!,
   },
   arbeit: {
     label: "Arbeitswelt",
     icon: <Briefcase size={24} />,
-    color: "cyan-500",
+    color: THEMEN_CATEGORY_COLORS["arbeit"]!,
   },
 };
 

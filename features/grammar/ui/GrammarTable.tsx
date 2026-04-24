@@ -1,44 +1,11 @@
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { ContentItem } from "./FormattedText";
 
 interface GrammarTableProps {
   caption?: string;
   headers: string[];
   rows: (string | { text: string; highlight?: boolean })[][];
 }
-
-const CellContent = ({
-  content,
-}: {
-  content: string | { text: string; highlight?: boolean };
-}) => {
-  const text = typeof content === "string" ? content : content.text;
-  const isHighlighted = typeof content !== "string" && content.highlight;
-
-  // Parse bolding (**text**) and primary highlight (*text*)
-  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
-
-  return (
-    <span className={isHighlighted ? "font-medium text-yellow" : ""}>
-      {parts.map((part) => {
-        if (part.startsWith("**") && part.endsWith("**")) {
-          return (
-            <strong key={part} className="font-bold text-yellow">
-              {part.slice(2, -2)}
-            </strong>
-          );
-        }
-        if (part.startsWith("*") && part.endsWith("*")) {
-          return (
-            <span key={part} className="font-medium text-yellow">
-              {part.slice(1, -1)}
-            </span>
-          );
-        }
-        return part;
-      })}
-    </span>
-  );
-};
 
 export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
   return (
@@ -83,7 +50,7 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
                           key={cellText}
                           className={`px-6 py-4 ${j === 0 ? "font-medium text-orange" : "text-white/90"}`}
                         >
-                          <CellContent content={cell} />
+                          <ContentItem content={cell} />
                         </td>
                       );
                     })}

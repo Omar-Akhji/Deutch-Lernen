@@ -5,7 +5,7 @@ export interface Thema {
   cat: string;
   pro?: string[] | undefined;
   con?: string[] | undefined;
-  txt?: boolean | undefined;
+  isTextOnly?: boolean | undefined;
   sampleText?: string | undefined;
 }
 

@@ -11,8 +11,6 @@ interface CardModalProps {
   previewTitles?: string[] | undefined;
 }
 
-const EMPTY_PREVIEW_TITLES: string[] = [];
-
 export function CardModal({
   isOpen,
   onClose,
@@ -20,7 +18,7 @@ export function CardModal({
   subtitle,
   description,
   href,
-  previewTitles = EMPTY_PREVIEW_TITLES,
+  previewTitles = [],
 }: CardModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const router = useRouter();

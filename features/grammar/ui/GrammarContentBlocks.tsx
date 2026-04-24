@@ -1,6 +1,7 @@
 import { Lightbulb } from "lucide-react";
 import { GrammarSectionContent } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { FormattedText } from "./FormattedText";
 
 interface GrammarContentBlocksProps {
   blocks: GrammarSectionContent[];
@@ -8,25 +9,7 @@ interface GrammarContentBlocksProps {
   tips?: string[] | undefined;
 }
 
-const FormattedText = ({ text }: { text: string }) => {
-  const parts = text.split(/(\*\*.*?\*\*)/g);
-  return (
-    <span>
-      {parts.map((part) => {
-        if (part.startsWith("**") && part.endsWith("**")) {
-          return (
-            <strong key={part} className="font-bold text-yellow">
-              {part.slice(2, -2)}
-            </strong>
-          );
-        }
-        return part;
-      })}
-    </span>
-  );
-};
-
-const ContentItem = ({
+const InlineItem = ({
   item,
 }: {
   item: string | { text: string; highlight?: boolean };
@@ -56,7 +39,7 @@ export const GrammarContentBlocks = ({
                     {dialogue.speaker}
                   </div>
                   <div className="rounded-2xl rounded-ss-none bg-white/5 px-4 py-2 text-white/90">
-                    <ContentItem item={dialogue.text} />
+                    <InlineItem item={dialogue.text} />
                   </div>
                 </div>
               ))}
@@ -85,7 +68,7 @@ export const GrammarContentBlocks = ({
                       borderEndStartRadius: 0,
                     }}
                   >
-                    <ContentItem item={item} />
+                    <InlineItem item={item} />
                   </div>
                 );
               })}
@@ -105,7 +88,7 @@ export const GrammarContentBlocks = ({
                   className="flex items-start gap-2 rounded-xl border border-orange/20 bg-orange/5 p-4 text-orange brightness-125"
                 >
                   <Lightbulb className="shrink-0" size={18} />
-                  <ContentItem item={tip} />
+                  <InlineItem item={tip} />
                 </div>
               ))}
             </div>

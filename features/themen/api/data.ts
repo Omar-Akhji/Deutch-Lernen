@@ -621,7 +621,7 @@ export const themenData: Thema[] = [
     id: "liebe2",
     label: "Dürfen Männer weinen?",
     cat: "gesellschaft",
-    txt: true,
+    isTextOnly: true,
     text: "Männer sind auch Menschen – sie haben Gefühle und dürfen sie zeigen. Viele Menschen meinen, dass Weinen ein Zeichen von Schwäche ist. Aber viele Studien haben gezeigt, dass Weinen sehr nützlich und sogar gesund sein kann – für die Augen und die Nerven. Außerdem können Männer durch Weinen ihre Traurigkeit und ihr Mitgefühl zeigen. Deshalb bin ich der Meinung, dass Männer weinen dürfen. Aber nicht über Kleinigkeiten.",
   },
   {

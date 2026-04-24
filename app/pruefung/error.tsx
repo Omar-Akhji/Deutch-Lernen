@@ -1,33 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
+import { ErrorView } from "@/shared/ui/ErrorView";
 
-interface ErrorProps {
+export default function PruefungError(props: {
   error: Error & { digest?: string };
   reset: () => void;
-}
-
-export default function PruefungError({ error, reset }: ErrorProps) {
-  useEffect(() => {
-    console.error("Exam error:", error);
-  }, [error]);
-
+}) {
   return (
-    <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
-      <div className="rounded-3xl border border-white/10 bg-card p-8 shadow-2xl backdrop-blur-xl">
-        <h2 className="mb-4 text-2xl font-bold text-white">
-          Prüfung konnte nicht geladen werden
-        </h2>
-        <p className="mb-6 text-text-muted">
-          {error.message || "Fehler beim Laden der Prüfung."}
-        </p>
-        <button
-          onClick={reset}
-          className="rounded-full bg-linear-to-br from-yellow to-orange px-6 py-2 font-semibold text-black transition-all hover:scale-105"
-        >
-          Erneut versuchen
-        </button>
-      </div>
-    </div>
+    <ErrorView
+      {...props}
+      title="Prüfung konnte nicht geladen werden"
+      errorLabel="Exam error"
+      fallbackMessage="Fehler beim Laden der Prüfung."
+    />
   );
 }

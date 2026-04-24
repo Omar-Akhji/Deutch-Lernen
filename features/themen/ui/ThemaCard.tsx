@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Thema } from "../model/types";
+import { getCategoryClasses } from "../lib/categoryConfig";
 
 interface ThemaCardProps {
   thema: Thema;
@@ -9,38 +10,15 @@ interface ThemaCardProps {
 
 export function ThemaCard({ thema }: ThemaCardProps) {
   const [activeTab, setActiveTab] = useState<"pro" | "con" | "text">(
-    thema.txt ? "text" : "pro",
+    thema.isTextOnly ? "text" : "pro",
   );
-
-  const getCategoryColor = (cat: string) => {
-    switch (cat) {
-      case "essen":
-        return "text-orange-500 bg-orange-500/10";
-      case "tech":
-        return "text-blue-500 bg-blue-500/10";
-      case "gesellschaft":
-        return "text-purple-500 bg-purple-500/10";
-      case "bildung":
-        return "text-emerald-500 bg-emerald-500/10";
-      case "gesundheit":
-        return "text-red-500 bg-red-500/10";
-      case "freizeit":
-        return "text-pink-500 bg-pink-500/10";
-      case "umwelt":
-        return "text-green-500 bg-green-500/10";
-      case "arbeit":
-        return "text-cyan-500 bg-cyan-500/10";
-      default:
-        return "text-slate-500 bg-slate-500/10";
-    }
-  };
 
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:bg-white/10 hover:shadow-2xl hover:shadow-white/5">
       <div className="mbe-4 flex items-start justify-between">
         <div>
           <span
-            className={`mbe-2 inline-block rounded-full px-2.5 pbs-0.5 pbe-0.5 text-xs font-semibold tracking-wider uppercase ${getCategoryColor(thema.cat)}`}
+            className={`mbe-2 inline-block rounded-full px-2.5 pbs-0.5 pbe-0.5 text-xs font-semibold tracking-wider uppercase ${getCategoryClasses(thema.cat)}`}
           >
             {thema.cat}
           </span>
@@ -51,7 +29,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
       </div>
 
       <div className="mb-4 flex gap-1 rounded-full bg-black/20 p-1">
-        {!thema.txt && (
+        {!thema.isTextOnly && (
           <>
             <button
               onClick={() => setActiveTab("pro")}
@@ -75,7 +53,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
             </button>
           </>
         )}
-        {thema.txt && (
+        {thema.isTextOnly && (
           <button className="flex-1 rounded-full bg-amber-500 px-3 py-1.5 text-sm font-medium text-white">
             Mustertext
           </button>
@@ -109,7 +87,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
             ))}
           </ul>
         )}
-        {(activeTab === "text" || thema.txt) && thema.text && (
+        {(activeTab === "text" || thema.isTextOnly) && thema.text && (
           <p className="border-l-2 border-amber-500/30 py-1 pl-4 text-sm leading-relaxed text-slate-300 italic">
             &quot;{thema.text}&quot;
           </p>
