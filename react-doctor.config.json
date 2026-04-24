@@ -6,8 +6,14 @@
       ".claude/**",
       ".codex/**",
       ".cursor/**",
+      ".gemini/**",
       "public/**",
-      "node_modules/**"
+      "node_modules/**",
+      "types.d.ts",
+      "next-env.d.ts",
+      "docs/**",
+      "*.png",
+      "*.svg"
     ]
   }
 }
