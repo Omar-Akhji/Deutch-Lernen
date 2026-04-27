@@ -18,7 +18,7 @@ export const QuizStart = ({
   onStart,
 }: QuizStartProps) => {
   return (
-    <div className="mx-auto p-8 text-center max-inline-lg">
+    <section className="mx-auto p-8 text-center max-inline-lg">
       {/* Exam badge */}
       <AnimateOnScroll animation="fade-up">
         <div className="mx-auto mbe-6 inline-flex items-center gap-2 rounded-full border border-yellow/30 bg-yellow/10 px-4 py-1.5 text-sm font-medium text-yellow">
@@ -66,6 +66,6 @@ export const QuizStart = ({
           Prüfung Starten
         </button>
       </AnimateOnScroll>
-    </div>
+    </section>
   );
 };

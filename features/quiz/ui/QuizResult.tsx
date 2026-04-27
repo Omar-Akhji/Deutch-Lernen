@@ -44,7 +44,7 @@ export const QuizResult = ({
   };
 
   return (
-    <div className="p-8 text-center">
+    <section className="p-8 text-center">
       <AnimateOnScroll animation="fade-up">
         <h2 className="mb-2 text-3xl font-bold text-shadow-sm">Ergebnis</h2>
       </AnimateOnScroll>
@@ -106,6 +106,6 @@ export const QuizResult = ({
           </button>
         </div>
       </AnimateOnScroll>
-    </div>
+    </section>
   );
 };

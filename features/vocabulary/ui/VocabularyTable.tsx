@@ -17,6 +17,7 @@ export function VocabularyTable({
       <div className="@container overflow-hidden rounded-3xl border border-(--glass-border) bg-card backdrop-blur-(--glass-blur)">
         <div className="overflow-x-auto px-4 pbs-4 pbe-4">
           <table className="border-collapse text-left inline-full">
+            <caption className="sr-only">Vokabelliste</caption>
             <thead>
               <tr>
                 <th

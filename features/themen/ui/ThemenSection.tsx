@@ -98,9 +98,9 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
   };
 
   return (
-    <div className={`space-y-16 py-8 ${!isEmbedded ? "min-h-screen" : ""}`}>
+    <main className={`space-y-16 py-8 ${!isEmbedded ? "min-h-screen" : ""}`}>
       {!isEmbedded && (
-        <div className="mx-auto max-w-2xl space-y-4 text-center">
+        <header className="mx-auto max-w-2xl space-y-4 text-center">
           <AnimateOnScroll animation="fade-up">
             <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
               Sprechen & Schreiben Themen
@@ -113,11 +113,14 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
               oder deinen Diskussionsbeitrag.
             </p>
           </AnimateOnScroll>
-        </div>
+        </header>
       )}
 
       {/* Internal Navigation Bar */}
-      <div className="rounded-2xl border border-white/5 bg-slate-950/50 px-4 py-4 shadow-xl backdrop-blur-md">
+      <nav
+        className="rounded-2xl border border-white/5 bg-slate-950/50 px-4 py-4 shadow-xl backdrop-blur-md"
+        aria-label="Themen Kategorien"
+      >
         <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-2">
           <button
             onClick={() => handleCategoryChange(null)}
@@ -167,7 +170,7 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
             </button>
           ))}
         </div>
-      </div>
+      </nav>
 
       <div
         className={`space-y-24 transition-opacity duration-300 ${isPending ? "opacity-40" : "opacity-100"}`}
@@ -221,7 +224,7 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
       </div>
 
       <AnimateOnScroll animation="zoom-in" delay={200}>
-        <div className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
+        <aside className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
           <h3 className="mb-4 flex items-center gap-2 text-2xl font-bold text-white">
             <span className="flex h-10 w-10 items-center justify-center rounded-full border-3 border-indigo-400 text-indigo-400">
               <Lightbulb size={20} />
@@ -254,7 +257,7 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
               Bedanke dich am Ende und bitte um Fragen.
             </li>
           </ul>
-        </div>
+        </aside>
       </AnimateOnScroll>
 
       {/* Scroll to Top */}
@@ -264,6 +267,6 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
       >
         <ArrowUp size={28} />
       </button>
-    </div>
+    </main>
   );
 }

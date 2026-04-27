@@ -128,6 +128,9 @@ export default async function PruefungDetailPage({ params }: PageProps) {
                       {section.description}
                     </p>
                     <table className="mb-4 w-full border-collapse text-sm">
+                      <caption className="sr-only">
+                        Prüfungsstruktur Übersicht
+                      </caption>
                       <thead>
                         <tr>
                           <th

@@ -51,9 +51,16 @@ const skills: Skill[] = [
   },
 ];
 
-const modelTests = [1, 2, 3];
+const getModelTestsForLevel = (level: string) => {
+  if (level.toLowerCase() === "b1") {
+    return [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  }
+  return [1];
+};
 
 export default function ModelTestsView({ level }: ModelTestsViewProps) {
+  const modelTests = getModelTestsForLevel(level);
+
   const stats = [
     {
       label: "Niveau",

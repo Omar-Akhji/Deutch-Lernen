@@ -49,8 +49,8 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
     );
 
   return (
-    <div className="relative min-h-screen py-4">
-      <div className="relative z-10 flex w-full flex-col rounded-2xl border border-white/10 bg-card px-4 py-6 shadow-2xl backdrop-blur-xl">
+    <main className="relative min-h-screen py-4">
+      <article className="relative z-10 flex w-full flex-col rounded-2xl border border-white/10 bg-card px-4 py-6 shadow-2xl backdrop-blur-xl">
         <header className="mb-4 flex items-center justify-between border-b border-white/10 pb-2">
           <h1 className="text-sm font-bold tracking-widest text-white/50 uppercase">
             {skillTitle} – Modelltest {testId}
@@ -71,9 +71,9 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
             />
           ) : !isFinished ? (
             <div className="flex flex-col gap-4">
-              {skill === "lesen" ? (
+              {skill === "lesen" || skill === "hoeren" ? (
                 <div className="flex flex-col gap-6">
-                  {/* Grouping Logic for Reading Table Look */}
+                  {/* Grouping Logic for Reading/Listening Table Look */}
                   {Array.from(new Set(questions.map((q) => q.teil))).map(
                     (teilNum) => {
                       const group = questions.filter((q) => q.teil === teilNum);
@@ -81,7 +81,10 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
 
                       const firstQuestion = group[0]!;
                       const firstIdx = questions.indexOf(firstQuestion);
-                      const isGroupedTeil = teilNum === 1 || teilNum === 4;
+                      const isGroupedTeil =
+                        skill === "lesen"
+                          ? teilNum === 1 || teilNum === 4
+                          : teilNum === 3 || teilNum === 4;
 
                       // Find Context
                       let activeCtx: string | undefined = firstQuestion.context;
@@ -100,7 +103,7 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
                       }
 
                       return (
-                        <div key={teilNum} className="space-y-8">
+                        <section key={teilNum} className="space-y-8">
                           <div
                             className={
                               isGroupedTeil
@@ -110,12 +113,22 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
                           >
                             {/* 1. Header & Context */}
                             <QuizQuestion
-                              question={firstQuestion}
+                              question={
+                                isGroupedTeil
+                                  ? firstQuestion
+                                  : {
+                                      ...firstQuestion,
+                                      context: "",
+                                      audioUrl: "",
+                                    }
+                              }
                               currentStep={firstIdx + 1}
                               onAnswer={() => {}}
                               skill={skill}
                               isNewTeil={true}
-                              activeContext={activeCtx}
+                              activeContext={
+                                isGroupedTeil ? activeCtx : undefined
+                              }
                               hideQuestionBody={true}
                             />
 
@@ -173,7 +186,7 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
                               <div className="h-1 w-24 rounded-full bg-linear-to-r from-yellow to-orange shadow-lg shadow-yellow/20" />
                             </div>
                           )}
-                        </div>
+                        </section>
                       );
                     },
                   )}
@@ -204,7 +217,7 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
             />
           )}
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }

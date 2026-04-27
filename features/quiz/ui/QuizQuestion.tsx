@@ -50,18 +50,24 @@ export const QuizQuestion = ({
     question.options?.length === 2 &&
     question.options[0] === "Ja" &&
     question.options[1] === "Nein";
-  const isTwoOption = isRichtigFalsch || isJaNein;
+  const isABC =
+    question.options?.length === 3 &&
+    question.options[0] === "a" &&
+    question.options[1] === "b" &&
+    question.options[2] === "c";
+
+  const isCompactRow = isRichtigFalsch || isJaNein || (isTableRow && isABC);
 
   // Strip leading number and dot from the question text to prevent duplication
   const cleanedQuestionText = question.question.replace(/^\d+\.\s*/, "");
 
   return (
-    <div
+    <article
       className={`mx-auto w-full animate-fade-in ${isTableRow ? "" : "space-y-6"}`}
     >
       {/* Teil Header - Only show if not in a table row */}
       {isNewTeil && !isTableRow && (
-        <div className="mb-6 border-b-2 border-yellow/30 pb-2">
+        <header className="mb-6 border-b-2 border-yellow/30 pb-2">
           <div className="flex items-baseline gap-2">
             <span className="text-lg font-bold text-yellow">
               Teil {question.teil}
@@ -75,7 +81,7 @@ export const QuizQuestion = ({
               {question.teilInstruction}
             </p>
           )}
-        </div>
+        </header>
       )}
 
       {/* Context Text - Premium Glass Card */}
@@ -89,9 +95,12 @@ export const QuizQuestion = ({
               </h4>
               <div className="h-px flex-1 bg-white/5" />
             </div>
+            <p className="mb-4 font-serif text-sm leading-relaxed whitespace-pre-line text-white/80">
+              {displayContext}
+            </p>
             {/* Audio Player if URL exists */}
             {question.audioUrl && (
-              <div className="mb-4 flex justify-center">
+              <div className="flex justify-center">
                 <audio
                   controls
                   className="h-10 w-full max-w-md rounded-full bg-slate-800/50 accent-yellow"
@@ -101,9 +110,6 @@ export const QuizQuestion = ({
                 </audio>
               </div>
             )}
-            <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-white/80">
-              {displayContext}
-            </p>
           </div>
         </div>
       )}
@@ -118,8 +124,8 @@ export const QuizQuestion = ({
           }
         >
           <div className={isTableRow ? "px-4 py-3 lg:px-5" : "p-4 lg:p-5"}>
-            {isTwoOption ? (
-              /* Horizontal Layout - Compact Table Look for R/F */
+            {isCompactRow ? (
+              /* Horizontal Layout - Compact Table Look for R/F or A/B/C */
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-1 items-baseline gap-3">
                   <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
@@ -216,6 +222,6 @@ export const QuizQuestion = ({
           </div>
         </div>
       )}
-    </div>
+    </article>
   );
 };
