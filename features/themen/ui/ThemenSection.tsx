@@ -3,7 +3,11 @@ import { useState, useTransition, type ReactNode } from "react";
 import { themenData } from "../api/data";
 import { ThemaCard } from "./ThemaCard";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { THEMEN_CATEGORY_COLORS } from "../lib/categoryConfig";
+import { cn } from "@/shared/lib/utils";
+import {
+  THEMEN_CATEGORY_COLORS,
+  getCategoryClasses,
+} from "../lib/categoryConfig";
 import {
   Utensils,
   Cpu,
@@ -134,28 +138,28 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
             <button
               key={id}
               onClick={() => handleCategoryChange(id)}
-              className={`flex items-center gap-2 rounded-full px-4 pbs-2 pbe-2 text-sm font-medium transition-all ${
+              className={cn(
+                "flex items-center gap-2 rounded-full px-4 pbs-2 pbe-2 text-sm font-medium transition-all",
                 activeCategory === id
-                  ? "shadow-lg shadow-black/20"
-                  : "bg-white/5 text-slate-400 hover:bg-white/10"
-              } ${isPending && activeCategory !== id ? "opacity-50" : ""}`}
-              style={
-                activeCategory === id
-                  ? {
-                      backgroundColor: `var(--color-${config.color})`,
-                      color: "#000000", // black for contrast
-                    }
-                  : {}
-              }
+                  ? cn(
+                      "text-black shadow-lg shadow-black/20",
+                      getCategoryClasses(id)
+                        .split(" ")
+                        .find((c: string) => c.startsWith("bg-")),
+                    )
+                  : "bg-white/5 text-slate-400 hover:bg-white/10",
+                isPending && activeCategory !== id ? "opacity-50" : "",
+              )}
             >
               <span
-                className="scale-75 transition-transform group-hover:scale-110"
-                style={{
-                  color:
-                    activeCategory === id
-                      ? "inherit"
-                      : `var(--color-${config.color})`,
-                }}
+                className={cn(
+                  "scale-75 transition-transform group-hover:scale-110",
+                  activeCategory === id
+                    ? "text-black"
+                    : getCategoryClasses(id)
+                        .split(" ")
+                        .find((c: string) => c.startsWith("text-")),
+                )}
               >
                 {config.icon}
               </span>
@@ -172,15 +176,21 @@ export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
           const config = categoryConfig[catId];
           if (!config) return null;
 
+          const catClasses = getCategoryClasses(catId);
+
           return (
             <section key={catId} id={catId} className="scroll-mbs-32">
               <div className="mb-10 flex items-center gap-4">
                 <div
-                  className="flex h-14 w-14 items-center justify-center rounded-full border-3 shadow-inner"
-                  style={{
-                    borderColor: `var(--color-${config.color})`,
-                    color: `var(--color-${config.color})`,
-                  }}
+                  className={cn(
+                    "flex h-14 w-14 items-center justify-center rounded-full border-3 shadow-inner",
+                    catClasses
+                      .split(" ")
+                      .find((c: string) => c.startsWith("border-")),
+                    catClasses
+                      .split(" ")
+                      .find((c: string) => c.startsWith("text-")),
+                  )}
                 >
                   {config.icon}
                 </div>

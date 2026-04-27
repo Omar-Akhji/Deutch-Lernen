@@ -12,6 +12,8 @@ export interface Question {
   teilTitle?: string;
   /** Exam instruction for the Teil (e.g. "Lesen Sie den Text und die Aufgaben 1 bis 6...") */
   teilInstruction?: string;
+  /** URL for audio playback in listening tasks */
+  audioUrl?: string;
 }
 
 export type QuizData = Record<

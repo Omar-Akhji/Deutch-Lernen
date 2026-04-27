@@ -5,24 +5,31 @@ import { Question } from "../model/types";
 interface QuizQuestionProps {
   question: Question;
   currentStep: number;
-  totalSteps: number;
-  onAnswer: (answer: string) => void;
+  onAnswer: (answer: string | string[]) => void;
+  /** The answer selected by the user (if any) */
+  selectedAnswer?: string | string[] | null | undefined;
   /** Context carried forward from the previous question in the same Teil */
   activeContext?: string | undefined;
   /** Whether this question starts a new Teil (show header) */
   isNewTeil?: boolean | undefined;
   /** The skill being tested (lesen, hoeren, etc.) */
   skill?: string | undefined;
+
+  /* Table Layout Flags */
+  isTableRow?: boolean;
+  hideQuestionBody?: boolean;
 }
 
 export const QuizQuestion = ({
   question,
   currentStep,
-  totalSteps,
   onAnswer,
+  selectedAnswer,
   activeContext,
   isNewTeil,
   skill,
+  isTableRow,
+  hideQuestionBody,
 }: QuizQuestionProps) => {
   const displayContext = question.context || activeContext;
 
@@ -45,96 +52,168 @@ export const QuizQuestion = ({
     question.options[1] === "Nein";
   const isTwoOption = isRichtigFalsch || isJaNein;
 
+  // Strip leading number and dot from the question text to prevent duplication
+  const cleanedQuestionText = question.question.replace(/^\d+\.\s*/, "");
+
   return (
-    <div className="mx-auto inline-full max-inline-2xl">
-      {/* Teil Header (shown when entering a new Teil) */}
-      {isNewTeil && question.teilTitle && (
-        <div className="mbe-6 rounded-2xl border-2 border-yellow/40 bg-linear-to-r from-yellow/10 to-orange/10 px-5 pbs-5 pbe-5">
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 min-h-10 w-10 min-w-10 flex-none items-center justify-center rounded-full bg-yellow/20 text-lg font-bold text-yellow">
-              {question.teil}
+    <div
+      className={`mx-auto w-full animate-fade-in ${isTableRow ? "" : "space-y-6"}`}
+    >
+      {/* Teil Header - Only show if not in a table row */}
+      {isNewTeil && !isTableRow && (
+        <div className="mb-6 border-b-2 border-yellow/30 pb-2">
+          <div className="flex items-baseline gap-2">
+            <span className="text-lg font-bold text-yellow">
+              Teil {question.teil}
             </span>
-            <div>
-              <h2 className="text-lg font-bold text-white">
-                {question.teilTitle}
-              </h2>
-              {question.teilInstruction && (
-                <p className="mbs-1 text-sm leading-relaxed text-mist-500 italic">
-                  {question.teilInstruction}
-                </p>
-              )}
+            <h2 className="text-sm font-bold tracking-wide text-white/90 uppercase">
+              {question.teilTitle || "Modul Lesen"}
+            </h2>
+          </div>
+          {question.teilInstruction && (
+            <p className="mt-1 text-xs leading-tight font-medium text-white/40 italic">
+              {question.teilInstruction}
+            </p>
+          )}
+        </div>
+      )}
+
+      {/* Context Text - Premium Glass Card */}
+      {displayContext && !isTableRow && (
+        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/40 shadow-lg backdrop-blur-md">
+          <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-size-[24px_24px] opacity-[0.02]" />
+          <div className="relative p-5">
+            <div className="mb-3 flex items-center gap-3">
+              <h4 className="text-[9px] font-black tracking-[0.3em] text-yellow/60 uppercase">
+                {contextLabel}
+              </h4>
+              <div className="h-px flex-1 bg-white/5" />
             </div>
+            {/* Audio Player if URL exists */}
+            {question.audioUrl && (
+              <div className="mb-4 flex justify-center">
+                <audio
+                  controls
+                  className="h-10 w-full max-w-md rounded-full bg-slate-800/50 accent-yellow"
+                >
+                  <source src={question.audioUrl} type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            )}
+            <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-white/80">
+              {displayContext}
+            </p>
           </div>
         </div>
       )}
 
-      {/* Progress Indicator */}
-      <div className="mbe-4 flex items-center justify-between text-sm opacity-80">
-        <span className="rounded-full border border-white/20 bg-white/5 px-3 pbs-1 pbe-1">
-          Aufgabe {currentStep} von {totalSteps}
-        </span>
-        <div className="bs-2 is-32 overflow-hidden rounded-full bg-white/20">
-          <div
-            className="bs-full bg-linear-to-r from-yellow to-orange transition-all duration-300"
-            style={{ width: `${(currentStep / totalSteps) * 100}%` }}
-          ></div>
-        </div>
-      </div>
-
-      {/* Context Text */}
-      {displayContext && (
-        <div className="mbe-6 rounded-xl border border-white/10 bg-white/5 px-5 pbs-5 pbe-5 text-left">
-          <h4 className="mbe-2 text-xs font-semibold tracking-wider text-yellow/80 uppercase">
-            {contextLabel}
-          </h4>
-          <p className="text-base leading-relaxed whitespace-pre-line text-white/90">
-            {displayContext}
-          </p>
-        </div>
-      )}
-
-      {/* Question */}
-      <h3 className="mbe-6 flex items-center justify-center text-center text-xl font-semibold min-block-16">
-        {question.question}
-      </h3>
-
-      {/* Options */}
-      {question.type === "matching" ? (
-        <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
-          {question.options?.map((option) => (
-            <button
-              key={option}
-              className="group hover:translate-bs-0.5 flex aspect-square cursor-pointer items-center justify-center rounded-full border border-white/10 bg-white/5 text-xl font-bold text-white transition-all hover:border-yellow hover:bg-yellow/10 starting:scale-95 starting:opacity-0"
-              onClick={() => onAnswer(option)}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-      ) : (
+      {/* Question Content */}
+      {!hideQuestionBody && (
         <div
           className={
-            isTwoOption ? "grid grid-cols-2 gap-4" : "flex flex-col gap-3"
+            isTableRow
+              ? "w-full"
+              : "group relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/20 transition-all hover:bg-slate-900/40"
           }
         >
-          {question.options?.map((option, index) => (
-            <button
-              key={option}
-              className={`starting:translate-is-4 group hover:translate-bs-0.5 flex cursor-pointer items-center rounded-full border border-white/10 bg-white/5 px-3 pbs-3 pbe-3 text-left text-white transition-all inline-full hover:border-yellow hover:bg-yellow/10 starting:opacity-0 ${
-                isTwoOption ? "justify-center text-center" : ""
-              }`}
-              onClick={() => onAnswer(option)}
-            >
-              {!isTwoOption && (
-                <span className="mis-4 flex flex-none items-center justify-center rounded-full border border-white/50 text-sm transition-colors block-8 inline-8 min-block-8 min-inline-8 group-hover:bg-white group-hover:text-black">
-                  {String.fromCharCode(65 + index)}
-                </span>
-              )}
-              <span className={`text-lg ${isTwoOption ? "font-semibold" : ""}`}>
-                {option}
-              </span>
-            </button>
-          ))}
+          <div className={isTableRow ? "px-4 py-3 lg:px-5" : "p-4 lg:p-5"}>
+            {isTwoOption ? (
+              /* Horizontal Layout - Compact Table Look for R/F */
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-1 items-baseline gap-3">
+                  <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
+                    {currentStep}.
+                  </span>
+                  <h3 className="text-sm leading-tight font-bold text-white/90">
+                    {cleanedQuestionText}
+                  </h3>
+                </div>
+                <div className="flex flex-none gap-2">
+                  {question.options?.map((option) => {
+                    const isSelected = selectedAnswer === option;
+                    return (
+                      <button
+                        key={option}
+                        onClick={() => onAnswer(option)}
+                        className={`${isTableRow ? "min-w-16 py-1.5 text-[9px]" : "min-w-17.5 py-2 text-[10px]"} rounded-full border font-bold tracking-tighter uppercase transition-all ${
+                          isSelected
+                            ? "border-yellow bg-linear-to-br from-yellow to-orange text-black shadow-lg shadow-yellow/20"
+                            : "border-white/10 bg-white/5 text-white/40 hover:border-white/30 hover:bg-white/10"
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : question.type === "matching" ? (
+              /* Card-Group Grid for Matching */
+              <div className="space-y-4">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
+                    {currentStep}.
+                  </span>
+                  <h3 className="text-sm leading-tight font-bold text-white/90">
+                    {cleanedQuestionText}
+                  </h3>
+                </div>
+                <div className="grid grid-cols-6 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-11">
+                  {question.options?.map((option) => {
+                    const isSelected = selectedAnswer === option;
+                    return (
+                      <button
+                        key={option}
+                        onClick={() => onAnswer(option)}
+                        className={`flex h-10 items-center justify-center text-xs font-black transition-all ${
+                          isSelected
+                            ? "bg-linear-to-br from-yellow to-orange text-black shadow-inner"
+                            : "bg-slate-950/80 text-white/30 hover:bg-slate-800 hover:text-white/80"
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              /* Multi-Choice Layout - Standard Scale */
+              <div className="space-y-4">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
+                    {currentStep}.
+                  </span>
+                  <h3 className="text-sm leading-snug font-bold text-white/90">
+                    {cleanedQuestionText}
+                  </h3>
+                </div>
+                <div className="grid gap-2">
+                  {question.options?.map((option) => {
+                    const isSelected = selectedAnswer === option;
+                    return (
+                      <button
+                        key={option}
+                        onClick={() => onAnswer(option)}
+                        className={`group flex items-center rounded-lg border p-3 text-left transition-all ${
+                          isSelected
+                            ? "border-yellow/40 bg-linear-to-br from-yellow/10 to-orange/10 text-yellow shadow-md"
+                            : "border-white/10 bg-white/5 text-white/70 hover:border-white/30 hover:bg-white/10"
+                        }`}
+                      >
+                        <span
+                          className={`text-sm ${isSelected ? "font-bold text-white" : "font-medium"}`}
+                        >
+                          {option.replace(/^[a-c]\)\s+/i, "")}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

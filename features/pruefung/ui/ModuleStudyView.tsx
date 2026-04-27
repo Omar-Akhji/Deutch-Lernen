@@ -6,6 +6,7 @@ import { Clock, CheckCircle2 } from "lucide-react";
 import { ThemenSection } from "@/features/themen/ui/ThemenSection";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { PhraseGroupCard } from "./PhraseGroupCard";
+import { EmailVisualFrame } from "./EmailVisualFrame";
 
 interface ModuleStudyViewProps {
   level: string;
@@ -150,6 +151,113 @@ export function ModuleStudyView({
                             ))}
                         </div>
                       </div>
+
+                      {/* Email Visual Structure Frame */}
+                      {module === "schreiben" &&
+                        (part.taskType.toLowerCase().includes("e-mail") ||
+                          part.taskType
+                            .toLowerCase()
+                            .includes("schreiben")) && (
+                          <AnimateOnScroll animation="fade-up" delay={200}>
+                            <div className="mt-8">
+                              <EmailVisualFrame
+                                type={
+                                  part.taskType
+                                    .toLowerCase()
+                                    .includes("informell")
+                                    ? "informal"
+                                    : "formal"
+                                }
+                                recipient={
+                                  part.taskType
+                                    .toLowerCase()
+                                    .includes("informell")
+                                    ? "Jan (Freund)"
+                                    : "Frau Müller (Vermieterin)"
+                                }
+                                subject={
+                                  part.taskType
+                                    .toLowerCase()
+                                    .includes("informell")
+                                    ? "Unser Treffen am Wochenende"
+                                    : "Wichtige Nachricht bezüglich meiner Wohnung"
+                                }
+                                sections={
+                                  part.taskType
+                                    .toLowerCase()
+                                    .includes("informell")
+                                    ? [
+                                        {
+                                          label: "Anrede",
+                                          text: "Lieber Jan,",
+                                          description: "Vorname + Komma",
+                                          color: "text-amber-400",
+                                        },
+                                        {
+                                          label: "Einleitung",
+                                          text: "wie geht es dir? Ich hoffe, bei dir ist alles okay.",
+                                          description:
+                                            "Kleingeschrieben nach Komma",
+                                          color: "text-blue-400",
+                                        },
+                                        {
+                                          label: "Hauptteil",
+                                          text: "Ich schreibe dir, weil ich unser Treffen am Samstag leider verschieben muss...",
+                                          description: "Grund des Schreibens",
+                                          color: "text-purple-400",
+                                        },
+                                        {
+                                          label: "Schluss",
+                                          text: "Hast du vielleicht am Sonntag Zeit? Melde dich bitte bald!",
+                                          description: "Vorschlag/Frage",
+                                          color: "text-emerald-400",
+                                        },
+                                        {
+                                          label: "Grußformel",
+                                          text: "Viele Grüße,\nOmar",
+                                          description:
+                                            "Kein Satzzeichen am Ende",
+                                          color: "text-pink-400",
+                                        },
+                                      ]
+                                    : [
+                                        {
+                                          label: "Anrede",
+                                          text: "Sehr geehrte Frau Müller,",
+                                          description: "Nachname + Komma",
+                                          color: "text-amber-400",
+                                        },
+                                        {
+                                          label: "Einleitung",
+                                          text: "ich schreibe Ihnen, da es in meiner Wohnung ein Problem gibt.",
+                                          description: "Höfliche Einleitung",
+                                          color: "text-blue-400",
+                                        },
+                                        {
+                                          label: "Hauptteil",
+                                          text: "Seit zwei Tagen funktioniert die Heizung im Wohnzimmer nicht mehr...",
+                                          description: "Sachliche Beschreibung",
+                                          color: "text-purple-400",
+                                        },
+                                        {
+                                          label: "Schluss",
+                                          text: "Ich wäre Ihnen dankbar, wenn Sie bald einen Handwerker schicken könnten.",
+                                          description:
+                                            "Bitte um Antwort/Aktion",
+                                          color: "text-emerald-400",
+                                        },
+                                        {
+                                          label: "Grußformel",
+                                          text: "Mit freundlichen Grüßen,\nOmar Akhji",
+                                          description: "Formeller Abschluss",
+                                          color: "text-pink-400",
+                                        },
+                                      ]
+                                }
+                              />
+                            </div>
+                          </AnimateOnScroll>
+                        )}
                     </div>
                   </AnimateOnScroll>
                 ))}

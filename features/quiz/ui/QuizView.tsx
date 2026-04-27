@@ -15,7 +15,6 @@ interface QuizViewProps {
 
 export default function QuizView({ level, skill, testId }: QuizViewProps) {
   const router = useRouter();
-
   const questions = getQuestions(level, skill, parseInt(testId));
 
   const {
@@ -24,94 +23,178 @@ export default function QuizView({ level, skill, testId }: QuizViewProps) {
     isFinished,
     isStarted,
     currentQuestion,
+    userAnswers,
     startQuiz,
     handleAnswer,
+    finishQuiz,
   } = useQuiz(questions);
 
   const goBack = () => {
     router.push(`/pruefung/${level}/modelltests`);
   };
 
-  // Determine if this question starts a new Teil
-  const prevQuestion =
-    currentQuestionIndex > 0 ? questions[currentQuestionIndex - 1] : null;
-  const isNewTeil =
-    currentQuestion?.teil !== undefined &&
-    (!prevQuestion || prevQuestion.teil !== currentQuestion.teil);
+  const skillTitle =
+    {
+      lesen: "Lesen",
+      hoeren: "Hören",
+      schreiben: "Schreiben",
+      sprechen: "Sprechen",
+    }[skill] || skill;
 
-  // Carry context forward: find the most recent context in the same Teil
-  let activeContext: string | undefined;
-  if (
-    currentQuestion &&
-    !currentQuestion.context &&
-    currentQuestion.teil !== undefined
-  ) {
-    for (let i = currentQuestionIndex - 1; i >= 0; i--) {
-      const q = questions[i];
-      if (q && q.teil === currentQuestion.teil && q.context) {
-        activeContext = q.context;
-        break;
-      }
-    }
-  }
-
-  // Build a skill-specific title
-  const skillTitles: Record<string, string> = {
-    lesen: "Lesen",
-    hoeren: "Hören",
-    schreiben: "Schreiben",
-    sprechen: "Sprechen",
-  };
-  const skillTitle = skillTitles[skill] || skill;
-
-  if (!questions.length) {
+  if (!questions.length)
     return (
       <div className="py-12 text-center">
         <p>Keine Fragen gefunden.</p>
-        <button
-          onClick={() => router.back()}
-          className="mt-4 cursor-pointer rounded-full text-yellow hover:underline"
-        >
-          Zurück
-        </button>
       </div>
     );
-  }
-  const getDuration = () => {
-    if (skill === "lesen") return 65;
-    if (skill === "hoeren") return 40;
-    return 60;
-  };
 
   return (
-    <div className="relative min-h-screen py-8">
-      <div className="relative z-10 flex min-h-125 w-full flex-col rounded-3xl border border-white/10 bg-card px-8 py-8 shadow-2xl backdrop-blur-xl transition-all duration-300">
-        <header className="mb-8 flex items-center justify-between border-b border-white/20 pb-4">
-          <h1 className="text-xl font-bold text-shadow-sm">
-            {skillTitle} – Modelltest {testId} ({level.toUpperCase()})
+    <div className="relative min-h-screen py-4">
+      <div className="relative z-10 flex w-full flex-col rounded-2xl border border-white/10 bg-card px-4 py-6 shadow-2xl backdrop-blur-xl">
+        <header className="mb-4 flex items-center justify-between border-b border-white/10 pb-2">
+          <h1 className="text-sm font-bold tracking-widest text-white/50 uppercase">
+            {skillTitle} – Modelltest {testId}
           </h1>
+          <div className="font-mono text-[10px] text-white/30">
+            Level: {level.toUpperCase()}
+          </div>
         </header>
 
-        <div className="flex flex-1 flex-col justify-center">
+        <div className="flex flex-1 flex-col">
           {!isStarted ? (
             <QuizStart
               title={`${skillTitle} – Übungsprüfung ${testId}`}
-              description={`Goethe / ÖSD Zertifikat ${level.toUpperCase()} – ${skillTitle}. Bearbeiten Sie die Aufgaben wie in der echten Prüfung.`}
+              description={`Bereiten Sie sich auf das Goethe/ÖSD Zertifikat ${level.toUpperCase()} vor. Dieses Modul umfasst ${questions.length} Aufgaben.`}
               questionCount={questions.length}
-              duration={getDuration()}
+              duration={skill === "lesen" ? 65 : 40}
               onStart={startQuiz}
             />
-          ) : !isFinished && currentQuestion ? (
-            <QuizQuestion
-              key={currentQuestionIndex}
-              question={currentQuestion}
-              currentStep={currentQuestionIndex + 1}
-              totalSteps={questions.length}
-              onAnswer={handleAnswer}
-              activeContext={activeContext}
-              isNewTeil={isNewTeil}
-              skill={skill}
-            />
+          ) : !isFinished ? (
+            <div className="flex flex-col gap-4">
+              {skill === "lesen" ? (
+                <div className="flex flex-col gap-6">
+                  {/* Grouping Logic for Reading Table Look */}
+                  {Array.from(new Set(questions.map((q) => q.teil))).map(
+                    (teilNum) => {
+                      const group = questions.filter((q) => q.teil === teilNum);
+                      if (group.length === 0) return null;
+
+                      const firstQuestion = group[0]!;
+                      const firstIdx = questions.indexOf(firstQuestion);
+                      const isGroupedTeil = teilNum === 1 || teilNum === 4;
+
+                      // Find Context
+                      let activeCtx: string | undefined = firstQuestion.context;
+                      if (!activeCtx) {
+                        for (let i = firstIdx - 1; i >= 0; i--) {
+                          const prevQ = questions[i];
+                          if (
+                            prevQ &&
+                            prevQ.teil === teilNum &&
+                            prevQ.context
+                          ) {
+                            activeCtx = prevQ.context;
+                            break;
+                          }
+                        }
+                      }
+
+                      return (
+                        <div key={teilNum} className="space-y-8">
+                          <div
+                            className={
+                              isGroupedTeil
+                                ? "space-y-3"
+                                : "flex flex-col gap-1"
+                            }
+                          >
+                            {/* 1. Header & Context */}
+                            <QuizQuestion
+                              question={firstQuestion}
+                              currentStep={firstIdx + 1}
+                              onAnswer={() => {}}
+                              skill={skill}
+                              isNewTeil={true}
+                              activeContext={activeCtx}
+                              hideQuestionBody={true}
+                            />
+
+                            {/* 2. Questions */}
+                            {isGroupedTeil ? (
+                              /* Grouped in ONE TABLE (Card) */
+                              <div className="overflow-hidden rounded-xl border border-white/10 bg-slate-900/10">
+                                {group.map((q, idx) => (
+                                  <div
+                                    key={idx}
+                                    className={
+                                      idx < group.length - 1
+                                        ? "border-b border-white/5"
+                                        : ""
+                                    }
+                                  >
+                                    <QuizQuestion
+                                      question={q}
+                                      currentStep={questions.indexOf(q) + 1}
+                                      onAnswer={(ans) =>
+                                        handleAnswer(ans, questions.indexOf(q))
+                                      }
+                                      selectedAnswer={
+                                        userAnswers[questions.indexOf(q)]
+                                      }
+                                      isTableRow={true}
+                                      skill={skill}
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              /* Standard Individual Cards */
+                              group.map((q, idx) => (
+                                <QuizQuestion
+                                  key={idx}
+                                  question={q}
+                                  currentStep={questions.indexOf(q) + 1}
+                                  onAnswer={(ans) =>
+                                    handleAnswer(ans, questions.indexOf(q))
+                                  }
+                                  selectedAnswer={
+                                    userAnswers[questions.indexOf(q)]
+                                  }
+                                  skill={skill}
+                                />
+                              ))
+                            )}
+                          </div>
+
+                          {/* Decorative Separator between Teils */}
+                          {questions.indexOf(group[group.length - 1]!) <
+                            questions.length - 1 && (
+                            <div className="flex justify-center py-10">
+                              <div className="h-1 w-24 rounded-full bg-linear-to-r from-yellow to-orange shadow-lg shadow-yellow/20" />
+                            </div>
+                          )}
+                        </div>
+                      );
+                    },
+                  )}
+                  <div className="mt-4 flex justify-center border-t border-white/10 pt-4">
+                    <button
+                      onClick={finishQuiz}
+                      className="rounded border border-yellow/50 bg-yellow/10 px-8 py-2 text-sm font-bold text-yellow transition-all hover:bg-yellow hover:text-black"
+                    >
+                      Prüfung beenden
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <QuizQuestion
+                  question={currentQuestion!}
+                  currentStep={currentQuestionIndex + 1}
+                  onAnswer={handleAnswer}
+                  selectedAnswer={userAnswers[currentQuestionIndex]}
+                />
+              )}
+            </div>
           ) : (
             <QuizResult
               score={score}
