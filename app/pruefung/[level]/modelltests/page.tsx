@@ -1,4 +1,8 @@
-import { ModelTestsView, getExamLevels } from "@/features/pruefung";
+import {
+  ModelTestsView,
+  getExamLevels,
+  getModelTests,
+} from "@/features/pruefung";
 
 interface PageProps {
   params: Promise<{ level: string }>;
@@ -13,5 +17,7 @@ export async function generateStaticParams() {
 
 export default async function ModelTestsPage({ params }: PageProps) {
   const { level } = await params;
-  return <ModelTestsView level={level} />;
+  const modelTests = await getModelTests(level);
+
+  return <ModelTestsView level={level} initialModelTests={modelTests} />;
 }

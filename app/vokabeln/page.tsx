@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { VocabularySection } from "@/features/vocabulary";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "Vokabeln | Deutsch Lernen",
@@ -9,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function VokabelnPage() {
   return (
-    <main className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+    <AnimateOnScroll as="main" animation="fade-up">
       <h1 className="sr-only">Vokabeln Übersicht</h1>
       <VocabularySection />
-    </main>
+    </AnimateOnScroll>
   );
 }

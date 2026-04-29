@@ -22,9 +22,9 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
           <table className="w-full text-left text-base">
             <thead className="bg-white/5 text-xs text-white/60 uppercase">
               <tr>
-                {data.headers.map((header) => (
+                {data.headers.map((header, index) => (
                   <th
-                    key={header}
+                    key={`header-${index}`}
                     className="px-6 py-4 font-semibold tracking-widest text-orange/80"
                   >
                     {header}
@@ -33,21 +33,16 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
-              {data.rows.map((row) => {
-                const rowKey = row
-                  .map((cell) => (typeof cell === "string" ? cell : cell.text))
-                  .join("|");
+              {data.rows.map((row, i) => {
                 return (
                   <tr
-                    key={rowKey}
+                    key={`row-${i}`}
                     className="transition-colors hover:bg-white/5"
                   >
                     {row.map((cell, j) => {
-                      const cellText =
-                        typeof cell === "string" ? cell : cell.text;
                       return (
                         <td
-                          key={cellText}
+                          key={`cell-${i}-${j}`}
                           className={`px-6 py-4 ${j === 0 ? "font-medium text-orange" : "text-white/90"}`}
                         >
                           <ContentItem content={cell} />

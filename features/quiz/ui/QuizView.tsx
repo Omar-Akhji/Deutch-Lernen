@@ -7,15 +7,24 @@ import { QuizQuestion } from "./QuizQuestion";
 import { QuizResult } from "./QuizResult";
 import { useQuiz } from "../lib/useQuiz";
 
+// Types
+import { Question } from "../model/types";
+
 interface QuizViewProps {
   level: string;
   skill: string;
   testId: string;
+  initialQuestions: Question[];
 }
 
-export default function QuizView({ level, skill, testId }: QuizViewProps) {
+export default function QuizView({
+  level,
+  skill,
+  testId,
+  initialQuestions,
+}: QuizViewProps) {
   const router = useRouter();
-  const questions = getQuestions(level, skill, parseInt(testId));
+  const questions = initialQuestions;
 
   const {
     currentQuestionIndex,

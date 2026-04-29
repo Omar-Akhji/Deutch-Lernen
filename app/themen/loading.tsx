@@ -1,19 +1,13 @@
 import { Skeleton } from "@/shared/ui/Skeleton";
+import { SectionHeaderSkeleton } from "@/shared/ui/SkeletonLayouts";
 
-/**
- * Matches ThemenSection:
- * Header (centered badge + title + description)
- * → Category Navigation bar (rounded-2xl pill)
- * → Sections (circle icon border-3 heading + card grid)
- * → Blue-ish tip box at bottom
- */
 export default function ThemenLoading() {
   return (
-    <div className="min-h-screen space-y-16 py-8">
+    <main className="min-h-screen space-y-16 py-8">
       {/* Header — centered */}
       <div className="mx-auto max-w-2xl space-y-4 text-center">
         <div className="flex justify-center">
-          <Skeleton className="h-10 w-96 bg-white/10" />
+          <Skeleton className="h-10 w-96 max-w-full bg-white/10" />
         </div>
         <Skeleton className="mx-auto h-6 w-full bg-white/5" />
       </div>
@@ -31,13 +25,7 @@ export default function ThemenLoading() {
       <div className="space-y-24">
         {Array.from({ length: 3 }).map((_, sectionIdx) => (
           <section key={sectionIdx}>
-            <div className="mb-10 flex items-center gap-4">
-              <Skeleton className="h-14 w-14 rounded-full border-3 border-white/10 bg-white/5" />
-              <div>
-                <Skeleton className="mb-1 h-7 w-48 bg-white/8" />
-                <Skeleton className="h-4 w-32 bg-white/5" />
-              </div>
-            </div>
+            <SectionHeaderSkeleton />
 
             {/* Card grid — matches ThemaCard shape */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -79,7 +67,7 @@ export default function ThemenLoading() {
       {/* Blue tip box */}
       <div className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
         <div className="mb-4 flex items-center gap-2">
-          <Skeleton className="h-10 w-10 rounded-full border-3 border-white/10 bg-white/10" />
+          <Skeleton className="h-10 w-10 rounded-full border-[3px] border-white/10 bg-white/10" />
           <Skeleton className="h-8 w-64 bg-white/10" />
         </div>
         <div className="grid gap-4 md:grid-cols-2">
@@ -88,6 +76,6 @@ export default function ThemenLoading() {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

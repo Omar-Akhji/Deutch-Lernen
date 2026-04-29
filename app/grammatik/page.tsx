@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GrammarSectionCards } from "@/features/grammar";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "Grammatik | Deutsch Lernen",
@@ -7,16 +8,31 @@ export const metadata: Metadata = {
     "Deutsche Grammatik lernen - Verben, Nomen, Präpositionen, Satzstrukturen. Übersichtliche Erklärungen für alle Niveaus.",
 };
 
+import { Suspense } from "react";
+import { SectionCardSkeleton } from "@/shared/ui/SkeletonLayouts";
+
 export default function GrammatikPage() {
   return (
-    <main className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+    <main>
       <h1 className="sr-only">Grammatik Übersicht</h1>
-      <GrammarSectionCards sectionId="verben" />
-      <GrammarSectionCards sectionId="nomen" />
-      <GrammarSectionCards sectionId="praepositionen" />
-      <GrammarSectionCards sectionId="satz" />
-      <GrammarSectionCards sectionId="adverbien" />
-      <GrammarSectionCards sectionId="partikeln" />
+      <Suspense fallback={<SectionCardSkeleton />}>
+        <GrammarSectionCards sectionId="verben" />
+      </Suspense>
+      <Suspense fallback={<SectionCardSkeleton />}>
+        <GrammarSectionCards sectionId="nomen" />
+      </Suspense>
+      <Suspense fallback={<SectionCardSkeleton />}>
+        <GrammarSectionCards sectionId="praepositionen" />
+      </Suspense>
+      <Suspense fallback={<SectionCardSkeleton />}>
+        <GrammarSectionCards sectionId="satz" />
+      </Suspense>
+      <Suspense fallback={<SectionCardSkeleton />}>
+        <GrammarSectionCards sectionId="adverbien" />
+      </Suspense>
+      <Suspense fallback={<SectionCardSkeleton />}>
+        <GrammarSectionCards sectionId="partikeln" />
+      </Suspense>
     </main>
   );
 }

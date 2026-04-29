@@ -1,6 +1,7 @@
 "use client";
 
 import { ExamLevel, RedemittelCategory } from "../model/types";
+import { Thema } from "@/features/themen/model/types";
 import { Hero } from "@/shared/ui/Hero";
 import { Clock, CheckCircle2 } from "lucide-react";
 import { ThemenSection } from "@/features/themen/ui/ThemenSection";
@@ -13,6 +14,7 @@ interface ModuleStudyViewProps {
   module: "sprechen" | "schreiben";
   examData: ExamLevel;
   redemittel: RedemittelCategory;
+  initialThemen: Thema[];
 }
 
 export function ModuleStudyView({
@@ -20,6 +22,7 @@ export function ModuleStudyView({
   module,
   examData,
   redemittel,
+  initialThemen,
 }: ModuleStudyViewProps) {
   const section = examData.sections.find(
     (s) => s.id === `${level.toLowerCase()}-${module}`,
@@ -282,7 +285,7 @@ export function ModuleStudyView({
             </p>
           </AnimateOnScroll>
         </div>
-        <ThemenSection isEmbedded />
+        <ThemenSection isEmbedded initialThemen={initialThemen} />
       </section>
     </div>
   );

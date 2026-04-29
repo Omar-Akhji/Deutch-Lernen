@@ -1,12 +1,13 @@
 import { cache } from "react";
+import { wait } from "@/shared/lib/wait";
 import { vocabList } from "./data";
 
 export const getVocabList = cache(async () => {
-  "use cache";
+  await wait(800);
   return vocabList;
 });
 
 export const getVocabById = cache(async (id: string | number) => {
-  "use cache";
+  await wait(1200);
   return vocabList.find((item) => item.id === Number(id));
 });

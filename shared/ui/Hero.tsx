@@ -45,7 +45,7 @@ export function Hero({
         </div>
       </AnimateOnScroll>
 
-      <AnimateOnScroll animation="fade-up" delay={200}>
+      <AnimateOnScroll animation="blur-in" delay={300} duration={1000}>
         <h1
           className={`mbe-2 text-4xl font-bold text-shadow-sm md:text-[2.5rem] ${gradient ? "text-white drop-shadow-[0_2px_10_rgb(0_0_0/20%)]" : "bg-linear-to-br from-white to-slate-200 bg-clip-text text-transparent"}`}
         >
@@ -53,7 +53,7 @@ export function Hero({
         </h1>
       </AnimateOnScroll>
 
-      <AnimateOnScroll animation="fade-up" delay={300}>
+      <AnimateOnScroll animation="fade-up" delay={500}>
         <p
           className={`m-0 text-lg md:text-xl ${gradient ? "text-white/90" : "text-mist-500"}`}
         >
@@ -70,7 +70,7 @@ export function Hero({
       )}
 
       {stats && (
-        <AnimateOnScroll animation="fade-up" delay={400}>
+        <AnimateOnScroll animation="fade-up" delay={700}>
           <dl className="mbs-8 flex flex-wrap justify-center gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="flex items-center gap-2">
@@ -88,7 +88,9 @@ export function Hero({
   );
 
   return (
-    <div
+    <AnimateOnScroll
+      animation="fade-in"
+      duration={1000}
       className="relative mbe-12 overflow-hidden rounded-3xl p-8 shadow-2xl md:p-12"
       style={{
         ...(gradient && variant !== "glass"
@@ -102,6 +104,6 @@ export function Hero({
       }}
     >
       {Content}
-    </div>
+    </AnimateOnScroll>
   );
 }

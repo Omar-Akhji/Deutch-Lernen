@@ -1,84 +1,190 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  ElementType,
+  ComponentPropsWithoutRef,
+} from "react";
 import { twMerge } from "tailwind-merge";
 
-interface AnimateOnScrollProps {
-  children: React.ReactNode;
-  className?: string;
-  animation?: "fade-up" | "fade-in" | "zoom-in" | "fade-left" | "fade-right";
-  delay?: number;
-}
+// --- Singleton Intersection Observer for High Performance ---
+type ObserverCallback = (isIntersecting: boolean) => void;
+let observer: IntersectionObserver | null = null;
+const observerCallbacks = new WeakMap<Element, ObserverCallback>();
 
-/**
- * High-performance scroll animation wrapper using native IntersectionObserver.
- * Replaces heavy libraries while keeping server components intact via children prop passing.
- */
-export function AnimateOnScroll({
-  children,
-  className,
-  animation = "fade-up",
-  delay = 0,
-}: AnimateOnScrollProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
+function getObserver() {
+  if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+    return null;
+  }
 
-  useEffect(() => {
-    // Check if IntersectionObserver is supported
-    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      requestAnimationFrame(() => setIsInView(true));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
+  if (!observer) {
+    observer = new IntersectionObserver(
       (entries) => {
-        const entry = entries[0];
-        // Once it intersects, trigger the animation and disconnect to save memory
-        if (entry && entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const callback = observerCallbacks.get(entry.target);
+            if (callback) {
+              callback(true);
+            }
+          } else {
+            const callback = observerCallbacks.get(entry.target);
+            if (callback) {
+              callback(false);
+            }
+          }
+        });
       },
       {
         threshold: 0.15,
         rootMargin: "50px",
       },
     );
+  }
+  return observer;
+}
 
-    if (ref.current) observer.observe(ref.current);
+function observeElement(element: Element, callback: ObserverCallback) {
+  const obs = getObserver();
+  if (obs) {
+    observerCallbacks.set(element, callback);
+    obs.observe(element);
+  } else {
+    // Fallback if IntersectionObserver isn't supported (e.g. older browsers)
+    requestAnimationFrame(() => callback(true));
+  }
+}
 
-    return () => observer.disconnect();
-  }, []);
+function unobserveElement(element: Element) {
+  const obs = getObserver();
+  if (obs) {
+    obs.unobserve(element);
+    observerCallbacks.delete(element);
+  }
+}
 
-  const baseClasses = "transition-all duration-700 ease-out";
+// --- Component Props & Types ---
 
-  const hiddenClasses = {
+export type AnimationType =
+  | "fade-up"
+  | "fade-down"
+  | "fade-in"
+  | "zoom-in"
+  | "zoom-out"
+  | "fade-left"
+  | "fade-right"
+  | "blur-in";
+
+interface AnimateOnScrollProps<T extends ElementType> {
+  children: React.ReactNode;
+  className?: string;
+  animation?: AnimationType;
+  delay?: number;
+  duration?: number;
+  as?: T;
+  repeat?: boolean;
+}
+
+/**
+ * High-performance scroll animation wrapper using native IntersectionObserver.
+ * Uses a singleton observer pattern, ensuring minimal memory usage even with 100s of elements.
+ * Fully supports SEO (visible in DOM, polymorphic tags) and accessibility (respects reduced-motion).
+ */
+export function AnimateOnScroll<T extends ElementType = "div">({
+  children,
+  className,
+  animation = "fade-up",
+  delay = 0,
+  duration = 700,
+  as,
+  repeat = false,
+  ...props
+}: AnimateOnScrollProps<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof AnimateOnScrollProps<T>>) {
+  const ref = useRef<Element>(null);
+  const [isInView, setIsInView] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+
+    const el = ref.current;
+    if (!el) return () => cancelAnimationFrame(frame);
+
+    observeElement(el, (visible) => {
+      if (visible) {
+        setIsInView(true);
+        if (!repeat) {
+          unobserveElement(el);
+          setTimeout(() => setHasAnimated(true), duration + delay);
+        }
+      } else if (repeat) {
+        setIsInView(false);
+      }
+    });
+
+    return () => {
+      unobserveElement(el);
+      cancelAnimationFrame(frame);
+    };
+  }, [delay, duration, repeat]);
+
+  const Component = as || "div";
+
+  // motion-reduce overrides are handled via global CSS, so we don't need motion-reduce utilities here.
+  // We add 'will-change' to hardware accelerate the animation while it's running.
+  const baseClasses = twMerge(
+    "transition-all ease-out animate-on-scroll",
+    !hasAnimated && !isInView
+      ? "will-change-transform will-change-opacity"
+      : "",
+  );
+
+  const hiddenClasses: Record<AnimationType, string> = {
     "fade-up": "opacity-0 translate-y-12",
+    "fade-down": "opacity-0 -translate-y-12",
     "fade-in": "opacity-0",
     "zoom-in": "opacity-0 scale-95",
+    "zoom-out": "opacity-0 scale-105",
     "fade-left": "opacity-0 translate-x-12",
     "fade-right": "opacity-0 -translate-x-12",
+    "blur-in": "opacity-0 blur-md scale-95",
   };
 
-  const visibleClasses = {
+  const visibleClasses: Record<AnimationType, string> = {
     "fade-up": "opacity-100 translate-y-0",
+    "fade-down": "opacity-100 translate-y-0",
     "fade-in": "opacity-100",
     "zoom-in": "opacity-100 scale-100",
+    "zoom-out": "opacity-100 scale-100",
     "fade-left": "opacity-100 translate-x-0",
     "fade-right": "opacity-100 translate-x-0",
+    "blur-in": "opacity-100 blur-0 scale-100",
   };
 
   return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
+    <Component
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+      style={{
+        transitionDelay: `${delay}ms`,
+        transitionDuration: `${duration}ms`,
+        ...props["style"],
+      }}
       className={twMerge(
         baseClasses,
-        isInView ? visibleClasses[animation] : hiddenClasses[animation],
+        isInView || !mounted
+          ? visibleClasses[animation]
+          : hiddenClasses[animation],
         className,
       )}
+      {...props}
     >
       {children}
-    </div>
+    </Component>
   );
 }

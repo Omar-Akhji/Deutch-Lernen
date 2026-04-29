@@ -30,11 +30,8 @@ export const GrammarContentBlocks = ({
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-yellow">Gebrauch</h3>
             <div className="space-y-4 rounded-3xl border border-yellow/10 bg-white/3 p-6 backdrop-blur-md">
-              {usage.map((dialogue) => (
-                <div
-                  key={`${dialogue.speaker}-${dialogue.text}`}
-                  className="flex gap-4"
-                >
+              {usage.map((dialogue, idx) => (
+                <div key={`usage-${idx}`} className="flex gap-4">
                   <div className="bs-10 is-10 flex shrink-0 items-center justify-center rounded-full bg-yellow/20 text-sm font-bold text-yellow">
                     {dialogue.speaker}
                   </div>
@@ -50,18 +47,17 @@ export const GrammarContentBlocks = ({
 
       {blocks.map((block, blockIdx) => (
         <AnimateOnScroll
-          key={block.title}
+          key={`block-${blockIdx}`}
           animation="fade-up"
           delay={blockIdx * 100}
         >
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-yellow">{block.title}</h3>
             <div className="grid gap-3">
-              {block.items.map((item) => {
-                const text = typeof item === "string" ? item : item.text;
+              {block.items.map((item, itemIdx) => {
                 return (
                   <div
-                    key={text}
+                    key={`block-${blockIdx}-item-${itemIdx}`}
                     className="rounded-ie-xl border-is-6px hover:translate-s-1 border-yellow bg-white/5 p-4 text-white/90 backdrop-blur-sm transition-all hover:bg-white/8"
                     style={{
                       borderStartStartRadius: 0,
@@ -82,9 +78,9 @@ export const GrammarContentBlocks = ({
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-orange">Tipps</h3>
             <div className="grid gap-4 sm:grid-cols-2">
-              {tips.map((tip) => (
+              {tips.map((tip, idx) => (
                 <div
-                  key={tip}
+                  key={`tip-${idx}`}
                   className="flex items-start gap-2 rounded-xl border border-orange/20 bg-orange/5 p-4 text-orange brightness-125"
                 >
                   <Lightbulb className="shrink-0" size={18} />

@@ -1,6 +1,5 @@
 "use client";
 import { useState, useTransition, type ReactNode } from "react";
-import { themenData } from "../api/data";
 import { ThemaCard } from "./ThemaCard";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { cn } from "@/shared/lib/utils";
@@ -21,6 +20,7 @@ import {
   Lightbulb,
   LayoutGrid,
 } from "lucide-react";
+import { Thema } from "../model/types";
 
 const categoryConfig: Record<
   string,
@@ -70,21 +70,22 @@ const categoryConfig: Record<
 
 interface ThemenSectionProps {
   isEmbedded?: boolean;
+  initialThemen: Thema[];
 }
 
-export function ThemenSection({ isEmbedded }: ThemenSectionProps) {
+export function ThemenSection({ isEmbedded, initialThemen }: ThemenSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
   const groupedThemen = Object.keys(categoryConfig).reduce(
     (acc, cat) => {
-      const themes = themenData.filter((t) => t.cat === cat);
+      const themes = initialThemen.filter((t) => t.cat === cat);
       if (themes.length > 0) {
         acc[cat] = themes;
       }
       return acc;
     },
-    {} as Record<string, typeof themenData>,
+    {} as Record<string, Thema[]>,
   );
 
   const filteredGroups = !activeCategory

@@ -8,6 +8,7 @@ import {
 } from "@/features/vocabulary";
 import { BackButton } from "@/shared/ui/BackButton";
 import { Hero } from "@/shared/ui/Hero";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface PageProps {
   params: Promise<{
@@ -84,27 +85,38 @@ export default async function TopicDetailPage({ params }: PageProps) {
         {isFamilyTree ? (
           <>
             {/* Family Tree Section */}
-            <section className="mt-8 rounded-3xl border border-(--glass-border) bg-card p-8 shadow-sm">
-              <div className="animate-fade-in">
-                <FamilyTree members={topic.familyTree!} />
-              </div>
-            </section>
+            <AnimateOnScroll
+              as="section"
+              animation="fade-up"
+              className="mt-8 rounded-3xl border border-(--glass-border) bg-card p-8 shadow-sm"
+            >
+              <FamilyTree members={topic.familyTree!} />
+            </AnimateOnScroll>
 
             {/* Separate Vocabulary Table Section */}
-            <section className="mt-8 animate-fade-in">
+            <AnimateOnScroll
+              as="section"
+              animation="fade-up"
+              delay={200}
+              className="mt-8"
+            >
               <VocabularyTable words={topic.words || []} />
-            </section>
+            </AnimateOnScroll>
           </>
         ) : topic.words && topic.words.length > 0 ? (
-          <section className="mt-8 animate-fade-in">
+          <AnimateOnScroll as="section" animation="fade-up" className="mt-8">
             <VocabularyTable words={topic.words} />
-          </section>
+          </AnimateOnScroll>
         ) : (
-          <section className="mt-8 rounded-3xl border border-(--glass-border) bg-card p-8 shadow-sm">
+          <AnimateOnScroll
+            as="section"
+            animation="fade-up"
+            className="mt-8 rounded-3xl border border-(--glass-border) bg-card p-8 shadow-sm"
+          >
             <div className="text-center text-text-muted">
               <p>Noch keine Vokabeln für {topic.title} eingetragen.</p>
             </div>
-          </section>
+          </AnimateOnScroll>
         )}
       </main>
     </div>

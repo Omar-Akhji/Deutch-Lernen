@@ -42,7 +42,7 @@ Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 2 ────────────────────────────────────────────────────────────
@@ -68,7 +68,7 @@ Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 3 ────────────────────────────────────────────────────────────
@@ -145,7 +145,7 @@ Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 4 ────────────────────────────────────────────────────────────
@@ -206,7 +206,7 @@ Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 5 ────────────────────────────────────────────────────────────
@@ -269,7 +269,7 @@ Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 6 ────────────────────────────────────────────────────────────
@@ -333,7 +333,7 @@ Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 7 ────────────────────────────────────────────────────────────
@@ -374,7 +374,7 @@ In einer Online-Zeitung lesen Sie Kommentare zu einem Artikel über Kettenmails.
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 8 ────────────────────────────────────────────────────────────
@@ -469,7 +469,7 @@ Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 9 ────────────────────────────────────────────────────────────
@@ -513,6 +513,5 @@ Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
     teil: 1,
-  }
+  },
 ];
-

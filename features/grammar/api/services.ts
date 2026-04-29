@@ -1,14 +1,15 @@
+import { cache } from "react";
+import { wait } from "@/shared/lib/wait";
 import { grammarSections } from "./data";
 import { GrammarTopic } from "../model/types";
-import { cache } from "react";
 
 export const getGrammarSections = cache(async () => {
-  "use cache";
+  await wait(800);
   return grammarSections;
 });
 
 export const getGrammarSection = cache(async (sectionId: string) => {
-  "use cache";
+  await wait(1000);
   return grammarSections.find((s) => s.id === sectionId);
 });
 
@@ -17,7 +18,6 @@ export const getGrammarTopic = cache(
     sectionId: string,
     topicId: string,
   ): Promise<GrammarTopic | undefined> => {
-    "use cache";
     const section = await getGrammarSection(sectionId);
     return section?.topics.find((t) => t.id === topicId);
   },

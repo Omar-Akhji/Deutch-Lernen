@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PruefungSection } from "@/features/pruefung";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "Prüfungstraining | Deutsch Lernen",
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function PruefungPage() {
   return (
-    <main className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+    <AnimateOnScroll as="main" animation="fade-up">
       <PruefungSection />
-    </main>
+    </AnimateOnScroll>
   );
 }

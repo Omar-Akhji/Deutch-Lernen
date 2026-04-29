@@ -5,7 +5,9 @@ import {
   getRedemittel,
   getExamLevels,
 } from "@/features/pruefung";
+import { getThemen } from "@/features/themen/api/services";
 import { ModuleStudyView } from "@/features/pruefung/ui/ModuleStudyView";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface PageProps {
   params: Promise<{
@@ -51,21 +53,23 @@ export default async function ModulePage({ params }: PageProps) {
     notFound();
   }
 
-  const [currentExam, redemittel] = await Promise.all([
+  const [currentExam, redemittel, themen] = await Promise.all([
     getExamLevel(level),
     getRedemittel(level),
+    getThemen(),
   ]);
 
   if (!currentExam) notFound();
 
   return (
-    <main className="animate-fade-in">
+    <AnimateOnScroll as="main" animation="fade-up">
       <ModuleStudyView
         level={level}
         module={module as "sprechen" | "schreiben"}
         examData={currentExam}
         redemittel={redemittel}
+        initialThemen={themen}
       />
-    </main>
+    </AnimateOnScroll>
   );
 }

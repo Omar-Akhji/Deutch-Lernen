@@ -5,6 +5,7 @@ import { Hero } from "@/shared/ui/Hero";
 import { BackButton } from "@/shared/ui/BackButton";
 import { getGradient } from "@/shared/lib/utils";
 import { VOCAB_GRADIENTS } from "@/shared/lib/gradients";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface PageProps {
   params: Promise<{
@@ -77,7 +78,10 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
         {item.sections && item.sections.length > 0 ? (
           <div className="grid gap-12">
             {item.sections.map((section, index) => (
-              <section
+              <AnimateOnScroll
+                as="section"
+                animation="fade-up"
+                delay={index * 100}
                 key={section.id}
                 aria-labelledby={`section-${section.id}`}
               >
@@ -119,12 +123,12 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                     Noch keine Themen in diesem Bereich.
                   </div>
                 )}
-              </section>
+              </AnimateOnScroll>
             ))}
           </div>
         ) : (
           /* Fallback for simple word lists */
-          <section className="mb-12">
+          <AnimateOnScroll as="section" animation="fade-up" className="mb-12">
             <h2 className="mb-8 flex items-center gap-4 text-[1.75rem] font-bold text-text">
               <span className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
                 <BookOpen size={24} strokeWidth={2} />
@@ -158,7 +162,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                 <p>Noch keine Vokabeln eingetragen.</p>
               </div>
             )}
-          </section>
+          </AnimateOnScroll>
         )}
       </main>
     </div>

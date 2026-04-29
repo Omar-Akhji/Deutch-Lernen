@@ -4,7 +4,7 @@ import {
   BookOpen,
   Headphones,
   PenLine,
-  MessageSquare,
+  MessageCircle,
   BarChart,
   Puzzle,
   LucideIcon,
@@ -12,10 +12,6 @@ import {
 import { Hero } from "@/shared/ui/Hero";
 import { Card } from "@/shared/ui/Card";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-
-interface ModelTestsViewProps {
-  level: string;
-}
 
 interface Skill {
   id: string;
@@ -46,20 +42,21 @@ const skills: Skill[] = [
   {
     id: "sprechen",
     title: "Sprechen",
-    icon: MessageSquare,
+    icon: MessageCircle,
     color: "from-purple-500 to-pink-400",
   },
 ];
 
-const getModelTestsForLevel = (level: string) => {
-  if (level.toLowerCase() === "b1") {
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  }
-  return [1];
-};
+interface ModelTestsViewProps {
+  level: string;
+  initialModelTests: number[];
+}
 
-export default function ModelTestsView({ level }: ModelTestsViewProps) {
-  const modelTests = getModelTestsForLevel(level);
+export default function ModelTestsView({
+  level,
+  initialModelTests,
+}: ModelTestsViewProps) {
+  const modelTests = initialModelTests;
 
   const stats = [
     {
@@ -96,8 +93,10 @@ export default function ModelTestsView({ level }: ModelTestsViewProps) {
           {skills.map((skill, skillIdx) => (
             <section key={skill.id}>
               <AnimateOnScroll animation="fade-right" delay={skillIdx * 100}>
-                <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-white">
-                  <skill.icon size={32} className="text-white" />
+                <h2 className="mb-6 flex items-center gap-4 text-2xl font-bold text-white">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
+                    <skill.icon size={24} strokeWidth={2} />
+                  </span>
                   <span className="text-white">{skill.title}</span>
                 </h2>
               </AnimateOnScroll>

@@ -10,7 +10,7 @@ export const b1Schreiben1: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 2 ────────────────────────────────────────────────────────────
@@ -23,7 +23,7 @@ export const b1Schreiben2: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 3 ────────────────────────────────────────────────────────────
@@ -36,7 +36,7 @@ export const b1Schreiben3: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 4 ────────────────────────────────────────────────────────────
@@ -49,7 +49,7 @@ export const b1Schreiben4: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 5 ────────────────────────────────────────────────────────────
@@ -62,7 +62,7 @@ export const b1Schreiben5: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 6 ────────────────────────────────────────────────────────────
@@ -75,7 +75,7 @@ export const b1Schreiben6: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 7 ────────────────────────────────────────────────────────────
@@ -88,7 +88,7 @@ export const b1Schreiben7: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 8 ────────────────────────────────────────────────────────────
@@ -101,7 +101,7 @@ export const b1Schreiben8: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
 
 // ─── MODELLTEST 9 ────────────────────────────────────────────────────────────
@@ -114,6 +114,5 @@ export const b1Schreiben9: Question[] = [
     options: ["Erledigt"],
     correctAnswer: "Erledigt",
     teil: 1,
-  }
+  },
 ];
-

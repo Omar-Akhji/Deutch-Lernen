@@ -1,11 +1,13 @@
+import { wait } from "@/shared/lib/wait";
 import { quizQuestions } from "./data";
 import { Question } from "../model/types";
 
-export const getQuestions = (
+export const getQuestions = async (
   level: string,
   skill: string,
   testId: number,
-): Question[] => {
+): Promise<Question[]> => {
+  await wait(1200);
   const lvl = quizQuestions[level.toLowerCase()];
   if (!lvl) return [];
 
