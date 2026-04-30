@@ -13,14 +13,14 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
       <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md">
         {data.caption && (
           <div className="border-be border-white/10 bg-white/5 px-6 py-4">
-            <h3 className="text-lg font-medium text-yellow text-shadow-sm">
+            <h3 className="text-base font-medium text-yellow text-shadow-sm tablet:text-lg">
               {data.caption}
             </h3>
           </div>
         )}
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-base">
-            <thead className="bg-white/5 text-xs text-white/60 uppercase">
+          <table className="w-full text-left text-sm tablet:text-base">
+            <thead className="bg-white/5 text-[10px] text-white/60 uppercase tablet:text-xs">
               <tr>
                 {data.headers.map((header, index) => (
                   <th

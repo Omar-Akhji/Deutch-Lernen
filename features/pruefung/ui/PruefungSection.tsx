@@ -14,24 +14,24 @@ export const PruefungSection = async () => {
         <AnimateOnScroll animation="fade-up">
           <h1
             id="pruefung-heading"
-            className="mb-6 flex items-center justify-center gap-4 text-4xl"
+            className="mb-6 flex items-center justify-center gap-3 text-3xl tablet:gap-4 tablet:text-4xl"
           >
-            <span className="flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
-              <ClipboardList size={30} strokeWidth={2} />
+            <span className="flex size-12 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-14">
+              <ClipboardList className="size-6 tablet:size-7" strokeWidth={2} />
             </span>
             <span className="title-gradient">Prüfung B1 / B2</span>
           </h1>
         </AnimateOnScroll>
         <AnimateOnScroll animation="fade-up" delay={100}>
-          <p className="m-0 text-lg text-text-muted">
+          <p className="m-0 text-base text-text-muted tablet:text-lg">
             Strukturierte Vorbereitung auf die Goethe & ÖSD Zertifikate B1 und
-            B2
+            B2?
           </p>
         </AnimateOnScroll>
       </header>
 
       <ul
-        className="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8 p-0"
+        className="m-0 grid list-none grid-cols-1 gap-8 p-0 laptop:grid-cols-2"
         role="list"
       >
         {examLevels.map((exam, index) => (

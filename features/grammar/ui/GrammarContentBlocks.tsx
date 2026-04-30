@@ -28,11 +28,13 @@ export const GrammarContentBlocks = ({
       {usage && (
         <AnimateOnScroll animation="fade-up">
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-yellow">Gebrauch</h3>
+            <h3 className="text-lg font-semibold text-yellow tablet:text-xl">
+              Gebrauch
+            </h3>
             <div className="space-y-4 rounded-3xl border border-yellow/10 bg-white/3 p-6 backdrop-blur-md">
               {usage.map((dialogue, idx) => (
                 <div key={`usage-${idx}`} className="flex gap-4">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-yellow/20 text-sm font-bold text-yellow">
+                  <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-yellow/20 text-xs font-bold text-yellow tablet:size-10 tablet:text-sm">
                     {dialogue.speaker}
                   </div>
                   <div className="rounded-2xl rounded-ss-none bg-white/5 px-4 py-2 text-white/90">
@@ -52,7 +54,9 @@ export const GrammarContentBlocks = ({
           delay={blockIdx * 100}
         >
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-yellow">{block.title}</h3>
+            <h3 className="text-lg font-semibold text-yellow tablet:text-xl">
+              {block.title}
+            </h3>
             <div className="grid gap-3">
               {block.items.map((item, itemIdx) => {
                 return (
@@ -76,14 +80,16 @@ export const GrammarContentBlocks = ({
       {tips && (
         <AnimateOnScroll animation="zoom-in" delay={200}>
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-orange">Tipps</h3>
+            <h3 className="text-lg font-semibold text-orange tablet:text-xl">
+              Tipps
+            </h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {tips.map((tip, idx) => (
                 <div
                   key={`tip-${idx}`}
                   className="flex items-start gap-2 rounded-xl border border-orange/20 bg-orange/5 p-4 text-orange brightness-125"
                 >
-                  <Lightbulb className="shrink-0" size={18} />
+                  <Lightbulb className="size-4 shrink-0 tablet:size-5" />
                   <InlineItem item={tip} />
                 </div>
               ))}

@@ -22,7 +22,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
           >
             {thema.cat}
           </span>
-          <h3 className="text-base font-bold text-white transition-colors group-hover:text-amber-400">
+          <h3 className="text-sm font-bold text-white transition-colors group-hover:text-amber-400 tablet:text-base">
             {thema.label}
           </h3>
         </div>
@@ -33,7 +33,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
           <>
             <button
               onClick={() => setActiveTab("pro")}
-              className={`flex-1 rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
+              className={`flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-all tablet:text-sm ${
                 activeTab === "pro"
                   ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
                   : "text-slate-400 hover:bg-white/5 hover:text-white"
@@ -54,7 +54,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
           </>
         )}
         {thema.isTextOnly && (
-          <button className="flex-1 rounded-full bg-amber-500 px-3 py-1.5 text-sm font-medium text-white">
+          <button className="flex-1 rounded-full bg-amber-500 px-3 py-1.5 text-xs font-medium text-white tablet:text-sm">
             Mustertext
           </button>
         )}
@@ -66,7 +66,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
             {thema.pro.map((point) => (
               <li
                 key={point}
-                className="flex gap-3 text-sm leading-relaxed text-slate-300"
+                className="flex gap-3 text-xs leading-relaxed text-slate-300 tablet:text-sm"
               >
                 <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
                 {point}
@@ -79,7 +79,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
             {thema.con.map((point) => (
               <li
                 key={point}
-                className="flex gap-3 text-sm leading-relaxed text-slate-300"
+                className="flex gap-3 text-xs leading-relaxed text-slate-300 tablet:text-sm"
               >
                 <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500" />
                 {point}
@@ -88,7 +88,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
           </ul>
         )}
         {(activeTab === "text" || thema.isTextOnly) && thema.text && (
-          <p className="border-l-2 border-amber-500/30 py-1 pl-4 text-sm leading-relaxed text-slate-300 italic">
+          <p className="border-l-2 border-amber-500/30 py-1 pl-4 text-xs leading-relaxed text-slate-300 italic tablet:text-sm">
             &quot;{thema.text}&quot;
           </p>
         )}

@@ -94,9 +94,12 @@ export default async function PruefungDetailPage({ params }: PageProps) {
         {/* Prüfungsstruktur */}
         <section className="mb-12">
           <AnimateOnScroll animation="fade-right">
-            <h2 className="mb-8 flex items-center gap-4 text-[1.75rem] font-bold text-text">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
-                <ClipboardList size={24} strokeWidth={2} />
+            <h2 className="mb-8 flex items-center gap-3 text-xl font-bold text-text tablet:gap-4 tablet:text-[1.75rem]">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
+                <ClipboardList
+                  className="size-5 tablet:size-6"
+                  strokeWidth={2}
+                />
               </span>
               Prüfungsstruktur
             </h2>

@@ -38,7 +38,7 @@ export const CardBody = ({
             aria-hidden="true"
           >
             <span
-              className={`${variant === "large" ? "text-64px" : "text-5xl"} font-bold text-white/40 drop-shadow-md drop-shadow-white/20 transition-transform duration-500 group-hover:scale-110`}
+              className={`${variant === "large" ? "text-4xl tablet:text-6xl" : "text-3xl tablet:text-5xl"} font-bold text-white/40 drop-shadow-md drop-shadow-white/20 transition-transform duration-500 group-hover:scale-110`}
             >
               {iconText}
             </span>
@@ -63,12 +63,12 @@ export const CardBody = ({
           )}
 
           <h3
-            className={`m-0 mbe-2 ${variant === "large" ? "text-2xl" : "text-xl"} font-bold text-white transition-colors duration-300 text-shadow-sm group-hover:text-yellow`}
+            className={`m-0 mbe-2 ${variant === "large" ? "text-xl tablet:text-2xl" : "text-lg tablet:text-xl"} font-bold text-white transition-colors duration-300 text-shadow-sm group-hover:text-yellow`}
           >
             {title}
           </h3>
           {description && (
-            <p className="m-0 mbe-4 text-sm leading-relaxed text-mist-500">
+            <p className="m-0 mbe-4 text-xs leading-relaxed text-mist-500 tablet:text-sm">
               {description}
             </p>
           )}
@@ -77,7 +77,7 @@ export const CardBody = ({
             <dl className="mbs-auto flex gap-8 border-bs border-(--glass-border) pbs-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col">
-                  <dd className="stat-value m-0 text-2xl font-bold text-orange">
+                  <dd className="stat-value m-0 text-xl font-bold text-orange tablet:text-2xl">
                     {stat.value}
                   </dd>
                   <dt className="text-xs text-text-muted">{stat.label}</dt>

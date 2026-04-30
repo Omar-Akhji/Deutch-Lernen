@@ -62,9 +62,9 @@ export default function ModelTestsView({
     {
       label: "Niveau",
       value: level.toUpperCase(),
-      icon: <BarChart size={18} />,
+      icon: <BarChart className="size-full" />,
     },
-    { label: "Module", value: "4", icon: <Puzzle size={18} /> },
+    { label: "Module", value: "4", icon: <Puzzle className="size-full" /> },
   ];
 
   return (
@@ -93,9 +93,12 @@ export default function ModelTestsView({
           {skills.map((skill, skillIdx) => (
             <section key={skill.id}>
               <AnimateOnScroll animation="fade-right" delay={skillIdx * 100}>
-                <h2 className="mb-6 flex items-center gap-4 text-2xl font-bold text-white">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
-                    <skill.icon size={24} strokeWidth={2} />
+                <h2 className="mb-6 flex items-center gap-3 text-xl font-bold text-white tablet:gap-4 tablet:text-2xl">
+                  <span className="flex size-10 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
+                    <skill.icon
+                      className="size-5 tablet:size-6"
+                      strokeWidth={2}
+                    />
                   </span>
                   <span className="text-white">{skill.title}</span>
                 </h2>

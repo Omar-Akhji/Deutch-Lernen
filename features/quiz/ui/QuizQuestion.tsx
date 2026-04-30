@@ -88,10 +88,10 @@ export const QuizQuestion = ({
       {isNewTeil && !isTableRow && (
         <header className="mb-6 border-b-2 border-yellow/30 pb-2">
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-yellow">
+            <span className="text-base font-bold text-yellow tablet:text-lg">
               Teil {question.teil}
             </span>
-            <h2 className="text-sm font-bold tracking-wide text-white/90 uppercase">
+            <h2 className="text-xs font-bold tracking-wide text-white/90 uppercase tablet:text-sm">
               {question.teilTitle || "Modul Lesen"}
             </h2>
           </div>
@@ -133,7 +133,7 @@ export const QuizQuestion = ({
                         <div className="absolute top-0 left-0 rounded-tl-lg rounded-br-lg bg-yellow px-2.5 py-1 text-[10px] font-black text-black uppercase shadow-sm">
                           {letter}
                         </div>
-                        <p className="font-serif text-sm leading-relaxed text-white/80">
+                        <p className="font-serif text-xs leading-relaxed text-white/80 tablet:text-sm">
                           {content}
                         </p>
                         {/* Decorative texture */}
@@ -153,7 +153,7 @@ export const QuizQuestion = ({
                   </h4>
                   <div className="h-px flex-1 bg-white/5" />
                 </div>
-                <p className="mb-4 font-serif text-sm leading-relaxed whitespace-pre-line text-white/80">
+                <p className="mb-4 font-serif text-xs leading-relaxed whitespace-pre-line text-white/80 tablet:text-sm">
                   {displayContext}
                 </p>
                 {/* Audio Player if URL exists */}
@@ -188,10 +188,10 @@ export const QuizQuestion = ({
               /* Horizontal Layout - Compact Table Look for R/F or A/B/C */
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-1 items-baseline gap-3">
-                  <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
+                  <span className="text-xs font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)] tablet:text-sm">
                     {currentStep}.
                   </span>
-                  <h3 className="text-sm leading-tight font-bold text-white/90">
+                  <h3 className="text-xs leading-tight font-bold text-white/90 tablet:text-sm">
                     {cleanedQuestionText}
                   </h3>
                 </div>
@@ -251,7 +251,7 @@ export const QuizQuestion = ({
                   <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
                     {currentStep}.
                   </span>
-                  <h3 className="text-sm leading-snug font-bold text-white/90">
+                  <h3 className="text-xs leading-snug font-bold text-white/90 tablet:text-sm">
                     {cleanedQuestionText}
                   </h3>
                 </div>
@@ -269,7 +269,7 @@ export const QuizQuestion = ({
                         }`}
                       >
                         <span
-                          className={`text-sm ${isSelected ? "font-bold text-white" : "font-medium"}`}
+                          className={`text-xs tablet:text-sm ${isSelected ? "font-bold text-white" : "font-medium"}`}
                         >
                           {option.replace(/^[a-c]\)\s+/i, "")}
                         </span>
@@ -311,7 +311,7 @@ export const QuizQuestion = ({
             </div>
 
             {/* Ad Content Body */}
-            <p className="font-serif text-lg leading-relaxed font-light text-white/90">
+            <p className="font-serif text-base leading-relaxed font-light text-white/90 tablet:text-lg">
               {selectedAd.content}
             </p>
 

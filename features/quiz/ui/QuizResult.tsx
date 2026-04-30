@@ -21,24 +21,25 @@ export const QuizResult = ({
     if (percentage === 100)
       return (
         <span className="flex items-center justify-center gap-2">
-          Perfekt! <PartyPopper className="text-yellow" size={24} />
+          Perfekt! <PartyPopper className="size-5 text-yellow tablet:size-6" />
         </span>
       );
     if (percentage >= 80)
       return (
         <span className="flex items-center justify-center gap-2">
-          Sehr gut gemacht! <Sparkles className="text-yellow" size={24} />
+          Sehr gut gemacht!{" "}
+          <Sparkles className="size-5 text-yellow tablet:size-6" />
         </span>
       );
     if (percentage >= 60)
       return (
         <span className="flex items-center justify-center gap-2">
-          Gut! <ThumbsUp className="text-yellow" size={24} />
+          Gut! <ThumbsUp className="size-5 text-yellow tablet:size-6" />
         </span>
       );
     return (
       <span className="flex items-center justify-center gap-2">
-        Weiter üben! <Zap className="text-yellow" size={24} />
+        Weiter üben! <Zap className="size-5 text-yellow tablet:size-6" />
       </span>
     );
   };
@@ -50,7 +51,9 @@ export const QuizResult = ({
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-up" delay={100}>
-        <div className="mb-8 text-xl opacity-90">{getResultMessage()}</div>
+        <div className="mb-8 text-lg opacity-90 tablet:text-xl">
+          {getResultMessage()}
+        </div>
       </AnimateOnScroll>
 
       {/* Score Circle */}

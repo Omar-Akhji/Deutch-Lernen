@@ -106,12 +106,12 @@ export function ThemenSection({
       {!isEmbedded && (
         <header className="mx-auto max-w-2xl space-y-4 text-center">
           <AnimateOnScroll animation="fade-up">
-            <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
+            <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-extrabold text-transparent tablet:text-4xl">
               Sprechen & Schreiben Themen
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll animation="fade-up" delay={100}>
-            <p className="text-lg text-slate-400">
+            <p className="text-base text-slate-400 tablet:text-lg">
               Bereite dich auf das Goethe & ÖSD Zertifikat B1 vor. Hier findest
               du 58 Themen mit Pro- und Contra-Argumenten für deine Präsentation
               oder deinen Diskussionsbeitrag.
@@ -190,7 +190,7 @@ export function ThemenSection({
               <div className="mb-10 flex items-center gap-4">
                 <div
                   className={cn(
-                    "flex h-14 w-14 items-center justify-center rounded-full border-3 shadow-inner",
+                    "flex size-12 shrink-0 items-center justify-center rounded-full border-3 shadow-inner tablet:size-14",
                     catClasses
                       .split(" ")
                       .find((c: string) => c.startsWith("border-")),
@@ -199,13 +199,22 @@ export function ThemenSection({
                       .find((c: string) => c.startsWith("text-")),
                   )}
                 >
-                  {config.icon}
+                  {/* Clone the icon to apply responsive sizing */}
+                  {config.icon &&
+                  typeof config.icon === "object" &&
+                  "props" in config.icon ? (
+                    <span className="flex size-6 items-center justify-center tablet:size-7">
+                      {config.icon}
+                    </span>
+                  ) : (
+                    config.icon
+                  )}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white capitalize">
+                  <h3 className="text-xl font-bold text-white capitalize tablet:text-2xl">
                     {config.label}
                   </h3>
-                  <p className="text-sm text-slate-400">
+                  <p className="text-xs text-slate-400 tablet:text-sm">
                     {themes.length} Themen zur Vorbereitung
                   </p>
                 </div>
@@ -229,9 +238,9 @@ export function ThemenSection({
 
       <AnimateOnScroll animation="zoom-in" delay={200}>
         <aside className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
-          <h3 className="mb-4 flex items-center gap-2 text-2xl font-bold text-white">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border-3 border-indigo-400 text-indigo-400">
-              <Lightbulb size={20} />
+          <h3 className="mb-4 flex items-center gap-3 text-xl font-bold text-white tablet:text-2xl">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full border-3 border-indigo-400 text-indigo-400 tablet:size-10">
+              <Lightbulb className="size-5 tablet:size-6" />
             </span>
             Prüfungstipp für Sprechen Teil 2
           </h3>

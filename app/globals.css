@@ -75,14 +75,30 @@
 
 /* Scrollbar Styles (CSS Native) merged into :root below */
 
-/* Base Headings */
+/* Base Headings with Responsive Typography */
 @layer base {
-  h1,
-  h2,
-  h3 {
+  h1 {
+    @apply text-3xl font-extrabold tracking-tight tablet:text-4xl laptop:text-5xl;
+
     margin: 0;
-    font-weight: bold;
-    letter-spacing: -0.02rem;
+  }
+
+  h2 {
+    @apply text-2xl font-bold tracking-tight tablet:text-3xl laptop:text-4xl;
+
+    margin: 0;
+  }
+
+  h3 {
+    @apply text-xl font-semibold tracking-tight tablet:text-2xl;
+
+    margin: 0;
+  }
+
+  p {
+    @apply text-base tablet:text-lg;
+
+    line-height: 1.6;
   }
 }
 

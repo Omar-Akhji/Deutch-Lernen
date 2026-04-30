@@ -5,7 +5,7 @@ export const examLevelB2: ExamLevel = {
   level: "B2",
   title: "Goethe-Zertifikat B2",
   category: "Prüfung",
-  description: "Selbstständige Sprachverwendung – Fortgeschrittenes Niveau",
+  description: "Strukturierte Vorbereitung auf das Goethe-Zertifikat B2",
   totalDuration: "ca. 3 Stunden",
   passingScore: "60% (60 von 100 Punkten pro Modul)",
   sections: [

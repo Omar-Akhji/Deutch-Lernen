@@ -5,7 +5,7 @@ export const examLevelB1: ExamLevel = {
   level: "B1",
   title: "Goethe & ÖSD Zertifikat B1",
   category: "Prüfung",
-  description: "Vorbereitung auf die Goethe & ÖSD B1 Prüfung",
+  description: "Strukturierte Vorbereitung auf das Goethe & ÖSD B1 Zertifikat",
   totalDuration: "ca. 3,5 Stunden",
   passingScore: "60% (60 von 100 Punkten pro Modul)",
   sections: [

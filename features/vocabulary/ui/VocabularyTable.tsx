@@ -51,13 +51,13 @@ export function VocabularyTable({
                   </td>
                   <td className="px-2 pbs-2 @md:px-4 @md:pbs-4">
                     <data
-                      className="font-mono text-lg font-bold text-yellow"
+                      className="font-mono text-base font-bold text-yellow @md:text-lg"
                       value={word.english || word.example}
                     >
                       {word.english || word.example}
                     </data>
                   </td>
-                  <td className="font-arabic px-2 pbs-2 text-lg text-mist-500 @md:px-4 @md:pbs-4">
+                  <td className="font-arabic px-2 pbs-2 text-base text-mist-500 @md:px-4 @md:pbs-4 @md:text-lg">
                     {word.arabic}
                   </td>
                 </tr>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GrammarSectionCards } from "@/features/grammar";
+import { BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Grammatik | Deutsch Lernen",
@@ -9,11 +10,26 @@ export const metadata: Metadata = {
 
 import { Suspense } from "react";
 import { SectionCardSkeleton } from "@/shared/ui/SkeletonLayouts";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export default function GrammatikPage() {
   return (
-    <main>
-      <h1 className="sr-only">Grammatik Übersicht</h1>
+    <AnimateOnScroll as="main" animation="fade-up">
+      <header className="mb-12 text-center">
+        <AnimateOnScroll animation="fade-up">
+          <h1 className="mb-6 flex items-center justify-center gap-3 text-3xl tablet:gap-4 tablet:text-4xl">
+            <span className="flex size-12 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-14">
+              <BookOpen className="size-6 tablet:size-7" strokeWidth={2} />
+            </span>
+            <span className="title-gradient">Deutsche Grammatik</span>
+          </h1>
+        </AnimateOnScroll>
+        <AnimateOnScroll animation="fade-up" delay={100}>
+          <p className="m-0 text-base text-text-muted tablet:text-lg">
+            Übersichtliche Erklärungen und Strukturen für dein B1/B2 Training
+          </p>
+        </AnimateOnScroll>
+      </header>
       <Suspense fallback={<SectionCardSkeleton />}>
         <GrammarSectionCards sectionId="verben" />
       </Suspense>
@@ -32,6 +48,6 @@ export default function GrammatikPage() {
       <Suspense fallback={<SectionCardSkeleton />}>
         <GrammarSectionCards sectionId="partikeln" />
       </Suspense>
-    </main>
+    </AnimateOnScroll>
   );
 }

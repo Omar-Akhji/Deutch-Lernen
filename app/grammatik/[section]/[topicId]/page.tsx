@@ -102,9 +102,9 @@ export default async function GrammatikDetailPage({ params }: PageProps) {
         {/* Subtopics */}
         {currentTopic.subtopics && (
           <section className="mb-16">
-            <h2 className="mb-12 flex items-center gap-4 text-2xl font-bold text-text">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
-                <BookOpen size={24} strokeWidth={2} />
+            <h2 className="mb-12 flex items-center gap-3 text-xl font-bold text-text tablet:gap-4 tablet:text-2xl">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
+                <BookOpen className="size-5 tablet:size-6" strokeWidth={2} />
               </span>
               Unterthemen
             </h2>
@@ -126,7 +126,9 @@ export default async function GrammatikDetailPage({ params }: PageProps) {
                     <span className="rounded-md bg-white/20 px-2.5 py-1 text-xs font-bold text-white">
                       {subtopic.number}
                     </span>
-                    <h3 className="m-0 text-xl text-white">{subtopic.title}</h3>
+                    <h3 className="m-0 text-lg text-white tablet:text-xl">
+                      {subtopic.title}
+                    </h3>
                   </header>
                   <div className="p-6">
                     <p className="m-0 mb-8 leading-relaxed text-text-muted">

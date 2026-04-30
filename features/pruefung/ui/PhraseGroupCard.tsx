@@ -45,7 +45,7 @@ export function PhraseGroupCard({
             </span>
           )}
           <h4
-            className={`text-[15px] font-bold transition-colors ${
+            className={`text-sm font-bold transition-colors tablet:text-[15px] ${
               isChecklistItem
                 ? "text-slate-200 group-hover:text-amber-400"
                 : "text-white group-hover:text-amber-400"
@@ -66,10 +66,9 @@ export function PhraseGroupCard({
             }`}
           >
             <ChevronDown
-              size={20}
-              className={
+              className={`size-4 tablet:size-5 ${
                 isChecklistItem ? "text-amber-400/50" : "text-white/30"
-              }
+              }`}
             />
           </div>
         </div>
@@ -135,7 +134,7 @@ function RenderPhrases({ phrases }: { phrases: (string | PhraseGroup)[] }) {
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center">
                     <div className="h-1.5 w-1.5 rounded-full bg-amber-400/30" />
                   </div>
-                  <p className="text-[15px] leading-relaxed whitespace-pre-line text-slate-300">
+                  <p className="text-sm leading-relaxed whitespace-pre-line text-slate-300 tablet:text-[15px]">
                     {item}
                   </p>
                 </div>
