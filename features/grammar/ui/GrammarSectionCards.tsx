@@ -54,7 +54,7 @@ export const GrammarSectionCards = async ({
       </AnimateOnScroll>
 
       <ul
-        className="m-0 grid list-none grid-cols-1 gap-6 p-0 laptop:grid-cols-3 md:grid-cols-2"
+        className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 p-0"
         role="list"
       >
         {section.topics.map((topic, index) => (

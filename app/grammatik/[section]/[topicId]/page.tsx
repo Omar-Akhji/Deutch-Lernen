@@ -115,7 +115,7 @@ export default async function GrammatikDetailPage({ params }: PageProps) {
                   className="overflow-hidden rounded-2xl border border-(--glass-border) bg-card"
                 >
                   <header
-                    className="flex flex-col items-start gap-4 p-5 md:flex-row md:items-center"
+                    className="flex flex-row items-center gap-4 p-5"
                     style={{
                       background: getGradient(
                         index + 1,

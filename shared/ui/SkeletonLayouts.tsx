@@ -162,3 +162,28 @@ export function SectionCardSkeleton() {
     </div>
   );
 }
+
+/**
+ * Modernized Page Header Skeleton for landing pages
+ */
+export function PageHeaderSkeleton() {
+  return (
+    <header className="mb-12 text-center">
+      {/* Title & Icon */}
+      <div className="mb-4 flex items-center justify-center gap-3 tablet:gap-4">
+        <Skeleton className="size-12 shrink-0 rounded-full border-[3px] border-white/10 bg-white/5 tablet:size-14" />
+        <Skeleton className="h-9 w-64 bg-white/10 tablet:h-12 tablet:w-80" />
+      </div>
+
+      {/* Separator Line */}
+      <div className="mx-auto mb-6 h-1 w-24 overflow-hidden rounded-full">
+        <Skeleton className="h-full w-full bg-white/15" />
+      </div>
+
+      {/* Description Badge */}
+      <div className="flex justify-center">
+        <Skeleton className="h-10 w-full max-w-[320px] rounded-full bg-white/5 tablet:max-w-120" />
+      </div>
+    </header>
+  );
+}
