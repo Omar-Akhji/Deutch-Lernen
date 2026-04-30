@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { GrammarSectionCards } from "@/features/grammar";
-import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "Grammatik | Deutsch Lernen",

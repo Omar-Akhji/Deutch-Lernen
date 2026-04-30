@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { getQuestions } from "../api/services";
 import { QuizStart } from "./QuizStart";
 import { QuizQuestion } from "./QuizQuestion";
 import { QuizResult } from "./QuizResult";
