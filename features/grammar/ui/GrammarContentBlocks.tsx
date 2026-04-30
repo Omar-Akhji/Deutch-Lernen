@@ -32,7 +32,7 @@ export const GrammarContentBlocks = ({
             <div className="space-y-4 rounded-3xl border border-yellow/10 bg-white/3 p-6 backdrop-blur-md">
               {usage.map((dialogue, idx) => (
                 <div key={`usage-${idx}`} className="flex gap-4">
-                  <div className="bs-10 is-10 flex shrink-0 items-center justify-center rounded-full bg-yellow/20 text-sm font-bold text-yellow">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-yellow/20 text-sm font-bold text-yellow">
                     {dialogue.speaker}
                   </div>
                   <div className="rounded-2xl rounded-ss-none bg-white/5 px-4 py-2 text-white/90">
@@ -58,7 +58,7 @@ export const GrammarContentBlocks = ({
                 return (
                   <div
                     key={`block-${blockIdx}-item-${itemIdx}`}
-                    className="rounded-ie-xl border-is-6px hover:translate-s-1 border-yellow bg-white/5 p-4 text-white/90 backdrop-blur-sm transition-all hover:bg-white/8"
+                    className="rounded-e-xl border-s-[6px] border-yellow bg-white/5 p-4 text-white/90 backdrop-blur-sm transition-all hover:translate-x-1 hover:bg-white/8"
                     style={{
                       borderStartStartRadius: 0,
                       borderEndStartRadius: 0,

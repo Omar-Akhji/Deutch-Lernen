@@ -78,7 +78,7 @@ export const QuizResult = ({
               className="transition-all duration-1000 ease-out"
             />
           </svg>
-          <div className="absolute inset-s-0 inset-bs-0 flex flex-col items-center justify-center">
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
             <span className="text-4xl font-bold text-shadow-sm">
               {percentage}%
             </span>
