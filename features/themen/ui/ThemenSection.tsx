@@ -73,7 +73,10 @@ interface ThemenSectionProps {
   initialThemen: Thema[];
 }
 
-export function ThemenSection({ isEmbedded, initialThemen }: ThemenSectionProps) {
+export function ThemenSection({
+  isEmbedded,
+  initialThemen,
+}: ThemenSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
