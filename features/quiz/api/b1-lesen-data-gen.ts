@@ -1,369 +1,327 @@
 import { Question } from "../model/types";
 
 // ─── MODELLTEST 4 ────────────────────────────────────────────────────────────
-export const b1Lesen4: Question[] = [
+const lesen4Teil1: Question[] = [
   {
-    id: 13,
+    id: 1,
     type: "multiple-choice",
-    question: "Lesen Modelltest 4 (Bitte Text aus MD extrahieren)",
-    context: `Į
+    question: "Kiara musste lange vor der Konzerthalle warten.",
+    context: `Kiara Wenzel
+10. März
 
-## WebStamp: persönliche Briefmarken
+Hallo TH-Fans,
+ich und meine Freundin waren im Tokio-Hotel-Konzert in Erfurt dabei. Wir hatten uns rechtzeitig Karten geholt. Schon viele Wochen vor dem Konzert war ich tierisch happy. Am 6. März stand ich um 5 Uhr morgens auf, ging zu meiner Freundin und gemeinsam fuhren wir nach Erfurt. Als wir so ca. gegen 8 Uhr vor der Thüringenhalle ankamen, waren wir erstaunt, dass zum Glück gerade mal 20 Leute oder so da waren. Das hieß für uns, wir waren mit im ersten Block und damit war uns die erste Reihe sicher.
 
+Nach endlosen Stunden Warten, es war ungefähr um 12, kamen einige Fernsehteams und fragten uns, wen wir am besten finden, wie lange wir schon stehen usw. Die letzte Stunde vor dem Einlass kam uns unendlich lang vor. In dieser Zeit wurde uns erzählt, wie das dann alles abläuft. Nun war es endlich so weit. Eine Dreiviertelstunde vor dem offiziellen Einlass (es war 16.45 Uhr) durften wir mit unseren Bändchen als Erste rein.
+
+Wir sind sofort losgerannt, um unsere Plätze zu sichern. Und tatsächlich: wir waren in der 1. Reihe! Dann wurde es im Saal dunkel. Alle schrien. Nur Bill kam nicht. Wir mussten noch zehn Minuten warten, die uns wie Stunden vorkamen. Aber dann ging es endlich los. Das Konzert war der absolute Hammer. Wir haben die ganze Zeit mitgesungen. Bill stand am Ende genau vor mir und hat meine Hand berührt! Ich werde dieses Konzert nie vergessen.
+
+(Beispiel: Kiara ist nicht allein ins Konzert gegangen. - Richtig)`,
+    options: ["Richtig", "Falsch"],
+    correctAnswer: "Richtig",
+    teil: 1,
+  },
+  {
+    id: 2,
+    type: "multiple-choice",
+    question: "Die Band wurde von Fernsehreportern interviewt.",
+    options: ["Richtig", "Falsch"],
+    correctAnswer: "Falsch",
+    teil: 1,
+  },
+  {
+    id: 3,
+    type: "multiple-choice",
+    question: "Kiara schaffte es schließlich, ganz vorn zu stehen.",
+    options: ["Richtig", "Falsch"],
+    correctAnswer: "Richtig",
+    teil: 1,
+  },
+  {
+    id: 4,
+    type: "multiple-choice",
+    question: "Als es in der Halle dunkel wurde, schrien alle vor Angst.",
+    options: ["Richtig", "Falsch"],
+    correctAnswer: "Falsch",
+    teil: 1,
+  },
+  {
+    id: 5,
+    type: "multiple-choice",
+    question: "Bill kam und schrie am lautesten.",
+    options: ["Richtig", "Falsch"],
+    correctAnswer: "Falsch",
+    teil: 1,
+  },
+  {
+    id: 6,
+    type: "multiple-choice",
+    question: "Die Bandmitglieder haben Kiara die Hand gegeben.",
+    options: ["Richtig", "Falsch"],
+    correctAnswer: "Falsch",
+    teil: 1,
+  },
+];
+
+const lesen4Teil2: Question[] = [
+  {
+    id: 7,
+    type: "multiple-choice",
+    question: "In diesem Text geht es darum, ...",
+    context: `WebStamp: persönliche Briefmarken
 Die Schweizerische Post hatte mit der WebStamp, der elektronischen Briefmarke, eine neue, kreative Idee. WebStamp bietet die Möglichkeit, direkt am PC eigene Briefmarken zu gestalten und auszudrucken. Besonders interessant ist diese innovative Online-Frankier-Lösung für Firmen, da Briefe und Mailings mit individuellen Marken auffallen und beim Empfänger für Interesse sorgen. So sendet man auf und mit der Briefmarke auch eine Mini-Reklame und bleibt den Kunden auf jeden Fall in Erinnerung.
 
-Die Vorteile von WebStamp lassen sich ganz einfach nutzen. Nach der Anmeldung auf der Webseite der Schweizerischen Post kann’s losgehen mit dem Gestalten einer individuellen
+Die Vorteile von WebStamp lassen sich ganz einfach nutzen. Nach der Anmeldung auf der Webseite der Schweizerischen Post kann’s losgehen mit dem Gestalten einer individuellen Briefmarke. Als Sujet ist alles möglich: Fotos, Firmen- und Produktlogos, Grafiken oder sogar Reklamebotschaften. WebStamp funktioniert online und ist kostenlos. Man bezahlt nur das Porto, also den Wert, den die Briefmarke dann hat. Diese neuartigen Briefmarken gelten sowohl im Inland als auch im Ausland.
 
-Brief marke. Als Sujet ist alles möglich: Fotos, Firmen- und Produktlogos, Grafiken oder sogar Reklamebotschaften. WebStamp funktioniert online und ist kostenlos. Man bezahlt nur das Porto, also den Wert, den die Briefmarke dann hat. Eine 1-Franken-Briefmarke kostet demnach auch nur einen Franken. Diese neuartigen Briefmarken gelten sowohl im Inland als auch im Ausland.
-
-Da das alles über Computerprogramme läuft, sind auch verschiedene Druckformate möglich, falls man beispielsweise die Empfängeradresse in die eigene WebStamp integrieren möchte. Adressen können direkt aus Excel importiert werden.
-
-Genaue Informationen und Ideen zur Gestaltung erhält man in der Info-Broschüre der Schweizerischen Post unter <www.post.ch/webstamp>.
-
-_aus einer Schweizer Zeitung_
-
-10 In diesem Text geht es darum, ...
-
-- a wie die Schweizerische Post funktioniert.
-
-- b dass die Schweizerische Post eine interessante Webseite hat.
-
-- c dass man eine Briefmarke selbst machen kann.
-
-11 Die WebStamp ...
-
-- a hat denselben Preis wie eine normale Briefmarke.
-
-- b gilt nur in der Schweiz.
-
-- c wurde von einer Werbefirma erfunden.
-
-12 Die Adresse des Empfängers ...
-
-- a muss auf der WebStamp stehen.
-
-- b kann man aus dem Excel-Programm übernehmen.
-
-- c wird mit einem extra Programm gedruckt.
-
-Zertifikat B1 neu
-
-9
-
-Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
-
-<!-- image 417 x 44 -->
-
------ Start of picture text -----...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
+Da das alles über Computerprogramme läuft, sind auch verschiedene Druckformate möglich, falls man beispielsweise die Empfängeradresse in die eigene WebStamp integrieren möchte. Adressen können direkt aus Excel importiert werden.`,
+    options: [
+      "a) wie die Schweizerische Post funktioniert.",
+      "b) dass die Schweizerische Post eine interessante Webseite hat.",
+      "c) dass man eine Briefmarke selbst machen kann.",
+    ],
+    correctAnswer: "c) dass man eine Briefmarke selbst machen kann.",
+    teil: 2,
+  },
+  {
+    id: 8,
+    type: "multiple-choice",
+    question: "Die WebStamp ...",
+    options: [
+      "a) hat denselben Preis wie eine normale Briefmarke.",
+      "b) gilt nur in der Schweiz.",
+      "c) wurde von einer Werbefirma erfunden.",
+    ],
+    correctAnswer: "a) hat denselben Preis wie eine normale Briefmarke.",
+    teil: 2,
+  },
+  {
+    id: 9,
+    type: "multiple-choice",
+    question: "Die Adresse des Empfängers ...",
+    options: [
+      "a) muss auf der WebStamp stehen.",
+      "b) kann man aus dem Excel-Programm übernehmen.",
+      "c) wird mit einem extra Programm gedruckt.",
+    ],
+    correctAnswer: "b) kann man aus dem Excel-Programm übernehmen.",
+    teil: 2,
   },
 ];
 
-// ─── MODELLTEST 5 ────────────────────────────────────────────────────────────
-export const b1Lesen5: Question[] = [
+const lesen4Teil3: Question[] = [
+  {
+    id: 13,
+    type: "matching",
+    question:
+      "13. Susanne möchte im Urlaub verreisen und weiß nicht, wer in dieser Zeit auf ihre kleine, weiße Maus aufpassen kann.",
+    context: `Anzeigen:
+a) Dringend gesucht: Frauchen u./od. Herrchen für Cockerspaniel. Tel. 089/3095486
+b) Eselfohlen Diana zu verkaufen. Tel. 07631-7192
+c) Arme Katze „Blacky“, 4j., Wer nimmt sie liebevoll auf?
+d) Gesucht wird der Graupapagei „Burli“. ☎ 01/290 60 43
+e) Graupapageienbabys zu verkaufen. Tel. 02166/930305
+f) Nehme Ihren Hund / Ihre Katze während Ihres Urlaubs in Pflege! Tel. 08084/529763
+g) ARCHE NOAH - TIERKLINIK Salzburg: Wir versorgen Kleintiere liebevoll während Ihres Urlaubs!
+h) Nehme Ihren Hund in Pflege (Wohnung). Tel. 01 73-28 85 11 99
+i) Suche Aquarium kostenlos mit Zubehör. ☎ 07631 / 18357
+j) Fisch- & Korallentag. Verkauf von Fischen, Pflanzen, Zubehör.`,
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
+    correctAnswer: "g",
+    teil: 3,
+  },
+  {
+    id: 14,
+    type: "matching",
+    question:
+      "14. Thomas ist Single und hält sich einen Dackel. Die Nachbarn haben sich beschwert, weil der Hund in der Wohnung laut wird, wenn Thomas tagsüber im Büro ist.",
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
+    correctAnswer: "h",
+    teil: 3,
+  },
+  {
+    id: 15,
+    type: "matching",
+    question:
+      "15. Die Familie Schmidt hat einen großen Garten und eine Bernhardiner-Hündin. Damit ihr Haustier nicht allein ist, wären sie bereit, einen zweiten Hund aufzunehmen. Er soll aber nicht so groß sein.",
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
+    correctAnswer: "a",
+    teil: 3,
+  },
+  {
+    id: 16,
+    type: "matching",
+    question:
+      "16. Herr Albrecht muss aus beruflichen Gründen umziehen und kann seinen Hund nicht mitnehmen. Er sucht ein neues Zuhause für ihn.",
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
+    correctAnswer: "0",
+    teil: 3,
+  },
   {
     id: 17,
-    type: "multiple-choice",
-    question: "Lesen Modelltest 5 (Bitte Text aus MD extrahieren)",
-    context: `## Teil 3
-
-Arbeitszeit: 10 Minuten
-
-## ˆ
-
-Į
-
-ĮŐ
-
-Einige Ihrer Bekannten sind Tierliebhaber. Sie haben bestimmte Wünsche und suchen nach passenden Anzeigen.
-
-Anzeige
-
-## \\*
-
-- 0 Ilse lebt auf einem Bauernhof. Sie hat einen Hund, zwei Katzen, Kaninchen und sogar 'b' ein Pferd. Trotzdem hätte sie gern auch noch einen Esel.
-
-- 13 Įim Urlaub verreisen und weiß nicht, wer in dieser Zeit auf ihre kleine, weiße Maus aufpassen kann.
-
-- 14 Thomas ist Single und hält sich einen Dackel. Die Nachbarn haben sich beschwert, weil der Hund in der Wohnung laut wird, wenn Thomas tagsüber im Büro ist.Į Į
-
-- 15 Die Familie Schmidt hat einen großen Garten und eine Bernhardiner-Hündin. Damit ihr Haustier nicht allein ist, wären sie bereit, einen zweiten Hund aufzunehmen. Er soll aber nicht so groß sein.
-
-- 16 Herr Albrecht muss aus beruflichen Gründen umziehen und kann seinen Hund nicht mitnehmen. Er sucht ein neues Zuhause für ihn.
-
-- 17 Für ihr neues, großes AquariumĮeinige Fische kaufen.
-
-- 18 Karl will sich eine Katze anschaffen. Er mag diese Tiere, weil sie nicht viel Pflege brauchen und sehr selbstständig sind.
-
-- 19 Įsucht zurzeit einen Papagei.
-
-## a
-
-## Dringend gesucht
-
-Frauchen u./od. Herrchen, die armem, rotem Cockerspaniel (Rüde, kastriert, 5 ½ J.) nach dem Tod seines Frauchens ein neues Zuhause (mit Garten) geben. Tel. 089/3095486
-
-## b ✗
-
-Eselfohlen Diana, braun, geboren 21.6. zu verkaufen. Fam. Diethalm, D-79397 Müllheim, Tel. 07631-7192, Fax 7820.
-
-10 Zertifikat B1 neu
-
-Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
-
-## Teil 3
-
-<!-- image 418 x 44 -->
-
------ Start of picture text -----...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
+    type: "matching",
+    question:
+      "17. Eva möchte für ihr neues, großes Aquarium einige Fische kaufen.",
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
+    correctAnswer: "j",
+    teil: 3,
+  },
+  {
+    id: 18,
+    type: "matching",
+    question:
+      "18. Karl will sich eine Katze anschaffen. Er mag diese Tiere, weil sie nicht viel Pflege brauchen und sehr selbstständig sind.",
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
+    correctAnswer: "c",
+    teil: 3,
+  },
+  {
+    id: 19,
+    type: "matching",
+    question: "19. Frau Bach mag Vögel, sie sucht zurzeit einen Papagei.",
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
+    correctAnswer: "e",
+    teil: 3,
   },
 ];
 
-// ─── MODELLTEST 6 ────────────────────────────────────────────────────────────
-export const b1Lesen6: Question[] = [
+const lesen4Teil4: Question[] = [
+  {
+    id: 20,
+    type: "multiple-choice",
+    question: "Alexandra",
+    context: `Diskussion über Kettenmails:
+Alexandra: Kettenmails sind für mich einfach ein Teil der Kommunikation. Wenn die Mail lustig ist, schicke ich sie weiter.
+Nils: Ich lösche Kettenmails sofort. Werbefirmen sammeln so Adressen für Spam.
+Stefan: Ich prüfe Notrufe nach, würde sie aber nicht weiterschicken, um andere nicht zu ärgern.
+Charlotte: Ich habe bei einem Rezept-Spiel mitgemacht und freue mich auf die Rezepte.
+Victor: Zeitverschwendung! Man sollte lieber richtige Mails an Freunde schreiben.
+Wiebke: Man sollte Interessantes immer an alle weiterleiten. Das ist das Gute am Internet.
+Katta: Psychoterror! Ich will bei keiner Kettenmail mehr mitmachen.`,
+    options: ["Ja", "Nein"],
+    correctAnswer: "Ja",
+    teil: 4,
+  },
   {
     id: 21,
     type: "multiple-choice",
-    question: "Lesen Modelltest 6 (Bitte Text aus MD extrahieren)",
-    context: `## c
-
-## d
-
-Gesucht wird der Graupapagei „Burli“, der am 1. Juni aus Wien 21. Bezirk entflogen ist! Er ist sehr zutraulich. ☎[ 01/290 60 43. Bel. 2000,- ]
-
-<!-- image 6 x 6 -->
-
------ Start of picture text -----
-e ----- End of picture text -----
-
-Graupapageienbabys , liebevoll v. Hd. aufgezogen zu verkaufen, Tel. 02166/930305
-
-<!-- image 17 x 17 -->
-
------ Start of picture text -----
-f ----- End of picture text -----
-
-Nehme Ihren Hund / Ihre Katze während Ihres Urlaubs in Pflege! Tel. 08084/529763
-
-## g Unser Wissen für Ihr Tier! _ARCHE NOAH_
-
-Die etwas „andere“ TIERKLINIK 5020 Salzburg Alpenstraße 141 Tel. 0662/ 682374
-
-Sie wollen Ihren Urlaub ohne Sorgen um das Haustier genießen? Wir versorgen Kleintiere liebevoll während dieser Zeit! Das Wohlergehen Ihrer Lieblinge ist auch ARCHE NOAH ein Anliegen.
-
-## i
-
-<!-- image 16 x 17 -->
-
------ Start of picture text -----
-h ----- End of picture text -----
-
-## Nehme Ihren Hund in Pflege
-
-bei Urlaub oder am Tag. Nur Hunde, die für die Wohnung geeignet sind. Tel. 01 73-28 85 11 99 o. 02 31-72 848 98
-
-Nehme/Suche gebrauchtes oder neues Aquarium kostenlos, 30 _'l'_ – 320 _'l'_ mit Zubehör ☎ 07631 / 18357
-
-j 05.03. Fisch- & Korallentag 11–16 Uhr Schauaquarium Mundenhof Verkauf von Fischen, Pflanzen, Garnelen, Korallenablegern, Makroalgen u. Zubehör
-
-<!-- image 99 x 74 -->
-
-Zertifikat B1 neu
-
-11
-
-Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
-
-<!-- image 417 x 44 -->
-
------ Start of picture text -----...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
+    question: "Nils",
+    options: ["Ja", "Nein"],
+    correctAnswer: "Nein",
+    teil: 4,
   },
-];
-
-// ─── MODELLTEST 7 ────────────────────────────────────────────────────────────
-export const b1Lesen7: Question[] = [
+  {
+    id: 22,
+    type: "multiple-choice",
+    question: "Stefan",
+    options: ["Ja", "Nein"],
+    correctAnswer: "Nein",
+    teil: 4,
+  },
+  {
+    id: 23,
+    type: "multiple-choice",
+    question: "Charlotte",
+    options: ["Ja", "Nein"],
+    correctAnswer: "Ja",
+    teil: 4,
+  },
+  {
+    id: 24,
+    type: "multiple-choice",
+    question: "Victor",
+    options: ["Ja", "Nein"],
+    correctAnswer: "Nein",
+    teil: 4,
+  },
   {
     id: 25,
     type: "multiple-choice",
-    question: "Lesen Modelltest 7 (Bitte Text aus MD extrahieren)",
-    context: `## Teil 4
-
-Arbeitszeit: 15 Minuten
-
-## Ő
-
-In einer Online-Zeitung lesen Sie Kommentare zu einem Artikel über Kettenmails.
-
-## \\*
-
-20 Alexandra Ja Nein 24 Charlotte Ja Nein 0 Henriette Ja N ein 21 Nils Ja Nein 25 Victor Ja Nein ✗ 22 Wiebke Ja Nein 26 Katta Ja Nein 23 Stefan Ja Nein
-
-## \\*
-
-- Wenn du eine Mail geschickt bekommst, in der du aufgefordert wirst, sie an alle Freunde weiterzuschicken – dann lass es bleiben. Du machst dich nur unbeliebt. Denn bei solchen Kettenmails handelt es sich fast immer um blöde Späße. Oft haben diese Mails sogar Viren und machen etwas am PC kaputt. _Henriette, 24, Magdeburg_
-
-20 Kettenmails sind für mich einfach ein Teil der Kommunikation mit anderen. Mir ist es noch nie passiert, dass eine Kettenmail etwas kaputt gemacht hat. Ich mache auch nicht immer, was da steht, z.B. an mindestens 10 Personen schicken oder so. Ich sehe das einfach als einen Teil meiner Kommunikation und wenn die Mail lustig oder interessant ist, schicke ich sie auch weiter. Ich sehe keinen Grund, der dagegen spricht. _Alexandra, 28, Ludwigshafen_
-
-21 Wenn ich etwas bekomme, das auch nur entfernt an eine Kettenmail erinnert, lösche ich es sofort. Da kann man sich nie sicher sein, ob da nicht irgendeine Werbefirma dahinter steht und auf diese Weise versucht, möglichst viele E-Mail-Adressen zu sammeln. Die Adressen können dann für Werbe-Mails oder Spams benutzt werden. Dann wird man nachher nur mit Werbung bombardiert. _Nils, 41, Hamburg_
-
-23 Die Frage ist immer, was da eigentlich drin steht. Wenn es ein Aufruf in der Not ist, z.B. um Blut zu spenden, würde ich es auf jeden Fall einmal nachprüfen. Bei diesen Mails müsste dann auch stehen, wo man sich telefonisch erkundigen kann. Da ruft man an und informiert sich. Ich mache also immer erstmal eine Mail auf. Aber ehrlich gesagt würde ich sie nicht weiterschicken, denn vielleicht ärgert man die anderen damit nur. _Stefan, 30, Freistadt_
-
-24 Vor ein paar Tagen habe ich mal so eine Mail bekommen. Es ging um Rezepte. Ich sollte ein Rezept an jemanden schicken und dann die Mail an zehn Freunde. Vorher habe ich einen Namen von der Liste der Mitspielenden gestrichen und mich selbst dazu geschrieben. Nun werde ich ganz viele Rezepte von mir Unbekannten erhalten. Zwei Rezepte habe ich schon und ich freue mich auf die nächsten. _Charlotte, 48, Göttingen_
-
-25 Die E-Mail ist nicht für Spiele erfunden worden, sondern um die Kommunikation zu erleichtern. Deshalb kann ich nicht verstehen, dass es Leute gibt, die bei einer Kettenmail mitmachen. So eine Zeitverschwendung! Da könnte man doch etwas Besseres mit dem Computer anfangen, zum Beispiel häufiger an Freunde schreiben. _Victor, 26, Zürich_
-
-22 Ich freue mich immer über Post, egal ob nur an mich oder an viele, ob zum Weiterschicken oder nicht. Allgemein bin ich der Meinung, dass man Wichtiges und Interessantes grundsätzlich immer an alle weiterleiten muss. Das ist doch das Gute am Internet und das gilt auch für Kettenmails. _Wiebke, 18, Gelsenkirchen_
-
-26...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
+    question: "Wiebke",
+    options: ["Ja", "Nein"],
+    correctAnswer: "Ja",
+    teil: 4,
+  },
+  {
+    id: 26,
+    type: "multiple-choice",
+    question: "Katta",
+    options: ["Ja", "Nein"],
+    correctAnswer: "Nein",
+    teil: 4,
   },
 ];
 
-// ─── MODELLTEST 8 ────────────────────────────────────────────────────────────
-export const b1Lesen8: Question[] = [
+const lesen4Teil5: Question[] = [
+  {
+    id: 27,
+    type: "multiple-choice",
+    question: "Führungen ...",
+    context: `Deutsches Museum:
+Öffnungszeiten: Täglich 9.00 bis 17.00 Uhr.
+Mitgliedschaft: 52,- € Jahresbeitrag für Familien.
+Führungen: In Deutsch und Fremdsprachen. Anmeldung 6 Wochen vorher. Führungen für Einzelpersonen kostenlos.
+Verkehr: Alle S-Bahnen (Isartor), U1/U2 (Fraunhoferstraße), Tram 17/18.`,
+    options: [
+      "a) sind für Schulklassen gratis.",
+      "b) sollten vorher telefonisch gemeldet werden.",
+      "c) finden nicht nur auf Deutsch statt.",
+    ],
+    correctAnswer: "c) finden nicht nur auf Deutsch statt.",
+    teil: 5,
+  },
+  {
+    id: 28,
+    type: "multiple-choice",
+    question: "Wer Mitglied ist, ...",
+    options: [
+      "a) ist auf jeden Fall erwachsen.",
+      "b) braucht keinen Eintritt zu bezahlen.",
+      "c) darf nicht allein das Museum besuchen.",
+    ],
+    correctAnswer: "b) braucht keinen Eintritt zu bezahlen.",
+    teil: 5,
+  },
   {
     id: 29,
     type: "multiple-choice",
-    question: "Lesen Modelltest 8 (Bitte Text aus MD extrahieren)",
-    context: `Arbeitszeit: 10 Minuten
-
-Į
-
-Sie informieren sich über das Deutsche Museum, weil sie es besuchen wollen.
-
-## 27 Ő
-
-- a sind für Schulklassen gratis.
-
-- b sollten vorher telefonisch gemeldet werden.
-
-- c finden nicht nur auf Deutsch statt.
-
-## 28
-
-- a ist auf jeden Fall erwachsen.
-
-- b braucht keinen Eintritt zu bezahlen.
-
-- c darf nicht allein das Museum besuchen.
-
-- 29
-
-- a als Behinderter alle Ausstellungen besichtigen.
-
-- b auch Bücher kaufen.
-
-- c nur warm essen.
-
-## 30
-
-- a am besten mit dem Auto.
-
-- b mit dem Bus Linie 17.
-
-- c mit jeder S-Bahn.
-
-## Deutsches Museum
-
-## Öffnungszeiten
-
-Geöffnet täglich 9.00 bis 17.00 Uhr; Einlass bis 16.00 Uhr.
-
-## Eintrittspreise
-
-Erwachsene . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8,50 € Ermäßigt . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7,00 € Schüler und Studenten . . . . . . . . . . . . . . . . . . . . . . . 3,00 € Übersichtsführung . . . . . . . . . . . . . . . . . . . . . . . . . . . 3,00 € Planetarium zusätzlich . . . . . . . . . . . . . . . . . . . . . . . . 2,00 € Eintritt für Mitglieder und Kinder unter 6 Jahren frei.
-
-## Werden Sie Mitglied
-
-Mit einem Jahresbeitrag von 52,- € können Sie mit einer Begleitperson und zwei Kindern (oder allen eigenen Kindern) unter 16 Jahren jederzeit das Deutsche Museum besuchen. Jahresbeitrag für Schüler/-innen und Studierende (bis 30 Jahre, ohne Begleitung): 32,- €.
-
-## Öffentliche Verkehrsmittel
-
-Alle S-Bahnen (Isartor), U-Bahn Linien 1 und 2 (Fraunhoferstraße), Straßenbahn Linie 18 (Deutsches Museum), Linie 17 (Isartor). Parkplätze sind nicht verfügbar.
-
-## Führungen
-
-Schulklassenführungen, Übersichtsführungen, Fachführungen in Deutsch und Fremdsprachen. Anmeldung schriftlich bitte sechs Wochen vorher.
-
-Führungen und Vorführungen für Einzelpersonen und Familien sind kostenlos (außer Planetarium und Übersichtsführung). Fotografieren (auch Blitz und Video, jedoch ohne Stativ) ist für private Zwecke erlaubt; für gewerbliche Zwecke: Tel. 089/21 79 – 252.
-
-## Behindertengerechter Zugang
-
-Rollstuhlfahrer können fast alle Ausstellungen über Rampen und Aufzüge erreichen, das Restaurant über Aufzüge aus dem Imbissraum. Das Personal hilft Ihnen gerne. Die Toiletten befinden sich im Erdgeschoss und im 1. Ober geschoss.
-
-## Gastronomie
-
-Restaurant, 1. Obergeschoss: 9.00 – 17.00 Uhr warme Küche, Mo – Fr 10.30 – 15.00 Uhr, Sa/So 10.30 – 15.30 Uhr Cafeteria, Erdgeschoss 9.00 – 15.30 Uhr (Verzehr von Mitgebrachtem möglich)
-
-## Deutsches Museum Shop
-
-Führer, Kataloge und sonstige Veröffentlichungen des Deutschen Museums, großes Sortiment an technik- und wissenschaftsgeschichtlicher Literatur. Verzeichnis der lieferbaren Publikationen im Museum-Shop erhältlich.
-
-Zertifikat B1 neu
-
-13
-
-Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
-
-<!-- image 417 x 44 -->
-
------ Start of picture text -----...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
+    question: "Im Museum kann man ...",
+    options: [
+      "a) als Behinderter alle Ausstellungen besichtigen.",
+      "b) auch Bücher kaufen.",
+      "c) nur warm essen.",
+    ],
+    correctAnswer: "b) auch Bücher kaufen.",
+    teil: 5,
   },
-];
-
-// ─── MODELLTEST 9 ────────────────────────────────────────────────────────────
-export const b1Lesen9: Question[] = [
   {
-    id: 33,
+    id: 30,
     type: "multiple-choice",
-    question: "Lesen Modelltest 9 (Bitte Text aus MD extrahieren)",
-    context: `## Teil 1
-
-Arbeitszeit: 10 Minuten
-
-<!-- image 441 x 22 -->
-
-## Mein Berufswechsel
-
-## 4. Februar
-
-Wäre die Mauer nicht gefallen, dann würde ich wahrscheinlich immer noch im Klassenzimmer stehen. Fünf Jahre lang war ich Grundschullehrerin für Deutsch und Sport in Ost-Berlin. Dann kam die Wende, die Mauer war weg – und plötzlich war mein DDR-Examen wertlos.
-
-Meine Tochter war gerade geboren. Ich war alleinerziehend und deshalb für ein Jahr zu Hause. Als ich wieder in den Beruf einsteigen wollte, gab es nicht nur einen neuen Staat, sondern auch viel zu viele Lehrer für viel zu wenige Stellen.
-
-Zufällig hatte in Berlin gerade die ITB eröffnet, die größte Reisemesse der Welt. Ich bin sofort hin und war so begeistert, dass ich eine Umschulung zur Reiseverkehrskauffrau begann. Nach zwei Jahren hatte ich das Diplom in der Tasche – und einen Job bei einer Reiseagentur für Arabien und Südostasien. Ich bin mit dem Jeep durch die Wahiba-Wüste in Oman gefahren, habe Routen geplant und in Malaysia Dutzende Hotels getestet. Doch allmählich ließ die Begeisterung für den Job nach. Bis ich wusste, was ich wirklich wollte, sind mehr als fünf Jahre vergangen. Irgendwann fiel mir auf, dass ich in Kundengesprächen immer abdriftete. Statt dem Kunden zuzuhören, habe ich ihn gemustert: Welchen Anzug trägt der? Passt die Krawatte zu den Schuhen? Dann fand ich in der Zeitung ein Porträt über eine Stilberaterin. Ich wusste sofort: Das ist es. Für Mode und Farben hatte ich mich immer schon interessiert. Jetzt fehlte nur noch die passende Ausbildung.
-
-Bei einer Hamburger Fernakademie machte ich die Weiterbildung zur Stilberaterin. Das war stressig: Tagsüber war ich bei der Arbeit, abends bei meiner Tochter, an den Wochenenden und im Urlaub habe ich mich in die Ausbildung gekniet. Zwei anstrengende Jahre später hatte ich mein Diplom. Vor vier Jahren habe ich mich dann selbstständig gemacht. Jetzt bin ich Stilberaterin, gebe Kurse an Volkshochschulen, bekomme Aufträge für Modenschauen und Fotoshootings.
-
-Ich weiß, ich bin angekommen. Mode, Farben, Stoffe, das ist mein Zuhause. Wenn ich einer Kundin zeigen kann, welche Farben ihr stehen, wie sie sich perfekt in Szene setzt, dann macht mich das glücklich.
-
-<!-- image 441 x 9 -->
-
-22 Zertifikat B1 neu
-
-Zertifikat B1 neu|ISBN 978-3-19-041868-8|© 2014 Hueber Verlag
-
-<!-- image 412 x 63 -->
-
-##
-
-| l!JMarita war Lehrerininder DDR. ßMarita war ein Jahr lang nicht berufstätig, um sich um ihr Kind zu kümmern. fJMarita musste als Reiseverkehrskauffrau auchimAusland arbeiten. EIDie Kunden, mit denen Marita sprach, waren oft nicht gut angezogen. ßMarita machte eine Ausbildung zur Stilberaterin, während sie arbeitete. DDie Ausbildung zur Stilberaterin dauerte insgesamt vier Jahre. D.Marita freut sich, wenn eine Kundin mit ihrer Hilfe ihren Stil findet. | ☐ Richtig ] Richtig ] | ☐ Richtig ] | ☐ Richtig ] | ☐ Richtig ] | ☐ Richtig ] | ☐ Richtig ] |     |
-| ---------------------------------------------------------------------------------------...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
+    question: "Das Museum erreicht man ...",
+    options: [
+      "a) am besten mit dem Auto.",
+      "b) mit dem Bus Linie 17.",
+      "c) mit jeder S-Bahn.",
+    ],
+    correctAnswer: "c) mit jeder S-Bahn.",
+    teil: 5,
   },
 ];
+
+export const b1Lesen4: Question[] = [
+  ...lesen4Teil1,
+  ...lesen4Teil2,
+  ...lesen4Teil3,
+  ...lesen4Teil4,
+  ...lesen4Teil5,
+];
+
+// ─── MODELLTEST 5 ────────────────────────────────────────────────────────────
+export const b1Lesen5: Question[] = [];
+// ─── MODELLTEST 6 ────────────────────────────────────────────────────────────
+export const b1Lesen6: Question[] = [];
+// ─── MODELLTEST 7 ────────────────────────────────────────────────────────────
+export const b1Lesen7: Question[] = [];
+// ─── MODELLTEST 8 ────────────────────────────────────────────────────────────
+export const b1Lesen8: Question[] = [];
+// ─── MODELLTEST 9 ────────────────────────────────────────────────────────────
+export const b1Lesen9: Question[] = [];
