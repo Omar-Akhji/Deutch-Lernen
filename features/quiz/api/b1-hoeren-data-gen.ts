@@ -1,44 +1,5 @@
 import { Question } from "../model/types";
 
-// ─── MODELLTEST 1 ────────────────────────────────────────────────────────────
-export const b1Hoeren1: Question[] = [
-  {
-    id: 2,
-    type: "multiple-choice",
-    question: "Hören Modelltest 1 (Bitte Audio & Text extrahieren)",
-    context: `...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
-  },
-];
-
-// ─── MODELLTEST 2 ────────────────────────────────────────────────────────────
-export const b1Hoeren2: Question[] = [
-  {
-    id: 6,
-    type: "multiple-choice",
-    question: "Hören Modelltest 2 (Bitte Audio & Text extrahieren)",
-    context: `...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
-  },
-];
-
-// ─── MODELLTEST 3 ────────────────────────────────────────────────────────────
-export const b1Hoeren3: Question[] = [
-  {
-    id: 10,
-    type: "multiple-choice",
-    question: "Hören Modelltest 3 (Bitte Audio & Text extrahieren)",
-    context: `...`,
-    options: ["Richtig", "Falsch"],
-    correctAnswer: "Richtig",
-    teil: 1,
-  },
-];
-
 // ─── MODELLTEST 4 ────────────────────────────────────────────────────────────
 export const b1Hoeren4: Question[] = [
   {

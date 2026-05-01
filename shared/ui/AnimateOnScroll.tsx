@@ -3,7 +3,7 @@
 import {
   useEffect,
   useRef,
-  useState,
+  useReducer,
   ElementType,
   ComponentPropsWithoutRef,
 } from "react";
@@ -66,7 +66,7 @@ function unobserveElement(element: Element) {
 
 // --- Component Props & Types ---
 
-export type AnimationType =
+type AnimationType =
   | "fade-up"
   | "fade-down"
   | "fade-in"
@@ -103,13 +103,35 @@ export function AnimateOnScroll<T extends ElementType = "div">({
 }: AnimateOnScrollProps<T> &
   Omit<ComponentPropsWithoutRef<T>, keyof AnimateOnScrollProps<T>>) {
   const ref = useRef<Element>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const [mounted, setMounted] = useState(false);
+
+  type State = { mounted: boolean; isInView: boolean; hasAnimated: boolean };
+  type Action =
+    | { type: "MOUNT" }
+    | { type: "ENTER_VIEW" }
+    | { type: "EXIT_VIEW" }
+    | { type: "ANIMATION_DONE" };
+
+  const [state, dispatch] = useReducer(
+    (prev: State, action: Action): State => {
+      switch (action.type) {
+        case "MOUNT":
+          return { ...prev, mounted: true };
+        case "ENTER_VIEW":
+          return { ...prev, isInView: true };
+        case "EXIT_VIEW":
+          return { ...prev, isInView: false };
+        case "ANIMATION_DONE":
+          return { ...prev, hasAnimated: true };
+      }
+    },
+    { mounted: false, isInView: false, hasAnimated: false },
+  );
+
+  const { mounted, isInView, hasAnimated } = state;
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      setMounted(true);
+      dispatch({ type: "MOUNT" });
     });
 
     const el = ref.current;
@@ -117,13 +139,16 @@ export function AnimateOnScroll<T extends ElementType = "div">({
 
     observeElement(el, (visible) => {
       if (visible) {
-        setIsInView(true);
+        dispatch({ type: "ENTER_VIEW" });
         if (!repeat) {
           unobserveElement(el);
-          setTimeout(() => setHasAnimated(true), duration + delay);
+          setTimeout(
+            () => dispatch({ type: "ANIMATION_DONE" }),
+            duration + delay,
+          );
         }
       } else if (repeat) {
-        setIsInView(false);
+        dispatch({ type: "EXIT_VIEW" });
       }
     });
 

@@ -65,8 +65,8 @@ export function EmailVisualFrame({
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-size-[20px_20px] opacity-5" />
 
         <div className="relative space-y-6">
-          {sections.map((section, idx) => (
-            <div key={idx} className="group relative">
+          {sections.map((section, sectionIdx) => (
+            <div key={section.label} className="group relative">
               {/* Annotation Label */}
               <div
                 className={`absolute top-0 -left-4 hidden -translate-x-full pr-4 opacity-0 transition-opacity group-hover:opacity-100 lg:block`}
@@ -98,7 +98,7 @@ export function EmailVisualFrame({
                   <span
                     className={`text-[10px] font-bold tracking-[0.2em] uppercase ${section.color}`}
                   >
-                    {idx + 1}. {section.label}
+                    {sectionIdx + 1}. {section.label}
                   </span>
                   <span className="text-[10px] text-slate-500 italic">
                     {section.description}
