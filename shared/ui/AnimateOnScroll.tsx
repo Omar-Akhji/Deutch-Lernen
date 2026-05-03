@@ -37,7 +37,7 @@ function getObserver() {
         });
       },
       {
-        threshold: 0.15,
+        threshold: 0,
         rootMargin: "50px",
       },
     );

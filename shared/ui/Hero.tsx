@@ -47,7 +47,7 @@ export function Hero({
 
       <AnimateOnScroll animation="blur-in" delay={300} duration={1000}>
         <h1
-          className={`mbe-2 text-3xl font-bold text-shadow-sm tablet:text-4xl laptop:text-5xl ${gradient ? "text-white drop-shadow-[0_2px_10_rgb(0_0_0/20%)]" : "bg-linear-to-br from-white to-slate-200 bg-clip-text text-transparent"}`}
+          className={`-my-2 mbe-2 py-2 text-3xl font-bold text-shadow-sm tablet:text-4xl laptop:text-5xl ${gradient ? "text-white drop-shadow-[0_2px_10_rgb(0_0_0/20%)]" : "bg-linear-to-br from-white to-slate-200 bg-clip-text text-transparent"}`}
         >
           {title}
         </h1>

@@ -8,8 +8,6 @@ export const metadata: Metadata = {
     "Deutsche Grammatik lernen - Verben, Nomen, Präpositionen, Satzstrukturen. Übersichtliche Erklärungen für alle Niveaus.",
 };
 
-import { Suspense } from "react";
-import { SectionCardSkeleton } from "@/shared/ui/SkeletonLayouts";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export default function GrammatikPage() {
@@ -33,24 +31,12 @@ export default function GrammatikPage() {
           </p>
         </AnimateOnScroll>
       </header>
-      <Suspense fallback={<SectionCardSkeleton />}>
-        <GrammarSectionCards sectionId="verben" />
-      </Suspense>
-      <Suspense fallback={<SectionCardSkeleton />}>
-        <GrammarSectionCards sectionId="nomen" />
-      </Suspense>
-      <Suspense fallback={<SectionCardSkeleton />}>
-        <GrammarSectionCards sectionId="praepositionen" />
-      </Suspense>
-      <Suspense fallback={<SectionCardSkeleton />}>
-        <GrammarSectionCards sectionId="satz" />
-      </Suspense>
-      <Suspense fallback={<SectionCardSkeleton />}>
-        <GrammarSectionCards sectionId="adverbien" />
-      </Suspense>
-      <Suspense fallback={<SectionCardSkeleton />}>
-        <GrammarSectionCards sectionId="partikeln" />
-      </Suspense>
+      <GrammarSectionCards sectionId="verben" />
+      <GrammarSectionCards sectionId="nomen" />
+      <GrammarSectionCards sectionId="praepositionen" />
+      <GrammarSectionCards sectionId="satz" />
+      <GrammarSectionCards sectionId="adverbien" />
+      <GrammarSectionCards sectionId="partikeln" />
     </AnimateOnScroll>
   );
 }

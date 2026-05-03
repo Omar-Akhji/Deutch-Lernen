@@ -103,6 +103,11 @@
 }
 
 .title-gradient {
+  display: inline-block;
+  padding-top: 0.3rem;
+  padding-bottom: 0.4rem;
+  margin-top: -0.3rem;
+  margin-bottom: -0.4rem;
   background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
   background-clip: text;
   -webkit-text-fill-color: transparent;
