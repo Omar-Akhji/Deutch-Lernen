@@ -1,11 +1,15 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import { fixupConfigRules } from "@eslint/compat";
+
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+
 import prettierConfig from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
 
-const eslintConfig = defineConfig([
+import type { Linter } from "eslint";
+
+const eslintConfig: Linter.Config[] = defineConfig([
   ...fixupConfigRules(nextVitals),
   ...fixupConfigRules(nextTs),
 
@@ -76,6 +80,6 @@ const eslintConfig = defineConfig([
     ".gemini/**",
     "*.md",
   ]),
-]);
+]) as Linter.Config[];
 
 export default eslintConfig;
