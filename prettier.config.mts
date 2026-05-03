@@ -1,5 +1,11 @@
-/** @type {import("prettier").Config} */
-const config = {
+import type { Config } from "prettier";
+
+interface TailwindPrettierConfig extends Config {
+  tailwindStylesheet?: string;
+  tailwindFunctions?: string[];
+}
+
+const config: TailwindPrettierConfig = {
   // ─── Plugins ──────────────────────────────────────────
   plugins: ["prettier-plugin-tailwindcss"],
 

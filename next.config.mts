@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import withBundleAnalyzer from "@next/bundle-analyzer";
+import bundleAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
@@ -48,8 +48,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-const analyzer = withBundleAnalyzer({
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env["ANALYZE"] === "true",
 });
 
-export default analyzer(nextConfig);
+export default withBundleAnalyzer(nextConfig);
