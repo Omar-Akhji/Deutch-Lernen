@@ -6,6 +6,10 @@ import {
 import { Skeleton } from "@/shared/ui/Skeleton";
 
 export default function VokabelnDetailLoading() {
+  const BLOCKS = ["blk-1", "blk-2"];
+  const BLOCK_ITEMS = ["itm-1", "itm-2"];
+  const SUBTOPICS = ["sub-1", "sub-2"];
+
   return (
     <div className="relative min-h-screen py-8">
       <main>
@@ -19,13 +23,13 @@ export default function VokabelnDetailLoading() {
         {/* Content Blocks */}
         <section className="mb-16">
           <div className="flex flex-col gap-8">
-            {Array.from({ length: 2 }).map((_, i) => (
-              <div key={i} className="space-y-4">
+            {BLOCKS.map((blkId) => (
+              <div key={blkId} className="space-y-4">
                 <Skeleton className="h-7 w-48 bg-white/10" />
                 <div className="grid gap-3">
-                  {Array.from({ length: 2 }).map((_, j) => (
+                  {BLOCK_ITEMS.map((itmId) => (
                     <div
-                      key={j}
+                      key={itmId}
                       className="rounded-r-xl border-l-[6px] border-yellow bg-white/5 p-4"
                     >
                       <Skeleton className="h-5 w-full bg-white/5" />
@@ -42,9 +46,9 @@ export default function VokabelnDetailLoading() {
           <SectionHeaderSkeleton />
 
           <div className="grid gap-10">
-            {Array.from({ length: 2 }).map((_, i) => (
+            {SUBTOPICS.map((subId) => (
               <article
-                key={i}
+                key={subId}
                 className="overflow-hidden rounded-2xl border border-white/10 bg-card"
               >
                 {/* Header placeholder */}

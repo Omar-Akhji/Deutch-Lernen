@@ -4,8 +4,8 @@ import {
   useEffect,
   useRef,
   useReducer,
-  ElementType,
-  ComponentPropsWithoutRef,
+  type ElementType,
+  type ComponentPropsWithoutRef,
 } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -164,9 +164,9 @@ export function AnimateOnScroll<T extends ElementType = "div">({
   // We add 'will-change' to hardware accelerate the animation while it's running.
   const baseClasses = twMerge(
     "transition-all ease-out animate-on-scroll",
-    !hasAnimated && !isInView
-      ? "will-change-transform will-change-opacity"
-      : "",
+    !hasAnimated && !isInView ?
+      "will-change-transform will-change-opacity"
+    : "",
   );
 
   const hiddenClasses: Record<AnimationType, string> = {
@@ -202,9 +202,9 @@ export function AnimateOnScroll<T extends ElementType = "div">({
       }}
       className={twMerge(
         baseClasses,
-        isInView || !mounted
-          ? visibleClasses[animation]
-          : hiddenClasses[animation],
+        isInView || !mounted ?
+          visibleClasses[animation]
+        : hiddenClasses[animation],
         className,
       )}
       {...props}

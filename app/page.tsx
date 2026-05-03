@@ -13,8 +13,8 @@ export default function Home() {
         <Suspense
           fallback={
             <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8 py-4">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <CardSkeleton key={i} />
+              {["s1", "s2", "s3", "s4", "s5", "s6"].map((id) => (
+                <CardSkeleton key={id} />
               ))}
             </div>
           }

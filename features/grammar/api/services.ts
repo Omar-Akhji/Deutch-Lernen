@@ -1,7 +1,7 @@
 import { cache } from "react";
 import { wait } from "@/shared/lib/wait";
 import { grammarSections } from "./data";
-import { GrammarTopic } from "../model/types";
+import type { GrammarTopic } from "../model/types";
 
 export const getGrammarSections = cache(async () => {
   await wait(800);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Question } from "../model/types";
+import type { Question } from "../model/types";
 import {
   TeilHeader,
   ContextCard,
@@ -58,11 +58,9 @@ export const QuizQuestion = ({
   const displayContext = question.context || activeContext;
 
   const contextLabel =
-    skill === "hoeren"
-      ? "Sie hören:"
-      : skill === "lesen"
-        ? "Lesen Sie den Text:"
-        : "Text:";
+    skill === "hoeren" ? "Sie hören:"
+    : skill === "lesen" ? "Lesen Sie den Text:"
+    : "Text:";
 
   const isRichtigFalsch =
     question.options?.length === 2 &&
@@ -85,15 +83,15 @@ export const QuizQuestion = ({
     <article
       className={`mx-auto w-full animate-fade-in ${isTableRow ? "" : "space-y-6"}`}
     >
-      {isNewTeil && !isTableRow && (
+      {isNewTeil && !isTableRow ?
         <TeilHeader
           teil={question.teil}
           teilTitle={question.teilTitle}
           teilInstruction={question.teilInstruction}
         />
-      )}
+      : null}
 
-      {displayContext && !isTableRow && (
+      {displayContext && !isTableRow ?
         <div className="relative">
           <ContextCard
             context={displayContext}
@@ -103,14 +101,14 @@ export const QuizQuestion = ({
             onSelectAd={setSelectedAd}
           />
         </div>
-      )}
+      : null}
 
-      {!hideQuestionBody && (
+      {!hideQuestionBody ?
         <div
           className={
-            isTableRow
-              ? "w-full"
-              : "group relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/20 transition-all hover:bg-slate-900/40"
+            isTableRow ? "w-full" : (
+              "group relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/20 transition-all hover:bg-slate-900/40"
+            )
           }
         >
           <div className={isTableRow ? "px-4 py-3 lg:px-5" : "p-4 lg:p-5"}>
@@ -126,7 +124,7 @@ export const QuizQuestion = ({
             />
           </div>
         </div>
-      )}
+      : null}
 
       <AdDetailDialog
         dialogRef={dialogRef}

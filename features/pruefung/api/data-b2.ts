@@ -1,4 +1,4 @@
-import { ExamLevel, RedemittelCategory } from "../model/types";
+import type { ExamLevel, RedemittelCategory } from "../model/types";
 
 export const examLevelB2: ExamLevel = {
   id: "b2",

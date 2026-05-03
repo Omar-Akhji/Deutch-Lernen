@@ -18,10 +18,14 @@ export function Navigation() {
       <div className="relative mx-auto flex items-center justify-between px-2 pbs-2 pbe-2 max-inline-300 min-block-17.5 mobile:px-8 mobile:pbs-8 mobile:pbe-8 mobile:min-block-25">
         {/* Left Side: Back Button */}
         <div className="shrink-0">
-          {pathname !== "/vokabeln" &&
+          {(
+            pathname !== "/vokabeln" &&
             pathname !== "/grammatik" &&
             pathname !== "/pruefung" &&
-            pathname !== "/" && <BackButton />}
+            pathname !== "/"
+          ) ?
+            <BackButton />
+          : null}
         </div>
 
         {/* Right Side: Navigation Menu */}
@@ -40,9 +44,9 @@ export function Navigation() {
                 key={href}
                 href={href}
                 className={`rounded-full px-4 pbs-1.5 pbe-1.5 text-sm font-semibold transition-all duration-200 tablet:px-6 tablet:pbs-2 tablet:pbe-2 tablet:text-base ${
-                  active
-                    ? "bg-linear-to-br from-yellow to-orange text-black shadow-lg shadow-yellow/20"
-                    : "text-mist-500 hover:bg-white/5 hover:text-white"
+                  active ?
+                    "bg-linear-to-br from-yellow to-orange text-black shadow-lg shadow-yellow/20"
+                  : "text-mist-500 hover:bg-white/5 hover:text-white"
                 }`}
                 aria-current={active ? "page" : undefined}
               >

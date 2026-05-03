@@ -20,7 +20,7 @@ import {
   Lightbulb,
   LayoutGrid,
 } from "lucide-react";
-import { Thema } from "../model/types";
+import type { Thema } from "../model/types";
 
 const categoryConfig: Record<
   string,
@@ -91,9 +91,10 @@ export function ThemenSection({
     {} as Record<string, Thema[]>,
   );
 
-  const filteredGroups = !activeCategory
-    ? groupedThemen
-    : { [activeCategory]: groupedThemen[activeCategory] || [] };
+  const filteredGroups =
+    !activeCategory ? groupedThemen : (
+      { [activeCategory]: groupedThemen[activeCategory] || [] }
+    );
 
   const handleCategoryChange = (id: string | null) => {
     startTransition(() => {
@@ -129,9 +130,9 @@ export function ThemenSection({
           <button
             onClick={() => handleCategoryChange(null)}
             className={`flex items-center gap-2 rounded-full px-4 pbs-2 pbe-2 text-sm font-medium transition-all ${
-              activeCategory === null
-                ? "bg-amber-500 text-black shadow-lg"
-                : "bg-white/5 text-slate-400 hover:bg-white/10"
+              activeCategory === null ?
+                "bg-amber-500 text-black shadow-lg"
+              : "bg-white/5 text-slate-400 hover:bg-white/10"
             } ${isPending && activeCategory !== null ? "opacity-50" : ""}`}
           >
             <span
@@ -147,25 +148,25 @@ export function ThemenSection({
               onClick={() => handleCategoryChange(id)}
               className={cn(
                 "flex items-center gap-2 rounded-full px-4 pbs-2 pbe-2 text-sm font-medium transition-all",
-                activeCategory === id
-                  ? cn(
-                      "text-black shadow-lg shadow-black/20",
-                      getCategoryClasses(id)
-                        .split(" ")
-                        .find((c: string) => c.startsWith("bg-")),
-                    )
-                  : "bg-white/5 text-slate-400 hover:bg-white/10",
+                activeCategory === id ?
+                  cn(
+                    "text-black shadow-lg shadow-black/20",
+                    getCategoryClasses(id)
+                      .split(" ")
+                      .find((c: string) => c.startsWith("bg-")),
+                  )
+                : "bg-white/5 text-slate-400 hover:bg-white/10",
                 isPending && activeCategory !== id ? "opacity-50" : "",
               )}
             >
               <span
                 className={cn(
                   "scale-75 transition-transform group-hover:scale-110",
-                  activeCategory === id
-                    ? "text-black"
-                    : getCategoryClasses(id)
-                        .split(" ")
-                        .find((c: string) => c.startsWith("text-")),
+                  activeCategory === id ? "text-black" : (
+                    getCategoryClasses(id)
+                      .split(" ")
+                      .find((c: string) => c.startsWith("text-"))
+                  ),
                 )}
               >
                 {config.icon}
@@ -200,15 +201,15 @@ export function ThemenSection({
                   )}
                 >
                   {/* Clone the icon to apply responsive sizing */}
-                  {config.icon &&
-                  typeof config.icon === "object" &&
-                  "props" in config.icon ? (
+                  {(
+                    config.icon &&
+                    typeof config.icon === "object" &&
+                    "props" in config.icon
+                  ) ?
                     <span className="flex size-6 items-center justify-center tablet:size-7">
                       {config.icon}
                     </span>
-                  ) : (
-                    config.icon
-                  )}
+                  : config.icon}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white capitalize tablet:text-2xl">

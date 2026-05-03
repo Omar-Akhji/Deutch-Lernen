@@ -1,5 +1,5 @@
 import { Lightbulb } from "lucide-react";
-import { GrammarSectionContent } from "../model/types";
+import type { GrammarSectionContent } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { FormattedText } from "./FormattedText";
 
@@ -25,7 +25,7 @@ export const GrammarContentBlocks = ({
 }: GrammarContentBlocksProps) => {
   return (
     <div className="flex flex-col gap-8">
-      {usage && (
+      {usage ?
         <AnimateOnScroll animation="fade-up">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-yellow tablet:text-xl">
@@ -48,23 +48,20 @@ export const GrammarContentBlocks = ({
             </div>
           </div>
         </AnimateOnScroll>
-      )}
+      : null}
 
-      {blocks.map((block, blockIdx) => (
-        <AnimateOnScroll
-          key={`block-${blockIdx}`}
-          animation="fade-up"
-          delay={blockIdx * 100}
-        >
+      {blocks.map((block) => (
+        <AnimateOnScroll key={block.title} animation="fade-up">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-yellow tablet:text-xl">
               {block.title}
             </h3>
             <div className="grid gap-3">
-              {block.items.map((item, itemIdx) => {
+              {block.items.map((item) => {
+                const itemKey = typeof item === "string" ? item : item.text;
                 return (
                   <div
-                    key={`block-${blockIdx}-item-${itemIdx}`}
+                    key={`${block.title}-${itemKey.slice(0, 40)}`}
                     className="rounded-e-xl border-s-[6px] border-yellow bg-white/5 p-4 text-white/90 backdrop-blur-sm transition-all hover:translate-x-1 hover:bg-white/8"
                     style={{
                       borderStartStartRadius: 0,
@@ -80,7 +77,7 @@ export const GrammarContentBlocks = ({
         </AnimateOnScroll>
       ))}
 
-      {tips && (
+      {tips ?
         <AnimateOnScroll animation="zoom-in" delay={200}>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-orange tablet:text-xl">
@@ -99,7 +96,7 @@ export const GrammarContentBlocks = ({
             </div>
           </div>
         </AnimateOnScroll>
-      )}
+      : null}
     </div>
   );
 };

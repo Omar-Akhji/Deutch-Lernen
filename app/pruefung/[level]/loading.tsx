@@ -21,9 +21,9 @@ export default function PruefungDetailLoading() {
           <SectionHeaderSkeleton />
 
           <div className="grid gap-6">
-            {Array.from({ length: 4 }).map((_, i) => (
+            {["mod-1", "mod-2", "mod-3", "mod-4"].map((modId) => (
               <article
-                key={i}
+                key={modId}
                 className="overflow-hidden rounded-2xl border border-white/10 bg-card"
               >
                 {/* Header placeholder */}
@@ -37,7 +37,7 @@ export default function PruefungDetailLoading() {
 
                 <div className="p-6">
                   <Skeleton className="mb-4 h-4 w-full bg-white/5" />
-                  <TableSkeleton rows={3} columns={4} noWrapper={true} />
+                  <TableSkeleton rows={3} columns={4} noWrapper />
 
                   <div className="mt-6 flex flex-col gap-6">
                     {/* Tips box */}

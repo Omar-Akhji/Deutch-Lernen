@@ -1,5 +1,5 @@
 import { Heart } from "lucide-react";
-import { FamilyMember } from "../model/types";
+import type { FamilyMember } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface FamilyTreeProps {
@@ -89,11 +89,11 @@ export const FamilyTree = ({ members }: FamilyTreeProps) => {
             </div>
 
             {/* Connector line to next level */}
-            {levelIdx < levels.length - 1 && (
+            {levelIdx < levels.length - 1 ?
               <div className="flex h-10 w-full items-center justify-center @md:h-14">
                 <div className="h-full w-px bg-linear-to-b from-white/20 to-white/5" />
               </div>
-            )}
+            : null}
           </AnimateOnScroll>
         );
       })}
@@ -107,21 +107,20 @@ const MemberCard = ({ member }: { member: FamilyMember }) => {
   const isMale = member.gender === "male";
   const isSelf = member.relation === "self";
 
-  const colorClasses = isSelf
-    ? "border-amber-400 bg-amber-500/10 shadow-xl shadow-amber-400/25"
-    : isMale
-      ? "border-sky-400/40 bg-sky-500/5 hover:border-sky-400/70"
-      : "border-pink-400/40 bg-pink-500/5 hover:border-pink-400/70";
+  const colorClasses =
+    isSelf ? "border-amber-400 bg-amber-500/10 shadow-xl shadow-amber-400/25"
+    : isMale ? "border-sky-400/40 bg-sky-500/5 hover:border-sky-400/70"
+    : "border-pink-400/40 bg-pink-500/5 hover:border-pink-400/70";
 
   return (
     <div
       className={`flex h-24 w-28 flex-col items-center justify-center rounded-xl border-2 text-center transition-all duration-300 hover:scale-105 @md:h-28 @md:w-36 ${colorClasses}`}
     >
-      {isSelf && (
+      {isSelf ?
         <span className="mb-0.5 text-[0.6rem] font-bold tracking-wider text-amber-400 uppercase @md:text-xs">
           ICH
         </span>
-      )}
+      : null}
       <div className="text-sm font-bold text-text @md:text-base">
         {member.german}
       </div>

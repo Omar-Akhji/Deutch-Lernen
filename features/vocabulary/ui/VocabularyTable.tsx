@@ -1,4 +1,4 @@
-import { Word } from "../model/types";
+import type { Word } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface VocabularyTableProps {

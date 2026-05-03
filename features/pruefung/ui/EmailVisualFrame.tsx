@@ -68,9 +68,7 @@ export function EmailVisualFrame({
           {sections.map((section, sectionIdx) => (
             <div key={section.label} className="group relative">
               {/* Annotation Label */}
-              <div
-                className={`absolute top-0 -left-4 hidden -translate-x-full pr-4 opacity-0 transition-opacity group-hover:opacity-100 lg:block`}
-              >
+              <div className="absolute top-0 -left-4 hidden -translate-x-full pr-4 opacity-0 transition-opacity group-hover:opacity-100 lg:block">
                 <div
                   className={`rounded-lg border px-3 py-1.5 text-[10px] font-black tracking-widest uppercase shadow-lg backdrop-blur-md ${section.color}`}
                 >
@@ -81,17 +79,13 @@ export function EmailVisualFrame({
               {/* Text Block */}
               <div
                 className={`relative rounded-xl border border-solid p-4 transition-all hover:bg-white/5 ${
-                  section.color === "text-amber-400"
-                    ? "border-amber-400/30"
-                    : section.color === "text-blue-400"
-                      ? "border-blue-400/30"
-                      : section.color === "text-purple-400"
-                        ? "border-purple-400/30"
-                        : section.color === "text-emerald-400"
-                          ? "border-emerald-400/30"
-                          : section.color === "text-pink-400"
-                            ? "border-pink-400/30"
-                            : "border-white/20"
+                  section.color === "text-amber-400" ? "border-amber-400/30"
+                  : section.color === "text-blue-400" ? "border-blue-400/30"
+                  : section.color === "text-purple-400" ? "border-purple-400/30"
+                  : section.color === "text-emerald-400" ?
+                    "border-emerald-400/30"
+                  : section.color === "text-pink-400" ? "border-pink-400/30"
+                  : "border-white/20"
                 }`}
               >
                 <div className="mb-1 flex items-center justify-between">

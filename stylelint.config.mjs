@@ -44,6 +44,17 @@ const config = {
     "selector-max-compound-selectors": 4,
     "selector-no-vendor-prefix": true,
 
+    /* ─── Performance & best practices ───────────────────────────────────── */
+    "declaration-block-single-line-max-declarations": 1,
+    "max-nesting-depth": [3, { ignoreAtRules: ["media", "supports", "layer"] }],
+    "selector-max-specificity": "0,4,0",
+    "number-max-precision": 4,
+    "comment-no-empty": true,
+    "rule-empty-line-before": [
+      "always-multi-line",
+      { except: ["first-nested"], ignore: ["after-comment"] },
+    ],
+
     /* ─── Code quality ───────────────────────────────────────────────────── */
     "declaration-no-important": [true, { severity: "warning" }],
     "media-feature-range-notation": "context",

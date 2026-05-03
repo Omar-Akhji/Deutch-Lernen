@@ -92,11 +92,11 @@ export function CardModal({
         {/* Header Content */}
         <div className="shrink-0 border-be-2 border-gray-400/30 px-4 pbs-4 pbe-4 sm:px-6 sm:pbs-6 sm:pbe-6">
           <div className="mbe-3 flex items-center gap-2">
-            {subtitle && (
+            {subtitle ?
               <span className="rounded-full border border-yellow/30 bg-yellow/20 px-3 pbs-1 pbe-1 text-xs font-bold text-yellow">
                 {subtitle}
               </span>
-            )}
+            : null}
             <span className="text-xs font-medium text-mist-500">
               • Deutsch A1
             </span>
@@ -107,14 +107,14 @@ export function CardModal({
           >
             {title}
           </h2>
-          {description && (
+          {description ?
             <p className="mbs-2 text-sm text-mist-500">{description}</p>
-          )}
+          : null}
         </div>
 
         {/* Scrollable Content */}
         <div className="modal-scroll flex-1 space-y-3 overflow-y-auto px-4 pbs-4 pbe-4 sm:space-y-4 sm:px-6 sm:pbs-6 sm:pbe-6">
-          {previewTitles.length > 0 ? (
+          {previewTitles.length > 0 ?
             previewTitles.map((previewTitle, index) => (
               <div
                 key={previewTitle}
@@ -130,11 +130,10 @@ export function CardModal({
                 </div>
               </div>
             ))
-          ) : (
-            <div className="rounded-xl border-2 border-gray-400/30 bg-mist-900/50 px-4 pbs-4 pbe-4 text-center text-mist-500">
+          : <div className="rounded-xl border-2 border-gray-400/30 bg-mist-900/50 px-4 pbs-4 pbe-4 text-center text-mist-500">
               Keine Vorschau verfügbar
             </div>
-          )}
+          }
         </div>
 
         {/* Footer Actions */}

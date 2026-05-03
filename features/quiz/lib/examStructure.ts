@@ -1,4 +1,4 @@
-import { Question } from "../model/types";
+import type { Question } from "../model/types";
 
 interface TeilDefinition {
   teil: number;
@@ -88,15 +88,26 @@ export function assignTeile(
   teile: TeilDefinition[],
 ): Question[] {
   const result: Question[] = [...questions];
-  let idx = 0;
+  let currentIdx = 0;
+
   for (const teil of teile) {
-    for (let i = 0; i < teil.count && idx < result.length; i++, idx++) {
-      const q = result[idx]!;
+    let assignedCount = 0;
+    let isFirstInTeil = true;
+
+    while (assignedCount < teil.count && currentIdx < result.length) {
+      const q = result[currentIdx]!;
       q.teil = teil.teil;
-      if (i === 0) {
+
+      if (isFirstInTeil) {
         q.teilTitle = teil.title;
         q.teilInstruction = teil.instruction;
+        isFirstInTeil = false;
       }
+
+      if (q.id !== 0) {
+        assignedCount++;
+      }
+      currentIdx++;
     }
   }
   return result;

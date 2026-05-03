@@ -34,7 +34,7 @@ export function CardSkeleton({
           <Skeleton className="mb-4 h-4 w-2/3 bg-white/5" />
 
           {/* Stats row if large variant */}
-          {variant === "large" && (
+          {variant === "large" ?
             <div className="mt-auto flex gap-8 border-t border-white/10 pt-4">
               <div className="flex flex-col gap-1">
                 <Skeleton className="h-7 w-12 bg-white/10" />
@@ -45,7 +45,7 @@ export function CardSkeleton({
                 <Skeleton className="h-3 w-16 bg-white/5" />
               </div>
             </div>
-          )}
+          : null}
         </div>
       </div>
     </article>
@@ -100,35 +100,40 @@ export function SectionHeaderSkeleton() {
  * Vocabulary Table Skeleton (3 columns)
  */
 export function TableSkeleton({
-  rows = 8,
-  columns = 3,
+  columns = 4,
+  rows = 5,
   noWrapper = false,
 }: {
-  rows?: number;
   columns?: number;
+  rows?: number;
   noWrapper?: boolean;
 }) {
+  const ROW_IDS = ["r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10"];
+  const COL_IDS = ["c1", "c2", "c3", "c4", "c5", "c6"];
+
   const content = (
     <div className="w-full border-collapse">
       {/* Header Row */}
       <div className="flex border-b border-white/10 px-2 py-2 @md:px-4 @md:py-3">
-        {Array.from({ length: columns }).map((_, i) => (
+        {COL_IDS.slice(0, columns).map((id) => (
           <Skeleton
-            key={i}
-            className={`h-4 flex-1 bg-white/10 ${i > 0 ? "ml-4" : ""}`}
+            key={id}
+            className="h-4 flex-1 bg-white/10"
+            style={{ marginLeft: id !== "c1" ? "1rem" : 0 }}
           />
         ))}
       </div>
       {/* Body Rows */}
-      {Array.from({ length: rows }).map((_, i) => (
+      {ROW_IDS.slice(0, rows).map((rowId) => (
         <div
-          key={i}
+          key={rowId}
           className="flex border-b border-white/5 px-2 py-3 @md:px-4 @md:py-4"
         >
-          {Array.from({ length: columns }).map((_, j) => (
+          {COL_IDS.slice(0, columns).map((colId) => (
             <Skeleton
-              key={j}
-              className={`h-6 flex-1 bg-white/5 ${j > 0 ? "ml-4" : ""}`}
+              key={`${rowId}-${colId}`}
+              className="h-6 flex-1 bg-white/5"
+              style={{ marginLeft: colId !== "c1" ? "1rem" : 0 }}
             />
           ))}
         </div>
@@ -155,8 +160,8 @@ export function SectionCardSkeleton() {
         <Skeleton className="h-8 w-48 bg-white/10" />
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <CardSkeleton key={i} />
+        {["sc1", "sc2", "sc3"].map((id) => (
+          <CardSkeleton key={id} />
         ))}
       </div>
     </div>

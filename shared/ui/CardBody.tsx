@@ -46,34 +46,36 @@ export const CardBody = ({
         </figure>
 
         <div className="flex flex-1 flex-col px-2 pt-5 pb-2">
-          {(category || badge) && (
+          {category || badge ?
             <div className="m-0 mbe-3 flex items-center gap-2 text-mist-500">
-              {category && (
+              {category ?
                 <span className="rounded-full border border-yellow/30 bg-yellow/20 px-3 py-1 font-bold text-yellow">
                   {category}
                 </span>
-              )}
-              {badge && (
+              : null}
+              {badge ?
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-mist-500">
                   {badge}
                 </span>
-              )}
-              {subtitle && <span className="font-medium">• {subtitle}</span>}
+              : null}
+              {subtitle ?
+                <span className="font-medium">• {subtitle}</span>
+              : null}
             </div>
-          )}
+          : null}
 
           <h3
             className={`m-0 mbe-2 ${variant === "large" ? "text-xl tablet:text-2xl" : "text-lg tablet:text-xl"} font-bold text-white transition-colors duration-300 text-shadow-sm group-hover:text-yellow`}
           >
             {title}
           </h3>
-          {description && (
+          {description ?
             <p className="m-0 mbe-4 text-xs leading-relaxed text-mist-500 tablet:text-sm">
               {description}
             </p>
-          )}
+          : null}
 
-          {stats && stats.length > 0 && (
+          {stats && stats.length > 0 ?
             <dl className="mbs-auto flex gap-8 border-bs border-(--glass-border) pbs-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col">
@@ -84,7 +86,7 @@ export const CardBody = ({
                 </div>
               ))}
             </dl>
-          )}
+          : null}
         </div>
       </div>
     </article>

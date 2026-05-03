@@ -32,9 +32,8 @@ export async function generateMetadata({ params }: PageProps) {
   const currentTopic = await getGrammarTopic(section, topicId);
 
   return {
-    title: currentTopic
-      ? `${currentTopic.title} - Grammatik`
-      : "Grammatik Thema",
+    title:
+      currentTopic ? `${currentTopic.title} - Grammatik` : "Grammatik Thema",
     description: currentTopic?.description || "Lerne deutsche Grammatik.",
   };
 }
@@ -83,24 +82,24 @@ export default async function GrammatikDetailPage({ params }: PageProps) {
         />
 
         {/* Main Table */}
-        {currentTopic.hasTable && currentTopic.tableData && (
+        {currentTopic.hasTable && currentTopic.tableData ?
           <section className="mb-16">
             <GrammarTable data={currentTopic.tableData} />
           </section>
-        )}
+        : null}
 
         {/* Main Content */}
-        {(currentTopic.content || currentTopic.usage) && (
+        {currentTopic.content || currentTopic.usage ?
           <section className="mb-16">
             <GrammarContentBlocks
               blocks={currentTopic.content || []}
               usage={currentTopic.usage}
             />
           </section>
-        )}
+        : null}
 
         {/* Subtopics */}
-        {currentTopic.subtopics && (
+        {currentTopic.subtopics ?
           <section className="mb-16">
             <h2 className="mb-12 flex items-center gap-3 text-xl font-bold text-text tablet:gap-4 tablet:text-2xl">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
@@ -135,32 +134,32 @@ export default async function GrammatikDetailPage({ params }: PageProps) {
                       {subtopic.description}
                     </p>
 
-                    {subtopic.hasTable && subtopic.tableData && (
+                    {subtopic.hasTable && subtopic.tableData ?
                       <div className="mb-12">
                         <GrammarTable data={subtopic.tableData} />
                       </div>
-                    )}
+                    : null}
 
-                    {(subtopic.content || subtopic.usage || subtopic.tips) && (
+                    {subtopic.content || subtopic.usage || subtopic.tips ?
                       <GrammarContentBlocks
                         blocks={subtopic.content || []}
                         usage={subtopic.usage}
                         tips={subtopic.tips}
                       />
-                    )}
+                    : null}
                   </div>
                 </article>
               ))}
             </div>
           </section>
-        )}
+        : null}
 
         {/* Topic-level Tips (at the bottom, after all subtopics) */}
-        {currentTopic.tips && (
+        {currentTopic.tips ?
           <section className="mb-16">
             <GrammarContentBlocks blocks={[]} tips={currentTopic.tips} />
           </section>
-        )}
+        : null}
       </main>
     </div>
   );

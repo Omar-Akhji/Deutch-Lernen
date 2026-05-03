@@ -2,6 +2,22 @@ import { Skeleton } from "@/shared/ui/Skeleton";
 import { SectionHeaderSkeleton } from "@/shared/ui/SkeletonLayouts";
 
 export default function ThemenLoading() {
+  const CATEGORIES = [
+    "cat-1",
+    "cat-2",
+    "cat-3",
+    "cat-4",
+    "cat-5",
+    "cat-6",
+    "cat-7",
+    "cat-8",
+    "cat-9",
+  ];
+  const SECTIONS = ["sec-1", "sec-2", "sec-3"];
+  const CARDS = ["card-1", "card-2", "card-3"];
+  const ITEMS = ["item-1", "item-2", "item-3"];
+  const TIPS = ["tip-1", "tip-2", "tip-3", "tip-4", "tip-5", "tip-6"];
+
   return (
     <main className="min-h-screen space-y-16 py-8">
       {/* Header — centered */}
@@ -15,23 +31,23 @@ export default function ThemenLoading() {
       {/* Category Navigation Bar */}
       <div className="rounded-2xl border border-white/5 bg-slate-950/50 px-4 py-4 shadow-xl backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-2">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <Skeleton key={i} className="h-10 w-32 rounded-full bg-white/5" />
+          {CATEGORIES.map((id) => (
+            <Skeleton key={id} className="h-10 w-32 rounded-full bg-white/5" />
           ))}
         </div>
       </div>
 
       {/* Content — Sections × Grid */}
       <div className="space-y-24">
-        {Array.from({ length: 3 }).map((_, sectionIdx) => (
-          <section key={sectionIdx}>
+        {SECTIONS.map((secId) => (
+          <section key={secId}>
             <SectionHeaderSkeleton />
 
             {/* Card grid — matches ThemaCard shape */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {Array.from({ length: 3 }).map((_, i) => (
+              {CARDS.map((cardId) => (
                 <div
-                  key={i}
+                  key={cardId}
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
                 >
                   {/* Category badge + title */}
@@ -46,8 +62,8 @@ export default function ThemenLoading() {
                   </div>
                   {/* Content list */}
                   <div className="space-y-3">
-                    {Array.from({ length: 3 }).map((_, j) => (
-                      <div key={j} className="flex gap-3">
+                    {ITEMS.map((itemId) => (
+                      <div key={`${cardId}-${itemId}`} className="flex gap-3">
                         <Skeleton className="mt-1 h-1.5 w-1.5 rounded-full bg-white/10" />
                         <Skeleton className="h-4 w-full bg-white/5" />
                       </div>
@@ -71,8 +87,8 @@ export default function ThemenLoading() {
           <Skeleton className="h-8 w-64 bg-white/10" />
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <Skeleton key={i} className="h-4 w-full bg-white/5" />
+          {TIPS.map((tipId) => (
+            <Skeleton key={tipId} className="h-4 w-full bg-white/5" />
           ))}
         </div>
       </div>

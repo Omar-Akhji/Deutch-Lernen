@@ -7,7 +7,7 @@ import {
   MessageCircle,
   BarChart,
   Puzzle,
-  LucideIcon,
+  type LucideIcon,
 } from "lucide-react";
 import { Hero } from "@/shared/ui/Hero";
 import { Card } from "@/shared/ui/Card";

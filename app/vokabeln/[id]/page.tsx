@@ -75,7 +75,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
         />
 
         {/* Sections & Topics Structure */}
-        {item.sections && item.sections.length > 0 ? (
+        {item.sections && item.sections.length > 0 ?
           <div className="grid gap-12">
             {item.sections.map((section, index) => (
               <AnimateOnScroll
@@ -100,7 +100,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                {section.topics.length > 0 ? (
+                {section.topics.length > 0 ?
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {section.topics.map((topic) => (
                       <Link
@@ -118,16 +118,14 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                       </Link>
                     ))}
                   </div>
-                ) : (
-                  <div className="rounded-xl border border-dashed border-(--glass-border) p-6 text-center text-text-muted">
+                : <div className="rounded-xl border border-dashed border-(--glass-border) p-6 text-center text-text-muted">
                     Noch keine Themen in diesem Bereich.
                   </div>
-                )}
+                }
               </AnimateOnScroll>
             ))}
           </div>
-        ) : (
-          /* Fallback for simple word lists */
+        : /* Fallback for simple word lists */
           <AnimateOnScroll as="section" animation="fade-up" className="mb-12">
             <h2 className="mb-8 flex items-center gap-4 text-[1.75rem] font-bold text-text">
               <span className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
@@ -136,7 +134,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
               Wortliste
             </h2>
 
-            {item.words && item.words.length > 0 ? (
+            {item.words && item.words.length > 0 ?
               <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {item.words.map((word) => (
                   <article
@@ -157,13 +155,12 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                   </article>
                 ))}
               </div>
-            ) : (
-              <div className="rounded-xl border border-dashed border-(--glass-border) p-8 text-center text-text-muted">
+            : <div className="rounded-xl border border-dashed border-(--glass-border) p-8 text-center text-text-muted">
                 <p>Noch keine Vokabeln eingetragen.</p>
               </div>
-            )}
+            }
           </AnimateOnScroll>
-        )}
+        }
       </main>
     </div>
   );

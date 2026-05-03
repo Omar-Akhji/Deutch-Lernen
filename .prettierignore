@@ -27,6 +27,10 @@ yarn.lock
 .vscode
 .gemini
 .agent
+.agents
+.claude
+.codex
+.cursor
 .testsprite
 .husky
 
@@ -53,3 +57,13 @@ coverage
 tmp
 *.txt
 *.log
+
+# ───────────────────────────────────────────
+# Project artifacts & docs
+# ───────────────────────────────────────────
+graphify-out
+scratch
+docs
+*.pdf
+*.png
+*.md

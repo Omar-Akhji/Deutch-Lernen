@@ -25,9 +25,9 @@ export default function QuizLoading() {
 
             {/* Exam info cards */}
             <div className="mb-8 grid grid-cols-2 gap-4">
-              {Array.from({ length: 2 }).map((_, i) => (
+              {["info-1", "info-2"].map((id) => (
                 <div
-                  key={i}
+                  key={id}
                   className="rounded-xl border border-white/10 bg-white/5 p-4"
                 >
                   <Skeleton className="mx-auto mb-2 h-8 w-12 bg-white/10" />

@@ -1,7 +1,7 @@
 import { cache } from "react";
 import { wait } from "@/shared/lib/wait";
 import { examLevels, redemittelData } from "./data";
-import { ExamLevel, RedemittelCategory } from "../model/types";
+import type { ExamLevel, RedemittelCategory } from "../model/types";
 
 export const getExamLevels = cache(async (): Promise<ExamLevel[]> => {
   await wait(800);

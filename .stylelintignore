@@ -1,4 +1,5 @@
 dist
 .next
 node_modules
-vite-project
+graphify-out
+scratch

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Question } from "../model/types";
+import type { Question } from "../model/types";
 
 export function useQuiz(questions: Question[]) {
   const [isStarted, setIsStarted] = useState(false);
@@ -12,9 +12,10 @@ export function useQuiz(questions: Question[]) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const currentQuestion = questions[currentQuestionIndex] ?? questions[0];
-  const progress = isFinished
-    ? 100
-    : (userAnswers.filter((a) => a !== null).length / questions.length) * 100;
+  const progress =
+    isFinished ? 100 : (
+      (userAnswers.filter((a) => a !== null).length / questions.length) * 100
+    );
 
   const score = userAnswers.reduce((acc, answer, index) => {
     if (answer === null) return acc;

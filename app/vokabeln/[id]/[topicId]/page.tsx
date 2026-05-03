@@ -1,8 +1,8 @@
 import {
   getVocabById,
   getVocabList,
-  VocabSection,
-  VocabTopic,
+  type VocabSection,
+  type VocabTopic,
   VocabularyTable,
   FamilyTree,
 } from "@/features/vocabulary";
@@ -82,7 +82,7 @@ export default async function TopicDetailPage({ params }: PageProps) {
           category={item.category}
         />
 
-        {isFamilyTree ? (
+        {isFamilyTree ?
           <>
             {/* Family Tree Section */}
             <AnimateOnScroll
@@ -103,12 +103,11 @@ export default async function TopicDetailPage({ params }: PageProps) {
               <VocabularyTable words={topic.words || []} />
             </AnimateOnScroll>
           </>
-        ) : topic.words && topic.words.length > 0 ? (
+        : topic.words && topic.words.length > 0 ?
           <AnimateOnScroll as="section" animation="fade-up" className="mt-8">
             <VocabularyTable words={topic.words} />
           </AnimateOnScroll>
-        ) : (
-          <AnimateOnScroll
+        : <AnimateOnScroll
             as="section"
             animation="fade-up"
             className="mt-8 rounded-3xl border border-(--glass-border) bg-card p-8 shadow-sm"
@@ -117,7 +116,7 @@ export default async function TopicDetailPage({ params }: PageProps) {
               <p>Noch keine Vokabeln für {topic.title} eingetragen.</p>
             </div>
           </AnimateOnScroll>
-        )}
+        }
       </main>
     </div>
   );

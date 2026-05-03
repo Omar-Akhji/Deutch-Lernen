@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Thema } from "../model/types";
+import type { Thema } from "../model/types";
 import { getCategoryClasses } from "../lib/categoryConfig";
 
 interface ThemaCardProps {
@@ -29,14 +29,14 @@ export function ThemaCard({ thema }: ThemaCardProps) {
       </div>
 
       <div className="mb-4 flex gap-1 rounded-full bg-black/20 p-1">
-        {!thema.isTextOnly && (
+        {!thema.isTextOnly ?
           <>
             <button
               onClick={() => setActiveTab("pro")}
               className={`flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-all tablet:text-sm ${
-                activeTab === "pro"
-                  ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
-                  : "text-slate-400 hover:bg-white/5 hover:text-white"
+                activeTab === "pro" ?
+                  "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
+                : "text-slate-400 hover:bg-white/5 hover:text-white"
               }`}
             >
               Vorteile
@@ -44,24 +44,24 @@ export function ThemaCard({ thema }: ThemaCardProps) {
             <button
               onClick={() => setActiveTab("con")}
               className={`flex-1 rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
-                activeTab === "con"
-                  ? "bg-red-500 text-white shadow-lg shadow-red-500/20"
-                  : "text-slate-400 hover:bg-white/5 hover:text-white"
+                activeTab === "con" ?
+                  "bg-red-500 text-white shadow-lg shadow-red-500/20"
+                : "text-slate-400 hover:bg-white/5 hover:text-white"
               }`}
             >
               Nachteile
             </button>
           </>
-        )}
-        {thema.isTextOnly && (
+        : null}
+        {thema.isTextOnly ?
           <button className="flex-1 rounded-full bg-amber-500 px-3 py-1.5 text-xs font-medium text-white tablet:text-sm">
             Mustertext
           </button>
-        )}
+        : null}
       </div>
 
       <div className="min-h-30 animate-in duration-300 fade-in slide-in-from-bottom-2">
-        {activeTab === "pro" && thema.pro && (
+        {activeTab === "pro" && thema.pro ?
           <ul className="space-y-3">
             {thema.pro.map((point) => (
               <li
@@ -73,8 +73,8 @@ export function ThemaCard({ thema }: ThemaCardProps) {
               </li>
             ))}
           </ul>
-        )}
-        {activeTab === "con" && thema.con && (
+        : null}
+        {activeTab === "con" && thema.con ?
           <ul className="space-y-3">
             {thema.con.map((point) => (
               <li
@@ -86,12 +86,12 @@ export function ThemaCard({ thema }: ThemaCardProps) {
               </li>
             ))}
           </ul>
-        )}
-        {(activeTab === "text" || thema.isTextOnly) && thema.text && (
+        : null}
+        {(activeTab === "text" || thema.isTextOnly) && thema.text ?
           <p className="border-l-2 border-amber-500/30 py-1 pl-4 text-xs leading-relaxed text-slate-300 italic tablet:text-sm">
             &quot;{thema.text}&quot;
           </p>
-        )}
+        : null}
       </div>
 
       <div className="mbs-6 flex justify-end border-bs border-white/5 pbs-4 opacity-0 transition-opacity group-hover:opacity-100">

@@ -18,13 +18,13 @@ export default function ModelTestsLoading() {
 
         {/* Skill sections */}
         <div className="grid gap-12">
-          {Array.from({ length: 4 }).map((_, sectionIndex) => (
-            <section key={sectionIndex}>
+          {["sk-1", "sk-2", "sk-3", "sk-4"].map((secId) => (
+            <section key={secId}>
               <SectionHeaderSkeleton />
 
               <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
-                {Array.from({ length: 3 }).map((_, i) => (
-                  <CardSkeleton key={i} />
+                {["c1", "c2", "c3"].map((cardId) => (
+                  <CardSkeleton key={cardId} />
                 ))}
               </div>
             </section>

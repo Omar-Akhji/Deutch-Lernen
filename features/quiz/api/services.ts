@@ -1,6 +1,6 @@
 import { wait } from "@/shared/lib/wait";
 import { quizQuestions } from "./data";
-import { Question } from "../model/types";
+import type { Question } from "../model/types";
 
 export const getQuestions = async (
   level: string,

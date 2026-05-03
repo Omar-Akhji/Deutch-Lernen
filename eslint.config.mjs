@@ -9,8 +9,47 @@ const eslintConfig = defineConfig([
   ...fixupConfigRules(nextVitals),
   ...fixupConfigRules(nextTs),
 
-  // Prettier — runs as an ESLint rule
-  // flags unformatted code as ESLint errors
+  // ─── Custom quality rules ────────────────────────────
+  {
+    rules: {
+      /* ── TypeScript strictness ────────────────────── */
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
+      "@typescript-eslint/consistent-type-imports": [
+        "warn",
+        { prefer: "type-imports", fixStyle: "inline-type-imports" },
+      ],
+      "@typescript-eslint/no-import-type-side-effects": "error",
+
+      /* ── React best practices ─────────────────────── */
+      "react/jsx-no-leaked-render": [
+        "warn",
+        { validStrategies: ["ternary", "coerce"] },
+      ],
+      "react/self-closing-comp": "error",
+      "react/jsx-curly-brace-presence": [
+        "warn",
+        { props: "never", children: "never" },
+      ],
+      "react/jsx-boolean-value": ["warn", "never"],
+      "react/jsx-no-useless-fragment": ["warn", { allowExpressions: true }],
+      "react/no-array-index-key": "warn",
+
+      /* ── General quality ──────────────────────────── */
+      "no-console": ["warn", { allow: ["warn", "error"] }],
+      "prefer-const": "error",
+      "no-var": "error",
+      eqeqeq: ["error", "always", { null: "ignore" }],
+      "no-nested-ternary": "off",
+    },
+  },
+
   {
     plugins: {
       prettier: prettierPlugin,
@@ -25,13 +64,17 @@ const eslintConfig = defineConfig([
   // with Prettier (quotes, semi, indent...)
   prettierConfig,
 
-  // Override default ignores of eslint-config-next.
+  // Global ignores
   globalIgnores([
-    // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "graphify-out/**",
+    "scratch/**",
+    "docs/**",
+    ".gemini/**",
+    "*.md",
   ]),
 ]);
 

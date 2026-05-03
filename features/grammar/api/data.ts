@@ -1,4 +1,4 @@
-import { GrammarSection, GrammarTopic } from "../model/types";
+import type { GrammarSection, GrammarTopic } from "../model/types";
 
 // Verben Section
 const verbenGradients = [

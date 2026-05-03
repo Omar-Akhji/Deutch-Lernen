@@ -1,4 +1,4 @@
-import { VocabItem } from "../model/types";
+import type { VocabItem } from "../model/types";
 
 export const vocabList: VocabItem[] = [
   {

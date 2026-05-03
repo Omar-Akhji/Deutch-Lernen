@@ -1,4 +1,4 @@
-import { Thema } from "../model/types";
+import type { Thema } from "../model/types";
 
 export const themenData: Thema[] = [
   {

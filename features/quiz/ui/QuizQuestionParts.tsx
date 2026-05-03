@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { Question } from "../model/types";
+import type { Question } from "../model/types";
 
 interface TeilHeaderProps {
   teil: number | undefined;
@@ -22,11 +22,11 @@ export function TeilHeader({
           {teilTitle || "Modul Lesen"}
         </h2>
       </div>
-      {teilInstruction && (
+      {teilInstruction ?
         <p className="mt-1 text-xs leading-tight font-medium text-white/40 italic">
           {teilInstruction}
         </p>
-      )}
+      : null}
     </header>
   );
 }
@@ -96,7 +96,7 @@ export function ContextCard({
         <p className="mb-4 font-serif text-xs leading-relaxed whitespace-pre-line text-white/80 tablet:text-sm">
           {context}
         </p>
-        {question.audioUrl && (
+        {question.audioUrl ?
           <div className="flex justify-center">
             <audio
               controls
@@ -106,7 +106,7 @@ export function ContextCard({
               Your browser does not support the audio element.
             </audio>
           </div>
-        )}
+        : null}
       </div>
     </div>
   );
@@ -152,9 +152,9 @@ export function AnswerOptions({
                 key={option}
                 onClick={() => onAnswer(option)}
                 className={`${isTableRow ? "min-w-16 py-1.5 text-[9px]" : "min-w-17.5 py-2 text-[10px]"} rounded-full border font-bold tracking-tighter uppercase transition-all ${
-                  isSelected
-                    ? "border-yellow bg-linear-to-br from-yellow to-orange text-black shadow-lg shadow-yellow/20"
-                    : "border-white/10 bg-white/5 text-white/40 hover:border-white/30 hover:bg-white/10"
+                  isSelected ?
+                    "border-yellow bg-linear-to-br from-yellow to-orange text-black shadow-lg shadow-yellow/20"
+                  : "border-white/10 bg-white/5 text-white/40 hover:border-white/30 hover:bg-white/10"
                 }`}
               >
                 {option}
@@ -185,9 +185,9 @@ export function AnswerOptions({
                 key={option}
                 onClick={() => onAnswer(option)}
                 className={`flex h-10 items-center justify-center text-xs font-black transition-all ${
-                  isSelected
-                    ? "bg-linear-to-br from-yellow to-orange text-black shadow-inner"
-                    : "bg-slate-950/80 text-white/30 hover:bg-slate-800 hover:text-white/80"
+                  isSelected ?
+                    "bg-linear-to-br from-yellow to-orange text-black shadow-inner"
+                  : "bg-slate-950/80 text-white/30 hover:bg-slate-800 hover:text-white/80"
                 }`}
               >
                 {option}
@@ -217,9 +217,9 @@ export function AnswerOptions({
               key={option}
               onClick={() => onAnswer(option)}
               className={`group flex items-center rounded-lg border p-3 text-left transition-all ${
-                isSelected
-                  ? "border-yellow/40 bg-linear-to-br from-yellow/10 to-orange/10 text-yellow shadow-md"
-                  : "border-white/10 bg-white/5 text-white/70 hover:border-white/30 hover:bg-white/10"
+                isSelected ?
+                  "border-yellow/40 bg-linear-to-br from-yellow/10 to-orange/10 text-yellow shadow-md"
+                : "border-white/10 bg-white/5 text-white/70 hover:border-white/30 hover:bg-white/10"
               }`}
             >
               <span
@@ -258,7 +258,7 @@ export function AdDetailDialog({
         if (e.key === "Escape") onClose();
       }}
     >
-      {selectedAd && (
+      {selectedAd ?
         <div className="relative p-6 md:p-8">
           <button
             className="absolute top-4 right-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-white/10 bg-slate-900 text-white/40 transition-colors hover:text-yellow"
@@ -290,7 +290,7 @@ export function AdDetailDialog({
 
           <div className="pointer-events-none absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/felt.png')] opacity-[0.03]" />
         </div>
-      )}
+      : null}
     </dialog>
   );
 }

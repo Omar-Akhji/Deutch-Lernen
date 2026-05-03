@@ -1,4 +1,4 @@
-import { Question } from "../model/types";
+import type { Question } from "../model/types";
 
 // ─── MODELLTEST 4 ────────────────────────────────────────────────────────────
 const lesen4Teil1: Question[] = [

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { ThemenSection } from "@/features/themen/ui/ThemenSection";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { getThemen } from "@/features/themen/api/services";

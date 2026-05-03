@@ -1,7 +1,7 @@
 "use client";
 
-import { ExamLevel, RedemittelCategory } from "../model/types";
-import { Thema } from "@/features/themen/model/types";
+import type { ExamLevel, RedemittelCategory } from "../model/types";
+import type { Thema } from "@/features/themen/model/types";
 import { Hero } from "@/shared/ui/Hero";
 import { Clock, CheckCircle2 } from "lucide-react";
 import { ThemenSection } from "@/features/themen/ui/ThemenSection";
@@ -88,9 +88,9 @@ export function ModuleStudyView({
                         {part.taskType}
                       </h2>
                     </div>
-                    {part.description && (
+                    {part.description ?
                       <p className="text-slate-400">{part.description}</p>
-                    )}
+                    : null}
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-300 backdrop-blur-sm">
@@ -165,97 +165,103 @@ export function ModuleStudyView({
                             <div className="mt-8">
                               <EmailVisualFrame
                                 type={
-                                  part.taskType
-                                    .toLowerCase()
-                                    .includes("informell")
-                                    ? "informal"
-                                    : "formal"
+                                  (
+                                    part.taskType
+                                      .toLowerCase()
+                                      .includes("informell")
+                                  ) ?
+                                    "informal"
+                                  : "formal"
                                 }
                                 recipient={
-                                  part.taskType
-                                    .toLowerCase()
-                                    .includes("informell")
-                                    ? "Jan (Freund)"
-                                    : "Frau Müller (Vermieterin)"
+                                  (
+                                    part.taskType
+                                      .toLowerCase()
+                                      .includes("informell")
+                                  ) ?
+                                    "Jan (Freund)"
+                                  : "Frau Müller (Vermieterin)"
                                 }
                                 subject={
-                                  part.taskType
-                                    .toLowerCase()
-                                    .includes("informell")
-                                    ? "Unser Treffen am Wochenende"
-                                    : "Wichtige Nachricht bezüglich meiner Wohnung"
+                                  (
+                                    part.taskType
+                                      .toLowerCase()
+                                      .includes("informell")
+                                  ) ?
+                                    "Unser Treffen am Wochenende"
+                                  : "Wichtige Nachricht bezüglich meiner Wohnung"
                                 }
                                 sections={
-                                  part.taskType
-                                    .toLowerCase()
-                                    .includes("informell")
-                                    ? [
-                                        {
-                                          label: "Anrede",
-                                          text: "Lieber Jan,",
-                                          description: "Vorname + Komma",
-                                          color: "text-amber-400",
-                                        },
-                                        {
-                                          label: "Einleitung",
-                                          text: "wie geht es dir? Ich hoffe, bei dir ist alles okay.",
-                                          description:
-                                            "Kleingeschrieben nach Komma",
-                                          color: "text-blue-400",
-                                        },
-                                        {
-                                          label: "Hauptteil",
-                                          text: "Ich schreibe dir, weil ich unser Treffen am Samstag leider verschieben muss...",
-                                          description: "Grund des Schreibens",
-                                          color: "text-purple-400",
-                                        },
-                                        {
-                                          label: "Schluss",
-                                          text: "Hast du vielleicht am Sonntag Zeit? Melde dich bitte bald!",
-                                          description: "Vorschlag/Frage",
-                                          color: "text-emerald-400",
-                                        },
-                                        {
-                                          label: "Grußformel",
-                                          text: "Viele Grüße,\nOmar",
-                                          description:
-                                            "Kein Satzzeichen am Ende",
-                                          color: "text-pink-400",
-                                        },
-                                      ]
-                                    : [
-                                        {
-                                          label: "Anrede",
-                                          text: "Sehr geehrte Frau Müller,",
-                                          description: "Nachname + Komma",
-                                          color: "text-amber-400",
-                                        },
-                                        {
-                                          label: "Einleitung",
-                                          text: "ich schreibe Ihnen, da es in meiner Wohnung ein Problem gibt.",
-                                          description: "Höfliche Einleitung",
-                                          color: "text-blue-400",
-                                        },
-                                        {
-                                          label: "Hauptteil",
-                                          text: "Seit zwei Tagen funktioniert die Heizung im Wohnzimmer nicht mehr...",
-                                          description: "Sachliche Beschreibung",
-                                          color: "text-purple-400",
-                                        },
-                                        {
-                                          label: "Schluss",
-                                          text: "Ich wäre Ihnen dankbar, wenn Sie bald einen Handwerker schicken könnten.",
-                                          description:
-                                            "Bitte um Antwort/Aktion",
-                                          color: "text-emerald-400",
-                                        },
-                                        {
-                                          label: "Grußformel",
-                                          text: "Mit freundlichen Grüßen,\nOmar Akhji",
-                                          description: "Formeller Abschluss",
-                                          color: "text-pink-400",
-                                        },
-                                      ]
+                                  (
+                                    part.taskType
+                                      .toLowerCase()
+                                      .includes("informell")
+                                  ) ?
+                                    [
+                                      {
+                                        label: "Anrede",
+                                        text: "Lieber Jan,",
+                                        description: "Vorname + Komma",
+                                        color: "text-amber-400",
+                                      },
+                                      {
+                                        label: "Einleitung",
+                                        text: "wie geht es dir? Ich hoffe, bei dir ist alles okay.",
+                                        description:
+                                          "Kleingeschrieben nach Komma",
+                                        color: "text-blue-400",
+                                      },
+                                      {
+                                        label: "Hauptteil",
+                                        text: "Ich schreibe dir, weil ich unser Treffen am Samstag leider verschieben muss...",
+                                        description: "Grund des Schreibens",
+                                        color: "text-purple-400",
+                                      },
+                                      {
+                                        label: "Schluss",
+                                        text: "Hast du vielleicht am Sonntag Zeit? Melde dich bitte bald!",
+                                        description: "Vorschlag/Frage",
+                                        color: "text-emerald-400",
+                                      },
+                                      {
+                                        label: "Grußformel",
+                                        text: "Viele Grüße,\nOmar",
+                                        description: "Kein Satzzeichen am Ende",
+                                        color: "text-pink-400",
+                                      },
+                                    ]
+                                  : [
+                                      {
+                                        label: "Anrede",
+                                        text: "Sehr geehrte Frau Müller,",
+                                        description: "Nachname + Komma",
+                                        color: "text-amber-400",
+                                      },
+                                      {
+                                        label: "Einleitung",
+                                        text: "ich schreibe Ihnen, da es in meiner Wohnung ein Problem gibt.",
+                                        description: "Höfliche Einleitung",
+                                        color: "text-blue-400",
+                                      },
+                                      {
+                                        label: "Hauptteil",
+                                        text: "Seit zwei Tagen funktioniert die Heizung im Wohnzimmer nicht mehr...",
+                                        description: "Sachliche Beschreibung",
+                                        color: "text-purple-400",
+                                      },
+                                      {
+                                        label: "Schluss",
+                                        text: "Ich wäre Ihnen dankbar, wenn Sie bald einen Handwerker schicken könnten.",
+                                        description: "Bitte um Antwort/Aktion",
+                                        color: "text-emerald-400",
+                                      },
+                                      {
+                                        label: "Grußformel",
+                                        text: "Mit freundlichen Grüßen,\nOmar Akhji",
+                                        description: "Formeller Abschluss",
+                                        color: "text-pink-400",
+                                      },
+                                    ]
                                 }
                               />
                             </div>

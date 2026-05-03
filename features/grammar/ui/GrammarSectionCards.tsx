@@ -9,7 +9,7 @@ import {
   LayoutList,
   Clock,
   MessageCircle,
-  LucideIcon,
+  type LucideIcon,
 } from "lucide-react";
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -45,9 +45,9 @@ export const GrammarSectionCards = async ({
             className="flex size-10 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12"
             aria-hidden="true"
           >
-            {IconComponent ? (
+            {IconComponent ?
               <IconComponent className="size-5 tablet:size-6" strokeWidth={2} />
-            ) : null}
+            : null}
           </span>
           {section.title}
         </h2>

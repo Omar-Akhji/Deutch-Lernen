@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { AnimateOnScroll } from "./AnimateOnScroll";
 
 interface HeroProps {
@@ -28,20 +28,20 @@ export function Hero({
         <div
           className={`mbe-4 flex flex-wrap items-center gap-3 ${!gradient ? "justify-center" : ""}`}
         >
-          {category && (
+          {category ?
             <span
               className={`inline-block rounded-full px-6 py-2 font-bold ${gradient ? "bg-black/20 text-xs text-white tablet:text-sm" : "bg-linear-to-br from-yellow to-orange text-lg text-black shadow-lg shadow-yellow/20 tablet:text-xl"}`}
             >
               {category}
             </span>
-          )}
-          {badge && (
+          : null}
+          {badge ?
             <span
               className={`inline-block rounded-lg px-3 py-1.5 text-xs font-bold shadow-sm tablet:text-sm ${gradient ? "bg-white/20 text-white" : "bg-mist-900/50 text-mist-500"}`}
             >
               {badge}
             </span>
-          )}
+          : null}
         </div>
       </AnimateOnScroll>
 
@@ -61,33 +61,33 @@ export function Hero({
         </p>
       </AnimateOnScroll>
 
-      {example && (
+      {example ?
         <AnimateOnScroll animation="fade-in" delay={500}>
           <p className="mbs-4 text-base text-white/80">
             <em>{example}</em>
           </p>
         </AnimateOnScroll>
-      )}
+      : null}
 
-      {stats && (
+      {stats ?
         <AnimateOnScroll animation="fade-up" delay={700}>
           <dl className="mbs-8 flex flex-wrap justify-center gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="flex items-center gap-2">
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="m-0 flex items-center gap-2 text-sm text-mist-500 tablet:text-lg">
-                  {stat.icon && (
+                  {stat.icon ?
                     <span className="flex size-5 items-center justify-center tablet:size-6">
                       {stat.icon}
                     </span>
-                  )}
+                  : null}
                   {stat.value}
                 </dd>
               </div>
             ))}
           </dl>
         </AnimateOnScroll>
-      )}
+      : null}
     </div>
   );
 
@@ -97,14 +97,14 @@ export function Hero({
       duration={1000}
       className="relative mbe-12 overflow-hidden rounded-3xl p-8 shadow-2xl md:p-12"
       style={{
-        ...(gradient && variant !== "glass"
-          ? { background: gradient }
-          : {
-              background: "var(--color-card)",
-              borderColor: "var(--glass-border)",
-              borderWidth: "1px",
-              borderStyle: "solid",
-            }),
+        ...(gradient && variant !== "glass" ?
+          { background: gradient }
+        : {
+            background: "var(--color-card)",
+            borderColor: "var(--glass-border)",
+            borderWidth: "1px",
+            borderStyle: "solid",
+          }),
       }}
     >
       {Content}

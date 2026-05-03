@@ -2,6 +2,17 @@ import { HeroSkeleton } from "@/shared/ui/SkeletonLayouts";
 import { Skeleton } from "@/shared/ui/Skeleton";
 
 export default function ModuleStudyLoading() {
+  const PARTS = ["part-1", "part-2", "part-3"];
+  const STEPS = ["step-1", "step-2", "step-3", "step-4"];
+  const TOPICS = [
+    "topic-1",
+    "topic-2",
+    "topic-3",
+    "topic-4",
+    "topic-5",
+    "topic-6",
+  ];
+
   return (
     <div className="relative min-h-screen py-8">
       <main className="space-y-12 pb-20">
@@ -9,8 +20,8 @@ export default function ModuleStudyLoading() {
 
         <div className="space-y-16">
           {/* Exam Parts */}
-          {Array.from({ length: 3 }).map((_, partIdx) => (
-            <section key={partIdx} className="space-y-8">
+          {PARTS.map((partId) => (
+            <section key={partId} className="space-y-8">
               {/* Part Header */}
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div className="space-y-2">
@@ -29,9 +40,9 @@ export default function ModuleStudyLoading() {
                   <Skeleton className="h-6 w-48 bg-white/10" />
                 </div>
                 <div className="divide-y divide-white/10">
-                  {Array.from({ length: 4 }).map((_, i) => (
+                  {STEPS.map((stepId) => (
                     <div
-                      key={i}
+                      key={stepId}
                       className="flex items-center justify-between px-6 py-5"
                     >
                       <div className="flex items-center gap-4">
@@ -54,9 +65,9 @@ export default function ModuleStudyLoading() {
             </div>
             {/* ThemenSection Skeleton Grid */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {Array.from({ length: 6 }).map((_, i) => (
+              {TOPICS.map((topicId) => (
                 <div
-                  key={i}
+                  key={topicId}
                   className="h-48 rounded-2xl border border-white/10 bg-white/5 shadow-md"
                 />
               ))}
