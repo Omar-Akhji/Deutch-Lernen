@@ -25,7 +25,7 @@ export function CardModal({
   previewTitles = EMPTY_ARRAY,
 }: CardModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const router = useRouter();
+  const { push } = useRouter();
 
   // Side Effect: Sync dialog state and manage body scroll lock (Outside the room)
   useEffect(() => {
@@ -46,7 +46,7 @@ export function CardModal({
 
   const handleNavigate = () => {
     onClose();
-    router.push(href);
+    push(href);
   };
 
   const handleBackdropClick = (e: ReactMouseEvent<HTMLDialogElement>) => {

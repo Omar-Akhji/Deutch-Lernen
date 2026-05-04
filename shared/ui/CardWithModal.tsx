@@ -27,7 +27,7 @@ export const CardWithModal = ({
 }: CardWithModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleOpenModal = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsModalOpen(true);
   };
@@ -36,7 +36,7 @@ export const CardWithModal = ({
     <>
       <button
         type="button"
-        onClick={handleClick}
+        onClick={handleOpenModal}
         className="h-full w-full cursor-pointer border-none bg-transparent p-0 text-left"
         aria-label={`${bodyProps.title} öffnen`}
       >

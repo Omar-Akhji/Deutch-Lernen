@@ -22,7 +22,7 @@ export default function QuizView({
   testId,
   initialQuestions,
 }: QuizViewProps) {
-  const router = useRouter();
+  const { push } = useRouter();
   const questions = initialQuestions;
 
   const {
@@ -38,7 +38,7 @@ export default function QuizView({
   } = useQuiz(questions);
 
   const goBack = () => {
-    router.push(`/pruefung/${level}/modelltests`);
+    push(`/pruefung/${level}/modelltests`);
   };
 
   const skillTitle =
