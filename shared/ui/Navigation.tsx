@@ -13,8 +13,7 @@ export function Navigation() {
   const indicatorRef = useRef<HTMLDivElement>(null);
 
   const isActive = (path: string) => {
-    if (path === "/vokabeln" && (pathname === "/vokabeln" || pathname === "/"))
-      return true;
+    if (path === "/vokabeln") return pathname === "/vokabeln";
     return pathname.startsWith(path) && path !== "/";
   };
 
