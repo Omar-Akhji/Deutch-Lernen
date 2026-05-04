@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type { Thema } from "../model/types";
 import { getCategoryClasses } from "../lib/categoryConfig";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface ThemaCardProps {
   thema: Thema;
@@ -11,6 +13,58 @@ interface ThemaCardProps {
 export function ThemaCard({ thema }: ThemaCardProps) {
   const [activeTab, setActiveTab] = useState<"pro" | "con" | "text">(
     thema.isTextOnly ? "text" : "pro",
+  );
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const indicatorRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (thema.isTextOnly) return;
+
+      const activeBtn = tabsRef.current?.querySelector(
+        `button[data-active="true"]`,
+      ) as HTMLElement;
+
+      if (activeBtn && indicatorRef.current) {
+        gsap.to(indicatorRef.current, {
+          x: activeBtn.offsetLeft,
+          width: activeBtn.offsetWidth,
+          backgroundColor: activeTab === "pro" ? "#10b981" : "#ef4444", // emerald-500, red-500
+          duration: 0.4,
+          ease: "power2.out",
+          opacity: 1,
+        });
+      }
+
+      // Staggered animation for content list items
+      if (contentRef.current) {
+        const listItems = contentRef.current.querySelectorAll("li");
+
+        if (listItems.length > 0) {
+          gsap.fromTo(
+            listItems,
+            { opacity: 0, x: -15 },
+            {
+              opacity: 1,
+              x: 0,
+              stagger: 0.1,
+              duration: 0.4,
+              ease: "power2.out",
+              clearProps: "all",
+            },
+          );
+        } else {
+          // Fallback for text-only content
+          gsap.fromTo(
+            contentRef.current,
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+          );
+        }
+      }
+    },
+    { dependencies: [activeTab], scope: tabsRef },
   );
 
   return (
@@ -28,25 +82,37 @@ export function ThemaCard({ thema }: ThemaCardProps) {
         </div>
       </div>
 
-      <div className="mb-4 flex gap-1 rounded-full bg-black/20 p-1">
+      <div
+        ref={tabsRef}
+        className="relative mb-4 flex gap-1 rounded-full bg-black/20 p-1"
+      >
         {!thema.isTextOnly ?
           <>
+            {/* Sliding Indicator */}
+            <div
+              ref={indicatorRef}
+              className="absolute inset-y-1 left-0 z-0 rounded-full opacity-0 shadow-lg"
+              style={{ pointerEvents: "none" }}
+            />
+
             <button
               onClick={() => setActiveTab("pro")}
-              className={`flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-all tablet:text-sm ${
-                activeTab === "pro" ?
-                  "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
-                : "text-slate-400 hover:bg-white/5 hover:text-white"
+              data-active={activeTab === "pro"}
+              className={`relative z-10 flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-300 tablet:text-sm ${
+                activeTab === "pro" ? "text-white" : (
+                  "text-slate-400 hover:text-white"
+                )
               }`}
             >
               Vorteile
             </button>
             <button
               onClick={() => setActiveTab("con")}
-              className={`flex-1 rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
-                activeTab === "con" ?
-                  "bg-red-500 text-white shadow-lg shadow-red-500/20"
-                : "text-slate-400 hover:bg-white/5 hover:text-white"
+              data-active={activeTab === "con"}
+              className={`relative z-10 flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-300 tablet:text-sm ${
+                activeTab === "con" ? "text-white" : (
+                  "text-slate-400 hover:text-white"
+                )
               }`}
             >
               Nachteile
@@ -60,7 +126,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
         : null}
       </div>
 
-      <div className="min-h-30 animate-in duration-300 fade-in slide-in-from-bottom-2">
+      <div ref={contentRef} className="min-h-30">
         {activeTab === "pro" && thema.pro ?
           <ul className="space-y-3">
             {thema.pro.map((point) => (

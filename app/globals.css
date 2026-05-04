@@ -12,7 +12,6 @@
   --color-text: oklch(100% 0 0deg);
   --color-text-muted: oklch(100% 0 0deg / 60%);
   --glass-border: oklch(100% 0 0deg / 10%);
-  --glass-shadow: 0 8px 32px 0 oklch(0% 0 0deg / 37%);
   --glass-blur: 12px;
 
   /* User Defined Breakpoints */
@@ -201,10 +200,6 @@
   margin-inline: auto;
 }
 
-.header {
-  margin-bottom: 3rem;
-  text-align: center;
-}
 
 .site-footer {
   padding-block: 2rem;
@@ -264,54 +259,6 @@
   --ring: oklch(55.6% 0 0deg);
 }
 
-/* Entrance Animations */
-@keyframes fade-up {
-  from {
-    opacity: 0%;
-    transform: translateY(3rem);
-  }
-
-  to {
-    opacity: 100%;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoom-in {
-  from {
-    opacity: 0%;
-    transform: scale(0.95);
-  }
-
-  to {
-    opacity: 100%;
-    transform: scale(1);
-  }
-}
-
-@keyframes fade-left {
-  from {
-    opacity: 0%;
-    transform: translateX(3rem);
-  }
-
-  to {
-    opacity: 100%;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade-right {
-  from {
-    opacity: 0%;
-    transform: translateX(-3rem);
-  }
-
-  to {
-    opacity: 100%;
-    transform: translateX(0);
-  }
-}
 
 /* ============================================================================
    REDUCED MOTION — WCAG 2.3.3
