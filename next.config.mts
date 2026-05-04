@@ -6,7 +6,12 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   experimental: {
     viewTransition: true,
-    optimizePackageImports: ["lucide-react", "lucide-react-native"],
+    optimizePackageImports: [
+      "lucide-react",
+      "lucide-react-native",
+      "gsap",
+      "@gsap/react",
+    ],
     staleTimes: {
       dynamic: 30,
       static: 180,
