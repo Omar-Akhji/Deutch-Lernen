@@ -128,12 +128,10 @@ export function ModuleStudyView({
                           </h3>
                         </div>
                         <div className="divide-y divide-white/10">
-                          {groups
-                            .flatMap((group) => {
-                              if (
-                                group.phrases.some((p) => typeof p !== "string")
-                              ) {
-                                return group.phrases.flatMap((p) => {
+                          {groups.flatMap((group) => {
+                            const processedGroups =
+                              group.phrases.some((p) => typeof p !== "string") ?
+                                group.phrases.flatMap((p) => {
                                   if (typeof p === "string") return [];
                                   return [
                                     {
@@ -141,17 +139,17 @@ export function ModuleStudyView({
                                       label: `${group.label}: ${p.label}`,
                                     },
                                   ];
-                                });
-                              }
-                              return [group];
-                            })
-                            .map((group) => (
+                                })
+                              : [group];
+
+                            return processedGroups.map((processedGroup) => (
                               <PhraseGroupCard
-                                key={group.label}
-                                group={group}
+                                key={processedGroup.label}
+                                group={processedGroup}
                                 isChecklistItem
                               />
-                            ))}
+                            ));
+                          })}
                         </div>
                       </div>
 

@@ -17,13 +17,14 @@ export const FamilyTree = ({ members }: FamilyTreeProps) => {
   const groupIntoCouples = (levelMembers: FamilyMember[]) => {
     const visited = new Set<string>();
     const groups: (FamilyMember | [FamilyMember, FamilyMember])[] = [];
+    const membersMap = new Map(levelMembers.map((m) => [m.id, m]));
 
     for (const member of levelMembers) {
       if (visited.has(member.id)) continue;
       visited.add(member.id);
 
       if (member.partnerId) {
-        const partner = levelMembers.find((m) => m.id === member.partnerId);
+        const partner = membersMap.get(member.partnerId);
         if (partner && !visited.has(partner.id)) {
           visited.add(partner.id);
           // female first for visual consistency

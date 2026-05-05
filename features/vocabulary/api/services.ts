@@ -7,7 +7,9 @@ export const getVocabList = cache(async () => {
   return vocabList;
 });
 
+const vocabMap = new Map(vocabList.map((item) => [String(item.id), item]));
+
 export const getVocabById = cache(async (id: string | number) => {
   await wait(1200);
-  return vocabList.find((item) => item.id === Number(id));
+  return vocabMap.get(String(id));
 });

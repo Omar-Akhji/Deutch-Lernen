@@ -7,13 +7,12 @@ export const getQuestions = async (
   skill: string,
   testId: number,
 ): Promise<Question[]> => {
-  await wait(1200);
   const lvl = quizQuestions[level.toLowerCase()];
-  if (!lvl) return [];
+  const skl = lvl?.[skill.toLowerCase()];
 
-  const skl = lvl[skill.toLowerCase()];
-  if (!skl) return [];
+  if (!lvl || !skl) return [];
 
+  await wait(1200);
   return skl[testId] || [];
 };
 

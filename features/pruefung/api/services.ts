@@ -8,10 +8,12 @@ export const getExamLevels = cache(async (): Promise<ExamLevel[]> => {
   return examLevels;
 });
 
+const examMap = new Map(examLevels.map((e) => [e.id, e]));
+
 export const getExamLevel = cache(
   async (id: string): Promise<ExamLevel | undefined> => {
     await wait(1200);
-    return examLevels.find((e) => e.id === id.toLowerCase());
+    return examMap.get(id.toLowerCase());
   },
 );
 

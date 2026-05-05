@@ -1,8 +1,6 @@
 import {
   getVocabById,
   getVocabList,
-  type VocabSection,
-  type VocabTopic,
   VocabularyTable,
   FamilyTree,
 } from "@/features/vocabulary";
@@ -32,9 +30,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
   const { id, topicId } = await params;
   const item = await getVocabById(id);
-  const topic = item?.sections
-    ?.flatMap((s) => s.topics)
-    .find((t) => t.id === topicId);
+
+  // Use O(1) lookup
+  const topicMap = new Map(
+    item?.sections?.flatMap((s) => s.topics.map((t) => [t.id, t])) || [],
+  );
+  const topic = topicMap.get(topicId);
 
   return {
     title: topic ? `${topic.title} - ${item?.german}` : "Vokabel Thema",
@@ -46,20 +47,14 @@ export default async function TopicDetailPage({ params }: PageProps) {
   const { id, topicId } = await params;
   const item = await getVocabById(id);
 
-  // Find the topic within the sections
-  let topic: VocabTopic | undefined;
-  let section: VocabSection | undefined;
+  // Build a topic map once for O(1) lookups
+  const topicMap = new Map(
+    item?.sections?.flatMap((s) =>
+      s.topics.map((t) => [t.id, { topic: t, section: s }]),
+    ) || [],
+  );
 
-  if (item?.sections) {
-    for (const sec of item.sections) {
-      const found = sec.topics.find((t) => t.id === topicId);
-      if (found) {
-        topic = found;
-        section = sec;
-        break;
-      }
-    }
-  }
+  const { topic, section } = topicMap.get(topicId) || {};
 
   if (!item || !topic) {
     return (
