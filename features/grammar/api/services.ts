@@ -8,9 +8,13 @@ export const getGrammarSections = cache(async () => {
   return grammarSections;
 });
 
+const grammarMap = new Map(grammarSections.map((s) => [s.id, s]));
+
 export const getGrammarSection = cache(async (sectionId: string) => {
+  const section = grammarMap.get(sectionId);
+  if (!section) return undefined;
   await wait(1000);
-  return grammarSections.find((s) => s.id === sectionId);
+  return section;
 });
 
 export const getGrammarTopic = cache(
