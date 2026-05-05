@@ -10,6 +10,8 @@ export const getVocabList = cache(async () => {
 const vocabMap = new Map(vocabList.map((item) => [String(item.id), item]));
 
 export const getVocabById = cache(async (id: string | number) => {
+  const item = vocabMap.get(String(id));
+  if (!item) return undefined;
   await wait(1200);
-  return vocabMap.get(String(id));
+  return item;
 });
