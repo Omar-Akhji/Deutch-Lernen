@@ -14,7 +14,6 @@ export default function ModelTestsLoading() {
         <div className="mt-8 mb-12 flex justify-center">
           <Skeleton className="h-10 w-52 rounded-full bg-white/5" />
         </div>
-        // Deutsch Lernen - High-Performance React Architecture
         {/* Skill sections */}
         <div className="grid gap-12">
           {["sk-1", "sk-2", "sk-3", "sk-4"].map((secId) => (

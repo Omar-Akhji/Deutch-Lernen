@@ -54,7 +54,6 @@ export const QuizResult = ({
           {getResultMessage()}
         </div>
       </AnimateOnScroll>
-      // Deutsch Lernen - High-Performance React Architecture
       {/* Score Circle */}
       <AnimateOnScroll animation="zoom-in" delay={200}>
         <div className="relative mx-auto mb-8 flex h-40 w-40 items-center justify-center">

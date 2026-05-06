@@ -33,7 +33,6 @@ export default function VokabelnDetailLoading() {
                       className="rounded-r-xl border-l-[6px] border-yellow bg-white/5 p-4"
                     >
                       <Skeleton className="h-5 w-full bg-white/5" />
-                      // Deutsch Lernen - High-Performance React Architecture
                     </div>
                   ))}
                 </div>

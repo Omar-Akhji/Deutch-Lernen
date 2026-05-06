@@ -87,6 +87,7 @@ export default function Home() {
         </AnimateOnScroll>
       </div>
 
+      {/* Exam Info Frame - As requested */}
       <section className="mbs-20">
         <AnimateOnScroll animation="fade-up" delay={500}>
           <Hero

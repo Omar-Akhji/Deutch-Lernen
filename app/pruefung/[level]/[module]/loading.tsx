@@ -38,7 +38,6 @@ export default function ModuleStudyLoading() {
               <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg">
                 <div className="border-b border-white/10 bg-white/5 px-6 py-4">
                   <Skeleton className="h-6 w-48 bg-white/10" />
-                  // Deutsch Lernen - High-Performance React Architecture
                 </div>
                 <div className="divide-y divide-white/10">
                   {STEPS.map((stepId) => (

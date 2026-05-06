@@ -13,10 +13,12 @@ export default function GrammatikDetailLoading() {
       <main>
         <HeroSkeleton />
 
+        {/* Sections → gradient header + topic cards */}
         <div className="grid gap-12">
           {SECTIONS.map((secId) => (
             <section key={secId}>
               <SectionHeaderSkeleton />
+              {/* Topic cards grid — matches Link cards */}
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {CARDS.map((cardId) => (
                   <div
