@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { BookOpen, Languages } from "lucide-react";
 import {
   getGrammarSections,
@@ -18,7 +19,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const sections = await getGrammarSections();
+  const { data: sections } = await getGrammarSections();
   return sections.flatMap((section) =>
     section.topics.map((topic) => ({
       section: section.id,
@@ -27,9 +28,11 @@ export async function generateStaticParams() {
   );
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { section, topicId } = await params;
-  const currentTopic = await getGrammarTopic(section, topicId);
+  const { data: currentTopic } = await getGrammarTopic(section, topicId);
 
   return {
     title:
@@ -41,10 +44,13 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function GrammatikDetailPage({ params }: PageProps) {
   const { section, topicId } = await params;
 
-  const [currentSection, currentTopic] = await Promise.all([
+  const [sectionRes, topicRes] = await Promise.all([
     getGrammarSection(section),
     getGrammarTopic(section, topicId),
   ]);
+
+  const currentSection = sectionRes.data;
+  const currentTopic = topicRes.data;
 
   if (!currentTopic || !currentSection) {
     return (

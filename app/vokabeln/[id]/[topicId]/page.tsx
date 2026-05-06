@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   getVocabById,
   getVocabList,
@@ -16,7 +17,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const vocabList = await getVocabList();
+  const { data: vocabList } = await getVocabList();
   return vocabList.flatMap((item) =>
     (item.sections || []).flatMap((section) =>
       section.topics.map((topic) => ({
@@ -27,9 +28,11 @@ export async function generateStaticParams() {
   );
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { id, topicId } = await params;
-  const item = await getVocabById(id);
+  const { data: item } = await getVocabById(id);
 
   // Use O(1) lookup
   const topicMap = new Map(
@@ -45,7 +48,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function TopicDetailPage({ params }: PageProps) {
   const { id, topicId } = await params;
-  const item = await getVocabById(id);
+  const { data: item } = await getVocabById(id);
 
   // Build a topic map once for O(1) lookups
   const topicMap = new Map(

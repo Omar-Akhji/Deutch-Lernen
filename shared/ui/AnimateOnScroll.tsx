@@ -114,8 +114,7 @@ export function AnimateOnScroll<T extends ElementType = "div">({
 
   return (
     <Component
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+      ref={ref as React.RefObject<HTMLDivElement>}
       className={twMerge("animate-on-scroll", className)}
       {...props}
     >

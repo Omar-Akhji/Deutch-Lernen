@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Languages, ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { getVocabById, getVocabList } from "@/features/vocabulary";
@@ -14,15 +15,17 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const vocabList = await getVocabList();
+  const { data: vocabList } = await getVocabList();
   return vocabList.map((item) => ({
     id: String(item.id),
   }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { id } = await params;
-  const item = await getVocabById(id);
+  const { data: item } = await getVocabById(id);
 
   return {
     title: item ? `${item.german} - Vokabeln` : "Vokabel Lektion",
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function VokabelnDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const item = await getVocabById(id);
+  const { data: item } = await getVocabById(id);
 
   if (!item) {
     return (

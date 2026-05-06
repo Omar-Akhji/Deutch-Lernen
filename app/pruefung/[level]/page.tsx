@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   Clock,
   CheckCircle2,
@@ -27,7 +28,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { level } = await params;
   const { data: currentExam } = await getExamLevel(level);
 
