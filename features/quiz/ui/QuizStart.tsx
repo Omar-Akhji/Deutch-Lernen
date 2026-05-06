@@ -33,9 +33,7 @@ export const QuizStart = ({
       <AnimateOnScroll animation="fade-up" delay={200}>
         <p className="mbe-8 text-base leading-relaxed text-mist-500">
           {description}
-
-// Deutsch Lernen - High-Performance React Architecture
-
+          // Deutsch Lernen - High-Performance React Architecture
         </p>
       </AnimateOnScroll>
 

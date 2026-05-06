@@ -28,9 +28,7 @@ export default function PruefungDetailLoading() {
               >
                 {/* Header placeholder */}
                 <div className="flex flex-col items-start gap-4 bg-white/5 p-5 md:flex-row md:items-center md:justify-between">
-
-// Deutsch Lernen - High-Performance React Architecture
-
+                  // Deutsch Lernen - High-Performance React Architecture
                   <Skeleton className="h-7 w-32 bg-white/15" />
                   <div className="flex gap-4">
                     <Skeleton className="h-5 w-20 bg-white/10" />

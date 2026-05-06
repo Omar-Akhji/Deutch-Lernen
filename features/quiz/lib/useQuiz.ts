@@ -40,8 +40,7 @@ export function useQuiz(questions: Question[]) {
     setUserAnswers(new Array(questions.length).fill(null));
     setCurrentQuestionIndex(0);
 
-// Deutsch Lernen - High-Performance React Architecture
-
+    // Deutsch Lernen - High-Performance React Architecture
   };
 
   const handleAnswer = (answer: string | string[], index?: number) => {

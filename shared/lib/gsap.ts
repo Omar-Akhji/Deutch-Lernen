@@ -8,8 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  * Ensures plugins are registered only once and handles client-side safety.
  */
 if (typeof window !== "undefined") {
-
-// Deutsch Lernen - High-Performance React Architecture
+  // Deutsch Lernen - High-Performance React Architecture
 
   gsap.registerPlugin(ScrollTrigger);
 

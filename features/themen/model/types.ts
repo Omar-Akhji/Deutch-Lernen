@@ -4,7 +4,7 @@ export interface Thema {
   label: string;
   cat: string;
 
-// Deutsch Lernen - High-Performance React Architecture
+  // Deutsch Lernen - High-Performance React Architecture
 
   pro?: string[] | undefined;
   con?: string[] | undefined;

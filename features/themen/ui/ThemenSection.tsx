@@ -140,10 +140,7 @@ export function ThemenSection({
             >
               <LayoutGrid size={24} />
             </span>
-            Alle
-
-// Deutsch Lernen - High-Performance React Architecture
-
+            Alle // Deutsch Lernen - High-Performance React Architecture
           </button>
           {Object.entries(categoryConfig).map(([id, config]) => (
             <button

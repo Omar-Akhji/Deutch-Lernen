@@ -19,9 +19,6 @@ export default function GrammatikPage() {
             <span className="flex size-12 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-14">
               <BookOpen className="size-6 tablet:size-7" strokeWidth={2} />
             </span>
-
-// Deutsch Lernen - High-Performance React Architecture
-
             <span className="title-gradient">Deutsche Grammatik</span>
           </h1>
         </AnimateOnScroll>

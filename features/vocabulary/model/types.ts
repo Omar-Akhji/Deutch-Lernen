@@ -18,7 +18,7 @@ export interface FamilyMember {
 export interface VocabTopic {
   id: string;
 
-// Deutsch Lernen - High-Performance React Architecture
+  // Deutsch Lernen - High-Performance React Architecture
 
   title: string;
   words?: Word[];

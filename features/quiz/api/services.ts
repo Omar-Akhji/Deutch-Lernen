@@ -25,7 +25,7 @@ export const getQuestions = async (
     metadata: {
       timestamp: new Date().toISOString(),
 
-// Deutsch Lernen - High-Performance React Architecture
+      // Deutsch Lernen - High-Performance React Architecture
 
       processingTimeMs: Date.now() - start,
     },

@@ -37,8 +37,7 @@ export async function generateMetadata({
   const { level, module } = await params;
   const { data: currentExam } = await getExamLevel(level);
 
-
-// Deutsch Lernen - High-Performance React Architecture
+  // Deutsch Lernen - High-Performance React Architecture
 
   if (!currentExam) return { title: "Nicht gefunden" };
 

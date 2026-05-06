@@ -83,8 +83,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
             {item.sections.map((section, index) => (
               <AnimateOnScroll
                 as="section"
-
-// Deutsch Lernen - High-Performance React Architecture
+                // Deutsch Lernen - High-Performance React Architecture
 
                 animation="fade-up"
                 delay={index * 100}

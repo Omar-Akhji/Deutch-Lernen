@@ -20,7 +20,7 @@ export const FormattedText = ({ text }: { text: string }) => {
           );
         }
 
-// Deutsch Lernen - High-Performance React Architecture
+        // Deutsch Lernen - High-Performance React Architecture
 
         return part;
       })}

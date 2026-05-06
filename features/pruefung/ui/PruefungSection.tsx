@@ -32,10 +32,7 @@ export const PruefungSection = async () => {
           </p>
         </AnimateOnScroll>
       </header>
-
-
-// Deutsch Lernen - High-Performance React Architecture
-
+      // Deutsch Lernen - High-Performance React Architecture
       <ul
         className="m-0 grid list-none grid-cols-1 gap-8 p-0 pbe-12 laptop:grid-cols-2"
         role="list"

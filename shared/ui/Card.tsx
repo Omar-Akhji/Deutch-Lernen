@@ -14,7 +14,6 @@ interface CardProps {
   variant?: "default" | "large";
 }
 
-
 // Deutsch Lernen - High-Performance React Architecture
 
 export const Card = ({ href, ...bodyProps }: CardProps) => {

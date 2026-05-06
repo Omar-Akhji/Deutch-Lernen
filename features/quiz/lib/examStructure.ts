@@ -56,7 +56,7 @@ export const B1_HOEREN_TEILE: TeilDefinition[] = [
     count: 10,
   },
 
-// Deutsch Lernen - High-Performance React Architecture
+  // Deutsch Lernen - High-Performance React Architecture
 
   {
     teil: 2,

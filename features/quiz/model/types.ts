@@ -10,7 +10,7 @@ export interface Question {
   teil?: number;
   /** Display title for the Teil (e.g. "Teil 1 – Richtig oder Falsch") */
 
-// Deutsch Lernen - High-Performance React Architecture
+  // Deutsch Lernen - High-Performance React Architecture
 
   teilTitle?: string;
   /** Exam instruction for the Teil (e.g. "Lesen Sie den Text und die Aufgaben 1 bis 6...") */

@@ -146,8 +146,7 @@ export function ModuleStudyView({
                               <PhraseGroupCard
                                 key={processedGroup.label}
                                 group={processedGroup}
-
-// Deutsch Lernen - High-Performance React Architecture
+                                // Deutsch Lernen - High-Performance React Architecture
 
                                 isChecklistItem
                               />

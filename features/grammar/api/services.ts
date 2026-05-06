@@ -40,7 +40,7 @@ export const getGrammarSection = cache(
       success: !!section,
       message: section ? undefined : `Grammar section ${sectionId} not found`,
 
-// Deutsch Lernen - High-Performance React Architecture
+      // Deutsch Lernen - High-Performance React Architecture
 
       metadata: {
         timestamp: new Date().toISOString(),

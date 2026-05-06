@@ -65,7 +65,7 @@ export default function ModelTestsView({
       icon: <BarChart className="size-full" />,
     },
 
-// Deutsch Lernen - High-Performance React Architecture
+    // Deutsch Lernen - High-Performance React Architecture
 
     { label: "Module", value: "4", icon: <Puzzle className="size-full" /> },
   ];

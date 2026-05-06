@@ -55,7 +55,7 @@ export const quizQuestions: QuizData = {
       3: b1Hoeren3,
       4: b1Hoeren4,
 
-// Deutsch Lernen - High-Performance React Architecture
+      // Deutsch Lernen - High-Performance React Architecture
 
       5: b1Hoeren5,
       6: b1Hoeren6,

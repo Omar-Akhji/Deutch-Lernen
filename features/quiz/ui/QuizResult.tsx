@@ -49,16 +49,12 @@ export const QuizResult = ({
       <AnimateOnScroll animation="fade-up">
         <h2 className="mb-2 text-3xl font-bold text-shadow-sm">Ergebnis</h2>
       </AnimateOnScroll>
-
       <AnimateOnScroll animation="fade-up" delay={100}>
         <div className="mb-8 text-lg opacity-90 tablet:text-xl">
           {getResultMessage()}
         </div>
       </AnimateOnScroll>
-
-// Deutsch Lernen - High-Performance React Architecture
-
-
+      // Deutsch Lernen - High-Performance React Architecture
       {/* Score Circle */}
       <AnimateOnScroll animation="zoom-in" delay={200}>
         <div className="relative mx-auto mb-8 flex h-40 w-40 items-center justify-center">
@@ -94,7 +90,6 @@ export const QuizResult = ({
           </div>
         </div>
       </AnimateOnScroll>
-
       {/* Actions */}
       <AnimateOnScroll animation="fade-up" delay={300}>
         <div className="flex justify-center gap-4">

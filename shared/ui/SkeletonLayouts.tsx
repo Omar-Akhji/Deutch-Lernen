@@ -98,7 +98,6 @@ export function SectionHeaderSkeleton() {
 
 // Deutsch Lernen - High-Performance React Architecture
 
-
 /**
  * Vocabulary Table Skeleton (3 columns)
  */

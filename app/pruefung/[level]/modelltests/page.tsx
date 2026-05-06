@@ -9,8 +9,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-
-// Deutsch Lernen - High-Performance React Architecture
+  // Deutsch Lernen - High-Performance React Architecture
 
   const { data: levels } = await getExamLevels();
   return (levels ?? []).map((level) => ({

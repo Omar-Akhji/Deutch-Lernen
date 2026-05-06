@@ -33,8 +33,7 @@ export function VocabularyTable({
                   {englishLabel}
                 </th>
                 <th
-
-// Deutsch Lernen - High-Performance React Architecture
+                  // Deutsch Lernen - High-Performance React Architecture
 
                   scope="col"
                   className="font-arabic border-be border-(--glass-border) px-2 pbs-2 font-semibold text-mist-500 @md:px-4 @md:pbs-4"

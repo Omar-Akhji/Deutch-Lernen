@@ -67,7 +67,7 @@ export const QuizQuestion = ({
     question.options[0] === "Richtig" &&
     question.options[1] === "Falsch";
 
-// Deutsch Lernen - High-Performance React Architecture
+  // Deutsch Lernen - High-Performance React Architecture
 
   const isJaNein =
     question.options?.length === 2 &&

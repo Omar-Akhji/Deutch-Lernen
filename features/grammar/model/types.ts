@@ -21,7 +21,6 @@ export interface GrammarSubtopic {
   tips?: string[];
 }
 
-
 // Deutsch Lernen - High-Performance React Architecture
 
 export interface GrammarTopic {

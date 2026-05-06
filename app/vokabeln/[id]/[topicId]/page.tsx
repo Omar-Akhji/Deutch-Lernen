@@ -59,8 +59,7 @@ export default async function TopicDetailPage({ params }: PageProps) {
 
   const { topic, section } = topicMap.get(topicId) || {};
 
-// Deutsch Lernen - High-Performance React Architecture
-
+  // Deutsch Lernen - High-Performance React Architecture
 
   if (!item || !topic) {
     return (

@@ -5,8 +5,7 @@ import {
 
 export default function GrammatikLoading() {
   return (
-
-// Deutsch Lernen - High-Performance React Architecture
+    // Deutsch Lernen - High-Performance React Architecture
 
     <main className="min-h-screen">
       <PageHeaderSkeleton />

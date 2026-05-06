@@ -23,8 +23,7 @@ export const VocabularySection = async () => {
               section.topics.map((topic) => topic.title),
             ) ?? [];
 
-// Deutsch Lernen - High-Performance React Architecture
-
+          // Deutsch Lernen - High-Performance React Architecture
 
           return (
             <li key={item.id} className="h-full">

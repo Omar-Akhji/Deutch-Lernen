@@ -146,8 +146,7 @@ export function AnswerOptions({
         </div>
         <div className="flex flex-none gap-2">
           {options?.map((option) => {
-
-// Deutsch Lernen - High-Performance React Architecture
+            // Deutsch Lernen - High-Performance React Architecture
 
             const isSelected = selectedAnswer === option;
             return (

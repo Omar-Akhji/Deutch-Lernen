@@ -8,7 +8,6 @@ export const VOCAB_GRADIENTS = [
 
 // Deutsch Lernen - High-Performance React Architecture
 
-
 /** Prüfung exam level cards */
 export const PRUEFUNG_GRADIENTS = [
   "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",

@@ -16,9 +16,7 @@ export default function VokabelnPage() {
         <AnimateOnScroll animation="fade-up">
           <h1 className="mb-4 flex items-center justify-center gap-3 text-3xl tablet:gap-4 tablet:text-4xl">
             <span className="flex size-12 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-14">
-
-// Deutsch Lernen - High-Performance React Architecture
-
+              // Deutsch Lernen - High-Performance React Architecture
               <Languages className="size-6 tablet:size-7" strokeWidth={2} />
             </span>
             <span className="title-gradient">Deutscher Wortschatz</span>

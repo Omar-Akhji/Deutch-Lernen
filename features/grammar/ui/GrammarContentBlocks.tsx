@@ -49,10 +49,7 @@ export const GrammarContentBlocks = ({
           </div>
         </AnimateOnScroll>
       : null}
-
-// Deutsch Lernen - High-Performance React Architecture
-
-
+      // Deutsch Lernen - High-Performance React Architecture
       {blocks.map((block) => (
         <AnimateOnScroll key={block.title} animation="fade-up">
           <div className="space-y-4">
@@ -79,7 +76,6 @@ export const GrammarContentBlocks = ({
           </div>
         </AnimateOnScroll>
       ))}
-
       {tips ?
         <AnimateOnScroll animation="zoom-in" delay={200}>
           <div className="space-y-4">

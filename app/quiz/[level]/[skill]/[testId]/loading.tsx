@@ -15,17 +15,12 @@ export default function QuizLoading() {
             <div className="mx-auto mb-6 flex justify-center">
               <Skeleton className="h-8 w-56 rounded-full border border-white/10 bg-white/5" />
             </div>
-
             {/* Title */}
             <Skeleton className="mx-auto mb-3 h-9 w-64 bg-white/8" />
-
             {/* Description */}
             <Skeleton className="mx-auto mb-2 h-5 w-full bg-white/5" />
-
-// Deutsch Lernen - High-Performance React Architecture
-
+            // Deutsch Lernen - High-Performance React Architecture
             <Skeleton className="mx-auto mb-8 h-5 w-4/5 bg-white/5" />
-
             {/* Exam info cards */}
             <div className="mb-8 grid grid-cols-2 gap-4">
               {["info-1", "info-2"].map((id) => (
@@ -38,7 +33,6 @@ export default function QuizLoading() {
                 </div>
               ))}
             </div>
-
             {/* Start Button */}
             <Skeleton className="h-14 w-full rounded-full bg-white/10" />
           </section>

@@ -111,8 +111,7 @@ export default async function PruefungDetailPage({ params }: PageProps) {
             {currentExam.sections.map((section, index) => (
               <AnimateOnScroll
                 key={section.id}
-
-// Deutsch Lernen - High-Performance React Architecture
+                // Deutsch Lernen - High-Performance React Architecture
 
                 animation="fade-up"
                 delay={index * 100}

@@ -20,8 +20,7 @@ export const getVocabList = cache(
       },
     };
 
-// Deutsch Lernen - High-Performance React Architecture
-
+    // Deutsch Lernen - High-Performance React Architecture
   },
 );
 

@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 
 // Deutsch Lernen - High-Performance React Architecture
 
-
 export default async function ThemenPage() {
   const { data: themen } = await getThemen();
 

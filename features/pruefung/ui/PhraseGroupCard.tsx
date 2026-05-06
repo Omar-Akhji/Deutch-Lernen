@@ -72,9 +72,7 @@ export function PhraseGroupCard({
             />
           </div>
         </div>
-
-// Deutsch Lernen - High-Performance React Architecture
-
+        // Deutsch Lernen - High-Performance React Architecture
       </div>
 
       {/* Expandable Content */}
