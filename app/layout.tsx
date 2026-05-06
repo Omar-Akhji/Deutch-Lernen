@@ -28,15 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className="no-js">
+    <html lang="de" className="no-js" suppressHydrationWarning>
       <body className={`${poppins.variable} antialiased`}>
-        <Script
-          id="remove-no-js"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.classList.remove('no-js');`,
-          }}
-        />
+        <Script id="remove-no-js" strategy="beforeInteractive">
+          {`document.documentElement.classList.remove('no-js');`}
+        </Script>
         <Suspense fallback={null}>
           <GSAPRefresh />
         </Suspense>

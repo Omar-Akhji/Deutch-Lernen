@@ -28,12 +28,3 @@ export interface ApiResponse<T> {
       }
     | undefined;
 }
-
-/**
- * Type guard to check if a response is successful.
- */
-export function isSuccessResponse<T>(
-  response: ApiResponse<T>,
-): response is ApiResponse<T> & { data: T } {
-  return response.success && response.data !== undefined;
-}

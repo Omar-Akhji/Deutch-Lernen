@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { ScrollTrigger } from "@/shared/lib/gsap";
 
@@ -9,11 +9,8 @@ import { ScrollTrigger } from "@/shared/lib/gsap";
  * Essential for Next.js App Router as page transitions don't trigger a full reload,
  * often leading to incorrect scroll trigger positions if the new page has a different height.
  */
-export function GSAPRefresh() {
+function GSAPRefreshInner() {
   const pathname = usePathname();
-
-  // Deutsch Lernen - High-Performance React Architecture
-
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -26,4 +23,12 @@ export function GSAPRefresh() {
   }, [pathname, searchParams]);
 
   return null;
+}
+
+export function GSAPRefresh() {
+  return (
+    <Suspense fallback={null}>
+      <GSAPRefreshInner />
+    </Suspense>
+  );
 }
