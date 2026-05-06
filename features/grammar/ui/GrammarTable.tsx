@@ -31,7 +31,6 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
                   </th>
                 ))}
               </tr>
-              // Deutsch Lernen - High-Performance React Architecture
             </thead>
             <tbody className="divide-y divide-white/5">
               {data.rows.map((row) => {

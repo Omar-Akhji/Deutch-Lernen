@@ -64,7 +64,6 @@ export default function Home() {
           />
         </AnimateOnScroll>
         <AnimateOnScroll animation="fade-up" delay={300}>
-          // Deutsch Lernen - High-Performance React Architecture
           <Card
             href="/grammatik"
             title="Grammatik"
@@ -88,7 +87,6 @@ export default function Home() {
         </AnimateOnScroll>
       </div>
 
-      {/* Exam Info Frame - As requested */}
       <section className="mbs-20">
         <AnimateOnScroll animation="fade-up" delay={500}>
           <Hero
