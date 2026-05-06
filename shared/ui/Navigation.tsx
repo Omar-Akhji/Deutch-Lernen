@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BackButton } from "./BackButton";
 import { useRef } from "react";
-import gsap from "gsap";
+import gsap from "@/shared/lib/gsap";
 import { useGSAP } from "@gsap/react";
 
 export function Navigation() {

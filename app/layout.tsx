@@ -3,6 +3,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/shared/ui/Navigation";
 import { Footer } from "@/shared/ui/Footer";
+import { GSAPRefresh } from "@/shared/ui/GSAPRefresh";
+import { Suspense } from "react";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -22,8 +24,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de" className="no-js">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.remove('no-js');`,
+          }}
+        />
+      </head>
       <body className={`${poppins.variable} antialiased`}>
+        <Suspense fallback={null}>
+          <GSAPRefresh />
+        </Suspense>
         <div className="container mx-auto max-inline-300">
           <Navigation />
           <div className="px-2 mobile:px-8">

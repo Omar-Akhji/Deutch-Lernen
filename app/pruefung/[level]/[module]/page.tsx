@@ -17,7 +17,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const levels = await getExamLevels();
+  const { data: levels } = await getExamLevels();
   const modules = ["sprechen", "schreiben"];
 
   const params: { level: string; module: string }[] = [];
@@ -35,7 +35,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { level, module } = await params;
-  const currentExam = await getExamLevel(level);
+  const { data: currentExam } = await getExamLevel(level);
 
   if (!currentExam) return { title: "Nicht gefunden" };
 
@@ -53,11 +53,15 @@ export default async function ModulePage({ params }: PageProps) {
     notFound();
   }
 
-  const [currentExam, redemittel, themen] = await Promise.all([
+  const [examRes, redemittelRes, themenRes] = await Promise.all([
     getExamLevel(level),
     getRedemittel(level),
     getThemen(),
   ]);
+
+  const currentExam = examRes.data;
+  const redemittel = redemittelRes.data;
+  const themen = themenRes.data;
 
   if (!currentExam) notFound();
 

@@ -5,7 +5,7 @@ import { VOCAB_GRADIENTS } from "@/shared/lib/gradients";
 import { getVocabList } from "../api/services";
 
 export const VocabularySection = async () => {
-  const vocabList = await getVocabList();
+  const { data: vocabList } = await getVocabList();
 
   return (
     <section className="py-4" aria-labelledby="vocab-heading">

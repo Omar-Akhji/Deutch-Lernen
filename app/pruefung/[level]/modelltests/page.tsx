@@ -9,7 +9,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const levels = await getExamLevels();
+  const { data: levels } = await getExamLevels();
   return levels.map((level) => ({
     level: level.id,
   }));
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 
 export default async function ModelTestsPage({ params }: PageProps) {
   const { level } = await params;
-  const modelTests = await getModelTests(level);
+  const { data: modelTests } = await getModelTests(level);
 
   return <ModelTestsView level={level} initialModelTests={modelTests} />;
 }

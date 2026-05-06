@@ -2,13 +2,8 @@
 
 import { type ElementType, type ComponentPropsWithoutRef, useRef } from "react";
 import { twMerge } from "tailwind-merge";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import gsap from "@/shared/lib/gsap";
 
 type AnimationType =
   | "fade-up"
@@ -32,7 +27,7 @@ interface AnimateOnScrollProps<T extends ElementType> {
 
 /**
  * High-performance scroll animation wrapper using GSAP ScrollTrigger.
- * Replaces the custom IntersectionObserver for better mobile performance and precise scrubbing.
+ * Optimized for SEO (progressive enhancement) and performance (GPU acceleration).
  */
 export function AnimateOnScroll<T extends ElementType = "div">({
   children,
@@ -52,8 +47,15 @@ export function AnimateOnScroll<T extends ElementType = "div">({
       const el = ref.current;
       if (!el) return;
 
-      const fromVars: gsap.TweenVars = { opacity: 0 };
-      const toVars: gsap.TweenVars = { opacity: 1, clearProps: "filter" }; // Clear filter afterwards to prevent blurry text rendering bugs
+      // Initial state set via GSAP instead of hardcoded CSS class
+      // This ensures that if JS is disabled, the element is visible by default (SEO friendly)
+      gsap.set(el, { opacity: 0, visibility: "hidden" });
+
+      const fromVars: gsap.TweenVars = { opacity: 0, visibility: "visible" };
+      const toVars: gsap.TweenVars = {
+        opacity: 1,
+        clearProps: "filter,willChange", // Clean up performance hints after animation
+      };
 
       switch (animation) {
         case "fade-up":
@@ -92,9 +94,13 @@ export function AnimateOnScroll<T extends ElementType = "div">({
         duration: duration / 1000,
         delay: delay / 1000,
         ease: "power3.out",
+        onStart: () => {
+          // Hint GPU for heavy animations
+          gsap.set(el, { willChange: "transform, opacity, filter" });
+        },
         scrollTrigger: {
           trigger: el,
-          start: "top 95%", // Trigger right before the element enters
+          start: "top 95%",
           toggleActions:
             repeat ? "play none none reverse" : "play none none none",
           once: !repeat,
@@ -110,8 +116,7 @@ export function AnimateOnScroll<T extends ElementType = "div">({
     <Component
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
-      // opacity-0 avoids FOUC before GSAP initializes
-      className={twMerge("opacity-0", className)}
+      className={twMerge("animate-on-scroll", className)}
       {...props}
     >
       {children}

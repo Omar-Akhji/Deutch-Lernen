@@ -200,7 +200,6 @@
   margin-inline: auto;
 }
 
-
 .site-footer {
   padding-block: 2rem;
   padding-inline: 0;
@@ -259,7 +258,6 @@
   --ring: oklch(55.6% 0 0deg);
 }
 
-
 /* ============================================================================
    REDUCED MOTION — WCAG 2.3.3
    Single rule covers all layers. !important is correct and intentional here.
@@ -276,4 +274,15 @@
     animation-iteration-count: 1 !important;
     /* stylelint-enable declaration-no-important */
   }
+}
+
+/* ============================================================================
+   PROGRESSIVE ENHANCEMENT — GSAP Fallback
+   Ensures content is visible if JS fails to load or is disabled.
+   ============================================================================ */
+.no-js .animate-on-scroll {
+  visibility: visible !important;
+  opacity: 100% !important;
+  filter: none !important;
+  transform: none !important;
 }

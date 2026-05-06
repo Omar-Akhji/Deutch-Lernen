@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import type { Thema } from "../model/types";
 import { getCategoryClasses } from "../lib/categoryConfig";
-import gsap from "gsap";
+import gsap from "@/shared/lib/gsap";
 import { useGSAP } from "@gsap/react";
 
 interface ThemaCardProps {

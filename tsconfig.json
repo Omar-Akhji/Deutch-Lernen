@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2025",
-    "lib": ["ES2025", "DOM"],
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "bundler",

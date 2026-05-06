@@ -21,7 +21,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const levels = await getExamLevels();
+  const { data: levels } = await getExamLevels();
   return levels.map((level) => ({
     level: level.id,
   }));
@@ -29,7 +29,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const { level } = await params;
-  const currentExam = await getExamLevel(level);
+  const { data: currentExam } = await getExamLevel(level);
 
   return {
     title: currentExam ? `${currentExam.title} - Prüfung` : "Prüfungsstufe",
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function PruefungDetailPage({ params }: PageProps) {
   const { level } = await params;
 
-  const currentExam = await getExamLevel(level);
+  const { data: currentExam } = await getExamLevel(level);
 
   if (!currentExam) {
     return (
