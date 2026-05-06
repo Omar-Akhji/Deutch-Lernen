@@ -13,15 +13,10 @@ const SECTION_DELAY_MS = Number(
 
 export const getGrammarSections = cache(
   async (): Promise<ApiResponse<GrammarSection[]>> => {
-    const start = Date.now();
     await wait(SECTIONS_DELAY_MS);
     return {
       data: grammarSections,
       success: true,
-      metadata: {
-        timestamp: new Date().toISOString(),
-        processingTimeMs: Date.now() - start,
-      },
     };
   },
 );
@@ -32,7 +27,6 @@ export const getGrammarSection = cache(
   async (
     sectionId: string,
   ): Promise<ApiResponse<GrammarSection | undefined>> => {
-    const start = Date.now();
     const section = grammarMap.get(sectionId);
     await wait(SECTION_DELAY_MS);
     return {
@@ -41,11 +35,6 @@ export const getGrammarSection = cache(
       message: section ? undefined : `Grammar section ${sectionId} not found`,
 
       // Deutsch Lernen - High-Performance React Architecture
-
-      metadata: {
-        timestamp: new Date().toISOString(),
-        processingTimeMs: Date.now() - start,
-      },
     };
   },
 );
@@ -55,17 +44,12 @@ export const getGrammarTopic = cache(
     sectionId: string,
     topicId: string,
   ): Promise<ApiResponse<GrammarTopic | undefined>> => {
-    const start = Date.now();
     const sectionResponse = await getGrammarSection(sectionId);
     if (!sectionResponse.success) {
       return {
         data: undefined,
         success: false,
         message: sectionResponse.message,
-        metadata: {
-          timestamp: new Date().toISOString(),
-          processingTimeMs: Date.now() - start,
-        },
       };
     }
 
@@ -76,10 +60,6 @@ export const getGrammarTopic = cache(
       data: topic,
       success: !!topic,
       message: topic ? undefined : `Grammar topic ${topicId} not found`,
-      metadata: {
-        timestamp: new Date().toISOString(),
-        processingTimeMs: Date.now() - start,
-      },
     };
   },
 );
