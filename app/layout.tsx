@@ -6,6 +6,8 @@ import { Footer } from "@/shared/ui/Footer";
 import { GSAPRefresh } from "@/shared/ui/GSAPRefresh";
 import { Suspense } from "react";
 
+import Script from "next/script";
+
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -25,18 +27,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className="no-js">
-      <head>
-        <script
+      <body className={`${poppins.variable} antialiased`}>
+        <Script
+          id="remove-no-js"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `document.documentElement.classList.remove('no-js');`,
           }}
         />
-      </head>
-      <body className={`${poppins.variable} antialiased`}>
         <Suspense fallback={null}>
           <GSAPRefresh />
         </Suspense>
-        <div className="container mx-auto max-inline-300">
+        <div className="container mx-auto max-w-7xl">
           <Navigation />
           <div className="px-2 mobile:px-8">
             {children}

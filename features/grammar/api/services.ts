@@ -4,10 +4,13 @@ import { grammarSections } from "./data";
 import type { GrammarSection, GrammarTopic } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
 
+const SECTIONS_DELAY_MS = Number(process.env.GRAMMAR_SECTIONS_DELAY_MS ?? 800);
+const SECTION_DELAY_MS = Number(process.env.GRAMMAR_SECTION_DELAY_MS ?? 1000);
+
 export const getGrammarSections = cache(
   async (): Promise<ApiResponse<GrammarSection[]>> => {
     const start = Date.now();
-    await wait(800);
+    await wait(SECTIONS_DELAY_MS);
     return {
       data: grammarSections,
       success: true,
@@ -27,7 +30,7 @@ export const getGrammarSection = cache(
   ): Promise<ApiResponse<GrammarSection | undefined>> => {
     const start = Date.now();
     const section = grammarMap.get(sectionId);
-    await wait(1000);
+    await wait(SECTION_DELAY_MS);
     return {
       data: section,
       success: !!section,
@@ -46,7 +49,20 @@ export const getGrammarTopic = cache(
     topicId: string,
   ): Promise<ApiResponse<GrammarTopic | undefined>> => {
     const start = Date.now();
-    const { data: section } = await getGrammarSection(sectionId);
+    const sectionResponse = await getGrammarSection(sectionId);
+    if (!sectionResponse.success) {
+      return {
+        data: undefined,
+        success: false,
+        message: sectionResponse.message,
+        metadata: {
+          timestamp: new Date().toISOString(),
+          processingTimeMs: Date.now() - start,
+        },
+      };
+    }
+
+    const section = sectionResponse.data;
     const topic = section?.topics.find((t) => t.id === topicId);
 
     return {

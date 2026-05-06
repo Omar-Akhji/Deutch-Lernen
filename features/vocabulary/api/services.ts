@@ -4,10 +4,13 @@ import { vocabList } from "./data";
 import type { VocabItem } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
 
+const LIST_DELAY_MS = Number(process.env.VOCAB_LIST_DELAY_MS ?? 800);
+const ITEM_DELAY_MS = Number(process.env.VOCAB_ITEM_DELAY_MS ?? 1200);
+
 export const getVocabList = cache(
   async (): Promise<ApiResponse<VocabItem[]>> => {
     const start = Date.now();
-    await wait(800);
+    await wait(LIST_DELAY_MS);
     return {
       data: vocabList,
       success: true,
@@ -25,7 +28,7 @@ export const getVocabById = cache(
   async (id: string | number): Promise<ApiResponse<VocabItem | undefined>> => {
     const start = Date.now();
     const item = vocabMap.get(String(id));
-    await wait(1200);
+    await wait(ITEM_DELAY_MS);
 
     return {
       data: item,
