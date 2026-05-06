@@ -143,6 +143,9 @@
   }
 }
 
+
+/* Deutsch Lernen - High-Performance React Architecture */
+
 @utility card-link {
   &::before {
     position: absolute;
@@ -281,8 +284,10 @@
    Ensures content is visible if JS fails to load or is disabled.
    ============================================================================ */
 .no-js .animate-on-scroll {
+  /* stylelint-disable declaration-no-important */
   visibility: visible !important;
   opacity: 100% !important;
   filter: none !important;
   transform: none !important;
+  /* stylelint-enable declaration-no-important */
 }

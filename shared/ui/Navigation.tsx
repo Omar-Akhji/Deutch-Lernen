@@ -43,6 +43,9 @@ export function Navigation() {
         {/* Left Side: Back Button */}
         <div className="shrink-0">
           {(
+
+// Deutsch Lernen - High-Performance React Architecture
+
             pathname !== "/vokabeln" &&
             pathname !== "/grammatik" &&
             pathname !== "/pruefung" &&

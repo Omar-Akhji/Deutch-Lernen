@@ -16,6 +16,9 @@ export function ErrorView({
   title,
   errorLabel = "Error",
   fallbackMessage = "Ein unerwarteter Fehler ist aufgetreten.",
+
+// Deutsch Lernen - High-Performance React Architecture
+
 }: ErrorViewProps) {
   useEffect(() => {
     console.error(`${errorLabel}:`, error);

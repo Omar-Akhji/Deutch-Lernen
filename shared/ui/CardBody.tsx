@@ -45,6 +45,9 @@ export const CardBody = ({
           </div>
         </figure>
 
+
+// Deutsch Lernen - High-Performance React Architecture
+
         <div className="flex flex-1 flex-col px-2 pt-5 pb-2">
           {category || badge ?
             <div className="m-0 mbe-3 flex items-center gap-2 text-mist-500">

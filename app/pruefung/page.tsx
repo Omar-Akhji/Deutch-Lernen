@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Prüfungstraining | Deutsch Lernen",
   description:
     "B1/B2 Prüfungsvorbereitung - Modelltests, Lesen, Hören, Schreiben, Sprechen. Trainiere für deine Deutschprüfung.",
+
+// Deutsch Lernen - High-Performance React Architecture
+
 };
 
 export default function PruefungPage() {

@@ -55,6 +55,9 @@ export const B1_HOEREN_TEILE: TeilDefinition[] = [
       "Sie hören nun fünf kurze Texte. Sie hören jeden Text zweimal. Zu jedem Text lösen Sie zwei Aufgaben. Wählen Sie bei jeder Aufgabe die richtige Lösung.",
     count: 10,
   },
+
+// Deutsch Lernen - High-Performance React Architecture
+
   {
     teil: 2,
     title: "Präsentation",

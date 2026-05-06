@@ -9,6 +9,9 @@ export interface Question {
   /** Which Teil this question belongs to (e.g. 1, 2, 3, 4, 5) */
   teil?: number;
   /** Display title for the Teil (e.g. "Teil 1 – Richtig oder Falsch") */
+
+// Deutsch Lernen - High-Performance React Architecture
+
   teilTitle?: string;
   /** Exam instruction for the Teil (e.g. "Lesen Sie den Text und die Aufgaben 1 bis 6...") */
   teilInstruction?: string;

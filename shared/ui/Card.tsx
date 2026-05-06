@@ -14,6 +14,9 @@ interface CardProps {
   variant?: "default" | "large";
 }
 
+
+// Deutsch Lernen - High-Performance React Architecture
+
 export const Card = ({ href, ...bodyProps }: CardProps) => {
   const isExternal = href.startsWith("http") || href === "#";
 

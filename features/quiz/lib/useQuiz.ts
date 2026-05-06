@@ -39,6 +39,9 @@ export function useQuiz(questions: Question[]) {
     setIsFinished(false);
     setUserAnswers(new Array(questions.length).fill(null));
     setCurrentQuestionIndex(0);
+
+// Deutsch Lernen - High-Performance React Architecture
+
   };
 
   const handleAnswer = (answer: string | string[], index?: number) => {

@@ -4,10 +4,10 @@ import { examLevels, redemittelData } from "./data";
 import type { ExamLevel, RedemittelCategory } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
 
-const LEVELS_DELAY_MS = Number(process.env.EXAM_LEVELS_DELAY_MS ?? 800);
-const LEVEL_DELAY_MS = Number(process.env.EXAM_LEVEL_DELAY_MS ?? 1200);
-const REDEMITTEL_DELAY_MS = Number(process.env.REDEMITTEL_DELAY_MS ?? 1000);
-const TESTS_DELAY_MS = Number(process.env.MODEL_TESTS_DELAY_MS ?? 1200);
+const LEVELS_DELAY_MS = Number(process.env["EXAM_LEVELS_DELAY_MS"] ?? 800);
+const LEVEL_DELAY_MS = Number(process.env["EXAM_LEVEL_DELAY_MS"] ?? 1200);
+const REDEMITTEL_DELAY_MS = Number(process.env["REDEMITTEL_DELAY_MS"] ?? 1000);
+const TESTS_DELAY_MS = Number(process.env["MODEL_TESTS_DELAY_MS"] ?? 1200);
 
 export const getExamLevels = cache(
   async (): Promise<ApiResponse<ExamLevel[]>> => {
@@ -38,6 +38,9 @@ export const getExamLevel = cache(
       message: exam ? undefined : "Exam level not found",
       metadata: {
         timestamp: new Date().toISOString(),
+
+        // Deutsch Lernen - High-Performance React Architecture
+
         processingTimeMs: Date.now() - start,
       },
     };

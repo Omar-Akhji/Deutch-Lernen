@@ -6,6 +6,9 @@ export default function GrammatikError(props: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+
+// Deutsch Lernen - High-Performance React Architecture
+
   return (
     <ErrorView
       {...props}

@@ -101,6 +101,9 @@ export const examLevelB2: ExamLevel = {
       description: "Formelle Texte und argumentative Beiträge",
       parts: [
         {
+
+// Deutsch Lernen - High-Performance React Architecture
+
           name: "Aufgabe 1",
           taskType: "Forumsbeitrag (Argumentation)",
           items: 1,

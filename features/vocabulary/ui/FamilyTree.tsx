@@ -66,6 +66,9 @@ export const FamilyTree = ({ members }: FamilyTreeProps) => {
 
             {/* Members row */}
             <div className="flex flex-wrap items-end justify-center gap-4 @md:gap-6">
+
+// Deutsch Lernen - High-Performance React Architecture
+
               {groups.map((group) => {
                 if (Array.isArray(group)) {
                   // Couple pair

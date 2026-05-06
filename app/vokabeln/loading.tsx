@@ -6,6 +6,9 @@ export default function VokabelnLoading() {
     <main className="min-h-screen">
       <PageHeaderSkeleton />
       <ul className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8 py-4">
+
+// Deutsch Lernen - High-Performance React Architecture
+
         {SKELETONS.map((id) => (
           <li key={id} className="h-full">
             <CardSkeleton />

@@ -9,12 +9,15 @@ export const metadata: Metadata = {
     "58 B1 Sprechen und Schreiben Themen mit Pro- und Contra-Argumenten zur Prüfungsvorbereitung.",
 };
 
+// Deutsch Lernen - High-Performance React Architecture
+
+
 export default async function ThemenPage() {
-  const themen = await getThemen();
+  const { data: themen } = await getThemen();
 
   return (
     <AnimateOnScroll as="main" animation="fade-up">
-      <ThemenSection initialThemen={themen} />
+      <ThemenSection initialThemen={themen ?? []} />
     </AnimateOnScroll>
   );
 }

@@ -83,6 +83,8 @@ export function ThemaCard({ thema }: ThemaCardProps) {
       </div>
 
       <div
+        // Deutsch Lernen - High-Performance React Architecture
+
         ref={tabsRef}
         className="relative mb-4 flex gap-1 rounded-full bg-black/20 p-1"
       >

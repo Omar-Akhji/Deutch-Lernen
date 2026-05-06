@@ -16,12 +16,15 @@ export const VocabularySection = async () => {
         className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8 py-4"
         role="list"
       >
-        {vocabList.map((item, index) => {
+        {(vocabList ?? []).map((item, index) => {
           // Extract section/topic titles for modal preview
           const previewTitles =
             item.sections?.flatMap((section) =>
               section.topics.map((topic) => topic.title),
             ) ?? [];
+
+// Deutsch Lernen - High-Performance React Architecture
+
 
           return (
             <li key={item.id} className="h-full">

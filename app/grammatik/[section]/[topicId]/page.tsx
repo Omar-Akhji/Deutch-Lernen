@@ -20,7 +20,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const { data: sections } = await getGrammarSections();
-  return sections.flatMap((section) =>
+  return (sections ?? []).flatMap((section) =>
     section.topics.map((topic) => ({
       section: section.id,
       topicId: topic.id,
@@ -84,6 +84,8 @@ export default async function GrammatikDetailPage({ params }: PageProps) {
               ),
             },
             { label: "Niveau", value: "B1", icon: <Languages size={18} /> },
+
+            // Deutsch Lernen - High-Performance React Architecture
           ]}
         />
 

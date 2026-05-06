@@ -19,6 +19,9 @@ export const FormattedText = ({ text }: { text: string }) => {
             </span>
           );
         }
+
+// Deutsch Lernen - High-Performance React Architecture
+
         return part;
       })}
     </span>

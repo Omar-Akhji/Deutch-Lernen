@@ -11,6 +11,9 @@ import { ScrollTrigger } from "@/shared/lib/gsap";
  */
 export function GSAPRefresh() {
   const pathname = usePathname();
+
+// Deutsch Lernen - High-Performance React Architecture
+
   const searchParams = useSearchParams();
 
   useEffect(() => {

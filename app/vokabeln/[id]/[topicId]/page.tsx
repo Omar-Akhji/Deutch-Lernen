@@ -18,7 +18,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const { data: vocabList } = await getVocabList();
-  return vocabList.flatMap((item) =>
+  return (vocabList ?? []).flatMap((item) =>
     (item.sections || []).flatMap((section) =>
       section.topics.map((topic) => ({
         id: String(item.id),
@@ -58,6 +58,9 @@ export default async function TopicDetailPage({ params }: PageProps) {
   );
 
   const { topic, section } = topicMap.get(topicId) || {};
+
+// Deutsch Lernen - High-Performance React Architecture
+
 
   if (!item || !topic) {
     return (

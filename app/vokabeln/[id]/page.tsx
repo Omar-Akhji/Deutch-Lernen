@@ -16,7 +16,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const { data: vocabList } = await getVocabList();
-  return vocabList.map((item) => ({
+  return (vocabList ?? []).map((item) => ({
     id: String(item.id),
   }));
 }
@@ -83,6 +83,9 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
             {item.sections.map((section, index) => (
               <AnimateOnScroll
                 as="section"
+
+// Deutsch Lernen - High-Performance React Architecture
+
                 animation="fade-up"
                 delay={index * 100}
                 key={section.id}

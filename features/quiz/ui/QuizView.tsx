@@ -140,6 +140,9 @@ export default function QuizView({
                               onAnswer={() => {}}
                               skill={skill}
                               isNewTeil
+
+// Deutsch Lernen - High-Performance React Architecture
+
                               activeContext={
                                 isGroupedTeil ? activeCtx : undefined
                               }

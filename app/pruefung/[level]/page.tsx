@@ -23,7 +23,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const { data: levels } = await getExamLevels();
-  return levels.map((level) => ({
+  return (levels ?? []).map((level) => ({
     level: level.id,
   }));
 }
@@ -111,6 +111,9 @@ export default async function PruefungDetailPage({ params }: PageProps) {
             {currentExam.sections.map((section, index) => (
               <AnimateOnScroll
                 key={section.id}
+
+// Deutsch Lernen - High-Performance React Architecture
+
                 animation="fade-up"
                 delay={index * 100}
               >

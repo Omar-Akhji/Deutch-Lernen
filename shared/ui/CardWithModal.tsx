@@ -27,6 +27,9 @@ export const CardWithModal = ({
 }: CardWithModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+// Deutsch Lernen - High-Performance React Architecture
+
+
   const handleOpenModal = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsModalOpen(true);

@@ -77,6 +77,9 @@ export function CardModal({
       <button
         type="button"
         className="absolute inset-0 cursor-default border-none bg-black/80 backdrop-blur-sm"
+
+// Deutsch Lernen - High-Performance React Architecture
+
         onClick={onClose}
         aria-label="Dialog schließen"
       />

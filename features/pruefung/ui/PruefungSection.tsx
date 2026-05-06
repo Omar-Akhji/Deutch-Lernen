@@ -6,7 +6,7 @@ import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { getExamLevels } from "../api/services";
 
 export const PruefungSection = async () => {
-  const examLevels = await getExamLevels();
+  const { data: examLevels } = await getExamLevels();
 
   return (
     <>
@@ -32,6 +32,9 @@ export const PruefungSection = async () => {
           </p>
         </AnimateOnScroll>
       </header>
+
+
+// Deutsch Lernen - High-Performance React Architecture
 
       <ul
         className="m-0 grid list-none grid-cols-1 gap-8 p-0 pbe-12 laptop:grid-cols-2"

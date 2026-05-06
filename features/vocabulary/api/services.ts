@@ -4,8 +4,8 @@ import { vocabList } from "./data";
 import type { VocabItem } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
 
-const LIST_DELAY_MS = Number(process.env.VOCAB_LIST_DELAY_MS ?? 800);
-const ITEM_DELAY_MS = Number(process.env.VOCAB_ITEM_DELAY_MS ?? 1200);
+const LIST_DELAY_MS = Number(process.env["VOCAB_LIST_DELAY_MS"] ?? 800);
+const ITEM_DELAY_MS = Number(process.env["VOCAB_ITEM_DELAY_MS"] ?? 1200);
 
 export const getVocabList = cache(
   async (): Promise<ApiResponse<VocabItem[]>> => {
@@ -19,6 +19,9 @@ export const getVocabList = cache(
         processingTimeMs: Date.now() - start,
       },
     };
+
+// Deutsch Lernen - High-Performance React Architecture
+
   },
 );
 

@@ -1552,6 +1552,9 @@ const nomenTopics = [
         description: "Deklination der Artikel",
         hasTable: true,
         tableData: {
+
+// Deutsch Lernen - High-Performance React Architecture
+
           headers: ["Kasus", "Maskulin", "Feminin", "Neutral", "Plural"],
           rows: [
             ["Nominativ", "der", "die", "das", "die"],

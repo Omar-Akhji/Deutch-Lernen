@@ -54,6 +54,9 @@ export function Hero({
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-up" delay={500}>
+
+// Deutsch Lernen - High-Performance React Architecture
+
         <p
           className={`m-0 text-base tablet:text-lg laptop:text-xl ${gradient ? "text-white/90" : "text-mist-500"}`}
         >

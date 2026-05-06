@@ -13,15 +13,21 @@ export async function generateStaticParams() {
 }
 
 export default async function QuizPage({ params }: PageProps) {
+  // Deutsch Lernen - High-Performance React Architecture
+
   const { level, skill, testId } = await params;
-  const questions = await getQuestions(level, skill, parseInt(testId));
+  const { data: questions } = await getQuestions(
+    level,
+    skill,
+    parseInt(testId),
+  );
 
   return (
     <QuizView
       level={level}
       skill={skill}
       testId={testId}
-      initialQuestions={questions}
+      initialQuestions={questions ?? []}
     />
   );
 }

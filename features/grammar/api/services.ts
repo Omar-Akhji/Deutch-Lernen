@@ -4,8 +4,12 @@ import { grammarSections } from "./data";
 import type { GrammarSection, GrammarTopic } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
 
-const SECTIONS_DELAY_MS = Number(process.env.GRAMMAR_SECTIONS_DELAY_MS ?? 800);
-const SECTION_DELAY_MS = Number(process.env.GRAMMAR_SECTION_DELAY_MS ?? 1000);
+const SECTIONS_DELAY_MS = Number(
+  process.env["GRAMMAR_SECTIONS_DELAY_MS"] ?? 800,
+);
+const SECTION_DELAY_MS = Number(
+  process.env["GRAMMAR_SECTION_DELAY_MS"] ?? 1000,
+);
 
 export const getGrammarSections = cache(
   async (): Promise<ApiResponse<GrammarSection[]>> => {
@@ -35,6 +39,9 @@ export const getGrammarSection = cache(
       data: section,
       success: !!section,
       message: section ? undefined : `Grammar section ${sectionId} not found`,
+
+// Deutsch Lernen - High-Performance React Architecture
+
       metadata: {
         timestamp: new Date().toISOString(),
         processingTimeMs: Date.now() - start,

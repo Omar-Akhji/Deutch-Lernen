@@ -16,6 +16,9 @@ export interface ApiResponse<T> {
     | {
         timestamp: string;
         processingTimeMs: number;
+
+// Deutsch Lernen - High-Performance React Architecture
+
         pagination?: {
           total: number;
           page: number;

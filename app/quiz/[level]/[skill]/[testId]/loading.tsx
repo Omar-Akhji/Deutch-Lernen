@@ -21,6 +21,9 @@ export default function QuizLoading() {
 
             {/* Description */}
             <Skeleton className="mx-auto mb-2 h-5 w-full bg-white/5" />
+
+// Deutsch Lernen - High-Performance React Architecture
+
             <Skeleton className="mx-auto mb-8 h-5 w-4/5 bg-white/5" />
 
             {/* Exam info cards */}

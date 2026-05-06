@@ -19,6 +19,9 @@ export interface ExamLevel {
   id: string;
   level: string;
   title: string;
+
+// Deutsch Lernen - High-Performance React Architecture
+
   category: string;
   description: string;
   totalDuration: string;

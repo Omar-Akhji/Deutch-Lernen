@@ -60,6 +60,9 @@ export function AnimateOnScroll<T extends ElementType = "div">({
       switch (animation) {
         case "fade-up":
           fromVars.y = 48;
+
+// Deutsch Lernen - High-Performance React Architecture
+
           toVars.y = 0;
           break;
         case "fade-down":

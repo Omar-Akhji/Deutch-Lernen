@@ -1247,6 +1247,9 @@ export const vocabList: VocabItem[] = [
                 arabic: "الوشاح",
                 example: "Im Winter trage ich einen warmen Schal.",
               },
+
+// Deutsch Lernen - High-Performance React Architecture
+
               {
                 german: "der Hut, -̈e",
                 english: "hat",

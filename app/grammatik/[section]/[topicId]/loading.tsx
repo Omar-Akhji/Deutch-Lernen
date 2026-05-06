@@ -19,6 +19,9 @@ export default function GrammatikDetailLoading() {
             <section key={secId}>
               <SectionHeaderSkeleton />
 
+
+// Deutsch Lernen - High-Performance React Architecture
+
               {/* Topic cards grid — matches Link cards */}
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {CARDS.map((cardId) => (

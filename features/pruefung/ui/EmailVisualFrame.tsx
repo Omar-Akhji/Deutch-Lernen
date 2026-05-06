@@ -53,6 +53,9 @@ export function EmailVisualFrame({
             Betreff:
           </span>
           <div className="flex items-center gap-2 text-sm font-semibold text-white">
+
+// Deutsch Lernen - High-Performance React Architecture
+
             <Tag size={14} className="text-slate-400" />
             {subject}
           </div>

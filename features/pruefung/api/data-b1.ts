@@ -360,6 +360,9 @@ export const redemittelB1: RedemittelCategory = {
         "Ich denke, dass … / Ich glaube, dass … / Ich finde, dass …",
         "Ich bin der Meinung / der Ansicht, dass …",
         "Meiner Meinung nach sollte man …",
+
+// Deutsch Lernen - High-Performance React Architecture
+
         "Ich vertrete folgenden Standpunkt: …",
         "Aus diesen Gründen bin ich der Meinung, dass …",
         "Zusammenfassend lässt sich sagen, dass …",

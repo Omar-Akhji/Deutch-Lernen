@@ -28,7 +28,7 @@ interface GrammarSectionCardsProps {
 export const GrammarSectionCards = async ({
   sectionId,
 }: GrammarSectionCardsProps) => {
-  const section = await getGrammarSection(sectionId);
+  const { data: section } = await getGrammarSection(sectionId);
 
   if (!section) return null;
 
@@ -38,6 +38,9 @@ export const GrammarSectionCards = async ({
     <section className="mbe-16" aria-labelledby={`${sectionId}-heading`}>
       <AnimateOnScroll animation="fade-right">
         <h2
+
+// Deutsch Lernen - High-Performance React Architecture
+
           id={`${sectionId}-heading`}
           className="mbe-8 flex items-center gap-3 text-2xl text-text text-shadow-sm tablet:text-3xl"
         >

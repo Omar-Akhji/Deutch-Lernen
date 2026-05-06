@@ -17,6 +17,9 @@ export const THEMEN_CATEGORY_COLORS: Record<string, string> = {
 export function getCategoryClasses(cat: string): string {
   switch (cat) {
     case "essen":
+
+// Deutsch Lernen - High-Performance React Architecture
+
       return "text-orange-500 bg-orange-500/10 border-orange-500";
     case "tech":
       return "text-blue-500 bg-blue-500/10 border-blue-500";

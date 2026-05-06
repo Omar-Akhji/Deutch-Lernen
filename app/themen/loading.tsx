@@ -46,6 +46,9 @@ export default function ThemenLoading() {
             {/* Card grid — matches ThemaCard shape */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {CARDS.map((cardId) => (
+
+// Deutsch Lernen - High-Performance React Architecture
+
                 <div
                   key={cardId}
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
