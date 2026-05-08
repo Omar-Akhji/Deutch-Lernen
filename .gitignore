@@ -70,10 +70,11 @@ analysis_results.md
 research_notes.md
 experiment_results.md
 /graphify-out/
+react-doctor.config.json
 
 # project specific
 /scratch/
-/inertia Deutch lernen
+/inertia Deutsch lernen
 lint_output.txt
 Goethe_OSD_B1_Komplett.html
 
@@ -83,6 +84,6 @@ Goethe_OSD_B1_Komplett.html
 *.mp4
 *.mov
 
-# Documentation tools (optional - remove if you want to commit these)
-# SEMANTIC HTML.md
-# TAILWIND CSS BEST PRACTICES.md
+# Documentation tools (optional)
+SEMANTIC HTML.md
+TAILWIND CSS BEST PRACTICES.md
