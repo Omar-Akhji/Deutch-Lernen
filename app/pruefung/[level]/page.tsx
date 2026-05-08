@@ -97,7 +97,7 @@ export default async function PruefungDetailPage({ params }: PageProps) {
         {/* Prüfungsstruktur */}
         <section className="mb-12">
           <AnimateOnScroll animation="fade-right">
-            <h2 className="mb-8 flex items-center gap-3 text-xl font-bold text-text tablet:gap-4 tablet:text-[1.75rem]">
+            <h2 className="mb-8 flex items-center gap-3 text-xl font-semibold text-text tablet:gap-4 tablet:text-[1.75rem]">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
                 <ClipboardList
                   className="size-5 tablet:size-6"
@@ -123,7 +123,7 @@ export default async function PruefungDetailPage({ params }: PageProps) {
                       background: getGradient(index, PRUEFUNG_GRADIENTS),
                     }}
                   >
-                    <h3 className="m-0 text-xl font-bold text-white">
+                    <h3 className="m-0 text-xl font-semibold text-white">
                       {section.title}
                     </h3>
                     <div className="flex gap-4 text-sm text-white/90">
@@ -206,7 +206,7 @@ export default async function PruefungDetailPage({ params }: PageProps) {
                           href={`/pruefung/${level}/${
                             section.id.split("-")[1]
                           }`}
-                          className="group md:is-auto flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-amber-400 to-orange-500 px-8 py-3.5 font-bold text-slate-950 shadow-lg shadow-amber-500/20 transition-all inline-full hover:scale-[1.02] hover:brightness-110 active:scale-95 md:self-start"
+                          className="group md:is-auto flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-amber-400 to-orange-500 px-8 py-3.5 font-bold text-zinc-950 shadow-lg shadow-amber-500/20 transition-all inline-full hover:scale-[1.02] hover:brightness-110 active:scale-95 md:self-start"
                         >
                           <MessageCircle
                             size={20}

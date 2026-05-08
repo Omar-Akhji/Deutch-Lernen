@@ -46,10 +46,10 @@ export default function ModuleStudyLoading() {
                       className="flex items-center justify-between px-6 py-5"
                     >
                       <div className="flex items-center gap-4">
-                        <Skeleton className="h-6 w-6 rounded-full bg-white/10" />
+                        <Skeleton className="size-6 rounded-full bg-white/10" />
                         <Skeleton className="h-5 w-64 bg-white/5" />
                       </div>
-                      <Skeleton className="h-5 w-5 rounded bg-white/10" />
+                      <Skeleton className="size-5 rounded bg-white/10" />
                     </div>
                   ))}
                 </div>

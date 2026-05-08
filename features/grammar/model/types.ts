@@ -3,13 +3,13 @@ export interface GrammarSectionContent {
   items: (string | { text: string; highlight?: boolean })[];
 }
 
-export interface GrammarTableData {
+interface GrammarTableData {
   caption?: string;
   headers: string[];
   rows: (string | { text: string; highlight?: boolean })[][];
 }
 
-export interface GrammarSubtopic {
+interface GrammarSubtopic {
   id: string;
   number: string;
   title: string;

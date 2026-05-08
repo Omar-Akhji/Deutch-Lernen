@@ -47,7 +47,7 @@ export const QuizResult = ({
   return (
     <section className="p-8 text-center">
       <AnimateOnScroll animation="fade-up">
-        <h2 className="mb-2 text-3xl font-bold text-shadow-sm">Ergebnis</h2>
+        <h2 className="mb-2 text-3xl font-semibold text-shadow-sm">Ergebnis</h2>
       </AnimateOnScroll>
       <AnimateOnScroll animation="fade-up" delay={100}>
         <div className="mb-8 text-lg opacity-90 tablet:text-xl">
@@ -56,7 +56,7 @@ export const QuizResult = ({
       </AnimateOnScroll>
       {/* Score Circle */}
       <AnimateOnScroll animation="zoom-in" delay={200}>
-        <div className="relative mx-auto mb-8 flex h-40 w-40 items-center justify-center">
+        <div className="relative mx-auto mb-8 flex size-40 items-center justify-center">
           <svg className="h-full w-full -rotate-90 transform">
             <circle
               cx="80"

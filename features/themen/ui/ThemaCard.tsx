@@ -76,7 +76,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
           >
             {thema.cat}
           </span>
-          <h3 className="text-sm font-bold text-white transition-colors group-hover:text-amber-400 tablet:text-base">
+          <h3 className="text-sm font-semibold text-white transition-colors group-hover:text-amber-400 tablet:text-base">
             {thema.label}
           </h3>
         </div>
@@ -102,7 +102,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
               data-active={activeTab === "pro"}
               className={`relative z-10 flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-300 tablet:text-sm ${
                 activeTab === "pro" ? "text-white" : (
-                  "text-slate-400 hover:text-white"
+                  "text-zinc-400 hover:text-white"
                 )
               }`}
             >
@@ -113,7 +113,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
               data-active={activeTab === "con"}
               className={`relative z-10 flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-300 tablet:text-sm ${
                 activeTab === "con" ? "text-white" : (
-                  "text-slate-400 hover:text-white"
+                  "text-zinc-400 hover:text-white"
                 )
               }`}
             >
@@ -134,9 +134,9 @@ export function ThemaCard({ thema }: ThemaCardProps) {
             {thema.pro.map((point) => (
               <li
                 key={point}
-                className="flex gap-3 text-xs leading-relaxed text-slate-300 tablet:text-sm"
+                className="flex gap-3 text-xs leading-relaxed text-zinc-300 tablet:text-sm"
               >
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                <span className="mt-1 size-1.5 shrink-0 rounded-full bg-emerald-500" />
                 {point}
               </li>
             ))}
@@ -147,23 +147,23 @@ export function ThemaCard({ thema }: ThemaCardProps) {
             {thema.con.map((point) => (
               <li
                 key={point}
-                className="flex gap-3 text-xs leading-relaxed text-slate-300 tablet:text-sm"
+                className="flex gap-3 text-xs leading-relaxed text-zinc-300 tablet:text-sm"
               >
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500" />
+                <span className="mt-1 size-1.5 shrink-0 rounded-full bg-red-500" />
                 {point}
               </li>
             ))}
           </ul>
         : null}
         {(activeTab === "text" || thema.isTextOnly) && thema.text ?
-          <p className="border-l-2 border-amber-500/30 py-1 pl-4 text-xs leading-relaxed text-slate-300 italic tablet:text-sm">
+          <p className="border-l-2 border-amber-500/30 py-1 pl-4 text-xs leading-relaxed text-zinc-300 italic tablet:text-sm">
             &quot;{thema.text}&quot;
           </p>
         : null}
       </div>
 
       <div className="mbs-6 flex justify-end border-bs border-white/5 pbs-4 opacity-0 transition-opacity group-hover:opacity-100">
-        <span className="font-mono text-[10px] text-slate-500 uppercase">
+        <span className="font-mono text-[10px] text-zinc-500 uppercase">
           Zertifikat B1 Topic #{thema.id}
         </span>
       </div>

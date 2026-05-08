@@ -43,7 +43,7 @@ const skills: Skill[] = [
     id: "sprechen",
     title: "Sprechen",
     icon: MessageCircle,
-    color: "from-purple-500 to-pink-400",
+    color: "from-fuchsia-500 to-pink-400",
   },
 ];
 
@@ -96,7 +96,7 @@ export default function ModelTestsView({
           {skills.map((skill, skillIdx) => (
             <section key={skill.id}>
               <AnimateOnScroll animation="fade-right" delay={skillIdx * 100}>
-                <h2 className="mb-6 flex items-center gap-3 text-xl font-bold text-white tablet:gap-4 tablet:text-2xl">
+                <h2 className="mb-6 flex items-center gap-3 text-xl font-semibold text-white tablet:gap-4 tablet:text-2xl">
                   <span className="flex size-10 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
                     <skill.icon
                       className="size-5 tablet:size-6"

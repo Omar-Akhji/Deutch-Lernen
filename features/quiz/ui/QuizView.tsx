@@ -60,7 +60,7 @@ export default function QuizView({
     <main className="relative min-h-screen py-4">
       <article className="relative z-10 flex w-full flex-col rounded-2xl border border-white/10 bg-card px-4 py-6 shadow-2xl backdrop-blur-xl">
         <header className="mb-4 flex items-center justify-between border-b border-white/10 pb-2">
-          <h1 className="text-sm font-bold tracking-widest text-white/50 uppercase">
+          <h1 className="text-sm font-semibold tracking-widest text-white/50 uppercase">
             {skillTitle} – Modelltest {testId}
           </h1>
           <div className="font-mono text-[10px] text-white/30">
@@ -153,7 +153,7 @@ export default function QuizView({
                               /* Grouped in ONE TABLE (Card) */
                               <div
                                 key={`group-${teilNum}`}
-                                className="overflow-hidden rounded-xl border border-white/10 bg-slate-900/10"
+                                className="overflow-hidden rounded-xl border border-white/10 bg-zinc-900/10"
                               >
                                 {examples.length > 0 ?
                                   <div className="border-b border-yellow/20 bg-yellow/5 p-4">

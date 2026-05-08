@@ -27,7 +27,7 @@ export const QuizStart = ({
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-up" delay={100}>
-        <h2 className="mbe-3 text-3xl font-bold text-shadow-sm">{title}</h2>
+        <h2 className="mbe-3 text-3xl font-semibold text-shadow-sm">{title}</h2>
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-up" delay={200}>

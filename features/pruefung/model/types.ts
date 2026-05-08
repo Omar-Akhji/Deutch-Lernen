@@ -1,4 +1,4 @@
-export interface ExamPart {
+interface ExamPart {
   id: string;
   title: string;
   duration: string;

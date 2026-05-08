@@ -107,12 +107,12 @@ export function ThemenSection({
       {!isEmbedded && (
         <header className="mx-auto max-w-2xl space-y-4 text-center">
           <AnimateOnScroll animation="fade-up">
-            <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-extrabold text-transparent tablet:text-4xl">
+            <h2 className="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-semibold text-transparent tablet:text-4xl">
               Sprechen & Schreiben Themen
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll animation="fade-up" delay={100}>
-            <p className="text-base text-slate-400 tablet:text-lg">
+            <p className="text-base text-zinc-400 tablet:text-lg">
               Bereite dich auf das Goethe & ÖSD Zertifikat B1 vor. Hier findest
               du 58 Themen mit Pro- und Contra-Argumenten für deine Präsentation
               oder deinen Diskussionsbeitrag.
@@ -123,7 +123,7 @@ export function ThemenSection({
 
       {/* Internal Navigation Bar */}
       <nav
-        className="rounded-2xl border border-white/5 bg-slate-950/50 px-4 py-4 shadow-xl backdrop-blur-md"
+        className="rounded-2xl border border-white/5 bg-zinc-950/50 p-4 shadow-xl backdrop-blur-md"
         aria-label="Themen Kategorien"
       >
         <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-2">
@@ -132,7 +132,7 @@ export function ThemenSection({
             className={`flex items-center gap-2 rounded-full px-4 pbs-2 pbe-2 text-sm font-medium transition-all ${
               activeCategory === null ?
                 "bg-amber-500 text-black shadow-lg"
-              : "bg-white/5 text-slate-400 hover:bg-white/10"
+              : "bg-white/5 text-zinc-400 hover:bg-white/10"
             } ${isPending && activeCategory !== null ? "opacity-50" : ""}`}
           >
             <span
@@ -155,7 +155,7 @@ export function ThemenSection({
                       .split(" ")
                       .find((c: string) => c.startsWith("bg-")),
                   )
-                : "bg-white/5 text-slate-400 hover:bg-white/10",
+                : "bg-white/5 text-zinc-400 hover:bg-white/10",
                 isPending && activeCategory !== id ? "opacity-50" : "",
               )}
             >
@@ -212,10 +212,10 @@ export function ThemenSection({
                   : config.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white capitalize tablet:text-2xl">
+                  <h3 className="text-xl font-semibold text-white capitalize tablet:text-2xl">
                     {config.label}
                   </h3>
-                  <p className="text-xs text-slate-400 tablet:text-sm">
+                  <p className="text-xs text-zinc-400 tablet:text-sm">
                     {themes.length} Themen zur Vorbereitung
                   </p>
                 </div>
@@ -238,36 +238,36 @@ export function ThemenSection({
       </div>
 
       <AnimateOnScroll animation="zoom-in" delay={200}>
-        <aside className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
-          <h3 className="mb-4 flex items-center gap-3 text-xl font-bold text-white tablet:text-2xl">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-full border-3 border-indigo-400 text-indigo-400 tablet:size-10">
+        <aside className="mt-20 rounded-3xl border border-amber-500/20 bg-linear-to-br from-yellow/20 to-orange/20 p-8 backdrop-blur-sm">
+          <h3 className="mb-4 flex items-center gap-3 text-xl font-semibold text-white tablet:text-2xl">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full border-3 border-amber-400 text-amber-400 tablet:size-10">
               <Lightbulb className="size-5 tablet:size-6" />
             </span>
             Prüfungstipp für Sprechen Teil 2
           </h3>
-          <ul className="grid gap-4 text-slate-300 md:grid-cols-2">
+          <ul className="grid gap-4 text-zinc-300 md:grid-cols-2">
             <li className="flex gap-3">
-              <span className="font-bold text-indigo-400">1.</span>
+              <span className="font-bold text-amber-400">1.</span>
               Stell das Thema kurz vor und begründe deine Wahl.
             </li>
             <li className="flex gap-3">
-              <span className="font-bold text-indigo-400">2.</span>
+              <span className="font-bold text-amber-400">2.</span>
               Berichte von deinen persönlichen Erfahrungen (Ich-Perspektive).
             </li>
             <li className="flex gap-3">
-              <span className="font-bold text-indigo-400">3.</span>
+              <span className="font-bold text-amber-400">3.</span>
               Beschreibe die Situation in deinem Heimatland.
             </li>
             <li className="flex gap-3">
-              <span className="font-bold text-indigo-400">4.</span>
+              <span className="font-bold text-amber-400">4.</span>
               Nenne mindestens zwei Vorteile und zwei Nachteile.
             </li>
             <li className="flex gap-3">
-              <span className="font-bold text-indigo-400">5.</span>
+              <span className="font-bold text-amber-400">5.</span>
               Äußere deine eigene Meinung klar am Ende.
             </li>
             <li className="flex gap-3">
-              <span className="font-bold text-indigo-400">6.</span>
+              <span className="font-bold text-amber-400">6.</span>
               Bedanke dich am Ende und bitte um Fragen.
             </li>
           </ul>
@@ -277,7 +277,7 @@ export function ThemenSection({
       {/* Scroll to Top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed right-8 bottom-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500 text-black shadow-2xl transition-all hover:scale-110 active:scale-95"
+        className="fixed right-8 bottom-8 z-50 flex size-14 items-center justify-center rounded-full bg-amber-500 text-black shadow-2xl transition-all hover:scale-110 active:scale-95"
       >
         <ArrowUp size={28} />
       </button>

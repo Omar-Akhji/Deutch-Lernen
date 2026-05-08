@@ -15,7 +15,7 @@ export interface FamilyMember {
   partnerId?: string; // links couples together
 }
 
-export interface VocabTopic {
+interface VocabTopic {
   id: string;
 
   // Deutsch Lernen - High-Performance React Architecture
@@ -25,7 +25,7 @@ export interface VocabTopic {
   familyTree?: FamilyMember[];
 }
 
-export interface VocabSection {
+interface VocabSection {
   id: string;
   title: string;
   topics: VocabTopic[];

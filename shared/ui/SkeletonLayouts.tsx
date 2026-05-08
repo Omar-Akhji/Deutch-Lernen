@@ -90,7 +90,7 @@ export function HeroSkeleton() {
 export function SectionHeaderSkeleton() {
   return (
     <div className="mb-8 flex items-center gap-4">
-      <Skeleton className="h-12 w-12 rounded-full border-[3px] border-white/10 bg-white/5" />
+      <Skeleton className="size-12 rounded-full border-[3px] border-white/10 bg-white/5" />
       <Skeleton className="h-8 w-52 bg-white/8" />
     </div>
   );
@@ -116,7 +116,7 @@ export function TableSkeleton({
   const content = (
     <div className="w-full border-collapse">
       {/* Header Row */}
-      <div className="flex border-b border-white/10 px-2 py-2 @md:px-4 @md:py-3">
+      <div className="flex border-b border-white/10 p-2 @md:px-4 @md:py-3">
         {COL_IDS.slice(0, columns).map((id) => (
           <Skeleton
             key={id}
@@ -149,7 +149,7 @@ export function TableSkeleton({
 
   return (
     <div className="@container overflow-hidden rounded-3xl border border-white/10 bg-card">
-      <div className="overflow-x-auto px-4 py-4">{content}</div>
+      <div className="overflow-x-auto p-4">{content}</div>
     </div>
   );
 }
@@ -158,7 +158,7 @@ export function SectionCardSkeleton() {
   return (
     <div className="mbe-16">
       <div className="mbe-8 flex items-center gap-3">
-        <Skeleton className="h-12 w-12 rounded-full bg-white/10" />
+        <Skeleton className="size-12 rounded-full bg-white/10" />
         <Skeleton className="h-8 w-48 bg-white/10" />
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">

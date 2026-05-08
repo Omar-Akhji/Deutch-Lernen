@@ -27,7 +27,7 @@ export default function GrammatikDetailLoading() {
                   >
                     <Skeleton className="mb-2 h-6 w-3/4 bg-white/8" />
                     <div className="flex items-center gap-2">
-                      <Skeleton className="h-3.5 w-3.5 bg-white/5" />
+                      <Skeleton className="size-3.5 bg-white/5" />
                       <Skeleton className="h-4 w-28 bg-white/5" />
                     </div>
                   </div>

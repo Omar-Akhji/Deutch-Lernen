@@ -40,14 +40,14 @@ export function PhraseGroupCard({
       >
         <div className="flex items-center gap-4">
           {group.label.match(/\d+/) ?
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-amber-400/20 bg-amber-400/20 text-[10px] font-black text-amber-400 backdrop-blur-md">
+            <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-amber-400/20 bg-amber-400/20 text-[10px] font-black text-amber-400 backdrop-blur-md">
               {group.label.match(/\d+/)?.[0]}
             </span>
           : null}
           <h4
             className={`text-sm font-bold transition-colors tablet:text-[15px] ${
               isChecklistItem ?
-                "text-slate-200 group-hover:text-amber-400"
+                "text-zinc-200 group-hover:text-amber-400"
               : "text-white group-hover:text-amber-400"
             }`}
           >
@@ -123,7 +123,7 @@ function RenderPhrases({ phrases }: { phrases: (string | PhraseGroup)[] }) {
       {groups.map((group, gIdx) => (
         <div key={group.title || gIdx} className="space-y-3">
           {group.title ?
-            <h5 className="px-1 text-[11px] font-black tracking-widest text-slate-500 uppercase">
+            <h5 className="px-1 text-[11px] font-semibold tracking-widest text-zinc-500 uppercase">
               {group.title}
             </h5>
           : null}
@@ -131,10 +131,10 @@ function RenderPhrases({ phrases }: { phrases: (string | PhraseGroup)[] }) {
             <div className="space-y-4">
               {group.items.map((item) => (
                 <div key={item} className="flex items-start gap-4">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-amber-400/30" />
+                  <div className="flex size-6 shrink-0 items-center justify-center">
+                    <div className="size-1.5 rounded-full bg-amber-400/30" />
                   </div>
-                  <p className="text-sm leading-relaxed whitespace-pre-line text-slate-300 tablet:text-[15px]">
+                  <p className="text-sm leading-relaxed whitespace-pre-line text-zinc-300 tablet:text-[15px]">
                     {item}
                   </p>
                 </div>

@@ -109,7 +109,7 @@ export default async function GrammatikDetailPage({ params }: PageProps) {
         {/* Subtopics */}
         {currentTopic.subtopics ?
           <section className="mb-16">
-            <h2 className="mb-12 flex items-center gap-3 text-xl font-bold text-text tablet:gap-4 tablet:text-2xl">
+            <h2 className="mb-12 flex items-center gap-3 text-xl font-semibold text-text tablet:gap-4 tablet:text-2xl">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
                 <BookOpen className="size-5 tablet:size-6" strokeWidth={2} />
               </span>

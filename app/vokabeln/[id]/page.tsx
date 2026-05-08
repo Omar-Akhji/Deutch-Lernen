@@ -96,7 +96,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                 >
                   <h2
                     id={`section-${section.id}`}
-                    className="m-0 text-2xl font-bold tracking-wide text-white uppercase"
+                    className="m-0 text-2xl font-semibold tracking-wide text-white uppercase"
                   >
                     {section.title}
                   </h2>
@@ -113,7 +113,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                         href={`/vokabeln/${id}/${topic.id}`}
                         className="group relative block overflow-hidden rounded-xl border border-(--glass-border) bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) hover:shadow-lg"
                       >
-                        <h3 className="mb-2 text-lg font-bold text-text group-hover:text-yellow">
+                        <h3 className="mb-2 text-lg font-semibold text-text group-hover:text-yellow">
                           {topic.title}
                         </h3>
                         <div className="flex items-center gap-2 text-sm text-text-muted">
@@ -132,8 +132,8 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
           </div>
         : /* Fallback for simple word lists */
           <AnimateOnScroll as="section" animation="fade-up" className="mb-12">
-            <h2 className="mb-8 flex items-center gap-4 text-[1.75rem] font-bold text-text">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
+            <h2 className="mb-8 flex items-center gap-4 text-[1.75rem] font-semibold text-text">
+              <span className="flex size-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
                 <BookOpen size={24} strokeWidth={2} />
               </span>
               Wortliste
@@ -147,7 +147,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                     className="group relative overflow-hidden rounded-xl border border-(--glass-border) bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) hover:shadow-lg"
                   >
                     <div className="mb-2 flex items-baseline justify-between">
-                      <h3 className="text-lg font-bold text-text">
+                      <h3 className="text-lg font-semibold text-text">
                         {word.german}
                       </h3>
                     </div>

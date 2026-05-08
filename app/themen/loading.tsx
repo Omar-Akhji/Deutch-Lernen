@@ -29,7 +29,7 @@ export default function ThemenLoading() {
       </div>
 
       {/* Category Navigation Bar */}
-      <div className="rounded-2xl border border-white/5 bg-slate-950/50 px-4 py-4 shadow-xl backdrop-blur-md">
+      <div className="rounded-2xl border border-white/5 bg-zinc-950/50 p-4 shadow-xl backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-2">
           {CATEGORIES.map((id) => (
             <Skeleton key={id} className="h-10 w-32 rounded-full bg-white/5" />
@@ -66,14 +66,14 @@ export default function ThemenLoading() {
                   <div className="space-y-3">
                     {ITEMS.map((itemId) => (
                       <div key={`${cardId}-${itemId}`} className="flex gap-3">
-                        <Skeleton className="mt-1 h-1.5 w-1.5 rounded-full bg-white/10" />
+                        <Skeleton className="mt-1 size-1.5 rounded-full bg-white/10" />
                         <Skeleton className="h-4 w-full bg-white/5" />
                       </div>
                     ))}
                   </div>
                   {/* Bottom footer */}
                   <div className="mt-6 flex justify-end border-t border-white/5 pt-4">
-                    <Skeleton className="h-3 w-32 bg-white/5" />
+                    <Skeleton className="size-32 bg-white/5" />
                   </div>
                 </div>
               ))}
@@ -83,9 +83,9 @@ export default function ThemenLoading() {
       </div>
 
       {/* Blue tip box */}
-      <div className="mt-20 rounded-3xl border border-indigo-500/20 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
+      <div className="mt-20 rounded-3xl border border-amber-500/20 bg-linear-to-br from-yellow/20 to-orange/20 p-8 backdrop-blur-sm">
         <div className="mb-4 flex items-center gap-2">
-          <Skeleton className="h-10 w-10 rounded-full border-[3px] border-white/10 bg-white/10" />
+          <Skeleton className="size-10 rounded-full border-[3px] border-white/10 bg-white/10" />
           <Skeleton className="h-8 w-64 bg-white/10" />
         </div>
         <div className="grid gap-4 md:grid-cols-2">

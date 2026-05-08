@@ -84,16 +84,16 @@ export function ModuleStudyView({
                       <span className="rounded-lg bg-amber-400/20 px-3 py-1 text-xs font-bold text-amber-400 backdrop-blur-md">
                         {part.name}
                       </span>
-                      <h2 className="text-2xl font-bold text-white">
+                      <h2 className="text-2xl font-semibold text-white">
                         {part.taskType}
                       </h2>
                     </div>
                     {part.description ?
-                      <p className="text-slate-400">{part.description}</p>
+                      <p className="text-zinc-400">{part.description}</p>
                     : null}
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-300 backdrop-blur-sm">
+                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-zinc-300 backdrop-blur-sm">
                       <CheckCircle2 size={16} className="text-amber-400" />
                       {part.points} Pkt.
                     </div>
@@ -111,7 +111,7 @@ export function ModuleStudyView({
                     <div className="space-y-6">
                       <div className="flex items-center gap-6">
                         <div className="h-0.75 flex-1 rounded-full bg-white/10" />
-                        <h3 className="text-sm font-black tracking-[0.2em] text-slate-500 uppercase">
+                        <h3 className="text-sm font-semibold tracking-[0.2em] text-zinc-500 uppercase">
                           {category.split(":").pop()?.trim()}
                         </h3>
                         <div className="h-0.75 flex-1 rounded-full bg-white/10" />
@@ -119,7 +119,7 @@ export function ModuleStudyView({
 
                       <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
                         <div className="border-b border-white/10 bg-white/5 px-6 py-3">
-                          <h3 className="flex items-center gap-2 text-sm font-bold tracking-widest text-amber-400 uppercase">
+                          <h3 className="flex items-center gap-2 text-sm font-semibold tracking-widest text-amber-400 uppercase">
                             <CheckCircle2
                               size={16}
                               className="text-amber-400"
@@ -215,7 +215,7 @@ export function ModuleStudyView({
                                         label: "Hauptteil",
                                         text: "Ich schreibe dir, weil ich unser Treffen am Samstag leider verschieben muss...",
                                         description: "Grund des Schreibens",
-                                        color: "text-purple-400",
+                                        color: "text-fuchsia-400",
                                       },
                                       {
                                         label: "Schluss",
@@ -247,7 +247,7 @@ export function ModuleStudyView({
                                         label: "Hauptteil",
                                         text: "Seit zwei Tagen funktioniert die Heizung im Wohnzimmer nicht mehr...",
                                         description: "Sachliche Beschreibung",
-                                        color: "text-purple-400",
+                                        color: "text-fuchsia-400",
                                       },
                                       {
                                         label: "Schluss",
@@ -280,12 +280,12 @@ export function ModuleStudyView({
       <section className="border-t border-white/10 pt-12">
         <div className="mb-10">
           <AnimateOnScroll animation="fade-up">
-            <h2 className="mb-2 bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-black text-transparent">
+            <h2 className="mb-2 bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-3xl font-semibold text-transparent">
               Prüfungsthemen (Teil 2)
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll animation="fade-up" delay={100}>
-            <p className="max-w-2xl text-lg text-slate-400">
+            <p className="max-w-2xl text-lg text-zinc-400">
               Meistere die 58 wichtigsten Prüfungsthemen mit pro/kontra
               Argumenten und gezieltem Wortschatz.
             </p>

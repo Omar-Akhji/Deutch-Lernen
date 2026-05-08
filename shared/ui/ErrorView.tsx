@@ -26,7 +26,7 @@ export function ErrorView({
   return (
     <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
       <div className="rounded-3xl border border-white/10 bg-card p-8 shadow-2xl backdrop-blur-xl">
-        <h2 className="mb-4 text-2xl font-bold text-white">{title}</h2>
+        <h2 className="mb-4 text-2xl font-semibold text-white">{title}</h2>
         <p className="mb-6 text-text-muted">
           {error.message || fallbackMessage}
         </p>

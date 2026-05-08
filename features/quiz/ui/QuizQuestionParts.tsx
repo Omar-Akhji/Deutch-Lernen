@@ -18,7 +18,7 @@ export function TeilHeader({
         <span className="text-base font-bold text-yellow tablet:text-lg">
           Teil {teil}
         </span>
-        <h2 className="text-xs font-bold tracking-wide text-white/90 uppercase tablet:text-sm">
+        <h2 className="text-xs font-semibold tracking-wide text-white/90 uppercase tablet:text-sm">
           {teilTitle || "Modul Lesen"}
         </h2>
       </div>
@@ -66,7 +66,7 @@ export function ContextCard({
                   key={letter}
                   type="button"
                   onClick={() => onSelectAd({ letter, content })}
-                  className="group relative min-h-30 cursor-pointer rounded-lg border border-white/10 bg-slate-900/40 p-5 pt-9 text-left text-white/90 shadow-lg transition-all hover:bg-slate-800/60 focus:ring-2 focus:ring-yellow/50 focus:outline-hidden active:scale-95"
+                  className="group relative min-h-30 cursor-pointer rounded-lg border border-white/10 bg-zinc-900/40 p-5 pt-9 text-left text-white/90 shadow-lg transition-all hover:bg-zinc-800/60 focus:ring-2 focus:ring-yellow/50 focus:outline-hidden active:scale-95"
                 >
                   <div className="absolute top-0 left-0 rounded-tl-lg rounded-br-lg bg-yellow px-2.5 py-1 text-[10px] font-black text-black uppercase shadow-sm">
                     {letter}
@@ -84,11 +84,11 @@ export function ContextCard({
   }
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/40 shadow-lg backdrop-blur-md">
+    <div className="relative overflow-hidden rounded-xl border border-white/10 bg-zinc-900/40 shadow-lg backdrop-blur-md">
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-size-[24px_24px] opacity-[0.02]" />
       <div className="relative p-5">
         <div className="mb-3 flex items-center gap-3">
-          <h4 className="text-[9px] font-black tracking-[0.3em] text-yellow/60 uppercase">
+          <h4 className="text-[9px] font-semibold tracking-[0.3em] text-yellow/60 uppercase">
             {contextLabel}
           </h4>
           <div className="h-px flex-1 bg-white/5" />
@@ -100,7 +100,7 @@ export function ContextCard({
           <div className="flex justify-center">
             <audio
               controls
-              className="h-10 w-full max-w-md rounded-full bg-slate-800/50 accent-yellow"
+              className="h-10 w-full max-w-md rounded-full bg-zinc-800/50 accent-yellow"
             >
               <source src={question.audioUrl} type="audio/mpeg" />
               Your browser does not support the audio element.
@@ -140,7 +140,7 @@ export function AnswerOptions({
           <span className="text-xs font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)] tablet:text-sm">
             {currentStep}.
           </span>
-          <h3 className="text-xs leading-tight font-bold text-white/90 tablet:text-sm">
+          <h3 className="text-xs leading-tight font-semibold text-white/90 tablet:text-sm">
             {questionText}
           </h3>
         </div>
@@ -175,7 +175,7 @@ export function AnswerOptions({
           <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
             {currentStep}.
           </span>
-          <h3 className="text-sm leading-tight font-bold text-white/90">
+          <h3 className="text-sm leading-tight font-semibold text-white/90">
             {questionText}
           </h3>
         </div>
@@ -189,7 +189,7 @@ export function AnswerOptions({
                 className={`flex h-10 items-center justify-center text-xs font-black transition-all ${
                   isSelected ?
                     "bg-linear-to-br from-yellow to-orange text-black shadow-inner"
-                  : "bg-slate-950/80 text-white/30 hover:bg-slate-800 hover:text-white/80"
+                  : "bg-zinc-950/80 text-white/30 hover:bg-zinc-800 hover:text-white/80"
                 }`}
               >
                 {option}
@@ -207,7 +207,7 @@ export function AnswerOptions({
         <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
           {currentStep}.
         </span>
-        <h3 className="text-xs leading-snug font-bold text-white/90 tablet:text-sm">
+        <h3 className="text-xs leading-snug font-semibold text-white/90 tablet:text-sm">
           {questionText}
         </h3>
       </div>
@@ -251,7 +251,7 @@ export function AdDetailDialog({
   return (
     <dialog
       ref={dialogRef}
-      className="fixed inset-0 m-auto flex h-max max-h-[90vh] w-max max-w-[min(90vw,32rem)] scale-95 flex-col overflow-hidden rounded-2xl border-2 border-white/10 bg-slate-950 p-0 text-white opacity-0 shadow-2xl transition-[opacity,transform,overlay,display] duration-250 ease-in-out [scrollbar-width:none] backdrop:bg-black/80 backdrop:backdrop-blur-sm backdrop:transition-[background-color,backdrop-filter,overlay,display] backdrop:duration-250 open:scale-100 open:opacity-100 starting:open:scale-95 starting:open:opacity-0"
+      className="fixed inset-0 m-auto flex h-max max-h-[90vh] w-max max-w-[min(90vw,32rem)] scale-95 flex-col overflow-hidden rounded-2xl border-2 border-white/10 bg-zinc-950 p-0 text-white opacity-0 shadow-2xl transition-[opacity,transform,overlay,display] duration-250 ease-in-out [scrollbar-width:none] backdrop:bg-black/80 backdrop:backdrop-blur-sm backdrop:transition-[background-color,backdrop-filter,overlay,display] backdrop:duration-250 open:scale-100 open:opacity-100 starting:open:scale-95 starting:open:opacity-0"
       onClose={onClose}
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose();
@@ -263,14 +263,14 @@ export function AdDetailDialog({
       {selectedAd ?
         <div className="relative p-6 md:p-8">
           <button
-            className="absolute top-4 right-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-white/10 bg-slate-900 text-white/40 transition-colors hover:text-yellow"
+            className="absolute top-4 right-4 flex size-8 cursor-pointer items-center justify-center rounded-full border-2 border-white/10 bg-zinc-900 text-white/40 transition-colors hover:text-yellow"
             onClick={onClose}
           >
-            <X className="h-4 w-4" />
+            <X className="size-4" />
           </button>
 
           <div className="mb-6 flex justify-start">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/10 bg-linear-to-br from-yellow/10 to-orange/10 shadow-lg shadow-yellow/5">
+            <div className="flex size-12 items-center justify-center rounded-full border-2 border-white/10 bg-linear-to-br from-yellow/10 to-orange/10 shadow-lg shadow-yellow/5">
               <span className="bg-linear-to-br from-yellow to-orange bg-clip-text text-xl font-black text-transparent uppercase">
                 {selectedAd.letter}
               </span>

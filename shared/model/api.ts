@@ -2,7 +2,7 @@
  * Standard generic interface for all API responses.
  * Provides a consistent structure for data, errors, and metadata.
  */
-export interface ApiError {
+interface ApiError {
   code: string;
   details?: unknown;
 }
