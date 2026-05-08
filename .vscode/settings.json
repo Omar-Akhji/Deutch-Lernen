@@ -25,5 +25,5 @@
   "stylelint.validate": ["css"],
   "css.validate": false,
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "js/ts.experimental.useTsgo": true
+  "js/ts.experimental.useTsgo": false
 }
