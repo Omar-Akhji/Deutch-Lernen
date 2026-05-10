@@ -1,6 +1,6 @@
-import { getFirstLetter } from "@/shared/lib/utils";
+import { getFirstLetter } from "@/shared/lib/utilities";
 
-interface CardBodyProps {
+interface CardBodyProperties {
   title: string;
   subtitle?: string | undefined;
   description?: string | undefined;
@@ -22,7 +22,7 @@ export const CardBody = ({
   icon,
   stats,
   variant = "default",
-}: CardBodyProps) => {
+}: CardBodyProperties) => {
   const iconText = icon || getFirstLetter(title);
 
   return (

@@ -2,7 +2,7 @@
 
 import { ErrorView } from "@/shared/ui/ErrorView";
 
-export default function QuizError(props: {
+export default function QuizError(properties: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
@@ -10,7 +10,7 @@ export default function QuizError(props: {
 
   return (
     <ErrorView
-      {...props}
+      {...properties}
       title="Quiz konnte nicht geladen werden"
       errorLabel="Quiz error"
       fallbackMessage="Fehler beim Laden des Quiz."

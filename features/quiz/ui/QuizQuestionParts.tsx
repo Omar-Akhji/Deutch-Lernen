@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import type { Question } from "../model/types";
 
-interface TeilHeaderProps {
+interface TeilHeaderProperties {
   teil: number | undefined;
   teilTitle: string | undefined;
   teilInstruction: string | undefined;
@@ -11,7 +11,7 @@ export function TeilHeader({
   teil,
   teilTitle,
   teilInstruction,
-}: TeilHeaderProps) {
+}: TeilHeaderProperties) {
   return (
     <header className="mb-6 border-b-2 border-yellow/30 pb-2">
       <div className="flex items-baseline gap-2">
@@ -31,7 +31,7 @@ export function TeilHeader({
   );
 }
 
-interface ContextCardProps {
+interface ContextCardProperties {
   context: string;
   contextLabel: string;
   question: Question;
@@ -45,7 +45,7 @@ export function ContextCard({
   question,
   skill,
   onSelectAd,
-}: ContextCardProps) {
+}: ContextCardProperties) {
   if (skill === "lesen" && question.teil === 3) {
     return (
       <div className="space-y-6">
@@ -112,7 +112,7 @@ export function ContextCard({
   );
 }
 
-interface AnswerOptionsProps {
+interface AnswerOptionsProperties {
   options: string[] | undefined;
   selectedAnswer: string | string[] | null | undefined;
   onAnswer: (answer: string | string[]) => void;
@@ -132,7 +132,7 @@ export function AnswerOptions({
   questionType,
   isCompact,
   isTableRow,
-}: AnswerOptionsProps) {
+}: AnswerOptionsProperties) {
   if (isCompact) {
     return (
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -237,7 +237,7 @@ export function AnswerOptions({
   );
 }
 
-interface AdDetailDialogProps {
+interface AdDetailDialogProperties {
   dialogRef: React.RefObject<HTMLDialogElement | null>;
   selectedAd: { letter: string; content: string } | null;
   onClose: () => void;
@@ -247,11 +247,11 @@ export function AdDetailDialog({
   dialogRef,
   selectedAd,
   onClose,
-}: AdDetailDialogProps) {
+}: AdDetailDialogProperties) {
   return (
     <dialog
       ref={dialogRef}
-      className="fixed inset-0 m-auto flex h-max max-h-[90vh] w-max max-w-[min(90vw,32rem)] scale-95 flex-col overflow-hidden rounded-2xl border-2 border-white/10 bg-zinc-950 p-0 text-white opacity-0 shadow-2xl transition-[opacity,transform,overlay,display] duration-250 ease-in-out [scrollbar-width:none] backdrop:bg-black/80 backdrop:backdrop-blur-sm backdrop:transition-[background-color,backdrop-filter,overlay,display] backdrop:duration-250 open:scale-100 open:opacity-100 starting:open:scale-95 starting:open:opacity-0"
+      className="fixed inset-0 m-auto flex h-max max-h-[90vh] w-max max-w-[min(90vw,32rem)] scale-95 [scrollbar-width:none] flex-col overflow-hidden rounded-2xl border-2 border-white/10 bg-zinc-950 p-0 text-white opacity-0 shadow-2xl transition-[opacity,transform,overlay,display] duration-250 ease-in-out backdrop:bg-black/80 backdrop:backdrop-blur-sm backdrop:transition-[background-color,backdrop-filter,overlay,display] backdrop:duration-250 open:scale-100 open:opacity-100 starting:open:scale-95 starting:open:opacity-0"
       onClose={onClose}
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose();

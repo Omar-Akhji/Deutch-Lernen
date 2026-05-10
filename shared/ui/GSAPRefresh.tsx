@@ -9,9 +9,9 @@ import { ScrollTrigger } from "@/shared/lib/gsap";
  * Essential for Next.js App Router as page transitions don't trigger a full reload,
  * often leading to incorrect scroll trigger positions if the new page has a different height.
  */
-function GSAPRefreshInner() {
+function GsapRefreshInner() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const searchParameters = useSearchParams();
 
   useEffect(() => {
     // Small timeout to allow the DOM to settle and images/layouts to calculate
@@ -20,15 +20,15 @@ function GSAPRefreshInner() {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [pathname, searchParams]);
+  }, [pathname, searchParameters]);
 
   return null;
 }
 
-export function GSAPRefresh() {
+export function GsapRefresh() {
   return (
     <Suspense fallback={null}>
-      <GSAPRefreshInner />
+      <GsapRefreshInner />
     </Suspense>
   );
 }

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { AnimateOnScroll } from "./AnimateOnScroll";
 
-interface HeroProps {
+interface HeroProperties {
   title: string;
   description: string;
   category?: string;
@@ -21,12 +21,12 @@ export function Hero({
   gradient,
   variant = "default",
   stats,
-}: HeroProps) {
+}: HeroProperties) {
   const Content = (
     <div className={gradient ? "max-inline-3xl" : "text-center"}>
       <AnimateOnScroll animation="fade-up" delay={100}>
         <div
-          className={`mbe-4 flex flex-wrap items-center gap-3 ${!gradient ? "justify-center" : ""}`}
+          className={`mbe-4 flex flex-wrap items-center gap-3 ${gradient ? "" : "justify-center"}`}
         >
           {category ?
             <span
@@ -47,7 +47,7 @@ export function Hero({
 
       <AnimateOnScroll animation="blur-in" delay={300} duration={1000}>
         <h1
-          className={`-my-2 mbe-2 py-2 text-3xl font-bold text-shadow-sm tablet:text-4xl laptop:text-5xl ${gradient ? "text-white drop-shadow-[0_2px_10_rgb(0_0_0/20%)]" : "bg-linear-to-br from-white to-slate-200 bg-clip-text text-transparent"}`}
+          className={`-my-2 mbe-2 py-2 text-3xl font-bold text-shadow-sm tablet:text-4xl laptop:text-5xl ${gradient ? "text-white drop-shadow-[0_2px_10px_black/20]" : "bg-linear-to-br from-white to-slate-200 bg-clip-text text-transparent"}`}
         >
           {title}
         </h1>
@@ -95,17 +95,8 @@ export function Hero({
     <AnimateOnScroll
       animation="fade-in"
       duration={1000}
-      className="relative mbe-12 overflow-hidden rounded-3xl p-8 shadow-2xl md:p-12"
-      style={{
-        ...(gradient && variant !== "glass" ?
-          { background: gradient }
-        : {
-            background: "var(--color-card)",
-            borderColor: "var(--glass-border)",
-            borderWidth: "1px",
-            borderStyle: "solid",
-          }),
-      }}
+      className={`relative mbe-12 overflow-hidden rounded-3xl p-8 shadow-2xl tablet:p-12 ${!gradient || variant === "glass" ? "border border-(--glass-border) bg-card" : ""}`}
+      style={gradient && variant !== "glass" ? { background: gradient } : {}}
     >
       {Content}
     </AnimateOnScroll>

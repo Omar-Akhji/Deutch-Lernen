@@ -9,7 +9,7 @@ import { getThemen } from "@/features/themen/api/services";
 import { ModuleStudyView } from "@/features/pruefung/ui/ModuleStudyView";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
-interface PageProps {
+interface PageProperties {
   params: Promise<{
     level: string;
     module: string;
@@ -20,50 +20,50 @@ export async function generateStaticParams() {
   const { data: levels } = await getExamLevels();
   const modules = ["sprechen", "schreiben"];
 
-  const params: { level: string; module: string }[] = [];
+  const parameters: { level: string; module: string }[] = [];
 
-  levels.forEach((level) => {
-    modules.forEach((module) => {
-      params.push({ level: level.id, module });
-    });
-  });
+  for (const level of levels) {
+    for (const moduleName of modules) {
+      parameters.push({ level: level.id, module: moduleName });
+    }
+  }
 
-  return params;
+  return parameters;
 }
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
-  const { level, module } = await params;
+}: PageProperties): Promise<Metadata> {
+  const { level, module: moduleName } = await params;
   const { data: currentExam } = await getExamLevel(level);
 
   // Deutsch Lernen - High-Performance React Architecture
 
   if (!currentExam) return { title: "Nicht gefunden" };
 
-  const moduleTitle = module.charAt(0).toUpperCase() + module.slice(1);
+  const moduleTitle = moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
   return {
     title: `${currentExam.level} ${moduleTitle} - Vorbereitung`,
     description: `Struktur-Checkliste und Themen für den ${moduleTitle}-Teil der ${currentExam.level} Prüfung.`,
   };
 }
 
-export default async function ModulePage({ params }: PageProps) {
-  const { level, module } = await params;
+export default async function ModulePage({ params }: PageProperties) {
+  const { level, module: moduleName } = await params;
 
-  if (module !== "sprechen" && module !== "schreiben") {
+  if (moduleName !== "sprechen" && moduleName !== "schreiben") {
     notFound();
   }
 
-  const [examRes, redemittelRes, themenRes] = await Promise.all([
+  const [examResponse, redemittelResponse, themenResponse] = await Promise.all([
     getExamLevel(level),
     getRedemittel(level),
     getThemen(),
   ]);
 
-  const currentExam = examRes.data;
-  const redemittel = redemittelRes.data;
-  const themen = themenRes.data;
+  const currentExam = examResponse.data;
+  const redemittel = redemittelResponse.data;
+  const themen = themenResponse.data;
 
   if (!currentExam) notFound();
 
@@ -71,7 +71,7 @@ export default async function ModulePage({ params }: PageProps) {
     <AnimateOnScroll as="main" animation="fade-up">
       <ModuleStudyView
         level={level}
-        module={module as "sprechen" | "schreiben"}
+        module={moduleName as "sprechen" | "schreiben"}
         examData={currentExam}
         redemittel={redemittel}
         initialThemen={themen}

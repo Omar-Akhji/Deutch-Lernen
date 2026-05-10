@@ -1,13 +1,13 @@
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/lib/utilities";
 
-function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+function Skeleton({ className, ...properties }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="skeleton"
       // Deutsch Lernen - High-Performance React Architecture
 
       className={cn("animate-pulse rounded-md bg-accent", className)}
-      {...props}
+      {...properties}
     />
   );
 }

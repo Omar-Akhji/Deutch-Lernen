@@ -2,7 +2,7 @@
 import { ClipboardList } from "lucide-react";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
-interface QuizStartProps {
+interface QuizStartProperties {
   title: string;
   description: string;
   questionCount: number;
@@ -16,7 +16,7 @@ export const QuizStart = ({
   questionCount,
   duration,
   onStart,
-}: QuizStartProps) => {
+}: QuizStartProperties) => {
   return (
     <section className="mx-auto p-8 text-center max-inline-lg">
       {/* Exam badge */}

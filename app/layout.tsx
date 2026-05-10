@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/shared/ui/Navigation";
 import { Footer } from "@/shared/ui/Footer";
-import { GSAPRefresh } from "@/shared/ui/GSAPRefresh";
+import { GsapRefresh } from "@/shared/ui/GsapRefresh";
 import { Suspense } from "react";
 
 import Script from "next/script";
@@ -34,7 +34,7 @@ export default function RootLayout({
           {`document.documentElement.classList.remove('no-js');`}
         </Script>
         <Suspense fallback={null}>
-          <GSAPRefresh />
+          <GsapRefresh />
         </Suspense>
         <div className="container mx-auto max-w-7xl">
           <Navigation />

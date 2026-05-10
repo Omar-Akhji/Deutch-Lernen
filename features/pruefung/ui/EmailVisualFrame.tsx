@@ -1,6 +1,6 @@
 import { Mail, User, Tag } from "lucide-react";
 
-interface EmailVisualFrameProps {
+interface EmailVisualFrameProperties {
   type: "informal" | "formal";
   subject: string;
   recipient: string;
@@ -17,7 +17,7 @@ export function EmailVisualFrame({
   subject,
   recipient,
   sections,
-}: EmailVisualFrameProps) {
+}: EmailVisualFrameProperties) {
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 shadow-2xl backdrop-blur-xl">
       {/* Browser/Email Header */}
@@ -65,7 +65,7 @@ export function EmailVisualFrame({
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-size-[20px_20px] opacity-5" />
 
         <div className="relative space-y-6">
-          {sections.map((section, sectionIdx) => (
+          {sections.map((section, sectionIndex) => (
             <div key={section.label} className="group relative">
               {/* Annotation Label */}
               <div className="absolute top-0 -left-4 hidden -translate-x-full pr-4 opacity-0 transition-opacity group-hover:opacity-100 lg:block">
@@ -93,7 +93,7 @@ export function EmailVisualFrame({
                   <span
                     className={`text-[10px] font-bold tracking-[0.2em] uppercase ${section.color}`}
                   >
-                    {sectionIdx + 1}. {section.label}
+                    {sectionIndex + 1}. {section.label}
                   </span>
                   <span className="text-[10px] text-zinc-500 italic">
                     {section.description}

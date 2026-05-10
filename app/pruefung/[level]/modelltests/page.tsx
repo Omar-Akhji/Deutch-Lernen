@@ -4,7 +4,7 @@ import {
   getModelTests,
 } from "@/features/pruefung";
 
-interface PageProps {
+interface PageProperties {
   params: Promise<{ level: string }>;
 }
 
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ModelTestsPage({ params }: PageProps) {
+export default async function ModelTestsPage({ params }: PageProperties) {
   const { level } = await params;
   const { data: modelTests } = await getModelTests(level);
 

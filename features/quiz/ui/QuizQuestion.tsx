@@ -9,7 +9,7 @@ import {
   AdDetailDialog,
 } from "./QuizQuestionParts";
 
-interface QuizQuestionProps {
+interface QuizQuestionProperties {
   question: Question;
   currentStep: number;
   onAnswer: (answer: string | string[]) => void;
@@ -37,16 +37,16 @@ export const QuizQuestion = ({
   skill,
   isTableRow,
   hideQuestionBody,
-}: QuizQuestionProps) => {
+}: QuizQuestionProperties) => {
   const [selectedAd, setSelectedAd] = useState<{
     letter: string;
     content: string;
   } | null>(null);
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialogReference = useRef<HTMLDialogElement>(null);
 
   // Sync dialog state (Portfolio Pattern)
   useEffect(() => {
-    const dialog = dialogRef.current;
+    const dialog = dialogReference.current;
     if (!dialog) return;
     if (selectedAd !== null && !dialog.open) {
       dialog.showModal();
@@ -106,7 +106,7 @@ export const QuizQuestion = ({
         </div>
       : null}
 
-      {!hideQuestionBody ?
+      {hideQuestionBody ? null : (
         <div
           className={
             isTableRow ? "w-full" : (
@@ -127,10 +127,10 @@ export const QuizQuestion = ({
             />
           </div>
         </div>
-      : null}
+      )}
 
       <AdDetailDialog
-        dialogRef={dialogRef}
+        dialogRef={dialogReference}
         selectedAd={selectedAd}
         onClose={() => setSelectedAd(null)}
       />

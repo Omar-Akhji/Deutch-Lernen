@@ -2,7 +2,7 @@
 
 import { ErrorView } from "@/shared/ui/ErrorView";
 
-export default function Error(props: {
+export default function Error(properties: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
@@ -10,7 +10,7 @@ export default function Error(props: {
 
   return (
     <ErrorView
-      {...props}
+      {...properties}
       title="Etwas ist schiefgelaufen"
       errorLabel="Application error"
     />

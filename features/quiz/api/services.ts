@@ -23,7 +23,7 @@ export const getQuizStaticParams = (): {
   skill: string;
   testId: string;
 }[] => {
-  const params: { level: string; skill: string; testId: string }[] = [];
+  const parameters: { level: string; skill: string; testId: string }[] = [];
 
   for (const level in quizQuestions) {
     const lvlData = quizQuestions[level];
@@ -32,10 +32,10 @@ export const getQuizStaticParams = (): {
       const skillData = lvlData[skill];
       if (!skillData) continue;
       for (const testId in skillData) {
-        params.push({ level, skill, testId: String(testId) });
+        parameters.push({ level, skill, testId: String(testId) });
       }
     }
   }
 
-  return params;
+  return parameters;
 };

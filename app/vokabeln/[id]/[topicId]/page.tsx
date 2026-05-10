@@ -8,8 +8,9 @@ import {
 import { BackButton } from "@/shared/ui/BackButton";
 import { Hero } from "@/shared/ui/Hero";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { GlassCard } from "@/shared/ui/GlassCard";
 
-interface PageProps {
+interface PageProperties {
   params: Promise<{
     id: string;
     topicId: string;
@@ -30,7 +31,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: PageProperties): Promise<Metadata> {
   const { id, topicId } = await params;
   const { data: item } = await getVocabById(id);
 
@@ -46,7 +47,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function TopicDetailPage({ params }: PageProps) {
+export default async function TopicDetailPage({ params }: PageProperties) {
   const { id, topicId } = await params;
   const { data: item } = await getVocabById(id);
 
@@ -85,12 +86,10 @@ export default async function TopicDetailPage({ params }: PageProps) {
         {isFamilyTree ?
           <>
             {/* Family Tree Section */}
-            <AnimateOnScroll
-              as="section"
-              animation="fade-up"
-              className="mt-8 rounded-3xl border border-(--glass-border) bg-card p-8 shadow-sm"
-            >
-              <FamilyTree members={topic.familyTree!} />
+            <AnimateOnScroll as="section" animation="fade-up" className="mt-8">
+              <GlassCard className="p-8">
+                <FamilyTree members={topic.familyTree!} />
+              </GlassCard>
             </AnimateOnScroll>
 
             {/* Separate Vocabulary Table Section */}
@@ -107,14 +106,12 @@ export default async function TopicDetailPage({ params }: PageProps) {
           <AnimateOnScroll as="section" animation="fade-up" className="mt-8">
             <VocabularyTable words={topic.words} />
           </AnimateOnScroll>
-        : <AnimateOnScroll
-            as="section"
-            animation="fade-up"
-            className="mt-8 rounded-3xl border border-(--glass-border) bg-card p-8 shadow-sm"
-          >
-            <div className="text-center text-text-muted">
-              <p>Noch keine Vokabeln für {topic.title} eingetragen.</p>
-            </div>
+        : <AnimateOnScroll as="section" animation="fade-up" className="mt-8">
+            <GlassCard className="p-8">
+              <div className="text-center text-text-muted">
+                <p>Noch keine Vokabeln für {topic.title} eingetragen.</p>
+              </div>
+            </GlassCard>
           </AnimateOnScroll>
         }
       </main>

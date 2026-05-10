@@ -1,6 +1,6 @@
 import { ClipboardList } from "lucide-react";
 import { Card } from "@/shared/ui/Card";
-import { getGradient } from "@/shared/lib/utils";
+import { getGradient } from "@/shared/lib/utilities";
 import { PRUEFUNG_GRADIENTS } from "@/shared/lib/gradients";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { getExamLevels } from "../api/services";

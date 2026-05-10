@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 const EMPTY_ARRAY: string[] = [];
 
-interface CardModalProps {
+interface CardModalProperties {
   isOpen: boolean;
   onClose: () => void;
   title: string;
@@ -23,13 +23,13 @@ export function CardModal({
   description,
   href,
   previewTitles = EMPTY_ARRAY,
-}: CardModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+}: CardModalProperties) {
+  const dialogReference = useRef<HTMLDialogElement>(null);
   const { push } = useRouter();
 
   // Side Effect: Sync dialog state and manage body scroll lock (Outside the room)
   useEffect(() => {
-    const dialog = dialogRef.current;
+    const dialog = dialogReference.current;
     if (!dialog || !isOpen) return;
 
     // "Setting up the room" after render
@@ -50,7 +50,7 @@ export function CardModal({
   };
 
   const handleBackdropClick = (e: ReactMouseEvent<HTMLDialogElement>) => {
-    if (e.target === dialogRef.current) {
+    if (e.target === dialogReference.current) {
       onClose();
     }
   };
@@ -59,7 +59,7 @@ export function CardModal({
 
   return (
     <dialog
-      ref={dialogRef}
+      ref={dialogReference}
       onClick={handleBackdropClick}
       onKeyDown={(e) => {
         if (e.key === "Escape") {

@@ -4,11 +4,12 @@ import Link from "next/link";
 import { getVocabById, getVocabList } from "@/features/vocabulary";
 import { Hero } from "@/shared/ui/Hero";
 import { BackButton } from "@/shared/ui/BackButton";
-import { getGradient } from "@/shared/lib/utils";
+import { getGradient } from "@/shared/lib/utilities";
 import { VOCAB_GRADIENTS } from "@/shared/lib/gradients";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { GlassCard } from "@/shared/ui/GlassCard";
 
-interface PageProps {
+interface PageProperties {
   params: Promise<{
     id: string;
   }>;
@@ -23,7 +24,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: PageProperties): Promise<Metadata> {
   const { id } = await params;
   const { data: item } = await getVocabById(id);
 
@@ -33,7 +34,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function VokabelnDetailPage({ params }: PageProps) {
+export default async function VokabelnDetailPage({ params }: PageProperties) {
   const { id } = await params;
   const { data: item } = await getVocabById(id);
 
@@ -64,7 +65,7 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                 <span className="rounded-full border border-yellow/30 bg-yellow/10 px-3 py-1 text-sm font-medium text-yellow">
                   {String(
                     item.sections?.reduce(
-                      (acc, sec) => acc + sec.topics.length,
+                      (accumulator, sec) => accumulator + sec.topics.length,
                       0,
                     ) ||
                       item.words?.length ||
@@ -111,15 +112,20 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                       <Link
                         key={topic.id}
                         href={`/vokabeln/${id}/${topic.id}`}
-                        className="group relative block overflow-hidden rounded-xl border border-(--glass-border) bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) hover:shadow-lg"
+                        className="group block no-underline"
                       >
-                        <h3 className="mb-2 text-lg font-semibold text-text group-hover:text-yellow">
-                          {topic.title}
-                        </h3>
-                        <div className="flex items-center gap-2 text-sm text-text-muted">
-                          <ArrowRight size={14} className="text-secondary" />
-                          <span>Details ansehen</span>
-                        </div>
+                        <GlassCard
+                          className="p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-(--color-primary) group-hover:shadow-lg"
+                          rounded="2xl"
+                        >
+                          <h3 className="mb-2 text-lg font-semibold text-text group-hover:text-yellow">
+                            {topic.title}
+                          </h3>
+                          <div className="flex items-center gap-2 text-sm text-text-muted">
+                            <ArrowRight size={14} className="text-secondary" />
+                            <span>Details ansehen</span>
+                          </div>
+                        </GlassCard>
                       </Link>
                     ))}
                   </div>
@@ -144,19 +150,24 @@ export default async function VokabelnDetailPage({ params }: PageProps) {
                 {item.words.map((word) => (
                   <article
                     key={`${word.german}-${word.arabic}`}
-                    className="group relative overflow-hidden rounded-xl border border-(--glass-border) bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) hover:shadow-lg"
+                    className="group"
                   >
-                    <div className="mb-2 flex items-baseline justify-between">
-                      <h3 className="text-lg font-semibold text-text">
-                        {word.german}
-                      </h3>
-                    </div>
-                    <p className="font-arabic mb-3 text-xl font-medium text-white">
-                      {word.arabic}
-                    </p>
-                    <p className="text-sm text-text-muted italic">
-                      &quot;{word.example}&quot;
-                    </p>
+                    <GlassCard
+                      className="p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-(--color-primary) group-hover:shadow-lg"
+                      rounded="2xl"
+                    >
+                      <div className="mb-2 flex items-baseline justify-between">
+                        <h3 className="text-lg font-semibold text-text">
+                          {word.german}
+                        </h3>
+                      </div>
+                      <p className="font-arabic mb-3 text-xl font-medium text-white">
+                        {word.arabic}
+                      </p>
+                      <p className="text-sm text-text-muted italic">
+                        &quot;{word.example}&quot;
+                      </p>
+                    </GlassCard>
                   </article>
                 ))}
               </div>

@@ -11,11 +11,11 @@ import Link from "next/link";
 import { getExamLevels, getExamLevel } from "@/features/pruefung";
 import { Hero } from "@/shared/ui/Hero";
 import { BackButton } from "@/shared/ui/BackButton";
-import { getGradient } from "@/shared/lib/utils";
+import { getGradient } from "@/shared/lib/utilities";
 import { PRUEFUNG_GRADIENTS } from "@/shared/lib/gradients";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
-interface PageProps {
+interface PageProperties {
   params: Promise<{
     level: string;
   }>;
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: PageProperties): Promise<Metadata> {
   const { level } = await params;
   const { data: currentExam } = await getExamLevel(level);
 
@@ -41,7 +41,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PruefungDetailPage({ params }: PageProps) {
+export default async function PruefungDetailPage({ params }: PageProperties) {
   const { level } = await params;
 
   const { data: currentExam } = await getExamLevel(level);

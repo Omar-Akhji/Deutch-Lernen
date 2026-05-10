@@ -21,9 +21,9 @@ export default function PruefungDetailLoading() {
           <SectionHeaderSkeleton />
 
           <div className="grid gap-6">
-            {["mod-1", "mod-2", "mod-3", "mod-4"].map((modId) => (
+            {["mod-1", "mod-2", "mod-3", "mod-4"].map((moduleId) => (
               <article
-                key={modId}
+                key={moduleId}
                 className="overflow-hidden rounded-2xl border border-white/10 bg-card"
               >
                 {/* Header placeholder */}

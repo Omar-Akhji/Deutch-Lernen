@@ -16,25 +16,34 @@ export const THEMEN_CATEGORY_COLORS: Record<string, string> = {
  */
 export function getCategoryClasses(cat: string): string {
   switch (cat) {
-    case "essen":
+    case "essen": {
       // Deutsch Lernen - High-Performance React Architecture
 
       return "text-orange-500 bg-orange-500/10 border-orange-500";
-    case "tech":
+    }
+    case "tech": {
       return "text-blue-500 bg-blue-500/10 border-blue-500";
-    case "gesellschaft":
+    }
+    case "gesellschaft": {
       return "text-purple-500 bg-purple-500/10 border-purple-500";
-    case "bildung":
+    }
+    case "bildung": {
       return "text-emerald-500 bg-emerald-500/10 border-emerald-500";
-    case "gesundheit":
+    }
+    case "gesundheit": {
       return "text-red-500 bg-red-500/10 border-red-500";
-    case "freizeit":
+    }
+    case "freizeit": {
       return "text-pink-500 bg-pink-500/10 border-pink-500";
-    case "umwelt":
+    }
+    case "umwelt": {
       return "text-green-500 bg-green-500/10 border-green-500";
-    case "arbeit":
+    }
+    case "arbeit": {
       return "text-cyan-500 bg-cyan-500/10 border-cyan-500";
-    default:
+    }
+    default: {
       return "text-slate-500 bg-slate-500/10 border-slate-500";
+    }
   }
 }

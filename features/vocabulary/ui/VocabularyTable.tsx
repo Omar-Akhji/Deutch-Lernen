@@ -1,7 +1,8 @@
 import type { Word } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { GlassCard } from "@/shared/ui/GlassCard";
 
-interface VocabularyTableProps {
+interface VocabularyTableProperties {
   words: Word[];
   englishLabel?: string;
 }
@@ -9,13 +10,13 @@ interface VocabularyTableProps {
 export function VocabularyTable({
   words,
   englishLabel = "English",
-}: VocabularyTableProps) {
+}: VocabularyTableProperties) {
   if (!words || words.length === 0) return null;
 
   return (
     <AnimateOnScroll animation="fade-up">
-      <div className="@container overflow-hidden rounded-3xl border border-(--glass-border) bg-card backdrop-blur-(--glass-blur)">
-        <div className="overflow-x-auto px-4 pbs-4 pbe-4">
+      <GlassCard className="@container">
+        <div className="scrollbar-thin overflow-x-auto px-4 pb-4">
           <table className="border-collapse text-left inline-full">
             <caption className="sr-only">Vokabelliste</caption>
             <thead>
@@ -67,7 +68,7 @@ export function VocabularyTable({
             </tbody>
           </table>
         </div>
-      </div>
+      </GlassCard>
     </AnimateOnScroll>
   );
 }

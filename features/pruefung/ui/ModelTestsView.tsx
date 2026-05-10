@@ -47,7 +47,7 @@ const skills: Skill[] = [
   },
 ];
 
-interface ModelTestsViewProps {
+interface ModelTestsViewProperties {
   level: string;
   initialModelTests: number[];
 }
@@ -55,7 +55,7 @@ interface ModelTestsViewProps {
 export default function ModelTestsView({
   level,
   initialModelTests,
-}: ModelTestsViewProps) {
+}: ModelTestsViewProperties) {
   const modelTests = initialModelTests;
 
   const stats = [
@@ -93,9 +93,9 @@ export default function ModelTestsView({
         </div>
 
         <div className="grid gap-12">
-          {skills.map((skill, skillIdx) => (
+          {skills.map((skill, skillIndex) => (
             <section key={skill.id}>
-              <AnimateOnScroll animation="fade-right" delay={skillIdx * 100}>
+              <AnimateOnScroll animation="fade-right" delay={skillIndex * 100}>
                 <h2 className="mb-6 flex items-center gap-3 text-xl font-semibold text-white tablet:gap-4 tablet:text-2xl">
                   <span className="flex size-10 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
                     <skill.icon
@@ -108,11 +108,11 @@ export default function ModelTestsView({
               </AnimateOnScroll>
 
               <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
-                {modelTests.map((testId, testIdx) => (
+                {modelTests.map((testId, testIndex) => (
                   <AnimateOnScroll
                     key={`${skill.id}-${testId}`}
                     animation="fade-up"
-                    delay={(testIdx % 3) * 100}
+                    delay={(testIndex % 3) * 100}
                     className="h-full"
                   >
                     <Card

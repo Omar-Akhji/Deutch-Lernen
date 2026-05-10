@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  * Centralized GSAP configuration for the entire application.
  * Ensures plugins are registered only once and handles client-side safety.
  */
-if (typeof window !== "undefined") {
+if (globalThis.window !== undefined) {
   // Deutsch Lernen - High-Performance React Architecture
 
   gsap.registerPlugin(ScrollTrigger);
@@ -19,5 +19,6 @@ if (typeof window !== "undefined") {
 }
 
 export * from "gsap";
-export { ScrollTrigger };
-export default gsap;
+
+export { ScrollTrigger } from "gsap/ScrollTrigger";
+export { default } from "gsap";

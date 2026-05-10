@@ -7,11 +7,12 @@ import {
 } from "@/features/grammar";
 import { Hero } from "@/shared/ui/Hero";
 import { BackButton } from "@/shared/ui/BackButton";
-import { getGradient } from "@/shared/lib/utils";
+import { getGradient } from "@/shared/lib/utilities";
 import { GrammarTable } from "@/features/grammar/ui/GrammarTable";
 import { GrammarContentBlocks } from "@/features/grammar/ui/GrammarContentBlocks";
+import { GlassCard } from "@/shared/ui/GlassCard";
 
-interface PageProps {
+interface PageProperties {
   params: Promise<{
     section: string;
     topicId: string;
@@ -30,7 +31,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: PageProperties): Promise<Metadata> {
   const { section, topicId } = await params;
   const { data: currentTopic } = await getGrammarTopic(section, topicId);
 
@@ -41,16 +42,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function GrammatikDetailPage({ params }: PageProps) {
+export default async function GrammatikDetailPage({ params }: PageProperties) {
   const { section, topicId } = await params;
 
-  const [sectionRes, topicRes] = await Promise.all([
+  const [sectionResponse, topicResponse] = await Promise.all([
     getGrammarSection(section),
     getGrammarTopic(section, topicId),
   ]);
 
-  const currentSection = sectionRes.data;
-  const currentTopic = topicRes.data;
+  const currentSection = sectionResponse.data;
+  const currentTopic = topicResponse.data;
 
   if (!currentTopic || !currentSection) {
     return (
@@ -117,45 +118,44 @@ export default async function GrammatikDetailPage({ params }: PageProps) {
             </h2>
             <div className="grid gap-10">
               {currentTopic.subtopics.map((subtopic, index) => (
-                <article
-                  key={subtopic.id}
-                  className="overflow-hidden rounded-2xl border border-(--glass-border) bg-card"
-                >
-                  <header
-                    className="flex flex-row items-center gap-4 p-5"
-                    style={{
-                      background: getGradient(
-                        index + 1,
-                        currentSection.gradients,
-                      ),
-                    }}
-                  >
-                    <span className="rounded-md bg-white/20 px-2.5 py-1 text-xs font-bold text-white">
-                      {subtopic.number}
-                    </span>
-                    <h3 className="m-0 text-lg text-white tablet:text-xl">
-                      {subtopic.title}
-                    </h3>
-                  </header>
-                  <div className="p-6">
-                    <p className="m-0 mb-8 leading-relaxed text-text-muted">
-                      {subtopic.description}
-                    </p>
+                <article key={subtopic.id}>
+                  <GlassCard rounded="2xl">
+                    <header
+                      className="flex flex-row items-center gap-4 p-5"
+                      style={{
+                        background: getGradient(
+                          index + 1,
+                          currentSection.gradients,
+                        ),
+                      }}
+                    >
+                      <span className="rounded-md bg-white/20 px-2.5 py-1 text-xs font-bold text-white">
+                        {subtopic.number}
+                      </span>
+                      <h3 className="m-0 text-lg text-white tablet:text-xl">
+                        {subtopic.title}
+                      </h3>
+                    </header>
+                    <div className="p-6">
+                      <p className="m-0 mb-8 leading-relaxed text-text-muted">
+                        {subtopic.description}
+                      </p>
 
-                    {subtopic.hasTable && subtopic.tableData ?
-                      <div className="mb-12">
-                        <GrammarTable data={subtopic.tableData} />
-                      </div>
-                    : null}
+                      {subtopic.hasTable && subtopic.tableData ?
+                        <div className="mb-12">
+                          <GrammarTable data={subtopic.tableData} />
+                        </div>
+                      : null}
 
-                    {subtopic.content || subtopic.usage || subtopic.tips ?
-                      <GrammarContentBlocks
-                        blocks={subtopic.content || []}
-                        usage={subtopic.usage}
-                        tips={subtopic.tips}
-                      />
-                    : null}
-                  </div>
+                      {subtopic.content || subtopic.usage || subtopic.tips ?
+                        <GrammarContentBlocks
+                          blocks={subtopic.content || []}
+                          usage={subtopic.usage}
+                          tips={subtopic.tips}
+                        />
+                      : null}
+                    </div>
+                  </GlassCard>
                 </article>
               ))}
             </div>

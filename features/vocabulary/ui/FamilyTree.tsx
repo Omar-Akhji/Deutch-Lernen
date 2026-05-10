@@ -2,61 +2,61 @@ import { Heart } from "lucide-react";
 import type { FamilyMember } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
-interface FamilyTreeProps {
+interface FamilyTreeProperties {
   members: FamilyMember[];
 }
 
-export const FamilyTree = ({ members }: FamilyTreeProps) => {
+const levelLabels: Record<number, string> = {
+  1: "Die Großeltern",
+  2: "Die Eltern",
+  3: "Die Kinder",
+  4: "Die Enkel",
+};
+
+// Group members into couples (by partnerId) and singles within a level
+const groupIntoCouples = (levelMembers: FamilyMember[]) => {
+  const visited = new Set<string>();
+  const groups: (FamilyMember | [FamilyMember, FamilyMember])[] = [];
+  const membersMap = new Map(levelMembers.map((m) => [m.id, m]));
+
+  for (const member of levelMembers) {
+    if (visited.has(member.id)) continue;
+    visited.add(member.id);
+
+    if (member.partnerId) {
+      const partner = membersMap.get(member.partnerId);
+      if (partner && !visited.has(partner.id)) {
+        visited.add(partner.id);
+        // female first for visual consistency
+        groups.push(
+          member.gender === "female" ? [member, partner] : [partner, member],
+        );
+        continue;
+      }
+    }
+    groups.push(member);
+  }
+  return groups;
+};
+
+export const FamilyTree = ({ members }: FamilyTreeProperties) => {
   // Group members by level
   const levels = [1, 2, 3, 4].flatMap((lvl) => {
     const group = members.filter((m) => m.level === lvl);
     return group.length > 0 ? [group] : [];
   });
 
-  // Group members into couples (by partnerId) and singles within a level
-  const groupIntoCouples = (levelMembers: FamilyMember[]) => {
-    const visited = new Set<string>();
-    const groups: (FamilyMember | [FamilyMember, FamilyMember])[] = [];
-    const membersMap = new Map(levelMembers.map((m) => [m.id, m]));
-
-    for (const member of levelMembers) {
-      if (visited.has(member.id)) continue;
-      visited.add(member.id);
-
-      if (member.partnerId) {
-        const partner = membersMap.get(member.partnerId);
-        if (partner && !visited.has(partner.id)) {
-          visited.add(partner.id);
-          // female first for visual consistency
-          groups.push(
-            member.gender === "female" ? [member, partner] : [partner, member],
-          );
-          continue;
-        }
-      }
-      groups.push(member);
-    }
-    return groups;
-  };
-
-  const levelLabels: Record<number, string> = {
-    1: "Die Großeltern",
-    2: "Die Eltern",
-    3: "Die Kinder",
-    4: "Die Enkel",
-  };
-
   return (
     <div className="@container flex flex-col items-center gap-2 p-2 @md:p-4">
-      {levels.map((levelMembers, levelIdx) => {
-        const level = levelMembers[0]?.level ?? levelIdx + 1;
+      {levels.map((levelMembers, levelIndex) => {
+        const level = levelMembers[0]?.level ?? levelIndex + 1;
         const groups = groupIntoCouples(levelMembers);
 
         return (
           <AnimateOnScroll
             key={level}
             animation="fade-up"
-            delay={levelIdx * 150}
+            delay={levelIndex * 150}
             className="flex w-full flex-col items-center"
           >
             {/* Level label */}
@@ -90,7 +90,7 @@ export const FamilyTree = ({ members }: FamilyTreeProps) => {
             </div>
 
             {/* Connector line to next level */}
-            {levelIdx < levels.length - 1 ?
+            {levelIndex < levels.length - 1 ?
               <div className="flex h-10 w-full items-center justify-center @md:h-14">
                 <div className="h-full w-px bg-linear-to-b from-white/20 to-white/5" />
               </div>

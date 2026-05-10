@@ -6,11 +6,12 @@ import { BackButton } from "./BackButton";
 import { useRef } from "react";
 import gsap from "@/shared/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { GlassCard } from "./GlassCard";
 
 export function Navigation() {
   const pathname = usePathname();
-  const navRef = useRef<HTMLElement>(null);
-  const indicatorRef = useRef<HTMLDivElement>(null);
+  const navReference = useRef<HTMLElement>(null);
+  const indicatorReference = useRef<HTMLDivElement>(null);
 
   const isActive = (path: string) => {
     if (path === "/vokabeln") return pathname === "/vokabeln";
@@ -19,13 +20,13 @@ export function Navigation() {
 
   useGSAP(
     () => {
-      const activeLink = navRef.current?.querySelector(
+      const activeLink = navReference.current?.querySelector(
         'a[aria-current="page"]',
       ) as HTMLElement;
 
-      if (activeLink && indicatorRef.current) {
+      if (activeLink && indicatorReference.current) {
         // Smoothly animate the indicator to the active link's position and width
-        gsap.to(indicatorRef.current, {
+        gsap.to(indicatorReference.current, {
           x: activeLink.offsetLeft,
           width: activeLink.offsetWidth,
           duration: 0.5,
@@ -34,7 +35,7 @@ export function Navigation() {
         });
       }
     },
-    { dependencies: [pathname], scope: navRef },
+    { dependencies: [pathname], scope: navReference },
   );
 
   return (
@@ -55,14 +56,15 @@ export function Navigation() {
         </div>
 
         {/* Right Side: Navigation Menu */}
-        <nav
-          ref={navRef}
-          className="relative inline-flex flex-wrap justify-center gap-1 rounded-full border border-(--glass-border) bg-card px-1.5 pbs-1.5 pbe-1.5 backdrop-blur-(--glass-blur) mobile:gap-2 mobile:px-2 mobile:pbs-2 mobile:pbe-2"
+        <GlassCard
+          as="nav"
+          ref={navReference}
+          className="relative inline-flex flex-wrap justify-center gap-1 rounded-full px-1.5 pbs-1.5 pbe-1.5 mobile:gap-2 mobile:px-2 mobile:pbs-2 mobile:pbe-2"
           aria-label="Main navigation"
         >
           {/* Sliding Indicator */}
           <div
-            ref={indicatorRef}
+            ref={indicatorReference}
             className="absolute inset-y-1.5 left-0 z-0 rounded-full bg-linear-to-br from-yellow to-orange opacity-0 shadow-lg shadow-yellow/20 mobile:inset-y-2"
             style={{ pointerEvents: "none" }}
           />
@@ -86,7 +88,7 @@ export function Navigation() {
               </Link>
             );
           })}
-        </nav>
+        </GlassCard>
       </div>
     </header>
   );

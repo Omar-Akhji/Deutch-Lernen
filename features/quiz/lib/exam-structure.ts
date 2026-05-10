@@ -91,14 +91,14 @@ export function assignTeile(
   teile: TeilDefinition[],
 ): Question[] {
   const result: Question[] = [...questions];
-  let currentIdx = 0;
+  let currentIndex = 0;
 
   for (const teil of teile) {
     let assignedCount = 0;
     let isFirstInTeil = true;
 
-    while (assignedCount < teil.count && currentIdx < result.length) {
-      const q = result[currentIdx]!;
+    while (assignedCount < teil.count && currentIndex < result.length) {
+      const q = result[currentIndex]!;
       q.teil = teil.teil;
 
       if (isFirstInTeil) {
@@ -110,7 +110,7 @@ export function assignTeile(
       if (q.id !== 0) {
         assignedCount++;
       }
-      currentIdx++;
+      currentIndex++;
     }
   }
   return result;

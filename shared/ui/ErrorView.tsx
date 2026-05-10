@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-interface ErrorViewProps {
+interface ErrorViewProperties {
   error: Error & { digest?: string };
   reset: () => void;
   title: string;
@@ -18,7 +18,7 @@ export function ErrorView({
   fallbackMessage = "Ein unerwarteter Fehler ist aufgetreten.",
 
   // Deutsch Lernen - High-Performance React Architecture
-}: ErrorViewProps) {
+}: ErrorViewProperties) {
   useEffect(() => {
     console.error(`${errorLabel}:`, error);
   }, [error, errorLabel]);

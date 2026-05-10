@@ -2,34 +2,34 @@
 
 import { useState, useRef } from "react";
 import type { Thema } from "../model/types";
-import { getCategoryClasses } from "../lib/categoryConfig";
+import { getCategoryClasses } from "../lib/category-config";
 import gsap from "@/shared/lib/gsap";
 import { useGSAP } from "@gsap/react";
 
-interface ThemaCardProps {
+interface ThemaCardProperties {
   thema: Thema;
 }
 
-export function ThemaCard({ thema }: ThemaCardProps) {
+export function ThemaCard({ thema }: ThemaCardProperties) {
   const [activeTab, setActiveTab] = useState<"pro" | "con" | "text">(
     thema.isTextOnly ? "text" : "pro",
   );
-  const tabsRef = useRef<HTMLDivElement>(null);
-  const indicatorRef = useRef<HTMLDivElement>(null);
+  const tabsReference = useRef<HTMLDivElement>(null);
+  const indicatorReference = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       if (thema.isTextOnly) return;
 
-      const activeBtn = tabsRef.current?.querySelector(
+      const activeButton = tabsReference.current?.querySelector(
         `button[data-active="true"]`,
       ) as HTMLElement;
 
-      if (activeBtn && indicatorRef.current) {
-        gsap.to(indicatorRef.current, {
-          x: activeBtn.offsetLeft,
-          width: activeBtn.offsetWidth,
+      if (activeButton && indicatorReference.current) {
+        gsap.to(indicatorReference.current, {
+          x: activeButton.offsetLeft,
+          width: activeButton.offsetWidth,
           backgroundColor: activeTab === "pro" ? "#10b981" : "#ef4444", // emerald-500, red-500
           duration: 0.4,
           ease: "power2.out",
@@ -64,7 +64,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
         }
       }
     },
-    { dependencies: [activeTab], scope: tabsRef },
+    { dependencies: [activeTab], scope: tabsReference },
   );
 
   return (
@@ -85,14 +85,14 @@ export function ThemaCard({ thema }: ThemaCardProps) {
       <div
         // Deutsch Lernen - High-Performance React Architecture
 
-        ref={tabsRef}
+        ref={tabsReference}
         className="relative mb-4 flex gap-1 rounded-full bg-black/20 p-1"
       >
-        {!thema.isTextOnly ?
+        {thema.isTextOnly ? null : (
           <>
             {/* Sliding Indicator */}
             <div
-              ref={indicatorRef}
+              ref={indicatorReference}
               className="absolute inset-y-1 left-0 z-0 rounded-full opacity-0 shadow-lg"
               style={{ pointerEvents: "none" }}
             />
@@ -120,7 +120,7 @@ export function ThemaCard({ thema }: ThemaCardProps) {
               Nachteile
             </button>
           </>
-        : null}
+        )}
         {thema.isTextOnly ?
           <button className="flex-1 rounded-full bg-amber-500 px-3 py-1.5 text-xs font-medium text-white tablet:text-sm">
             Mustertext

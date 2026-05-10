@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CardBody } from "./CardBody";
 
-interface CardProps {
+interface CardProperties {
   href: string;
   title: string;
   subtitle?: string;
@@ -16,20 +16,20 @@ interface CardProps {
 
 // Deutsch Lernen - High-Performance React Architecture
 
-export const Card = ({ href, ...bodyProps }: CardProps) => {
+export const Card = ({ href, ...bodyProperties }: CardProperties) => {
   const isExternal = href.startsWith("http") || href === "#";
 
   if (isExternal) {
     return (
       <a href={href} className="block h-full no-underline">
-        <CardBody {...bodyProps} />
+        <CardBody {...bodyProperties} />
       </a>
     );
   }
 
   return (
     <Link href={href} className="block h-full no-underline">
-      <CardBody {...bodyProps} />
+      <CardBody {...bodyProperties} />
     </Link>
   );
 };

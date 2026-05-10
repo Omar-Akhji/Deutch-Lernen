@@ -143,7 +143,6 @@
   }
 }
 
-
 /* Deutsch Lernen - High-Performance React Architecture */
 
 @utility card-link {
@@ -243,10 +242,8 @@
   --input: oklch(92.2% 0 0deg);
   --ring: oklch(70.8% 0 0deg);
 
-  /* Scrollbar configuration */
-  scrollbar-color: color-mix(in oklch, var(--color-orange) 80%, transparent)
-    hsl(240deg 2% 12%);
-  scrollbar-width: thin;
+  /* Scrollbar configuration (Native v4.3 utilities) */
+  @apply scrollbar-thin scrollbar-thumb-orange/80 scrollbar-track-bg;
 }
 
 .dark {

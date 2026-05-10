@@ -2,7 +2,7 @@
 
 import { ErrorView } from "@/shared/ui/ErrorView";
 
-export default function GrammatikError(props: {
+export default function GrammatikError(properties: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
@@ -10,7 +10,7 @@ export default function GrammatikError(props: {
 
   return (
     <ErrorView
-      {...props}
+      {...properties}
       title="Grammatik konnte nicht geladen werden"
       errorLabel="Grammar error"
       fallbackMessage="Fehler beim Laden der Grammatik."

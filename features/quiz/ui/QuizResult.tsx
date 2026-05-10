@@ -2,7 +2,7 @@
 import { PartyPopper, Sparkles, ThumbsUp, Zap } from "lucide-react";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
-interface QuizResultProps {
+interface QuizResultProperties {
   score: number;
   total: number;
   onRestart: () => void;
@@ -14,7 +14,7 @@ export const QuizResult = ({
   total,
   onRestart,
   onExit,
-}: QuizResultProps) => {
+}: QuizResultProperties) => {
   const percentage = Math.round((score / total) * 100);
 
   const getResultMessage = () => {

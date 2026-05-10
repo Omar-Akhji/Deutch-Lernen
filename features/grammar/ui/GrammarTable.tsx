@@ -1,16 +1,17 @@
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { ContentItem } from "./FormattedText";
+import { GlassCard } from "@/shared/ui/GlassCard";
 
-interface GrammarTableProps {
+interface GrammarTableProperties {
   caption?: string;
   headers: string[];
   rows: (string | { text: string; highlight?: boolean })[][];
 }
 
-export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
+export const GrammarTable = ({ data }: { data: GrammarTableProperties }) => {
   return (
     <AnimateOnScroll animation="fade-up">
-      <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md">
+      <GlassCard>
         {data.caption ?
           <div className="border-be border-white/10 bg-white/5 px-6 py-4">
             <h3 className="text-base font-medium text-yellow text-shadow-sm tablet:text-lg">
@@ -42,13 +43,13 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
                     key={rowKey}
                     className="transition-colors hover:bg-white/5"
                   >
-                    {row.map((cell, j) => {
+                    {row.map((cell, index) => {
                       const cellKey =
                         typeof cell === "string" ? cell : cell.text;
                       return (
                         <td
                           key={cellKey}
-                          className={`px-6 py-4 ${j === 0 ? "font-medium text-orange" : "text-white/90"}`}
+                          className={`px-6 py-4 ${index === 0 ? "font-medium text-orange" : "text-white/90"}`}
                         >
                           <ContentItem content={cell} />
                         </td>
@@ -60,7 +61,7 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
             </tbody>
           </table>
         </div>
-      </div>
+      </GlassCard>
     </AnimateOnScroll>
   );
 };

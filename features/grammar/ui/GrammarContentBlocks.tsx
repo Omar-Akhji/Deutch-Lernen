@@ -1,28 +1,19 @@
 import { Lightbulb } from "lucide-react";
 import type { GrammarSectionContent } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { FormattedText } from "./FormattedText";
+import { ContentItem } from "./FormattedText";
 
-interface GrammarContentBlocksProps {
+interface GrammarContentBlocksProperties {
   blocks: GrammarSectionContent[];
   usage?: { speaker: string; text: string }[] | undefined;
   tips?: string[] | undefined;
 }
 
-const InlineItem = ({
-  item,
-}: {
-  item: string | { text: string; highlight?: boolean };
-}) => {
-  const text = typeof item === "string" ? item : item.text;
-  return <FormattedText text={text} />;
-};
-
 export const GrammarContentBlocks = ({
   blocks,
   usage,
   tips,
-}: GrammarContentBlocksProps) => {
+}: GrammarContentBlocksProperties) => {
   return (
     <div className="flex flex-col gap-8">
       {usage ?
@@ -41,7 +32,7 @@ export const GrammarContentBlocks = ({
                     {dialogue.speaker}
                   </div>
                   <div className="rounded-2xl rounded-ss-none bg-white/5 px-4 py-2 text-white/90">
-                    <InlineItem item={dialogue.text} />
+                    <ContentItem content={dialogue.text} />
                   </div>
                 </div>
               ))}
@@ -67,7 +58,7 @@ export const GrammarContentBlocks = ({
                       borderEndStartRadius: 0,
                     }}
                   >
-                    <InlineItem item={item} />
+                    <ContentItem content={item} />
                   </div>
                 );
               })}
@@ -88,7 +79,7 @@ export const GrammarContentBlocks = ({
                   className="flex items-start gap-2 rounded-xl border border-orange/20 bg-orange/5 p-4 text-orange brightness-125"
                 >
                   <Lightbulb className="size-4 shrink-0 tablet:size-5" />
-                  <InlineItem item={tip} />
+                  <ContentItem content={tip} />
                 </div>
               ))}
             </div>

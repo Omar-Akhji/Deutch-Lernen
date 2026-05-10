@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CardBody } from "./CardBody";
 import { CardModal } from "./CardModal";
 
-interface CardWithModalProps {
+interface CardWithModalProperties {
   href: string;
   title: string;
   subtitle?: string | undefined;
@@ -23,8 +23,8 @@ const EMPTY_PREVIEW_TITLES: string[] = [];
 export const CardWithModal = ({
   href,
   previewTitles = EMPTY_PREVIEW_TITLES,
-  ...bodyProps
-}: CardWithModalProps) => {
+  ...bodyProperties
+}: CardWithModalProperties) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Deutsch Lernen - High-Performance React Architecture
@@ -40,17 +40,17 @@ export const CardWithModal = ({
         type="button"
         onClick={handleOpenModal}
         className="h-full w-full cursor-pointer border-none bg-transparent p-0 text-left"
-        aria-label={`${bodyProps.title} öffnen`}
+        aria-label={`${bodyProperties.title} öffnen`}
       >
-        <CardBody {...bodyProps} />
+        <CardBody {...bodyProperties} />
       </button>
 
       <CardModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={bodyProps.title}
-        subtitle={bodyProps.category}
-        description={bodyProps.description}
+        title={bodyProperties.title}
+        subtitle={bodyProperties.category}
+        description={bodyProperties.description}
         href={href}
         previewTitles={previewTitles}
       />

@@ -2,11 +2,11 @@
 import { useState, useTransition, type ReactNode } from "react";
 import { ThemaCard } from "./ThemaCard";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/lib/utilities";
 import {
   THEMEN_CATEGORY_COLORS,
   getCategoryClasses,
-} from "../lib/categoryConfig";
+} from "../lib/category-config";
 import {
   Utensils,
   Cpu,
@@ -68,7 +68,7 @@ const categoryConfig: Record<
   },
 };
 
-interface ThemenSectionProps {
+interface ThemenSectionProperties {
   isEmbedded?: boolean;
   initialThemen: Thema[];
 }
@@ -76,25 +76,22 @@ interface ThemenSectionProps {
 export function ThemenSection({
   isEmbedded,
   initialThemen,
-}: ThemenSectionProps) {
+}: ThemenSectionProperties) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
-  const groupedThemen = Object.keys(categoryConfig).reduce(
-    (acc, cat) => {
-      const themes = initialThemen.filter((t) => t.cat === cat);
-      if (themes.length > 0) {
-        acc[cat] = themes;
-      }
-      return acc;
-    },
-    {} as Record<string, Thema[]>,
-  );
+  const groupedThemen: Record<string, Thema[]> = {};
+  for (const cat of Object.keys(categoryConfig)) {
+    const themes = initialThemen.filter((t) => t.cat === cat);
+    if (themes.length > 0) {
+      groupedThemen[cat] = themes;
+    }
+  }
 
   const filteredGroups =
-    !activeCategory ? groupedThemen : (
+    activeCategory ?
       { [activeCategory]: groupedThemen[activeCategory] || [] }
-    );
+    : groupedThemen;
 
   const handleCategoryChange = (id: string | null) => {
     startTransition(() => {
@@ -103,7 +100,7 @@ export function ThemenSection({
   };
 
   return (
-    <main className={`space-y-16 py-8 ${!isEmbedded ? "min-h-screen" : ""}`}>
+    <main className={`space-y-16 py-8 ${isEmbedded ? "" : "min-h-screen"}`}>
       {!isEmbedded && (
         <header className="mx-auto max-w-2xl space-y-4 text-center">
           <AnimateOnScroll animation="fade-up">

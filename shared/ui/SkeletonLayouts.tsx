@@ -1,4 +1,5 @@
 import { Skeleton } from "./Skeleton";
+import { GlassCard } from "./GlassCard";
 
 /**
  * Standard Card Skeleton that matches CardBody structure
@@ -19,7 +20,7 @@ export function CardSkeleton({
 
         <div className="flex flex-1 flex-col px-2 pt-5 pb-2">
           {/* Category badge + subtitle */}
-          <div className="mb-3 flex items-center gap-2">
+          <div className="mbe-3 flex items-center gap-2">
             <Skeleton className="h-7 w-20 rounded-full bg-white/10" />
             <Skeleton className="h-4 w-16 bg-white/5" />
           </div>
@@ -30,12 +31,12 @@ export function CardSkeleton({
           />
 
           {/* Description lines */}
-          <Skeleton className="mb-1 h-4 w-full bg-white/5" />
-          <Skeleton className="mb-4 h-4 w-2/3 bg-white/5" />
+          <Skeleton className="mbe-1 h-4 w-full bg-white/5" />
+          <Skeleton className="mbe-4 h-4 w-2/3 bg-white/5" />
 
           {/* Stats row if large variant */}
           {variant === "large" ?
-            <div className="mt-auto flex gap-8 border-t border-white/10 pt-4">
+            <div className="mbs-auto flex gap-8 border-bs border-white/10 pbs-4">
               <div className="flex flex-col gap-1">
                 <Skeleton className="h-7 w-12 bg-white/10" />
                 <Skeleton className="h-3 w-16 bg-white/5" />
@@ -89,7 +90,7 @@ export function HeroSkeleton() {
  */
 export function SectionHeaderSkeleton() {
   return (
-    <div className="mb-8 flex items-center gap-4">
+    <div className="mbe-8 flex items-center gap-4">
       <Skeleton className="size-12 rounded-full border-[3px] border-white/10 bg-white/5" />
       <Skeleton className="h-8 w-52 bg-white/8" />
     </div>
@@ -121,7 +122,7 @@ export function TableSkeleton({
           <Skeleton
             key={id}
             className="h-4 flex-1 bg-white/10"
-            style={{ marginLeft: id !== "c1" ? "1rem" : 0 }}
+            style={{ marginLeft: id === "c1" ? 0 : "1rem" }}
           />
         ))}
       </div>
@@ -135,7 +136,7 @@ export function TableSkeleton({
             <Skeleton
               key={`${rowId}-${colId}`}
               className="h-6 flex-1 bg-white/5"
-              style={{ marginLeft: colId !== "c1" ? "1rem" : 0 }}
+              style={{ marginLeft: colId === "c1" ? 0 : "1rem" }}
             />
           ))}
         </div>
@@ -148,9 +149,9 @@ export function TableSkeleton({
   }
 
   return (
-    <div className="@container overflow-hidden rounded-3xl border border-white/10 bg-card">
+    <GlassCard className="@container">
       <div className="overflow-x-auto p-4">{content}</div>
-    </div>
+    </GlassCard>
   );
 }
 
@@ -175,15 +176,15 @@ export function SectionCardSkeleton() {
  */
 export function PageHeaderSkeleton() {
   return (
-    <header className="mb-12 text-center">
+    <header className="mbe-12 text-center">
       {/* Title & Icon */}
-      <div className="mb-4 flex items-center justify-center gap-3 tablet:gap-4">
+      <div className="mbe-4 flex items-center justify-center gap-3 tablet:gap-4">
         <Skeleton className="size-12 shrink-0 rounded-full border-[3px] border-white/10 bg-white/5 tablet:size-14" />
         <Skeleton className="h-9 w-64 bg-white/10 tablet:h-12 tablet:w-80" />
       </div>
 
       {/* Separator Line */}
-      <div className="mx-auto mb-6 h-1 w-24 overflow-hidden rounded-full">
+      <div className="mx-auto mbe-6 h-1 w-24 overflow-hidden rounded-full">
         <Skeleton className="h-full w-full bg-white/15" />
       </div>
 

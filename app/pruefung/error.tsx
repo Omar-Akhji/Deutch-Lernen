@@ -2,7 +2,7 @@
 
 import { ErrorView } from "@/shared/ui/ErrorView";
 
-export default function PruefungError(props: {
+export default function PruefungError(properties: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
@@ -10,7 +10,7 @@ export default function PruefungError(props: {
 
   return (
     <ErrorView
-      {...props}
+      {...properties}
       title="Prüfung konnte nicht geladen werden"
       errorLabel="Exam error"
       fallbackMessage="Fehler beim Laden der Prüfung."

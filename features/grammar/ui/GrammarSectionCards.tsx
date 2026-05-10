@@ -1,5 +1,5 @@
 import { Card } from "@/shared/ui/Card";
-import { getGradient } from "@/shared/lib/utils";
+import { getGradient } from "@/shared/lib/utilities";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { getGrammarSection } from "../api/services";
 import {
@@ -21,13 +21,13 @@ const ICON_MAP: Record<string, LucideIcon> = {
   MessageCircle,
 };
 
-interface GrammarSectionCardsProps {
+interface GrammarSectionCardsProperties {
   sectionId: string;
 }
 
 export const GrammarSectionCards = async ({
   sectionId,
-}: GrammarSectionCardsProps) => {
+}: GrammarSectionCardsProperties) => {
   const { data: section } = await getGrammarSection(sectionId);
 
   if (!section) return null;

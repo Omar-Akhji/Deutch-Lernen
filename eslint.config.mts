@@ -6,12 +6,41 @@ import nextTs from "eslint-config-next/typescript";
 
 import prettierConfig from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
+import unicorn from "eslint-plugin-unicorn";
 
 import type { Linter } from "eslint";
 
 const eslintConfig: Linter.Config[] = defineConfig([
   ...fixupConfigRules(nextVitals),
   ...fixupConfigRules(nextTs),
+
+  unicorn.configs["flat/recommended"],
+  {
+    rules: {
+      "unicorn/filename-case": [
+        "error",
+        {
+          cases: {
+            kebabCase: true,
+            pascalCase: true,
+          },
+        },
+      ],
+      "unicorn/prevent-abbreviations": [
+        "error",
+        {
+          replacements: {
+            props: false,
+            ref: false,
+            params: false,
+            e: false,
+            err: false,
+          },
+        },
+      ],
+      "unicorn/no-null": "off", // Controversial in React for refs/JSX
+    },
+  },
 
   // ─── Custom quality rules ────────────────────────────
   {
@@ -78,6 +107,7 @@ const eslintConfig: Linter.Config[] = defineConfig([
     "scratch/**",
     "docs/**",
     ".gemini/**",
+    ".agents/**",
     "*.md",
   ]),
 ]) as Linter.Config[];

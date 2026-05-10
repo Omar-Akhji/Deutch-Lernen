@@ -2,7 +2,7 @@
 
 import { ErrorView } from "@/shared/ui/ErrorView";
 
-export default function VokabelnError(props: {
+export default function VokabelnError(properties: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
@@ -10,7 +10,7 @@ export default function VokabelnError(props: {
 
   return (
     <ErrorView
-      {...props}
+      {...properties}
       title="Vokabeln konnten nicht geladen werden"
       errorLabel="Vocabulary error"
       fallbackMessage="Fehler beim Laden der Vokabeln."

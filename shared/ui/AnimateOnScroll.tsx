@@ -15,7 +15,7 @@ type AnimationType =
   | "fade-right"
   | "blur-in";
 
-interface AnimateOnScrollProps<T extends ElementType> {
+interface AnimateOnScrollProperties<T extends ElementType> {
   children: React.ReactNode;
   className?: string;
   animation?: AnimationType;
@@ -37,72 +37,82 @@ export function AnimateOnScroll<T extends ElementType = "div">({
   duration = 700,
   as,
   repeat = false,
-  ...props
-}: AnimateOnScrollProps<T> &
-  Omit<ComponentPropsWithoutRef<T>, keyof AnimateOnScrollProps<T>>) {
-  const ref = useRef<Element>(null);
+  ...properties
+}: AnimateOnScrollProperties<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof AnimateOnScrollProperties<T>>) {
+  const reference = useRef<Element>(null);
 
   useGSAP(
     () => {
-      const el = ref.current;
-      if (!el) return;
+      const element = reference.current;
+      if (!element) return;
 
       // Initial state set via GSAP instead of hardcoded CSS class
       // This ensures that if JS is disabled, the element is visible by default (SEO friendly)
-      gsap.set(el, { opacity: 0, visibility: "hidden" });
+      gsap.set(element, { opacity: 0, visibility: "hidden" });
 
-      const fromVars: gsap.TweenVars = { opacity: 0, visibility: "visible" };
-      const toVars: gsap.TweenVars = {
+      const fromVariables: gsap.TweenVars = {
+        opacity: 0,
+        visibility: "visible",
+      };
+      const toVariables: gsap.TweenVars = {
         opacity: 1,
         clearProps: "filter,willChange", // Clean up performance hints after animation
       };
 
       switch (animation) {
-        case "fade-up":
-          fromVars.y = 48;
+        case "fade-up": {
+          fromVariables.y = 48;
 
           // Deutsch Lernen - High-Performance React Architecture
 
-          toVars.y = 0;
+          toVariables.y = 0;
           break;
-        case "fade-down":
-          fromVars.y = -48;
-          toVars.y = 0;
+        }
+        case "fade-down": {
+          fromVariables.y = -48;
+          toVariables.y = 0;
           break;
-        case "zoom-in":
-          fromVars.scale = 0.95;
-          toVars.scale = 1;
+        }
+        case "zoom-in": {
+          fromVariables.scale = 0.95;
+          toVariables.scale = 1;
           break;
-        case "zoom-out":
-          fromVars.scale = 1.05;
-          toVars.scale = 1;
+        }
+        case "zoom-out": {
+          fromVariables.scale = 1.05;
+          toVariables.scale = 1;
           break;
-        case "fade-left":
-          fromVars.x = 48;
-          toVars.x = 0;
+        }
+        case "fade-left": {
+          fromVariables.x = 48;
+          toVariables.x = 0;
           break;
-        case "fade-right":
-          fromVars.x = -48;
-          toVars.x = 0;
+        }
+        case "fade-right": {
+          fromVariables.x = -48;
+          toVariables.x = 0;
           break;
-        case "blur-in":
-          fromVars.filter = "blur(12px)";
-          fromVars.scale = 0.95;
-          toVars.scale = 1;
+        }
+        case "blur-in": {
+          fromVariables.filter = "blur(12px)";
+          fromVariables.scale = 0.95;
+          toVariables.scale = 1;
           break;
+        }
       }
 
-      gsap.fromTo(el, fromVars, {
-        ...toVars,
+      gsap.fromTo(element, fromVariables, {
+        ...toVariables,
         duration: duration / 1000,
         delay: delay / 1000,
         ease: "power3.out",
         onStart: () => {
           // Hint GPU for heavy animations
-          gsap.set(el, { willChange: "transform, opacity, filter" });
+          gsap.set(element, { willChange: "transform, opacity, filter" });
         },
         scrollTrigger: {
-          trigger: el,
+          trigger: element,
           start: "top 95%",
           toggleActions:
             repeat ? "play none none reverse" : "play none none none",
@@ -110,16 +120,16 @@ export function AnimateOnScroll<T extends ElementType = "div">({
         },
       });
     },
-    { scope: ref },
+    { scope: reference },
   );
 
   const Component = as || "div";
 
   return (
     <Component
-      ref={ref as React.RefObject<HTMLDivElement>}
+      ref={reference as React.RefObject<HTMLDivElement>}
       className={twMerge("animate-on-scroll", className)}
-      {...props}
+      {...properties}
     >
       {children}
     </Component>

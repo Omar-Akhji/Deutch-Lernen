@@ -1,4 +1,4 @@
-export * from "./lib/useQuiz";
+export * from "./lib/use-quiz";
 export * from "./api/services";
 
 // Deutsch Lernen - High-Performance React Architecture

@@ -9,7 +9,7 @@ import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { PhraseGroupCard } from "./PhraseGroupCard";
 import { EmailVisualFrame } from "./EmailVisualFrame";
 
-interface ModuleStudyViewProps {
+interface ModuleStudyViewProperties {
   level: string;
   module: "sprechen" | "schreiben";
   examData: ExamLevel;
@@ -23,7 +23,7 @@ export function ModuleStudyView({
   examData,
   redemittel,
   initialThemen,
-}: ModuleStudyViewProps) {
+}: ModuleStudyViewProperties) {
   const section = examData.sections.find(
     (s) => s.id === `${level.toLowerCase()}-${module}`,
   );
@@ -38,11 +38,9 @@ export function ModuleStudyView({
       cat.includes("zeitausdrücke") ||
       cat.includes("wortschatz");
 
-    if (module === "sprechen") {
-      return cat.includes("sprechen") || isVocab;
-    } else {
-      return cat.includes("schreiben") || isVocab;
-    }
+    return module === "sprechen" ?
+        cat.includes("sprechen") || isVocab
+      : cat.includes("schreiben") || isVocab;
   });
 
   return (
@@ -68,11 +66,11 @@ export function ModuleStudyView({
 
       <div className="space-y-16">
         {section.parts.map((part) => {
-          const partNum = part.name.match(/\d+/)?.[0];
+          const partNumber = part.name.match(/\d+/)?.[0];
           const partRedemittel = filteredRedemittel.filter(([category]) =>
             category
               .toLowerCase()
-              .includes(`${section.title.toLowerCase()} ${partNum}`),
+              .includes(`${section.title.toLowerCase()} ${partNumber}`),
           );
 
           return (
@@ -102,11 +100,11 @@ export function ModuleStudyView({
               </AnimateOnScroll>
 
               <div className="space-y-12">
-                {partRedemittel.map(([category, groups], idx) => (
+                {partRedemittel.map(([category, groups], index) => (
                   <AnimateOnScroll
                     key={category}
                     animation="fade-up"
-                    delay={idx * 100}
+                    delay={index * 100}
                   >
                     <div className="space-y-6">
                       <div className="flex items-center gap-6">

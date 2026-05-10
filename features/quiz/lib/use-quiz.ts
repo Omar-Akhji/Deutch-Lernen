@@ -7,7 +7,9 @@ export function useQuiz(questions: Question[]) {
   const [isStarted, setIsStarted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [userAnswers, setUserAnswers] = useState<(string | string[] | null)[]>(
-    new Array(questions.length).fill(null),
+    Array.from<string | string[] | null>({ length: questions.length }).fill(
+      null,
+    ),
   );
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -17,36 +19,40 @@ export function useQuiz(questions: Question[]) {
       (userAnswers.filter((a) => a !== null).length / questions.length) * 100
     );
 
-  const score = userAnswers.reduce((acc, answer, index) => {
-    if (answer === null) return acc;
+  let score = 0;
+  for (const [index, answer] of userAnswers.entries()) {
+    if (answer === null) continue;
     const question = questions[index];
-    if (!question) return acc;
+    if (!question) continue;
 
     const correct = question.correctAnswer;
     let isCorrect = false;
 
-    if (Array.isArray(answer) && Array.isArray(correct)) {
-      isCorrect = JSON.stringify(answer) === JSON.stringify(correct);
-    } else {
-      isCorrect = answer === correct;
-    }
+    isCorrect =
+      Array.isArray(answer) && Array.isArray(correct) ?
+        JSON.stringify(answer) === JSON.stringify(correct)
+      : answer === correct;
 
-    return isCorrect ? acc + 1 : acc;
-  }, 0);
+    if (isCorrect) {
+      score++;
+    }
+  }
 
   const startQuiz = () => {
     setIsStarted(true);
     setIsFinished(false);
-    setUserAnswers(new Array(questions.length).fill(null));
+    setUserAnswers(
+      Array.from<string | string[] | null>({ length: questions.length }).fill(
+        null,
+      ),
+    );
     setCurrentQuestionIndex(0);
-
-    // Deutsch Lernen - High-Performance React Architecture
   };
 
   const handleAnswer = (answer: string | string[], index?: number) => {
     const targetIndex = index ?? currentQuestionIndex;
-    setUserAnswers((prev) => {
-      const next = [...prev];
+    setUserAnswers((previous) => {
+      const next = [...previous];
       next[targetIndex] = answer;
       return next;
     });
