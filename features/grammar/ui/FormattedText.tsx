@@ -1,5 +1,5 @@
 /** Parses inline markdown: **bold** and *highlight* */
-export const FormattedText = ({ text }: { text: string }) => {
+const FormattedText = ({ text }: { text: string }) => {
   const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
 
   return (

@@ -13,7 +13,7 @@ export function TeilHeader({
   teilInstruction,
 }: TeilHeaderProperties) {
   return (
-    <header className="mb-6 border-b-2 border-yellow/30 pb-2">
+    <header className="mb-6 border-b-2 border-white/10 pb-2">
       <div className="flex items-baseline gap-2">
         <span className="text-base font-bold text-yellow tablet:text-lg">
           Teil {teil}
@@ -49,9 +49,6 @@ export function ContextCard({
   if (skill === "lesen" && question.teil === 3) {
     return (
       <div className="space-y-6">
-        <div className="rounded-xl border border-white/5 bg-white/5 p-4 text-xs font-medium text-white/50 italic">
-          {context.split(/\n[a-j]\)/)[0]}
-        </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {context
             .split(/\n(?=[a-j]\))/)
@@ -66,9 +63,9 @@ export function ContextCard({
                   key={letter}
                   type="button"
                   onClick={() => onSelectAd({ letter, content })}
-                  className="group relative min-h-30 cursor-pointer rounded-lg border border-white/10 bg-zinc-900/40 p-5 pt-9 text-left text-white/90 shadow-lg transition-all hover:bg-zinc-800/60 focus:ring-2 focus:ring-yellow/50 focus:outline-hidden active:scale-95"
+                  className="group relative min-h-30 cursor-pointer rounded-lg border border-white/10 bg-zinc-950/60 p-5 pt-9 text-left text-white/90 shadow-lg backdrop-blur-md transition-all hover:bg-zinc-900/80 focus:ring-2 focus:ring-yellow/50 focus:outline-hidden active:scale-95"
                 >
-                  <div className="absolute top-0 left-0 rounded-tl-lg rounded-br-lg bg-yellow px-2.5 py-1 text-[10px] font-black text-black uppercase shadow-sm">
+                  <div className="absolute top-0 left-0 rounded-tl-lg rounded-br-lg border-r border-b border-white/10 bg-zinc-900/90 px-2.5 py-1 text-[10px] font-black text-yellow uppercase shadow-sm">
                     {letter}
                   </div>
                   <p className="font-serif text-xs leading-relaxed text-white/80 tablet:text-sm">
@@ -179,7 +176,7 @@ export function AnswerOptions({
             {questionText}
           </h3>
         </div>
-        <div className="grid grid-cols-6 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-11">
+        <div className="grid grid-cols-6 gap-px overflow-hidden rounded-lg border border-white/10 bg-zinc-950/50 backdrop-blur-sm sm:grid-cols-11">
           {options?.map((option) => {
             const isSelected = selectedAnswer === option;
             return (
@@ -251,7 +248,7 @@ export function AdDetailDialog({
   return (
     <dialog
       ref={dialogRef}
-      className="fixed inset-0 m-auto flex h-max max-h-[90vh] w-max max-w-[min(90vw,32rem)] scale-95 [scrollbar-width:none] flex-col overflow-hidden rounded-2xl border-2 border-white/10 bg-zinc-950 p-0 text-white opacity-0 shadow-2xl transition-[opacity,transform,overlay,display] duration-250 ease-in-out backdrop:bg-black/80 backdrop:backdrop-blur-sm backdrop:transition-[background-color,backdrop-filter,overlay,display] backdrop:duration-250 open:scale-100 open:opacity-100 starting:open:scale-95 starting:open:opacity-0"
+      className="fixed inset-0 m-auto flex h-max max-h-[90vh] w-max max-w-[min(90vw,32rem)] scale-95 scrollbar-none flex-col overflow-hidden rounded-2xl border-2 border-white/10 bg-zinc-950 p-0 text-white opacity-0 shadow-2xl transition-[opacity,transform,overlay,display] duration-250 ease-in-out backdrop:bg-black/80 backdrop:backdrop-blur-sm backdrop:transition-[background-color,backdrop-filter,overlay,display] backdrop:duration-250 open:scale-100 open:opacity-100 starting:open:scale-95 starting:open:opacity-0"
       onClose={onClose}
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose();

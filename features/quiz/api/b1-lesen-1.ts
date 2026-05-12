@@ -162,7 +162,7 @@ const lesen1Teil3: Question[] = [
     question:
       "Herr Meyer möchte sich einen Hund kaufen. Er sucht ein Tier, das nicht zu groß ist.",
     context: `Lesen Sie die Situationen 13-19 und die Anzeigen a-j. Welche Anzeige passt zu welcher Situation?
-Für eine Situation gibt es keine passende Anzeige. In diesem Fall schreiben Sie ein x.
+Für eine Situation gibt es keine passende Anzeige. In diesem Fall wählen Sie 0.
 
 a) Dringend gesucht: Frauchen u./od. Herrchen, die armem, rotem Cockerspaniel (Rüde, kastriert, 5 1/2 J.) nach dem Tod seines Frauchens ein neues Zuhause (mit Garten) geben. Tel. 089/3095486
 
@@ -183,7 +183,7 @@ h) Nehme Ihren Hund in Pflege bei Urlaub oder am Tag. Nur Hunde, die für die Wo
 i) Nehme/Suche gebrauchtes oder neues Aquarium kostenlos, 30 l – 320 l mit Zubehör ☎ 07631 / 18357
 
 j) 05.03. Fisch- & Korallentag, 11–16 Uhr Schauaquarium Mundenhof. Verkauf von Fischen, Pflanzen, Garnelen, Korallen- ablekern, Makroalgen u. Zubehör`,
-    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "x"],
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "a",
   },
   {
@@ -191,7 +191,7 @@ j) 05.03. Fisch- & Korallentag, 11–16 Uhr Schauaquarium Mundenhof. Verkauf von
     type: "matching",
     question:
       "13. Susanne möchte im Urlaub verreisen und weiß nicht, wer in dieser Zeit auf ihre kleine, weiße Maus aufpassen kann.",
-    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "x"],
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "g",
   },
   {
@@ -199,7 +199,7 @@ j) 05.03. Fisch- & Korallentag, 11–16 Uhr Schauaquarium Mundenhof. Verkauf von
     type: "matching",
     question:
       "14. Thomas ist Single und hält sich einen Dackel. Die Nachbarn haben sich beschwert, weil der Hund in der Wohnung laut wird, wenn Thomas tagsüber im Büro ist. Er möchte das Problem lösen.",
-    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "x"],
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "h",
   },
   {
@@ -207,7 +207,7 @@ j) 05.03. Fisch- & Korallentag, 11–16 Uhr Schauaquarium Mundenhof. Verkauf von
     type: "matching",
     question:
       "15. Die Familie Schmidt hat einen großen Garten und eine Bernhardiner-Hündin. Damit ihr Haustier nicht allein ist, wären sie bereit, einen zweiten Hund aufzunehmen. Er soll aber nicht so groß sein.",
-    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "x"],
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "a",
   },
   {
@@ -215,15 +215,15 @@ j) 05.03. Fisch- & Korallentag, 11–16 Uhr Schauaquarium Mundenhof. Verkauf von
     type: "matching",
     question:
       "16. Herr Albrecht muss aus beruflichen Gründen umziehen und kann seinen Hund nicht mitnehmen. Er sucht ein neues Zuhause für ihn.",
-    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "x"],
-    correctAnswer: "x",
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
+    correctAnswer: "0",
   },
   {
     id: 17,
     type: "matching",
     question:
       "17. Eva möchte für ihr neues, großes Aquarium noch einige Fische kaufen.",
-    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "x"],
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "j",
   },
   {
@@ -231,14 +231,14 @@ j) 05.03. Fisch- & Korallentag, 11–16 Uhr Schauaquarium Mundenhof. Verkauf von
     type: "matching",
     question:
       "18. Karl will sich eine Katze anschaffen. Er mag diese Tiere, weil sie nicht viel Pflege brauchen und sehr selbstständig sind.",
-    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "x"],
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "c",
   },
   {
     id: 19,
     type: "matching",
     question: "19. Frau Bach mag Vögel, sie sucht zurzeit einen Papagei.",
-    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "x"],
+    options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "e",
   },
 ];

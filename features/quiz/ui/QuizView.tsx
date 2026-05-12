@@ -159,25 +159,21 @@ export default function QuizView({
                                   key={`group-${teilNumber}`}
                                   className="overflow-hidden rounded-xl border border-white/10 bg-zinc-900/10"
                                 >
-                                  {examples.length > 0 ?
-                                    <div className="border-b border-yellow/20 bg-yellow/5 p-4">
-                                      <div className="mb-2 flex items-center justify-between">
-                                        <span className="text-[10px] font-bold tracking-widest text-yellow uppercase">
-                                          Beispiel
-                                        </span>
-                                      </div>
+                                  {examples.length > 0 && (
+                                    <div className="border-b border-white/10">
                                       <QuizQuestion
                                         question={examples[0]!}
                                         currentStep={0}
                                         onAnswer={() => {}}
                                         skill={skill}
                                         isTableRow
+                                        isExample
                                         selectedAnswer={
                                           examples[0]!.correctAnswer
                                         }
                                       />
                                     </div>
-                                  : null}
+                                  )}
                                   {group.map((q, index) => (
                                     <div
                                       key={q.id || `q-${index}`}
@@ -208,25 +204,16 @@ export default function QuizView({
                               : /* Standard Individual Cards */
                                 <div className="space-y-6">
                                   {examples.length > 0 ?
-                                    <div className="rounded-2xl border border-yellow/20 bg-yellow/5 p-6 shadow-lg">
-                                      <div className="mb-4 flex items-center justify-between border-b border-yellow/10 pb-3">
-                                        <span className="text-sm font-bold tracking-widest text-yellow uppercase">
-                                          Beispiel
-                                        </span>
-                                        <span className="text-xs text-yellow/50 italic">
-                                          Vorgegebenes Beispiel
-                                        </span>
-                                      </div>
-                                      <QuizQuestion
-                                        question={examples[0]!}
-                                        currentStep={0}
-                                        onAnswer={() => {}}
-                                        skill={skill}
-                                        selectedAnswer={
-                                          examples[0]!.correctAnswer
-                                        }
-                                      />
-                                    </div>
+                                    <QuizQuestion
+                                      question={examples[0]!}
+                                      currentStep={0}
+                                      onAnswer={() => {}}
+                                      skill={skill}
+                                      isExample
+                                      selectedAnswer={
+                                        examples[0]!.correctAnswer
+                                      }
+                                    />
                                   : null}
                                   {group.map((q, index) => (
                                     <QuizQuestion

@@ -25,6 +25,7 @@ interface QuizQuestionProperties {
   /* Table Layout Flags */
   isTableRow?: boolean;
   hideQuestionBody?: boolean;
+  isExample?: boolean;
 }
 
 export const QuizQuestion = ({
@@ -37,6 +38,7 @@ export const QuizQuestion = ({
   skill,
   isTableRow,
   hideQuestionBody,
+  isExample,
 }: QuizQuestionProperties) => {
   const [selectedAd, setSelectedAd] = useState<{
     letter: string;
@@ -110,11 +112,23 @@ export const QuizQuestion = ({
         <div
           className={
             isTableRow ? "w-full" : (
-              "group relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/20 transition-all hover:bg-slate-900/40"
+              "group relative overflow-hidden rounded-xl border border-white/10 bg-zinc-950/40 backdrop-blur-md transition-all hover:bg-zinc-900/60"
             )
           }
         >
           <div className={isTableRow ? "px-4 py-3 lg:px-5" : "p-4 lg:p-5"}>
+            {isExample ?
+              <div className="mb-4 flex items-center justify-between border-b border-yellow/10 pb-3">
+                <span className="text-[10px] font-bold tracking-widest text-yellow uppercase tablet:text-xs">
+                  Beispiel
+                </span>
+                {!isTableRow && (
+                  <span className="text-[10px] text-yellow/50 italic">
+                    Vorgegebenes Beispiel
+                  </span>
+                )}
+              </div>
+            : null}
             <AnswerOptions
               options={question.options}
               selectedAnswer={selectedAnswer}
