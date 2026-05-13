@@ -84,9 +84,6 @@ importers:
       eslint-plugin-unicorn:
         specifier: ^64.0.0
         version: 64.0.0(eslint@10.3.0(jiti@2.7.0))
-      jiti:
-        specifier: ^2.7.0
-        version: 2.7.0
       postcss:
         specifier: ^8.5.14
         version: 8.5.14
