@@ -7,14 +7,16 @@ import nextTs from "eslint-config-next/typescript";
 import prettierConfig from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
 import unicorn from "eslint-plugin-unicorn";
+import securityPlugin from "eslint-plugin-security";
+import noUnsanitizedPlugin from "eslint-plugin-no-unsanitized";
 
-import type { Linter } from "eslint";
-
-const eslintConfig: Linter.Config[] = defineConfig([
+const eslintConfig = defineConfig([
   ...fixupConfigRules(nextVitals),
   ...fixupConfigRules(nextTs),
 
   unicorn.configs["flat/recommended"],
+  securityPlugin.configs.recommended,
+  noUnsanitizedPlugin.configs.recommended,
   {
     rules: {
       "unicorn/filename-case": [
@@ -38,7 +40,7 @@ const eslintConfig: Linter.Config[] = defineConfig([
           },
         },
       ],
-      "unicorn/no-null": "off", // Controversial in React for refs/JSX
+      "unicorn/no-null": "off",
     },
   },
 
@@ -80,6 +82,17 @@ const eslintConfig: Linter.Config[] = defineConfig([
       "no-var": "error",
       eqeqeq: ["error", "always", { null: "ignore" }],
       "no-nested-ternary": "off",
+
+      /* ── Security tuning ─────────────────────────── */
+      "security/detect-eval-with-expression": "error",
+      "security/detect-unsafe-regex": "error",
+      "security/detect-buffer-noassert": "error",
+      "security/detect-child-process": "error",
+      "security/detect-no-csrf-before-method-override": "error",
+      "security/detect-pseudoRandomBytes": "error",
+      "security/detect-object-injection": "warn",
+      "no-unsanitized/method": "error",
+      "no-unsanitized/property": "error",
     },
   },
 
@@ -93,8 +106,6 @@ const eslintConfig: Linter.Config[] = defineConfig([
   },
 
   // Prettier config — MUST be last
-  // disables all ESLint rules that conflict
-  // with Prettier (quotes, semi, indent...)
   prettierConfig,
 
   // Global ignores
@@ -110,6 +121,6 @@ const eslintConfig: Linter.Config[] = defineConfig([
     ".agents/**",
     "*.md",
   ]),
-]) as Linter.Config[];
+]);
 
 export default eslintConfig;

@@ -12,7 +12,6 @@
       "types.d.ts",
       "next-env.d.ts",
       "docs/**",
-      "next.config.mts",
       "*.png",
       "*.svg"
     ]

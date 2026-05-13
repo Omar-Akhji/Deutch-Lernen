@@ -7,58 +7,58 @@ const config = {
   ],
   plugins: ["stylelint-order"],
   rules: {
-    /* ─── Tailwind v4 compatibility ──────────────────────────────────────── */
-    "no-descending-specificity": null,
+    /* ─── Modern Syntax & i18n Logical Properties ───────────────────────── */
     "at-rule-no-unknown": null,
     "property-no-unknown": null,
-    "import-notation": null,
-
-    /* ─── Error prevention ───────────────────────────────────────────────── */
-    "declaration-block-no-duplicate-properties": [
-      true,
-      { ignore: ["consecutive-duplicates-with-different-values"] },
+    "no-descending-specificity": null,
+    "import-notation": "string",
+    "property-disallowed-list": [
+      "/^padding-(left|right)$/",
+      "/^margin-(left|right)$/",
+      "/^border-(left|right)/",
+      "left",
+      "right",
     ],
-    "declaration-block-no-shorthand-property-overrides": true,
-    "function-calc-no-unspaced-operator": true,
-    "no-duplicate-selectors": true,
-    "no-unknown-animations": true,
+
+    /* ─── Security Hardening ─────────────────────────────────────────────── */
+    "function-url-no-scheme-relative": true,
+    "function-url-scheme-allowed-list": ["https", "data"],
     "custom-property-no-missing-var-function": true,
 
     /* ─── Unit & value enforcement ───────────────────────────────────────── */
-    "unit-allowed-list": ["%", "deg", "px", "rem", "ms"],
+    "unit-allowed-list": ["%", "deg", "px", "rem", "ms", "fr"],
     "declaration-property-unit-allowed-list": {
       "/^border/": ["px"],
       "/^padding|^gap/": ["rem"],
     },
+    "declaration-property-unit-disallowed-list": {
+      "font-size": ["px"],
+      "line-height": ["px", "rem"],
+    },
     "length-zero-no-unit": [true, { ignore: ["custom-properties"] }],
     "color-hex-length": "short",
     "color-function-notation": "modern",
+    "color-named": "never",
     "alpha-value-notation": "percentage",
-    "font-weight-notation": "named-where-possible",
+    "font-weight-notation": "numeric",
     "shorthand-property-no-redundant-values": true,
 
-    /* ─── Selector conventions ───────────────────────────────────────────── */
+    /* ─── Selector conventions & Performance ─────────────────────────────── */
     "selector-pseudo-element-colon-notation": "double",
     "selector-not-notation": "complex",
     "selector-max-id": 0,
     "selector-max-compound-selectors": 4,
     "selector-no-vendor-prefix": true,
-
-    /* ─── Performance & best practices ───────────────────────────────────── */
-    "declaration-block-single-line-max-declarations": 1,
+    "selector-no-qualifying-type": true,
     "max-nesting-depth": [3, { ignoreAtRules: ["media", "supports", "layer"] }],
     "selector-max-specificity": "0,4,0",
-    "number-max-precision": 4,
-    "comment-no-empty": true,
-    "rule-empty-line-before": [
-      "always-multi-line",
-      { except: ["first-nested"], ignore: ["after-comment"] },
-    ],
 
     /* ─── Code quality ───────────────────────────────────────────────────── */
     "declaration-no-important": [true, { severity: "warning" }],
     "media-feature-range-notation": "context",
     "keyframe-selector-notation": "percentage-unless-within-keyword-only-block",
+    "comment-no-empty": true,
+    "number-max-precision": 4,
   },
 };
 

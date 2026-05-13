@@ -24,7 +24,7 @@
 @layer base {
   :root {
     font-family: Poppins, system-ui, sans-serif;
-    font-weight: normal;
+    font-weight: 400;
     font-synthesis: none;
     line-height: 1.6;
     color: var(--color-text);
@@ -125,7 +125,7 @@
   padding-block: 0.5rem;
   padding-inline: 1.5rem;
   font-weight: 600;
-  color: black;
+  color: #000;
   cursor: pointer;
   background: linear-gradient(
     to bottom right,
@@ -148,8 +148,8 @@
 @utility card-link {
   &::before {
     position: absolute;
+    inset-inline-start: 50%;
     top: 50%;
-    left: 50%;
     z-index: -2;
     width: 156%;
     height: 20rem;
