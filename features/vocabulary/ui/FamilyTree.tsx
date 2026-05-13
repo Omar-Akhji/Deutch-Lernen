@@ -6,12 +6,12 @@ interface FamilyTreeProperties {
   members: FamilyMember[];
 }
 
-const levelLabels: Record<number, string> = {
-  1: "Die Großeltern",
-  2: "Die Eltern",
-  3: "Die Kinder",
-  4: "Die Enkel",
-};
+const levelLabels = new Map<number, string>([
+  [1, "Die Großeltern"],
+  [2, "Die Eltern"],
+  [3, "Die Kinder"],
+  [4, "Die Enkel"],
+]);
 
 // Group members into couples (by partnerId) and singles within a level
 const groupIntoCouples = (levelMembers: FamilyMember[]) => {
@@ -61,7 +61,7 @@ export const FamilyTree = ({ members }: FamilyTreeProperties) => {
           >
             {/* Level label */}
             <div className="mb-3 text-xs font-semibold tracking-widest text-mist-500 uppercase">
-              {levelLabels[level] ?? `Generation ${level}`}
+              {levelLabels.get(level) ?? `Generation ${level}`}
             </div>
 
             {/* Members row */}

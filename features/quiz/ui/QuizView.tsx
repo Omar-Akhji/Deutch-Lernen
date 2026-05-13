@@ -16,6 +16,13 @@ interface QuizViewProperties {
   initialQuestions: Question[];
 }
 
+const SKILL_TITLES = new Map([
+  ["lesen", "Lesen"],
+  ["hoeren", "Hören"],
+  ["schreiben", "Schreiben"],
+  ["sprechen", "Sprechen"],
+]);
+
 export default function QuizView({
   level,
   skill,
@@ -41,13 +48,7 @@ export default function QuizView({
     push(`/pruefung/${level}/modelltests`);
   };
 
-  const skillTitle =
-    {
-      lesen: "Lesen",
-      hoeren: "Hören",
-      schreiben: "Schreiben",
-      sprechen: "Sprechen",
-    }[skill] || skill;
+  const skillTitle = SKILL_TITLES.get(skill) || skill;
 
   if (questions.length === 0)
     return (
@@ -104,7 +105,7 @@ export default function QuizView({
                             index >= 0;
                             index--
                           ) {
-                            const previousQ = questions[index];
+                            const previousQ = questions.at(index);
                             if (
                               previousQ &&
                               previousQ.teil === teilNumber &&
@@ -143,13 +144,10 @@ export default function QuizView({
                                 currentStep={firstIndex + 1}
                                 onAnswer={() => {}}
                                 skill={skill}
-                                isNewTeil
-                                // Deutsch Lernen - High-Performance React Architecture
-
+                                variant="header"
                                 activeContext={
                                   isGroupedTeil ? activeContext : undefined
                                 }
-                                hideQuestionBody
                               />
 
                               {/* 2. Questions */}
@@ -166,8 +164,7 @@ export default function QuizView({
                                         currentStep={0}
                                         onAnswer={() => {}}
                                         skill={skill}
-                                        isTableRow
-                                        isExample
+                                        variant="example-row"
                                         selectedAnswer={
                                           examples[0]!.correctAnswer
                                         }
@@ -192,10 +189,10 @@ export default function QuizView({
                                             questions.indexOf(q),
                                           )
                                         }
-                                        selectedAnswer={
-                                          userAnswers[questions.indexOf(q)]
-                                        }
-                                        isTableRow
+                                        selectedAnswer={userAnswers.at(
+                                          questions.indexOf(q),
+                                        )}
+                                        variant="table-row"
                                         skill={skill}
                                       />
                                     </div>
@@ -209,7 +206,7 @@ export default function QuizView({
                                       currentStep={0}
                                       onAnswer={() => {}}
                                       skill={skill}
-                                      isExample
+                                      variant="example"
                                       selectedAnswer={
                                         examples[0]!.correctAnswer
                                       }
@@ -262,7 +259,7 @@ export default function QuizView({
                     question={currentQuestion!}
                     currentStep={currentQuestionIndex + 1}
                     onAnswer={handleAnswer}
-                    selectedAnswer={userAnswers[currentQuestionIndex]}
+                    selectedAnswer={userAnswers.at(currentQuestionIndex)}
                   />
                 }
               </div>

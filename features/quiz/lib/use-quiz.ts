@@ -13,7 +13,7 @@ export function useQuiz(questions: Question[]) {
   );
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  const currentQuestion = questions[currentQuestionIndex] ?? questions[0];
+  const currentQuestion = questions.at(currentQuestionIndex) ?? questions[0];
   const progress =
     isFinished ? 100 : (
       (userAnswers.filter((a) => a !== null).length / questions.length) * 100
@@ -22,7 +22,7 @@ export function useQuiz(questions: Question[]) {
   let score = 0;
   for (const [index, answer] of userAnswers.entries()) {
     if (answer === null) continue;
-    const question = questions[index];
+    const question = questions.at(index);
     if (!question) continue;
 
     const correct = question.correctAnswer;
@@ -51,11 +51,7 @@ export function useQuiz(questions: Question[]) {
 
   const handleAnswer = (answer: string | string[], index?: number) => {
     const targetIndex = index ?? currentQuestionIndex;
-    setUserAnswers((previous) => {
-      const next = [...previous];
-      next[targetIndex] = answer;
-      return next;
-    });
+    setUserAnswers((previous) => previous.toSpliced(targetIndex, 1, answer));
 
     // For sequential mode, auto-advance if no index was provided
     if (index === undefined && targetIndex < questions.length - 1) {

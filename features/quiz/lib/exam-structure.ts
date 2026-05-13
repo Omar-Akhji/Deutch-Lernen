@@ -98,7 +98,7 @@ export function assignTeile(
     let isFirstInTeil = true;
 
     while (assignedCount < teil.count && currentIndex < result.length) {
-      const q = result[currentIndex]!;
+      const q = result.at(currentIndex)!;
       q.teil = teil.teil;
 
       if (isFirstInTeil) {

@@ -19,7 +19,4 @@ export interface Question {
   audioUrl?: string;
 }
 
-export type QuizData = Record<
-  string,
-  Record<string, Record<number, Question[]>>
->;
+export type QuizData = Map<string, Map<string, Map<number, Question[]>>>;

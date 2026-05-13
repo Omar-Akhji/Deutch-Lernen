@@ -7,9 +7,9 @@ export const getQuestions = async (
   skill: string,
   testId: number,
 ): Promise<ApiResponse<Question[]>> => {
-  const lvl = quizQuestions[level.toLowerCase()];
-  const skl = lvl?.[skill.toLowerCase()];
-  const data = skl?.[testId] || [];
+  const lvl = quizQuestions.get(level.toLowerCase());
+  const skl = lvl?.get(skill.toLowerCase());
+  const data = skl?.get(testId) || [];
 
   return {
     data,
@@ -25,13 +25,11 @@ export const getQuizStaticParams = (): {
 }[] => {
   const parameters: { level: string; skill: string; testId: string }[] = [];
 
-  for (const level in quizQuestions) {
-    const lvlData = quizQuestions[level];
+  for (const [level, lvlData] of quizQuestions.entries()) {
     if (!lvlData) continue;
-    for (const skill in lvlData) {
-      const skillData = lvlData[skill];
+    for (const [skill, skillData] of lvlData.entries()) {
       if (!skillData) continue;
-      for (const testId in skillData) {
+      for (const testId of skillData.keys()) {
         parameters.push({ level, skill, testId: String(testId) });
       }
     }

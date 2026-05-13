@@ -9,6 +9,13 @@ import {
   AdDetailDialog,
 } from "./QuizQuestionParts";
 
+type QuizQuestionVariant =
+  | "standard"
+  | "table-row"
+  | "header"
+  | "example"
+  | "example-row";
+
 interface QuizQuestionProperties {
   question: Question;
   currentStep: number;
@@ -17,15 +24,11 @@ interface QuizQuestionProperties {
   selectedAnswer?: string | string[] | null | undefined;
   /** Context carried forward from the previous question in the same Teil */
   activeContext?: string | undefined;
-  /** Whether this question starts a new Teil (show header) */
-  isNewTeil?: boolean | undefined;
   /** The skill being tested (lesen, hoeren, etc.) */
   skill?: string | undefined;
 
-  /* Table Layout Flags */
-  isTableRow?: boolean;
-  hideQuestionBody?: boolean;
-  isExample?: boolean;
+  /* Layout Variant */
+  variant?: QuizQuestionVariant;
 }
 
 export const QuizQuestion = ({
@@ -34,12 +37,15 @@ export const QuizQuestion = ({
   onAnswer,
   selectedAnswer,
   activeContext,
-  isNewTeil,
   skill,
-  isTableRow,
-  hideQuestionBody,
-  isExample,
+  variant = "standard",
 }: QuizQuestionProperties) => {
+  // Map variant to internal logic flags for backward compatibility or internal cleanliness
+  const isHeader = variant === "header";
+  const isTableRow = variant === "table-row" || variant === "example-row";
+  const isExample = variant === "example" || variant === "example-row";
+  const hideQuestionBody = isHeader;
+  const showTeilHeader = isHeader;
   const [selectedAd, setSelectedAd] = useState<{
     letter: string;
     content: string;
@@ -88,7 +94,7 @@ export const QuizQuestion = ({
     <article
       className={`mx-auto w-full animate-fade-in ${isTableRow ? "" : "space-y-6"}`}
     >
-      {isNewTeil && !isTableRow ?
+      {showTeilHeader && !isTableRow ?
         <TeilHeader
           teil={question.teil}
           teilTitle={question.teilTitle}

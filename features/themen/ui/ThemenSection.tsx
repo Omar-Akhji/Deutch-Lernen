@@ -22,51 +22,75 @@ import {
 } from "lucide-react";
 import type { Thema } from "../model/types";
 
-const categoryConfig: Record<
+const categoryConfig = new Map<
   string,
   { label: string; icon: ReactNode; color: string }
-> = {
-  essen: {
-    label: "Essen & Trinken",
-    icon: <Utensils size={24} />,
-    color: THEMEN_CATEGORY_COLORS["essen"]!,
-  },
-  tech: {
-    label: "Technik & Medien",
-    icon: <Cpu size={24} />,
-    color: THEMEN_CATEGORY_COLORS["tech"]!,
-  },
-  gesellschaft: {
-    label: "Gesellschaft",
-    icon: <Users size={24} />,
-    color: THEMEN_CATEGORY_COLORS["gesellschaft"]!,
-  },
-  bildung: {
-    label: "Bildung & Beruf",
-    icon: <GraduationCap size={24} />,
-    color: THEMEN_CATEGORY_COLORS["bildung"]!,
-  },
-  gesundheit: {
-    label: "Gesundheit",
-    icon: <Activity size={24} />,
-    color: THEMEN_CATEGORY_COLORS["gesundheit"]!,
-  },
-  freizeit: {
-    label: "Freizeit & Reisen",
-    icon: <Palmtree size={24} />,
-    color: THEMEN_CATEGORY_COLORS["freizeit"]!,
-  },
-  umwelt: {
-    label: "Umwelt",
-    icon: <Leaf size={24} />,
-    color: THEMEN_CATEGORY_COLORS["umwelt"]!,
-  },
-  arbeit: {
-    label: "Arbeitswelt",
-    icon: <Briefcase size={24} />,
-    color: THEMEN_CATEGORY_COLORS["arbeit"]!,
-  },
-};
+>([
+  [
+    "essen",
+    {
+      label: "Essen & Trinken",
+      icon: <Utensils size={24} />,
+      color: THEMEN_CATEGORY_COLORS["essen"]!,
+    },
+  ],
+  [
+    "tech",
+    {
+      label: "Technik & Medien",
+      icon: <Cpu size={24} />,
+      color: THEMEN_CATEGORY_COLORS["tech"]!,
+    },
+  ],
+  [
+    "gesellschaft",
+    {
+      label: "Gesellschaft",
+      icon: <Users size={24} />,
+      color: THEMEN_CATEGORY_COLORS["gesellschaft"]!,
+    },
+  ],
+  [
+    "bildung",
+    {
+      label: "Bildung & Beruf",
+      icon: <GraduationCap size={24} />,
+      color: THEMEN_CATEGORY_COLORS["bildung"]!,
+    },
+  ],
+  [
+    "gesundheit",
+    {
+      label: "Gesundheit",
+      icon: <Activity size={24} />,
+      color: THEMEN_CATEGORY_COLORS["gesundheit"]!,
+    },
+  ],
+  [
+    "freizeit",
+    {
+      label: "Freizeit & Reisen",
+      icon: <Palmtree size={24} />,
+      color: THEMEN_CATEGORY_COLORS["freizeit"]!,
+    },
+  ],
+  [
+    "umwelt",
+    {
+      label: "Umwelt",
+      icon: <Leaf size={24} />,
+      color: THEMEN_CATEGORY_COLORS["umwelt"]!,
+    },
+  ],
+  [
+    "arbeit",
+    {
+      label: "Arbeitswelt",
+      icon: <Briefcase size={24} />,
+      color: THEMEN_CATEGORY_COLORS["arbeit"]!,
+    },
+  ],
+]);
 
 interface ThemenSectionProperties {
   isEmbedded?: boolean;
@@ -80,17 +104,17 @@ export function ThemenSection({
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
-  const groupedThemen: Record<string, Thema[]> = {};
-  for (const cat of Object.keys(categoryConfig)) {
+  const groupedThemen = new Map<string, Thema[]>();
+  for (const cat of categoryConfig.keys()) {
     const themes = initialThemen.filter((t) => t.cat === cat);
     if (themes.length > 0) {
-      groupedThemen[cat] = themes;
+      groupedThemen.set(cat, themes);
     }
   }
 
   const filteredGroups =
     activeCategory ?
-      { [activeCategory]: groupedThemen[activeCategory] || [] }
+      new Map([[activeCategory, groupedThemen.get(activeCategory) || []]])
     : groupedThemen;
 
   const handleCategoryChange = (id: string | null) => {
@@ -139,7 +163,7 @@ export function ThemenSection({
             </span>
             Alle // Deutsch Lernen - High-Performance React Architecture
           </button>
-          {Object.entries(categoryConfig).map(([id, config]) => (
+          {[...categoryConfig.entries()].map(([id, config]) => (
             <button
               key={id}
               onClick={() => handleCategoryChange(id)}
@@ -177,8 +201,8 @@ export function ThemenSection({
       <div
         className={`space-y-24 transition-opacity duration-300 ${isPending ? "opacity-40" : "opacity-100"}`}
       >
-        {Object.entries(filteredGroups).map(([catId, themes]) => {
-          const config = categoryConfig[catId];
+        {[...filteredGroups.entries()].map(([catId, themes]) => {
+          const config = categoryConfig.get(catId);
           if (!config) return null;
 
           const catClasses = getCategoryClasses(catId);
