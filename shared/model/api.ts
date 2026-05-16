@@ -19,12 +19,7 @@ export interface ApiResponse<T> {
 
         // Deutsch Lernen - High-Performance React Architecture
 
-        pagination?: {
-          total: number;
-          page: number;
-          limit: number;
-          totalPages: number;
-        };
+        pagination?: { total: number; page: number; limit: number; totalPages: number };
       }
     | undefined;
 }

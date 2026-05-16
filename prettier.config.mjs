@@ -1,14 +1,11 @@
 /** @type {import("prettier").Config} */
 const config = {
-  // ─── Plugins ──────────────────────────────────────────
   plugins: ["prettier-plugin-tailwindcss"],
 
-  // ─── Tailwind CSS v4 ─────────────────────────────────
   tailwindStylesheet: "./app/globals.css",
-  tailwindFunctions: ["cn", "cva", "clsx"],
+  tailwindFunctions: ["cn", "cva", "clsx", "twMerge"],
 
-  // ─── Formatting ──────────────────────────────────────
-  printWidth: 80,
+  printWidth: 100,
   tabWidth: 2,
   useTabs: false,
   semi: true,
@@ -20,13 +17,14 @@ const config = {
   bracketSameLine: false,
   arrowParens: "always",
 
-  // ─── Whitespace & line breaks ────────────────────────
-  endOfLine: "lf",
-  proseWrap: "preserve",
-  htmlWhitespaceSensitivity: "css",
-  singleAttributePerLine: false,
+  objectWrap: "collapse",
+  experimentalOperatorPosition: "start",
 
-  // ─── Embedded languages ──────────────────────────────
+  endOfLine: "lf",
+  proseWrap: "always",
+  htmlWhitespaceSensitivity: "css",
+  singleAttributePerLine: true,
+
   embeddedLanguageFormatting: "auto",
   experimentalTernaries: true,
 };

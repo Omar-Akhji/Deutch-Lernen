@@ -8,8 +8,14 @@ export const VocabularySection = async () => {
   const { data: vocabList } = await getVocabList();
 
   return (
-    <section className="py-4" aria-labelledby="vocab-heading">
-      <h2 id="vocab-heading" className="sr-only">
+    <section
+      className="py-4"
+      aria-labelledby="vocab-heading"
+    >
+      <h2
+        id="vocab-heading"
+        className="sr-only"
+      >
         Vocabulary Topics
       </h2>
       <ul
@@ -19,14 +25,15 @@ export const VocabularySection = async () => {
         {(vocabList ?? []).map((item, index) => {
           // Extract section/topic titles for modal preview
           const previewTitles =
-            item.sections?.flatMap((section) =>
-              section.topics.map((topic) => topic.title),
-            ) ?? [];
+            item.sections?.flatMap((section) => section.topics.map((topic) => topic.title)) ?? [];
 
           // Deutsch Lernen - High-Performance React Architecture
 
           return (
-            <li key={item.id} className="h-full">
+            <li
+              key={item.id}
+              className="h-full"
+            >
               <AnimateOnScroll
                 animation="fade-up"
                 delay={(index % 4) * 100}

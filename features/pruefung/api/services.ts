@@ -9,15 +9,10 @@ const LEVEL_DELAY_MS = Number(process.env["EXAM_LEVEL_DELAY_MS"] ?? 1200);
 const REDEMITTEL_DELAY_MS = Number(process.env["REDEMITTEL_DELAY_MS"] ?? 1000);
 const TESTS_DELAY_MS = Number(process.env["MODEL_TESTS_DELAY_MS"] ?? 1200);
 
-export const getExamLevels = cache(
-  async (): Promise<ApiResponse<ExamLevel[]>> => {
-    await wait(LEVELS_DELAY_MS);
-    return {
-      data: examLevels,
-      success: true,
-    };
-  },
-);
+export const getExamLevels = cache(async (): Promise<ApiResponse<ExamLevel[]>> => {
+  await wait(LEVELS_DELAY_MS);
+  return { data: examLevels, success: true };
+});
 
 const examMap = new Map(examLevels.map((e) => [e.id, e]));
 
@@ -28,7 +23,7 @@ export const getExamLevel = cache(
 
     return {
       data: exam,
-      success: !!exam,
+      success: Boolean(exam),
       message: exam ? undefined : "Exam level not found",
     };
   },
@@ -40,22 +35,14 @@ export const getRedemittel = cache(
     const data = lvl === "b1" ? redemittelData.b1 : redemittelData.b2;
     await wait(REDEMITTEL_DELAY_MS);
 
-    return {
-      data,
-      success: true,
-    };
+    return { data, success: true };
   },
 );
 
-export const getModelTests = cache(
-  async (level: string): Promise<ApiResponse<number[]>> => {
-    const lvl = level.toLowerCase();
-    const tests = lvl === "b1" ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [1];
-    await wait(TESTS_DELAY_MS);
+export const getModelTests = cache(async (level: string): Promise<ApiResponse<number[]>> => {
+  const lvl = level.toLowerCase();
+  const tests = lvl === "b1" ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [1];
+  await wait(TESTS_DELAY_MS);
 
-    return {
-      data: tests,
-      success: true,
-    };
-  },
-);
+  return { data: tests, success: true };
+});

@@ -7,15 +7,10 @@ import type { ApiResponse } from "@/shared/model/api";
 const LIST_DELAY_MS = Number(process.env["VOCAB_LIST_DELAY_MS"] ?? 800);
 const ITEM_DELAY_MS = Number(process.env["VOCAB_ITEM_DELAY_MS"] ?? 1200);
 
-export const getVocabList = cache(
-  async (): Promise<ApiResponse<VocabItem[]>> => {
-    await wait(LIST_DELAY_MS);
-    return {
-      data: vocabList,
-      success: true,
-    };
-  },
-);
+export const getVocabList = cache(async (): Promise<ApiResponse<VocabItem[]>> => {
+  await wait(LIST_DELAY_MS);
+  return { data: vocabList, success: true };
+});
 
 const vocabMap = new Map(vocabList.map((item) => [String(item.id), item]));
 
@@ -26,7 +21,7 @@ export const getVocabById = cache(
 
     return {
       data: item,
-      success: !!item,
+      success: Boolean(item),
       message: item ? undefined : `Vocabulary item with id ${id} not found`,
     };
   },

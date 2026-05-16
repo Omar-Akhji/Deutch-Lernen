@@ -1,44 +1,29 @@
 import type { Metadata } from "next";
-import {
-  getVocabById,
-  getVocabList,
-  VocabularyTable,
-  FamilyTree,
-} from "@/features/vocabulary";
+import { getVocabById, getVocabList, VocabularyTable, FamilyTree } from "@/features/vocabulary";
 import { BackButton } from "@/shared/ui/BackButton";
 import { Hero } from "@/shared/ui/Hero";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { GlassCard } from "@/shared/ui/GlassCard";
 
 interface PageProperties {
-  params: Promise<{
-    id: string;
-    topicId: string;
-  }>;
+  params: Promise<{ id: string; topicId: string }>;
 }
 
 export async function generateStaticParams() {
   const { data: vocabList } = await getVocabList();
   return (vocabList ?? []).flatMap((item) =>
     (item.sections || []).flatMap((section) =>
-      section.topics.map((topic) => ({
-        id: String(item.id),
-        topicId: topic.id,
-      })),
+      section.topics.map((topic) => ({ id: String(item.id), topicId: topic.id })),
     ),
   );
 }
 
-export async function generateMetadata({
-  params,
-}: PageProperties): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProperties): Promise<Metadata> {
   const { id, topicId } = await params;
   const { data: item } = await getVocabById(id);
 
   // Use O(1) lookup
-  const topicMap = new Map(
-    item?.sections?.flatMap((s) => s.topics.map((t) => [t.id, t])) || [],
-  );
+  const topicMap = new Map(item?.sections?.flatMap((s) => s.topics.map((t) => [t.id, t])) || []);
   const topic = topicMap.get(topicId);
 
   return {
@@ -53,9 +38,7 @@ export default async function TopicDetailPage({ params }: PageProperties) {
 
   // Build a topic map once for O(1) lookups
   const topicMap = new Map(
-    item?.sections?.flatMap((s) =>
-      s.topics.map((t) => [t.id, { topic: t, section: s }]),
-    ) || [],
+    item?.sections?.flatMap((s) => s.topics.map((t) => [t.id, { topic: t, section: s }])) || [],
   );
 
   const { topic, section } = topicMap.get(topicId) || {};
@@ -86,7 +69,11 @@ export default async function TopicDetailPage({ params }: PageProperties) {
         {isFamilyTree ?
           <>
             {/* Family Tree Section */}
-            <AnimateOnScroll as="section" animation="fade-up" className="mt-8">
+            <AnimateOnScroll
+              as="section"
+              animation="fade-up"
+              className="mt-8"
+            >
               <GlassCard className="p-8">
                 <FamilyTree members={topic.familyTree!} />
               </GlassCard>
@@ -103,10 +90,18 @@ export default async function TopicDetailPage({ params }: PageProperties) {
             </AnimateOnScroll>
           </>
         : topic.words && topic.words.length > 0 ?
-          <AnimateOnScroll as="section" animation="fade-up" className="mt-8">
+          <AnimateOnScroll
+            as="section"
+            animation="fade-up"
+            className="mt-8"
+          >
             <VocabularyTable words={topic.words} />
           </AnimateOnScroll>
-        : <AnimateOnScroll as="section" animation="fade-up" className="mt-8">
+        : <AnimateOnScroll
+            as="section"
+            animation="fade-up"
+            className="mt-8"
+          >
             <GlassCard className="p-8">
               <div className="text-center text-text-muted">
                 <p>Noch keine Vokabeln für {topic.title} eingetragen.</p>

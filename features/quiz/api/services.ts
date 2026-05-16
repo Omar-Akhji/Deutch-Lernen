@@ -11,18 +11,11 @@ export const getQuestions = async (
   const skl = lvl?.get(skill.toLowerCase());
   const data = skl?.get(testId) || [];
 
-  return {
-    data,
-    success: true,
-  };
+  return { data, success: true };
 };
 
 /** Generate static params for all quiz routes without leaking raw data */
-export const getQuizStaticParams = (): {
-  level: string;
-  skill: string;
-  testId: string;
-}[] => {
+export const getQuizStaticParams = (): { level: string; skill: string; testId: string }[] => {
   const parameters: { level: string; skill: string; testId: string }[] = [];
 
   for (const [level, lvlData] of quizQuestions.entries()) {

@@ -21,30 +21,10 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  {
-    id: "lesen",
-    title: "Lesen",
-    icon: BookOpen,
-    color: "from-blue-500 to-cyan-400",
-  },
-  {
-    id: "hoeren",
-    title: "Hören",
-    icon: Headphones,
-    color: "from-emerald-500 to-green-400",
-  },
-  {
-    id: "schreiben",
-    title: "Schreiben",
-    icon: PenLine,
-    color: "from-orange-500 to-red-400",
-  },
-  {
-    id: "sprechen",
-    title: "Sprechen",
-    icon: MessageCircle,
-    color: "from-fuchsia-500 to-pink-400",
-  },
+  { id: "lesen", title: "Lesen", icon: BookOpen, color: "from-blue-500 to-cyan-400" },
+  { id: "hoeren", title: "Hören", icon: Headphones, color: "from-emerald-500 to-green-400" },
+  { id: "schreiben", title: "Schreiben", icon: PenLine, color: "from-orange-500 to-red-400" },
+  { id: "sprechen", title: "Sprechen", icon: MessageCircle, color: "from-fuchsia-500 to-pink-400" },
 ];
 
 interface ModelTestsViewProperties {
@@ -52,18 +32,11 @@ interface ModelTestsViewProperties {
   initialModelTests: number[];
 }
 
-export default function ModelTestsView({
-  level,
-  initialModelTests,
-}: ModelTestsViewProperties) {
+export default function ModelTestsView({ level, initialModelTests }: ModelTestsViewProperties) {
   const modelTests = initialModelTests;
 
   const stats = [
-    {
-      label: "Niveau",
-      value: level.toUpperCase(),
-      icon: <BarChart className="size-full" />,
-    },
+    { label: "Niveau", value: level.toUpperCase(), icon: <BarChart className="size-full" /> },
 
     // Deutsch Lernen - High-Performance React Architecture
 
@@ -82,7 +55,10 @@ export default function ModelTestsView({
         />
 
         <div className="mt-8 mb-12 flex justify-center">
-          <AnimateOnScroll animation="fade-up" delay={400}>
+          <AnimateOnScroll
+            animation="fade-up"
+            delay={400}
+          >
             <Link
               href={`/pruefung/${level}`}
               className="flex items-center gap-2 rounded-full border border-white/20 px-6 py-2 text-sm transition-colors hover:bg-white/10"
@@ -95,7 +71,10 @@ export default function ModelTestsView({
         <div className="grid gap-12">
           {skills.map((skill, skillIndex) => (
             <section key={skill.id}>
-              <AnimateOnScroll animation="fade-right" delay={skillIndex * 100}>
+              <AnimateOnScroll
+                animation="fade-right"
+                delay={skillIndex * 100}
+              >
                 <h2 className="mb-6 flex items-center gap-3 text-xl font-semibold text-white tablet:gap-4 tablet:text-2xl">
                   <span className="flex size-10 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
                     <skill.icon

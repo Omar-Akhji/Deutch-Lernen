@@ -16,36 +16,11 @@ export const examLevelB2: ExamLevel = {
       points: 100,
       description: "Anspruchsvolle Texte verstehen",
       parts: [
-        {
-          name: "Teil 1",
-          taskType: "Zuordnung (Aussagen)",
-          items: 4,
-          points: 20,
-        },
-        {
-          name: "Teil 2",
-          taskType: "Multiple Choice (Artikel)",
-          items: 6,
-          points: 20,
-        },
-        {
-          name: "Teil 3",
-          taskType: "Zuordnung (Lesermeinungen)",
-          items: 6,
-          points: 20,
-        },
-        {
-          name: "Teil 4",
-          taskType: "Multiple Choice (Kommentar)",
-          items: 6,
-          points: 20,
-        },
-        {
-          name: "Teil 5",
-          taskType: "Zuordnung (Anzeigen)",
-          items: 8,
-          points: 20,
-        },
+        { name: "Teil 1", taskType: "Zuordnung (Aussagen)", items: 4, points: 20 },
+        { name: "Teil 2", taskType: "Multiple Choice (Artikel)", items: 6, points: 20 },
+        { name: "Teil 3", taskType: "Zuordnung (Lesermeinungen)", items: 6, points: 20 },
+        { name: "Teil 4", taskType: "Multiple Choice (Kommentar)", items: 6, points: 20 },
+        { name: "Teil 5", taskType: "Zuordnung (Anzeigen)", items: 8, points: 20 },
       ],
       tips: [
         "Globales, selektives und detailliertes Lesen trainieren",
@@ -61,30 +36,10 @@ export const examLevelB2: ExamLevel = {
       points: 100,
       description: "Anspruchsvolle Hörtexte verstehen",
       parts: [
-        {
-          name: "Teil 1",
-          taskType: "Zuordnung (Aussagen)",
-          items: 5,
-          points: 25,
-        },
-        {
-          name: "Teil 2",
-          taskType: "Multiple Choice (Interview)",
-          items: 6,
-          points: 25,
-        },
-        {
-          name: "Teil 3",
-          taskType: "Richtig/Falsch (Diskussion)",
-          items: 6,
-          points: 25,
-        },
-        {
-          name: "Teil 4",
-          taskType: "Multiple Choice (Vortrag)",
-          items: 8,
-          points: 25,
-        },
+        { name: "Teil 1", taskType: "Zuordnung (Aussagen)", items: 5, points: 25 },
+        { name: "Teil 2", taskType: "Multiple Choice (Interview)", items: 6, points: 25 },
+        { name: "Teil 3", taskType: "Richtig/Falsch (Diskussion)", items: 6, points: 25 },
+        { name: "Teil 4", taskType: "Multiple Choice (Vortrag)", items: 8, points: 25 },
       ],
       tips: [
         "Auf Sprecherabsicht achten",
@@ -129,25 +84,10 @@ export const examLevelB2: ExamLevel = {
       points: 100,
       description: "Paarprüfung: Präsentation und Diskussion",
       parts: [
-        {
-          name: "Teil 1",
-          taskType: "Präsentation (Thema mit Pro/Contra)",
-          items: 1,
-          points: 50,
-        },
-        {
-          name: "Teil 2",
-          taskType: "Diskussion mit Partner",
-          items: 1,
-          points: 50,
-        },
+        { name: "Teil 1", taskType: "Präsentation (Thema mit Pro/Contra)", items: 1, points: 50 },
+        { name: "Teil 2", taskType: "Diskussion mit Partner", items: 1, points: 50 },
       ],
-      tips: [
-        "Strukturiert argumentieren",
-        "Gegenargumente",
-        "Redemittel",
-        "Flüssig sprechen",
-      ],
+      tips: ["Strukturiert argumentieren", "Gegenargumente", "Redemittel", "Flüssig sprechen"],
     },
   ],
 };
@@ -190,10 +130,7 @@ export const redemittelB2: RedemittelCategory = {
     },
   ],
   "Schreiben 2: Formelle Nachricht": [
-    {
-      label: "1 · Anrede",
-      phrases: ["Sehr geehrte Damen und Herren,"],
-    },
+    { label: "1 · Anrede", phrases: ["Sehr geehrte Damen und Herren,"] },
   ],
   "Sprechen 2: Diskussion": [
     {

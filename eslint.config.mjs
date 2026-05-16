@@ -4,86 +4,91 @@ import { fixupConfigRules } from "@eslint/compat";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
-import prettierConfig from "eslint-config-prettier";
-import prettierPlugin from "eslint-plugin-prettier";
+import prettierRecommended from "eslint-plugin-prettier/recommended";
 import unicorn from "eslint-plugin-unicorn";
 import securityPlugin from "eslint-plugin-security";
-import noUnsanitizedPlugin from "eslint-plugin-no-unsanitized";
+import nounsanitized from "eslint-plugin-no-unsanitized";
 
 const eslintConfig = defineConfig([
   ...fixupConfigRules(nextVitals),
   ...fixupConfigRules(nextTs),
 
+  // ─── Unicorn ───────────────────────────────────────────────────
   unicorn.configs["flat/recommended"],
+
+  // ─── Security ──────────────────────────────────────────────────
   securityPlugin.configs.recommended,
-  noUnsanitizedPlugin.configs.recommended,
+  nounsanitized.configs.recommended,
+
+  // ─── Unicorn overrides ─────────────────────────────────────────
   {
     rules: {
-      "unicorn/filename-case": [
-        "error",
-        {
-          cases: {
-            kebabCase: true,
-            pascalCase: true,
-          },
-        },
-      ],
+      "unicorn/filename-case": ["error", { cases: { kebabCase: true, pascalCase: true } }],
       "unicorn/prevent-abbreviations": [
         "error",
-        {
-          replacements: {
-            props: false,
-            ref: false,
-            params: false,
-            e: false,
-            err: false,
-          },
-        },
+        { replacements: { props: false, ref: false, params: false, e: false, err: false } },
       ],
       "unicorn/no-null": "off",
+      "unicorn/no-array-reduce": "off",
     },
   },
 
-  // ─── Custom quality rules ────────────────────────────
+  // ─── TypeScript ────────────────────────────────────────────────
   {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname },
+    },
     rules: {
-      /* ── TypeScript strictness ────────────────────── */
       "@typescript-eslint/no-unused-vars": [
         "error",
-        {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          caughtErrorsIgnorePattern: "^_",
-        },
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" },
       ],
       "@typescript-eslint/consistent-type-imports": [
-        "warn",
+        "error",
         { prefer: "type-imports", fixStyle: "inline-type-imports" },
       ],
       "@typescript-eslint/no-import-type-side-effects": "error",
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-unsafe-assignment": "error",
+      "@typescript-eslint/no-unsafe-call": "error",
+      "@typescript-eslint/no-unsafe-member-access": "error",
+      "@typescript-eslint/no-unsafe-return": "error",
+      "@typescript-eslint/no-unsafe-argument": "error",
+    },
+  },
 
-      /* ── React best practices ─────────────────────── */
-      "react/jsx-no-leaked-render": [
-        "warn",
-        { validStrategies: ["ternary", "coerce"] },
-      ],
+  // ─── React ─────────────────────────────────────────────────────
+  {
+    files: ["**/*.tsx", "**/*.jsx"],
+    rules: {
+      "react/jsx-no-leaked-render": ["error", { validStrategies: ["ternary", "coerce"] }],
       "react/self-closing-comp": "error",
-      "react/jsx-curly-brace-presence": [
-        "warn",
-        { props: "never", children: "never" },
-      ],
-      "react/jsx-boolean-value": ["warn", "never"],
-      "react/jsx-no-useless-fragment": ["warn", { allowExpressions: true }],
-      "react/no-array-index-key": "warn",
+      "react/jsx-curly-brace-presence": ["error", { props: "never", children: "never" }],
+      "react/jsx-boolean-value": ["error", "never"],
+      "react/jsx-no-useless-fragment": ["error", { allowExpressions: true }],
+      "react/no-array-index-key": "error",
+      "react/hook-use-state": "error",
+      "react/jsx-no-constructed-context-values": "error",
+    },
+  },
 
-      /* ── General quality ──────────────────────────── */
+  // ─── General quality ───────────────────────────────────────────
+  {
+    rules: {
       "no-console": ["warn", { allow: ["warn", "error"] }],
       "prefer-const": "error",
-      "no-var": "error",
       eqeqeq: ["error", "always", { null: "ignore" }],
       "no-nested-ternary": "off",
+      "no-implicit-coercion": "error",
+      "no-return-assign": "error",
+      "no-throw-literal": "error",
+    },
+  },
 
-      /* ── Security tuning ─────────────────────────── */
+  // ─── Security tuning ───────────────────────────────────────────
+  {
+    rules: {
       "security/detect-eval-with-expression": "error",
       "security/detect-unsafe-regex": "error",
       "security/detect-buffer-noassert": "error",
@@ -96,19 +101,10 @@ const eslintConfig = defineConfig([
     },
   },
 
-  {
-    plugins: {
-      prettier: prettierPlugin,
-    },
-    rules: {
-      "prettier/prettier": "error",
-    },
-  },
+  // ─── Prettier — MUST be last ───────────────────────────────────
+  prettierRecommended,
 
-  // Prettier config — MUST be last
-  prettierConfig,
-
-  // Global ignores
+  // ─── Global ignores ────────────────────────────────────────────
   globalIgnores([
     ".next/**",
     "out/**",

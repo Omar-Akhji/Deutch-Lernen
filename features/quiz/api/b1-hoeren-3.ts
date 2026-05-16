@@ -242,8 +242,7 @@ const hoeren3Teil4: Question[] = [
   {
     id: 26,
     type: "matching",
-    question:
-      "26. Schlägt vor, kostenlose Musikkurse in der Schule anzubieten.",
+    question: "26. Schlägt vor, kostenlose Musikkurse in der Schule anzubieten.",
     options: ["a", "b", "c"],
     correctAnswer: "b",
     teil: 4,

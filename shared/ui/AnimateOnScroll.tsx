@@ -38,8 +38,8 @@ export function AnimateOnScroll<T extends ElementType = "div">({
   as,
   repeat = false,
   ...properties
-}: AnimateOnScrollProperties<T> &
-  Omit<ComponentPropsWithoutRef<T>, keyof AnimateOnScrollProperties<T>>) {
+}: AnimateOnScrollProperties<T>
+  & Omit<ComponentPropsWithoutRef<T>, keyof AnimateOnScrollProperties<T>>) {
   const reference = useRef<Element>(null);
 
   useGSAP(
@@ -51,10 +51,7 @@ export function AnimateOnScroll<T extends ElementType = "div">({
       // This ensures that if JS is disabled, the element is visible by default (SEO friendly)
       gsap.set(element, { opacity: 0, visibility: "hidden" });
 
-      const fromVariables: gsap.TweenVars = {
-        opacity: 0,
-        visibility: "visible",
-      };
+      const fromVariables: gsap.TweenVars = { opacity: 0, visibility: "visible" };
       const toVariables: gsap.TweenVars = {
         opacity: 1,
         clearProps: "filter,willChange", // Clean up performance hints after animation
@@ -114,8 +111,7 @@ export function AnimateOnScroll<T extends ElementType = "div">({
         scrollTrigger: {
           trigger: element,
           start: "top 95%",
-          toggleActions:
-            repeat ? "play none none reverse" : "play none none none",
+          toggleActions: repeat ? "play none none reverse" : "play none none none",
           once: !repeat,
         },
       });

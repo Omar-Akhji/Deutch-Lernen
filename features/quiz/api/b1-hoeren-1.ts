@@ -45,11 +45,7 @@ const hoeren1Teil1: Question[] = [
     id: 4,
     type: "multiple-choice",
     question: "Das Programmangebot von „musica viva“ gibt es ...",
-    options: [
-      "a) nur in Österreich.",
-      "b) nur in Deutschland.",
-      "c) in mehreren Ländern.",
-    ],
+    options: ["a) nur in Österreich.", "b) nur in Deutschland.", "c) in mehreren Ländern."],
     correctAnswer: "c) in mehreren Ländern.",
     teil: 1,
   },
@@ -106,11 +102,7 @@ const hoeren1Teil1: Question[] = [
     id: 10,
     type: "multiple-choice",
     question: "Wo braucht man nichts zu bezahlen?",
-    options: [
-      "a) In der Ausstellung.",
-      "b) Im Schoko-Laden.",
-      "c) In der Schokowerkstatt.",
-    ],
+    options: ["a) In der Ausstellung.", "b) Im Schoko-Laden.", "c) In der Schokowerkstatt."],
     correctAnswer: "b) Im Schoko-Laden.",
     teil: 1,
   },
@@ -167,11 +159,7 @@ const hoeren1Teil2: Question[] = [
     id: 15,
     type: "multiple-choice",
     question: "Die Kinder essen ...",
-    options: [
-      "a) jeden Tag in Gaststätten.",
-      "b) dreimal am Tag.",
-      "c) an einem Kiosk.",
-    ],
+    options: ["a) jeden Tag in Gaststätten.", "b) dreimal am Tag.", "c) an einem Kiosk."],
     correctAnswer: "b) dreimal am Tag.",
     teil: 2,
   },
@@ -260,8 +248,7 @@ const hoeren1Teil4: Question[] = [
   {
     id: 24,
     type: "matching",
-    question:
-      "Iris durfte nach Griechenland, weil es dort ein großes Freizeitangebot gibt.",
+    question: "Iris durfte nach Griechenland, weil es dort ein großes Freizeitangebot gibt.",
     options: ["a", "b", "c"],
     correctAnswer: "b",
     teil: 4,
@@ -277,8 +264,7 @@ const hoeren1Teil4: Question[] = [
   {
     id: 26,
     type: "matching",
-    question:
-      "Freiwilligenarbeit in einem Lebenslauf macht immer einen guten Eindruck.",
+    question: "Freiwilligenarbeit in einem Lebenslauf macht immer einen guten Eindruck.",
     options: ["a", "b", "c"],
     correctAnswer: "a",
     teil: 4,
@@ -294,8 +280,7 @@ const hoeren1Teil4: Question[] = [
   {
     id: 28,
     type: "matching",
-    question:
-      "Kai findet es wichtig, die Bevölkerung über den Umweltschutz aufzuklären.",
+    question: "Kai findet es wichtig, die Bevölkerung über den Umweltschutz aufzuklären.",
     options: ["a", "b", "c"],
     correctAnswer: "c",
     teil: 4,
@@ -303,8 +288,7 @@ const hoeren1Teil4: Question[] = [
   {
     id: 29,
     type: "matching",
-    question:
-      "Kai war überrascht von den Lebensbedingungen in Ecuador (Kulturschock).",
+    question: "Kai war überrascht von den Lebensbedingungen in Ecuador (Kulturschock).",
     options: ["a", "b", "c"],
     correctAnswer: "c",
     teil: 4,
@@ -312,8 +296,7 @@ const hoeren1Teil4: Question[] = [
   {
     id: 30,
     type: "matching",
-    question:
-      "Am Ende hat man das Gefühl, etwas für einen guten Zweck getan zu haben.",
+    question: "Am Ende hat man das Gefühl, etwas für einen guten Zweck getan zu haben.",
     options: ["a", "b", "c"],
     correctAnswer: "b",
     teil: 4,

@@ -8,7 +8,10 @@ export default function PruefungLoading() {
         {["p1", "p2"].map((id) => (
           // Deutsch Lernen - High-Performance React Architecture
 
-          <li key={id} className="h-full">
+          <li
+            key={id}
+            className="h-full"
+          >
             <CardSkeleton variant="large" />
           </li>
         ))}

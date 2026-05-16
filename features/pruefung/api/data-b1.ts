@@ -16,36 +16,11 @@ export const examLevelB1: ExamLevel = {
       points: 100,
       description: "Leseverstehen in verschiedenen Textsorten",
       parts: [
-        {
-          name: "Teil 1",
-          taskType: "Zuordnung (Blog-Texte)",
-          items: 6,
-          points: 20,
-        },
-        {
-          name: "Teil 2",
-          taskType: "Multiple Choice (Artikel)",
-          items: 6,
-          points: 20,
-        },
-        {
-          name: "Teil 3",
-          taskType: "Richtig/Falsch (Anleitungen)",
-          items: 7,
-          points: 20,
-        },
-        {
-          name: "Teil 4",
-          taskType: "Zuordnung (Leserkommentare)",
-          items: 7,
-          points: 20,
-        },
-        {
-          name: "Teil 5",
-          taskType: "Multiple Choice (Anzeigen)",
-          items: 4,
-          points: 20,
-        },
+        { name: "Teil 1", taskType: "Zuordnung (Blog-Texte)", items: 6, points: 20 },
+        { name: "Teil 2", taskType: "Multiple Choice (Artikel)", items: 6, points: 20 },
+        { name: "Teil 3", taskType: "Richtig/Falsch (Anleitungen)", items: 7, points: 20 },
+        { name: "Teil 4", taskType: "Zuordnung (Leserkommentare)", items: 7, points: 20 },
+        { name: "Teil 5", taskType: "Multiple Choice (Anzeigen)", items: 4, points: 20 },
       ],
       tips: [
         "Bestehensgrenze: 60 Punkte (max. 100).",
@@ -62,30 +37,10 @@ export const examLevelB1: ExamLevel = {
       points: 100,
       description: "Hörverstehen mit verschiedenen Audioformaten",
       parts: [
-        {
-          name: "Teil 1",
-          taskType: "Richtig/Falsch (Durchsagen)",
-          items: 10,
-          points: 25,
-        },
-        {
-          name: "Teil 2",
-          taskType: "Multiple Choice (Vortrag)",
-          items: 5,
-          points: 25,
-        },
-        {
-          name: "Teil 3",
-          taskType: "Richtig/Falsch (Gespräch)",
-          items: 7,
-          points: 25,
-        },
-        {
-          name: "Teil 4",
-          taskType: "Zuordnung (Diskussion)",
-          items: 8,
-          points: 25,
-        },
+        { name: "Teil 1", taskType: "Richtig/Falsch (Durchsagen)", items: 10, points: 25 },
+        { name: "Teil 2", taskType: "Multiple Choice (Vortrag)", items: 5, points: 25 },
+        { name: "Teil 3", taskType: "Richtig/Falsch (Gespräch)", items: 7, points: 25 },
+        { name: "Teil 4", taskType: "Zuordnung (Diskussion)", items: 8, points: 25 },
       ],
       tips: [
         "Module können einzeln abgelegt werden.",
@@ -107,8 +62,7 @@ export const examLevelB1: ExamLevel = {
           taskType: "Informelle E-Mail",
           items: 1,
           points: 40,
-          description:
-            "ca. 80 Wörter · 3 Inhaltspunkte · Anrede → Einleitung → Inhalt → Schluss",
+          description: "ca. 80 Wörter · 3 Inhaltspunkte · Anrede → Einleitung → Inhalt → Schluss",
           checklist: [
             "Anrede",
             "Einleitung",
@@ -123,8 +77,7 @@ export const examLevelB1: ExamLevel = {
           taskType: "Diskussionsbeitrag",
           items: 1,
           points: 40,
-          description:
-            "ca. 80 Wörter · Meinung äußern · Pro- und Kontra-Argumente",
+          description: "ca. 80 Wörter · Meinung äußern · Pro- und Kontra-Argumente",
           checklist: [
             "Einleitung",
             "Überleitung",
@@ -139,8 +92,7 @@ export const examLevelB1: ExamLevel = {
           taskType: "Formelle E-Mail",
           items: 1,
           points: 20,
-          description:
-            "ca. 40 Wörter · Entschuldigung / Absage / Anfrage · Sie-Form",
+          description: "ca. 40 Wörter · Entschuldigung / Absage / Anfrage · Sie-Form",
           checklist: [
             "Formelle Anrede",
             "Grund des Schreibens",
@@ -169,8 +121,7 @@ export const examLevelB1: ExamLevel = {
           taskType: "Gemeinsam planen",
           items: 1,
           points: 25,
-          description:
-            "ca. 3 Min · Gemeinsam etwas besprechen · Vorschläge machen und reagieren",
+          description: "ca. 3 Min · Gemeinsam etwas besprechen · Vorschläge machen und reagieren",
           checklist: [
             "Einleitung & Einstieg",
             "Vorschläge machen",
@@ -198,13 +149,8 @@ export const examLevelB1: ExamLevel = {
           taskType: "Feedback & Frage",
           items: 1,
           points: 25,
-          description:
-            "ca. 2 Min · Rückmeldung zur Präsentation · Eine Frage stellen",
-          checklist: [
-            "Rückmeldung geben",
-            "Interessante Frage stellen",
-            "Auf Fragen antworten",
-          ],
+          description: "ca. 2 Min · Rückmeldung zur Präsentation · Eine Frage stellen",
+          checklist: ["Rückmeldung geben", "Interessante Frage stellen", "Auf Fragen antworten"],
         },
       ],
       tips: [

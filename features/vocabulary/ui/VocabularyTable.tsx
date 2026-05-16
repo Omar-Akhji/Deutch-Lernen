@@ -7,10 +7,7 @@ interface VocabularyTableProperties {
   englishLabel?: string;
 }
 
-export function VocabularyTable({
-  words,
-  englishLabel = "English",
-}: VocabularyTableProperties) {
+export function VocabularyTable({ words, englishLabel = "English" }: VocabularyTableProperties) {
   if (!words || words.length === 0) return null;
 
   return (

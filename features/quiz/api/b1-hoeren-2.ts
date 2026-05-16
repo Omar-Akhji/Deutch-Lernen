@@ -88,11 +88,7 @@ const hoeren2Teil1: Question[] = [
     id: 10,
     type: "multiple-choice",
     question: "Was muss man tun, um am Workshop teilzunehmen?",
-    options: [
-      "Nichts, man kann einfach kommen",
-      "Sich anmelden",
-      "Eine Gebühr zahlen",
-    ],
+    options: ["Nichts, man kann einfach kommen", "Sich anmelden", "Eine Gebühr zahlen"],
     correctAnswer: "Sich anmelden",
     teil: 1,
   },
@@ -105,11 +101,7 @@ const hoeren2Teil2: Question[] = [
     question: "Worüber spricht die Frau?",
     context:
       'Monolog: Eine Mitarbeiterin des Stadtmuseums erklärt den Besuchern die Geschichte des Gebäudes und das aktuelle Ausstellungsprogramm. Sie spricht über die Sonderausstellung „Leben in der Stadt 1900–2000" und gibt praktische Hinweise.',
-    options: [
-      "Über einen Sprachkurs",
-      "Über ein Museum and seine Ausstellung",
-      "Über ein Konzert",
-    ],
+    options: ["Über einen Sprachkurs", "Über ein Museum and seine Ausstellung", "Über ein Konzert"],
     correctAnswer: "Über ein Museum and seine Ausstellung",
     teil: 2,
   },
@@ -250,8 +242,7 @@ const hoeren2Teil4: Question[] = [
   {
     id: 27,
     type: "matching",
-    question:
-      "27. Erwähnt, dass die Nachfrage nach vegetarischen Gerichten steigt.",
+    question: "27. Erwähnt, dass die Nachfrage nach vegetarischen Gerichten steigt.",
     options: ["a", "b", "c"],
     correctAnswer: "c",
     teil: 4,

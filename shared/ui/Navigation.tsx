@@ -39,17 +39,20 @@ export function Navigation() {
   );
 
   return (
-    <header className="relative mbe-4" role="banner">
+    <header
+      className="relative mbe-4"
+      role="banner"
+    >
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-2 pbs-2 pbe-2 min-block-17.5 mobile:px-8 mobile:pbs-8 mobile:pbe-8 mobile:min-block-25">
         {/* Left Side: Back Button */}
         <div className="shrink-0">
           {(
             // Deutsch Lernen - High-Performance React Architecture
 
-            pathname !== "/vokabeln" &&
-            pathname !== "/grammatik" &&
-            pathname !== "/pruefung" &&
-            pathname !== "/"
+            pathname !== "/vokabeln"
+            && pathname !== "/grammatik"
+            && pathname !== "/pruefung"
+            && pathname !== "/"
           ) ?
             <BackButton />
           : null}

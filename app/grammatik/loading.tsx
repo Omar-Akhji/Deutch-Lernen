@@ -1,7 +1,4 @@
-import {
-  PageHeaderSkeleton,
-  SectionCardSkeleton,
-} from "@/shared/ui/SkeletonLayouts";
+import { PageHeaderSkeleton, SectionCardSkeleton } from "@/shared/ui/SkeletonLayouts";
 
 export default function GrammatikLoading() {
   return (

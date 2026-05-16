@@ -1,5 +1,13 @@
+allowBuilds:
+  esbuild: false
+  sharp: false
+  unrs-resolver: false
 ignoredBuiltDependencies:
   - esbuild
   - msw
   - sharp
   - unrs-resolver
+minimumReleaseAgeExclude:
+  - postcss@8.5.10
+overrides:
+  postcss@<8.5.10: ^8.5.10

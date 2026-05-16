@@ -8,7 +8,10 @@ export default function Loading() {
           {["L1", "L2", "L3", "L4", "L5", "L6"].map((id) => (
             // Deutsch Lernen - High-Performance React Architecture
 
-            <li key={id} className="h-full">
+            <li
+              key={id}
+              className="h-full"
+            >
               <CardSkeleton />
             </li>
           ))}

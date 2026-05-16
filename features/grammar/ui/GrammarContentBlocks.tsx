@@ -9,19 +9,13 @@ interface GrammarContentBlocksProperties {
   tips?: string[] | undefined;
 }
 
-export const GrammarContentBlocks = ({
-  blocks,
-  usage,
-  tips,
-}: GrammarContentBlocksProperties) => {
+export const GrammarContentBlocks = ({ blocks, usage, tips }: GrammarContentBlocksProperties) => {
   return (
     <div className="flex flex-col gap-8">
       {usage ?
         <AnimateOnScroll animation="fade-up">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-yellow tablet:text-xl">
-              Gebrauch
-            </h3>
+            <h3 className="text-lg font-semibold text-yellow tablet:text-xl">Gebrauch</h3>
             <div className="space-y-4 rounded-3xl border border-yellow/10 bg-white/3 p-6 backdrop-blur-md">
               {usage.map((dialogue) => (
                 <div
@@ -41,11 +35,12 @@ export const GrammarContentBlocks = ({
         </AnimateOnScroll>
       : null}
       {blocks.map((block) => (
-        <AnimateOnScroll key={block.title} animation="fade-up">
+        <AnimateOnScroll
+          key={block.title}
+          animation="fade-up"
+        >
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-yellow tablet:text-xl">
-              {block.title}
-            </h3>
+            <h3 className="text-lg font-semibold text-yellow tablet:text-xl">{block.title}</h3>
             <div className="grid gap-3">
               {block.items.map((item) => {
                 const itemKey = typeof item === "string" ? item : item.text;
@@ -53,10 +48,7 @@ export const GrammarContentBlocks = ({
                   <div
                     key={`${block.title}-${itemKey.slice(0, 40)}`}
                     className="rounded-e-xl border-s-[6px] border-yellow bg-white/5 p-4 text-white/90 backdrop-blur-sm transition-all hover:translate-x-1 hover:bg-white/8"
-                    style={{
-                      borderStartStartRadius: 0,
-                      borderEndStartRadius: 0,
-                    }}
+                    style={{ borderStartStartRadius: 0, borderEndStartRadius: 0 }}
                   >
                     <ContentItem content={item} />
                   </div>
@@ -67,11 +59,12 @@ export const GrammarContentBlocks = ({
         </AnimateOnScroll>
       ))}
       {tips ?
-        <AnimateOnScroll animation="zoom-in" delay={200}>
+        <AnimateOnScroll
+          animation="zoom-in"
+          delay={200}
+        >
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange tablet:text-xl">
-              Tipps
-            </h3>
+            <h3 className="text-lg font-semibold text-orange tablet:text-xl">Tipps</h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {tips.map((tip) => (
                 <div

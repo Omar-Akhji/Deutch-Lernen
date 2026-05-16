@@ -5,8 +5,7 @@ export const vocabList: VocabItem[] = [
     id: 1,
     german: "MENSCHEN",
     category: "Kapitel 1",
-    description:
-      "Wichtige Wörter und Ausdrücke rund um das Thema Menschen und Persönlichkeit.",
+    description: "Wichtige Wörter und Ausdrücke rund um das Thema Menschen und Persönlichkeit.",
     sections: [
       {
         id: "familie",
@@ -1398,8 +1397,7 @@ export const vocabList: VocabItem[] = [
                 german: "die Zahnbürste, -n",
                 english: "toothbrush",
                 arabic: "فرشاة الأسنان",
-                example:
-                  "Ich putze mir dreimal am Tag die Zähne mit der Zahnbürste.",
+                example: "Ich putze mir dreimal am Tag die Zähne mit der Zahnbürste.",
               },
               {
                 german: "die Zahnpasta",
@@ -1531,8 +1529,7 @@ export const vocabList: VocabItem[] = [
     id: 2,
     german: "ZU HAUSE",
     category: "Kapitel 2",
-    description:
-      "Alles rund um das Wohnen: Möbel, Räume und das tägliche Leben zu Hause.",
+    description: "Alles rund um das Wohnen: Möbel, Räume und das tägliche Leben zu Hause.",
     sections: [
       {
         id: "das_haus",
@@ -1848,8 +1845,7 @@ export const vocabList: VocabItem[] = [
     id: 4,
     german: "UNTERWEGS",
     category: "Kapitel 4",
-    description:
-      "Reisen, Verkehrsmittel und Orientierung in einer neuen Umgebung.",
+    description: "Reisen, Verkehrsmittel und Orientierung in einer neuen Umgebung.",
     sections: [
       {
         id: "verkehr",
@@ -1971,8 +1967,7 @@ export const vocabList: VocabItem[] = [
     id: 5,
     german: "IN DER STADT",
     category: "Kapitel 5",
-    description:
-      "Gebäude, Orte und Dienstleistungen, die man in einer Stadt findet.",
+    description: "Gebäude, Orte und Dienstleistungen, die man in einer Stadt findet.",
     sections: [
       {
         id: "stadtleben",
@@ -2224,8 +2219,7 @@ export const vocabList: VocabItem[] = [
     id: 8,
     german: "FREIZEIT",
     category: "Kapitel 8",
-    description:
-      "Hobbys, Sport und Unterhaltung für eine aktive Freizeitgestaltung.",
+    description: "Hobbys, Sport und Unterhaltung für eine aktive Freizeitgestaltung.",
     sections: [
       {
         id: "hobbys_und_sport",
@@ -2275,8 +2269,7 @@ export const vocabList: VocabItem[] = [
     id: 9,
     german: "KÖRPER UND GESUNDHEIT",
     category: "Kapitel 9",
-    description:
-      "Körperteile, Krankheiten und nützliche Ausdrücke für den Arztbesuch.",
+    description: "Körperteile, Krankheiten und nützliche Ausdrücke für den Arztbesuch.",
     sections: [
       {
         id: "beim_arzt",
@@ -2350,8 +2343,7 @@ export const vocabList: VocabItem[] = [
     id: 10,
     german: "NOTFÄLLE",
     category: "Kapitel 10",
-    description:
-      "Wichtige Sätze und Wörter für dringende Situationen und Hilfe.",
+    description: "Wichtige Sätze und Wörter für dringende Situationen und Hilfe.",
     sections: [
       {
         id: "hilfe_rufen",
@@ -2401,8 +2393,7 @@ export const vocabList: VocabItem[] = [
     id: 11,
     german: "ERDE UND NATUR",
     category: "Kapitel 11",
-    description:
-      "Umwelt, Wetter und die Vielfalt der Natur auf unserem Planeten.",
+    description: "Umwelt, Wetter und die Vielfalt der Natur auf unserem Planeten.",
     sections: [
       {
         id: "wetter_und_natur",

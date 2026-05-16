@@ -2,19 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import type { Question } from "../model/types";
-import {
-  TeilHeader,
-  ContextCard,
-  AnswerOptions,
-  AdDetailDialog,
-} from "./QuizQuestionParts";
+import { TeilHeader, ContextCard, AnswerOptions, AdDetailDialog } from "./QuizQuestionParts";
 
-type QuizQuestionVariant =
-  | "standard"
-  | "table-row"
-  | "header"
-  | "example"
-  | "example-row";
+type QuizQuestionVariant = "standard" | "table-row" | "header" | "example" | "example-row";
 
 interface QuizQuestionProperties {
   question: Question;
@@ -46,10 +36,7 @@ export const QuizQuestion = ({
   const isExample = variant === "example" || variant === "example-row";
   const hideQuestionBody = isHeader;
   const showTeilHeader = isHeader;
-  const [selectedAd, setSelectedAd] = useState<{
-    letter: string;
-    content: string;
-  } | null>(null);
+  const [selectedAd, setSelectedAd] = useState<{ letter: string; content: string } | null>(null);
   const dialogReference = useRef<HTMLDialogElement>(null);
 
   // Sync dialog state (Portfolio Pattern)
@@ -71,29 +58,27 @@ export const QuizQuestion = ({
     : "Text:";
 
   const isRichtigFalsch =
-    question.options?.length === 2 &&
-    question.options[0] === "Richtig" &&
-    question.options[1] === "Falsch";
+    question.options?.length === 2
+    && question.options[0] === "Richtig"
+    && question.options[1] === "Falsch";
 
   // Deutsch Lernen - High-Performance React Architecture
 
   const isJaNein =
-    question.options?.length === 2 &&
-    question.options[0] === "Ja" &&
-    question.options[1] === "Nein";
+    question.options?.length === 2
+    && question.options[0] === "Ja"
+    && question.options[1] === "Nein";
   const isABC =
-    question.options?.length === 3 &&
-    question.options[0] === "a" &&
-    question.options[1] === "b" &&
-    question.options[2] === "c";
+    question.options?.length === 3
+    && question.options[0] === "a"
+    && question.options[1] === "b"
+    && question.options[2] === "c";
 
-  const isCompactRow = !!(isRichtigFalsch || isJaNein || (isTableRow && isABC));
+  const isCompactRow = Boolean(isRichtigFalsch || isJaNein || (isTableRow && isABC));
   const cleanedQuestionText = question.question.replace(/^\d+\.\s*/, "");
 
   return (
-    <article
-      className={`mx-auto w-full animate-fade-in ${isTableRow ? "" : "space-y-6"}`}
-    >
+    <article className={`mx-auto w-full animate-fade-in ${isTableRow ? "" : "space-y-6"}`}>
       {showTeilHeader && !isTableRow ?
         <TeilHeader
           teil={question.teil}
@@ -129,9 +114,7 @@ export const QuizQuestion = ({
                   Beispiel
                 </span>
                 {!isTableRow && (
-                  <span className="text-[10px] text-yellow/50 italic">
-                    Vorgegebenes Beispiel
-                  </span>
+                  <span className="text-[10px] text-yellow/50 italic">Vorgegebenes Beispiel</span>
                 )}
               </div>
             : null}

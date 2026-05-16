@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {
-  getExamLevel,
-  getRedemittel,
-  getExamLevels,
-} from "@/features/pruefung";
+import { getExamLevel, getRedemittel, getExamLevels } from "@/features/pruefung";
 import { getThemen } from "@/features/themen/api/services";
 import { ModuleStudyView } from "@/features/pruefung/ui/ModuleStudyView";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface PageProperties {
-  params: Promise<{
-    level: string;
-    module: string;
-  }>;
+  params: Promise<{ level: string; module: string }>;
 }
 
 export async function generateStaticParams() {
@@ -31,9 +24,7 @@ export async function generateStaticParams() {
   return parameters;
 }
 
-export async function generateMetadata({
-  params,
-}: PageProperties): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProperties): Promise<Metadata> {
   const { level, module: moduleName } = await params;
   const { data: currentExam } = await getExamLevel(level);
 
@@ -68,7 +59,10 @@ export default async function ModulePage({ params }: PageProperties) {
   if (!currentExam) notFound();
 
   return (
-    <AnimateOnScroll as="main" animation="fade-up">
+    <AnimateOnScroll
+      as="main"
+      animation="fade-up"
+    >
       <ModuleStudyView
         level={level}
         module={moduleName as "sprechen" | "schreiben"}

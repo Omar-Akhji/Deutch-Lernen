@@ -24,7 +24,10 @@ export function Hero({
 }: HeroProperties) {
   const Content = (
     <div className={gradient ? "max-inline-3xl" : "text-center"}>
-      <AnimateOnScroll animation="fade-up" delay={100}>
+      <AnimateOnScroll
+        animation="fade-up"
+        delay={100}
+      >
         <div
           className={`mbe-4 flex flex-wrap items-center gap-3 ${gradient ? "" : "justify-center"}`}
         >
@@ -45,7 +48,11 @@ export function Hero({
         </div>
       </AnimateOnScroll>
 
-      <AnimateOnScroll animation="blur-in" delay={300} duration={1000}>
+      <AnimateOnScroll
+        animation="blur-in"
+        delay={300}
+        duration={1000}
+      >
         <h1
           className={`-my-2 mbe-2 py-2 text-3xl font-bold text-shadow-sm tablet:text-4xl laptop:text-5xl ${gradient ? "text-white drop-shadow-[0_2px_10px_black/20]" : "bg-linear-to-br from-white to-slate-200 bg-clip-text text-transparent"}`}
         >
@@ -53,7 +60,10 @@ export function Hero({
         </h1>
       </AnimateOnScroll>
 
-      <AnimateOnScroll animation="fade-up" delay={500}>
+      <AnimateOnScroll
+        animation="fade-up"
+        delay={500}
+      >
         <p
           className={`m-0 text-base tablet:text-lg laptop:text-xl ${gradient ? "text-white/90" : "text-mist-500"}`}
         >
@@ -62,7 +72,10 @@ export function Hero({
       </AnimateOnScroll>
 
       {example ?
-        <AnimateOnScroll animation="fade-in" delay={500}>
+        <AnimateOnScroll
+          animation="fade-in"
+          delay={500}
+        >
           <p className="mbs-4 text-base text-white/80">
             <em>{example}</em>
           </p>
@@ -70,10 +83,16 @@ export function Hero({
       : null}
 
       {stats ?
-        <AnimateOnScroll animation="fade-up" delay={700}>
+        <AnimateOnScroll
+          animation="fade-up"
+          delay={700}
+        >
           <dl className="mbs-8 flex flex-wrap justify-center gap-8">
             {stats.map((stat) => (
-              <div key={stat.label} className="flex items-center gap-2">
+              <div
+                key={stat.label}
+                className="flex items-center gap-2"
+              >
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="m-0 flex items-center gap-2 text-sm text-mist-500 tablet:text-lg">
                   {stat.icon ?

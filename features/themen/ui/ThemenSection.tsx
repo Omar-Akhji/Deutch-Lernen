@@ -3,10 +3,7 @@ import { useState, useTransition, type ReactNode } from "react";
 import { ThemaCard } from "./ThemaCard";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { cn } from "@/shared/lib/utilities";
-import {
-  THEMEN_CATEGORY_COLORS,
-  getCategoryClasses,
-} from "../lib/category-config";
+import { THEMEN_CATEGORY_COLORS, getCategoryClasses } from "../lib/category-config";
 import {
   Utensils,
   Cpu,
@@ -22,10 +19,7 @@ import {
 } from "lucide-react";
 import type { Thema } from "../model/types";
 
-const categoryConfig = new Map<
-  string,
-  { label: string; icon: ReactNode; color: string }
->([
+const categoryConfig = new Map<string, { label: string; icon: ReactNode; color: string }>([
   [
     "essen",
     {
@@ -36,11 +30,7 @@ const categoryConfig = new Map<
   ],
   [
     "tech",
-    {
-      label: "Technik & Medien",
-      icon: <Cpu size={24} />,
-      color: THEMEN_CATEGORY_COLORS["tech"]!,
-    },
+    { label: "Technik & Medien", icon: <Cpu size={24} />, color: THEMEN_CATEGORY_COLORS["tech"]! },
   ],
   [
     "gesellschaft",
@@ -76,11 +66,7 @@ const categoryConfig = new Map<
   ],
   [
     "umwelt",
-    {
-      label: "Umwelt",
-      icon: <Leaf size={24} />,
-      color: THEMEN_CATEGORY_COLORS["umwelt"]!,
-    },
+    { label: "Umwelt", icon: <Leaf size={24} />, color: THEMEN_CATEGORY_COLORS["umwelt"]! },
   ],
   [
     "arbeit",
@@ -97,10 +83,7 @@ interface ThemenSectionProperties {
   initialThemen: Thema[];
 }
 
-export function ThemenSection({
-  isEmbedded,
-  initialThemen,
-}: ThemenSectionProperties) {
+export function ThemenSection({ isEmbedded, initialThemen }: ThemenSectionProperties) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
@@ -132,11 +115,13 @@ export function ThemenSection({
               Sprechen & Schreiben Themen
             </h2>
           </AnimateOnScroll>
-          <AnimateOnScroll animation="fade-up" delay={100}>
+          <AnimateOnScroll
+            animation="fade-up"
+            delay={100}
+          >
             <p className="text-base text-zinc-400 tablet:text-lg">
-              Bereite dich auf das Goethe & ÖSD Zertifikat B1 vor. Hier findest
-              du 58 Themen mit Pro- und Contra-Argumenten für deine Präsentation
-              oder deinen Diskussionsbeitrag.
+              Bereite dich auf das Goethe & ÖSD Zertifikat B1 vor. Hier findest du 58 Themen mit
+              Pro- und Contra-Argumenten für deine Präsentation oder deinen Diskussionsbeitrag.
             </p>
           </AnimateOnScroll>
         </header>
@@ -208,25 +193,21 @@ export function ThemenSection({
           const catClasses = getCategoryClasses(catId);
 
           return (
-            <section key={catId} id={catId} className="scroll-mbs-32">
+            <section
+              key={catId}
+              id={catId}
+              className="scroll-mbs-32"
+            >
               <div className="mb-10 flex items-center gap-4">
                 <div
                   className={cn(
                     "flex size-12 shrink-0 items-center justify-center rounded-full border-3 shadow-inner tablet:size-14",
-                    catClasses
-                      .split(" ")
-                      .find((c: string) => c.startsWith("border-")),
-                    catClasses
-                      .split(" ")
-                      .find((c: string) => c.startsWith("text-")),
+                    catClasses.split(" ").find((c: string) => c.startsWith("border-")),
+                    catClasses.split(" ").find((c: string) => c.startsWith("text-")),
                   )}
                 >
                   {/* Clone the icon to apply responsive sizing */}
-                  {(
-                    config.icon &&
-                    typeof config.icon === "object" &&
-                    "props" in config.icon
-                  ) ?
+                  {config.icon && typeof config.icon === "object" && "props" in config.icon ?
                     <span className="flex size-6 items-center justify-center tablet:size-7">
                       {config.icon}
                     </span>
@@ -258,7 +239,10 @@ export function ThemenSection({
         })}
       </div>
 
-      <AnimateOnScroll animation="zoom-in" delay={200}>
+      <AnimateOnScroll
+        animation="zoom-in"
+        delay={200}
+      >
         <aside className="mt-20 rounded-3xl border border-amber-500/20 bg-linear-to-br from-yellow/20 to-orange/20 p-8 backdrop-blur-sm">
           <h3 className="mb-4 flex items-center gap-3 text-xl font-semibold text-white tablet:text-2xl">
             <span className="flex size-9 shrink-0 items-center justify-center rounded-full border-3 border-amber-400 text-amber-400 tablet:size-10">

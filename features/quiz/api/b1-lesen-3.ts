@@ -62,8 +62,7 @@ const lesen3Teil2: Question[] = [
   {
     id: 7,
     type: "multiple-choice",
-    question:
-      "Was können die Bewohner des Mehrgenerationenhauses gemeinsam nutzen?",
+    question: "Was können die Bewohner des Mehrgenerationenhauses gemeinsam nutzen?",
     context: `Zusammen leben, zusammen alt werden
 
 In Freiburg gibt es ein besonderes Wohnprojekt: das Mehrgenerationenhaus „Sonnenhof". Hier leben junge Familien, Singles und Senioren unter einem Dach. Jede Partei hat eine eigene Wohnung, aber es gibt auch Gemeinschaftsräume: eine große Küche, einen Garten und einen Spielplatz.
@@ -71,11 +70,7 @@ In Freiburg gibt es ein besonderes Wohnprojekt: das Mehrgenerationenhaus „Sonn
 Das Konzept funktioniert gut: Die älteren Bewohner passen manchmal auf die Kinder auf, und die jüngeren helfen bei Einkäufen oder Arztbesuchen. Einmal pro Woche kochen alle zusammen.
 
 Allerdings gibt es auch Konflikte, zum Beispiel wegen Lärm oder unterschiedlicher Vorstellungen von Ordnung. Regelmäßige Hausversammlungen helfen, Probleme gemeinsam zu lösen.`,
-    options: [
-      "Schlafzimmer und Badezimmer",
-      "Küche, Garten und Spielplatz",
-      "Nur den Parkplatz",
-    ],
+    options: ["Schlafzimmer und Badezimmer", "Küche, Garten und Spielplatz", "Nur den Parkplatz"],
     correctAnswer: "Küche, Garten und Spielplatz",
   },
   {
@@ -166,24 +161,21 @@ j) 20:15 Uhr - "Gute Zeiten, schlechte Zeiten". Die tägliche Seifenoper geht we
   {
     id: 15,
     type: "matching",
-    question:
-      "15. Herr Weber möchte wissen, wie er einen Schokoladenkuchen macht.",
+    question: "15. Herr Weber möchte wissen, wie er einen Schokoladenkuchen macht.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "e",
   },
   {
     id: 16,
     type: "matching",
-    question:
-      "16. Lisa und Tim suchen eine Sendung über exotische Tiere und Landschaften.",
+    question: "16. Lisa und Tim suchen eine Sendung über exotische Tiere und Landschaften.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "d",
   },
   {
     id: 17,
     type: "matching",
-    question:
-      "17. Frau Müller verpasst keine Folge ihrer Lieblingsserie um 20:15 Uhr.",
+    question: "17. Frau Müller verpasst keine Folge ihrer Lieblingsserie um 20:15 Uhr.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "j",
   },
@@ -197,8 +189,7 @@ j) 20:15 Uhr - "Gute Zeiten, schlechte Zeiten". Die tägliche Seifenoper geht we
   {
     id: 19,
     type: "matching",
-    question:
-      "19. Anna möchte sehen, wie junge Unternehmer ihre Firmen-Ideen vorstellen.",
+    question: "19. Anna möchte sehen, wie junge Unternehmer ihre Firmen-Ideen vorstellen.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "b",
   },
@@ -208,8 +199,7 @@ const lesen3Teil4: Question[] = [
   {
     id: 20,
     type: "multiple-choice",
-    question:
-      "Angela ist dafür, dass man soziale Medien in der Freizeit nutzt.",
+    question: "Angela ist dafür, dass man soziale Medien in der Freizeit nutzt.",
     context: `Diskussion: „Soziale Medien – Fluch oder Segen?"
 
 Angela: Ich nutze soziale Medien täglich und finde sie großartig. Ich kann mit Freunden in Kontakt bleiben, die weit weg wohnen. Ohne Instagram hätte ich den Kontakt zu vielen verloren.
@@ -231,16 +221,14 @@ Heike: Ich nutze Facebook vor allem, um mich über lokale Veranstaltungen zu inf
   {
     id: 21,
     type: "multiple-choice",
-    question:
-      "Markus ist dafür, dass man soziale Medien in der Freizeit nutzt.",
+    question: "Markus ist dafür, dass man soziale Medien in der Freizeit nutzt.",
     options: ["Ja", "Nein"],
     correctAnswer: "Nein",
   },
   {
     id: 22,
     type: "multiple-choice",
-    question:
-      "Sabine ist dafür, dass man soziale Medien in der Freizeit nutzt.",
+    question: "Sabine ist dafür, dass man soziale Medien in der Freizeit nutzt.",
     options: ["Ja", "Nein"],
     correctAnswer: "Nein",
   },
@@ -254,8 +242,7 @@ Heike: Ich nutze Facebook vor allem, um mich über lokale Veranstaltungen zu inf
   {
     id: 24,
     type: "multiple-choice",
-    question:
-      "Nicole ist dafür, dass man soziale Medien in der Freizeit nutzt.",
+    question: "Nicole ist dafür, dass man soziale Medien in der Freizeit nutzt.",
     options: ["Ja", "Nein"],
     correctAnswer: "Ja",
   },
@@ -320,22 +307,12 @@ const lesen3Teil5: Question[] = [
     id: 30,
     type: "multiple-choice",
     question: "Wo dürfen Hunde nicht hin?",
-    options: [
-      "Auf den Campingplatz.",
-      "An den Badestrand.",
-      "Aus dem Auto heraus.",
-    ],
+    options: ["Auf den Campingplatz.", "An den Badestrand.", "Aus dem Auto heraus."],
     correctAnswer: "An den Badestrand.",
   },
 ];
 
 export const b1Lesen3: Question[] = assignTeile(
-  [
-    ...lesen3Teil1,
-    ...lesen3Teil2,
-    ...lesen3Teil3,
-    ...lesen3Teil4,
-    ...lesen3Teil5,
-  ],
+  [...lesen3Teil1, ...lesen3Teil2, ...lesen3Teil3, ...lesen3Teil4, ...lesen3Teil5],
   B1_LESEN_TEILE,
 );

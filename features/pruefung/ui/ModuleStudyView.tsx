@@ -24,9 +24,7 @@ export function ModuleStudyView({
   redemittel,
   initialThemen,
 }: ModuleStudyViewProperties) {
-  const section = examData.sections.find(
-    (s) => s.id === `${level.toLowerCase()}-${module}`,
-  );
+  const section = examData.sections.find((s) => s.id === `${level.toLowerCase()}-${module}`);
 
   if (!section) return <div>Modul nicht gefunden</div>;
 
@@ -34,9 +32,7 @@ export function ModuleStudyView({
   const filteredRedemittel = Object.entries(redemittel).filter(([category]) => {
     const cat = category.toLowerCase();
     const isVocab =
-      cat.includes("konnektoren") ||
-      cat.includes("zeitausdrücke") ||
-      cat.includes("wortschatz");
+      cat.includes("konnektoren") || cat.includes("zeitausdrücke") || cat.includes("wortschatz");
 
     return module === "sprechen" ?
         cat.includes("sprechen") || isVocab
@@ -51,16 +47,8 @@ export function ModuleStudyView({
         category="Lernmodus"
         variant="glass"
         stats={[
-          {
-            label: "Dauer",
-            value: section.duration,
-            icon: <Clock size={18} />,
-          },
-          {
-            label: "Punkte",
-            value: `${section.points} Pkt.`,
-            icon: <CheckCircle2 size={18} />,
-          },
+          { label: "Dauer", value: section.duration, icon: <Clock size={18} /> },
+          { label: "Punkte", value: `${section.points} Pkt.`, icon: <CheckCircle2 size={18} /> },
         ]}
       />
 
@@ -68,13 +56,14 @@ export function ModuleStudyView({
         {section.parts.map((part) => {
           const partNumber = part.name.match(/\d+/)?.[0];
           const partRedemittel = filteredRedemittel.filter(([category]) =>
-            category
-              .toLowerCase()
-              .includes(`${section.title.toLowerCase()} ${partNumber}`),
+            category.toLowerCase().includes(`${section.title.toLowerCase()} ${partNumber}`),
           );
 
           return (
-            <section key={part.name} className="relative space-y-8">
+            <section
+              key={part.name}
+              className="relative space-y-8"
+            >
               <AnimateOnScroll animation="fade-right">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <div className="space-y-2">
@@ -82,9 +71,7 @@ export function ModuleStudyView({
                       <span className="rounded-lg bg-amber-400/20 px-3 py-1 text-xs font-bold text-amber-400 backdrop-blur-md">
                         {part.name}
                       </span>
-                      <h2 className="text-2xl font-semibold text-white">
-                        {part.taskType}
-                      </h2>
+                      <h2 className="text-2xl font-semibold text-white">{part.taskType}</h2>
                     </div>
                     {part.description ?
                       <p className="text-zinc-400">{part.description}</p>
@@ -92,7 +79,10 @@ export function ModuleStudyView({
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-zinc-300 backdrop-blur-sm">
-                      <CheckCircle2 size={16} className="text-amber-400" />
+                      <CheckCircle2
+                        size={16}
+                        className="text-amber-400"
+                      />
                       {part.points} Pkt.
                     </div>
                   </div>
@@ -131,12 +121,7 @@ export function ModuleStudyView({
                               group.phrases.some((p) => typeof p !== "string") ?
                                 group.phrases.flatMap((p) => {
                                   if (typeof p === "string") return [];
-                                  return [
-                                    {
-                                      ...p,
-                                      label: `${group.label}: ${p.label}`,
-                                    },
-                                  ];
+                                  return [{ ...p, label: `${group.label}: ${p.label}` }];
                                 })
                               : [group];
 
@@ -154,47 +139,32 @@ export function ModuleStudyView({
                       </div>
 
                       {/* Email Visual Structure Frame */}
-                      {module === "schreiben" &&
-                        (part.taskType.toLowerCase().includes("e-mail") ||
-                          part.taskType
-                            .toLowerCase()
-                            .includes("schreiben")) && (
-                          <AnimateOnScroll animation="fade-up" delay={200}>
+                      {module === "schreiben"
+                        && (part.taskType.toLowerCase().includes("e-mail")
+                          || part.taskType.toLowerCase().includes("schreiben")) && (
+                          <AnimateOnScroll
+                            animation="fade-up"
+                            delay={200}
+                          >
                             <div className="mt-8">
                               <EmailVisualFrame
                                 type={
-                                  (
-                                    part.taskType
-                                      .toLowerCase()
-                                      .includes("informell")
-                                  ) ?
+                                  part.taskType.toLowerCase().includes("informell") ?
                                     "informal"
                                   : "formal"
                                 }
                                 recipient={
-                                  (
-                                    part.taskType
-                                      .toLowerCase()
-                                      .includes("informell")
-                                  ) ?
+                                  part.taskType.toLowerCase().includes("informell") ?
                                     "Jan (Freund)"
                                   : "Frau Müller (Vermieterin)"
                                 }
                                 subject={
-                                  (
-                                    part.taskType
-                                      .toLowerCase()
-                                      .includes("informell")
-                                  ) ?
+                                  part.taskType.toLowerCase().includes("informell") ?
                                     "Unser Treffen am Wochenende"
                                   : "Wichtige Nachricht bezüglich meiner Wohnung"
                                 }
                                 sections={
-                                  (
-                                    part.taskType
-                                      .toLowerCase()
-                                      .includes("informell")
-                                  ) ?
+                                  part.taskType.toLowerCase().includes("informell") ?
                                     [
                                       {
                                         label: "Anrede",
@@ -205,8 +175,7 @@ export function ModuleStudyView({
                                       {
                                         label: "Einleitung",
                                         text: "wie geht es dir? Ich hoffe, bei dir ist alles okay.",
-                                        description:
-                                          "Kleingeschrieben nach Komma",
+                                        description: "Kleingeschrieben nach Komma",
                                         color: "text-blue-400",
                                       },
                                       {
@@ -282,14 +251,20 @@ export function ModuleStudyView({
               Prüfungsthemen (Teil 2)
             </h2>
           </AnimateOnScroll>
-          <AnimateOnScroll animation="fade-up" delay={100}>
+          <AnimateOnScroll
+            animation="fade-up"
+            delay={100}
+          >
             <p className="max-w-2xl text-lg text-zinc-400">
-              Meistere die 58 wichtigsten Prüfungsthemen mit pro/kontra
-              Argumenten und gezieltem Wortschatz.
+              Meistere die 58 wichtigsten Prüfungsthemen mit pro/kontra Argumenten und gezieltem
+              Wortschatz.
             </p>
           </AnimateOnScroll>
         </div>
-        <ThemenSection isEmbedded initialThemen={initialThemen} />
+        <ThemenSection
+          isEmbedded
+          initialThemen={initialThemen}
+        />
       </section>
     </div>
   );

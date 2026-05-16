@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { BookOpen, Languages } from "lucide-react";
-import {
-  getGrammarSections,
-  getGrammarSection,
-  getGrammarTopic,
-} from "@/features/grammar";
+import { getGrammarSections, getGrammarSection, getGrammarTopic } from "@/features/grammar";
 import { Hero } from "@/shared/ui/Hero";
 import { BackButton } from "@/shared/ui/BackButton";
 import { getGradient } from "@/shared/lib/utilities";
@@ -13,31 +9,22 @@ import { GrammarContentBlocks } from "@/features/grammar/ui/GrammarContentBlocks
 import { GlassCard } from "@/shared/ui/GlassCard";
 
 interface PageProperties {
-  params: Promise<{
-    section: string;
-    topicId: string;
-  }>;
+  params: Promise<{ section: string; topicId: string }>;
 }
 
 export async function generateStaticParams() {
   const { data: sections } = await getGrammarSections();
   return (sections ?? []).flatMap((section) =>
-    section.topics.map((topic) => ({
-      section: section.id,
-      topicId: topic.id,
-    })),
+    section.topics.map((topic) => ({ section: section.id, topicId: topic.id })),
   );
 }
 
-export async function generateMetadata({
-  params,
-}: PageProperties): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProperties): Promise<Metadata> {
   const { section, topicId } = await params;
   const { data: currentTopic } = await getGrammarTopic(section, topicId);
 
   return {
-    title:
-      currentTopic ? `${currentTopic.title} - Grammatik` : "Grammatik Thema",
+    title: currentTopic ? `${currentTopic.title} - Grammatik` : "Grammatik Thema",
     description: currentTopic?.description || "Lerne deutsche Grammatik.",
   };
 }
@@ -57,9 +44,7 @@ export default async function GrammatikDetailPage({ params }: PageProperties) {
     return (
       <div className="px-8 py-16 text-center">
         <h1 className="mb-4 text-3xl">Thema nicht gefunden</h1>
-        <p className="mb-8 text-text-muted">
-          Das gewünschte Grammatikthema existiert nicht.
-        </p>
+        <p className="mb-8 text-text-muted">Das gewünschte Grammatikthema existiert nicht.</p>
         <BackButton />
       </div>
     );
@@ -112,7 +97,10 @@ export default async function GrammatikDetailPage({ params }: PageProperties) {
           <section className="mb-16">
             <h2 className="mb-12 flex items-center gap-3 text-xl font-semibold text-text tablet:gap-4 tablet:text-2xl">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm tablet:size-12">
-                <BookOpen className="size-5 tablet:size-6" strokeWidth={2} />
+                <BookOpen
+                  className="size-5 tablet:size-6"
+                  strokeWidth={2}
+                />
               </span>
               Unterthemen
             </h2>
@@ -122,19 +110,12 @@ export default async function GrammatikDetailPage({ params }: PageProperties) {
                   <GlassCard rounded="2xl">
                     <header
                       className="flex flex-row items-center gap-4 p-5"
-                      style={{
-                        background: getGradient(
-                          index + 1,
-                          currentSection.gradients,
-                        ),
-                      }}
+                      style={{ background: getGradient(index + 1, currentSection.gradients) }}
                     >
                       <span className="rounded-md bg-white/20 px-2.5 py-1 text-xs font-bold text-white">
                         {subtopic.number}
                       </span>
-                      <h3 className="m-0 text-lg text-white tablet:text-xl">
-                        {subtopic.title}
-                      </h3>
+                      <h3 className="m-0 text-lg text-white tablet:text-xl">{subtopic.title}</h3>
                     </header>
                     <div className="p-6">
                       <p className="m-0 mb-8 leading-relaxed text-text-muted">
@@ -165,7 +146,10 @@ export default async function GrammatikDetailPage({ params }: PageProperties) {
         {/* Topic-level Tips (at the bottom, after all subtopics) */}
         {currentTopic.tips ?
           <section className="mb-16">
-            <GrammarContentBlocks blocks={[]} tips={currentTopic.tips} />
+            <GrammarContentBlocks
+              blocks={[]}
+              tips={currentTopic.tips}
+            />
           </section>
         : null}
       </main>

@@ -7,17 +7,13 @@ export function useQuiz(questions: Question[]) {
   const [isStarted, setIsStarted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [userAnswers, setUserAnswers] = useState<(string | string[] | null)[]>(
-    Array.from<string | string[] | null>({ length: questions.length }).fill(
-      null,
-    ),
+    Array.from<string | string[] | null>({ length: questions.length }).fill(null),
   );
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const currentQuestion = questions.at(currentQuestionIndex) ?? questions[0];
   const progress =
-    isFinished ? 100 : (
-      (userAnswers.filter((a) => a !== null).length / questions.length) * 100
-    );
+    isFinished ? 100 : (userAnswers.filter((a) => a !== null).length / questions.length) * 100;
 
   let score = 0;
   for (const [index, answer] of userAnswers.entries()) {
@@ -41,11 +37,7 @@ export function useQuiz(questions: Question[]) {
   const startQuiz = () => {
     setIsStarted(true);
     setIsFinished(false);
-    setUserAnswers(
-      Array.from<string | string[] | null>({ length: questions.length }).fill(
-        null,
-      ),
-    );
+    setUserAnswers(Array.from<string | string[] | null>({ length: questions.length }).fill(null));
     setCurrentQuestionIndex(0);
   };
 

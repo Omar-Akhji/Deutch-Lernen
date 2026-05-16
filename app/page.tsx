@@ -1,13 +1,7 @@
 import { Card } from "@/shared/ui/Card";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { Hero } from "@/shared/ui/Hero";
-import {
-  Clock,
-  CheckCircle2,
-  BookOpen,
-  GraduationCap,
-  Trophy,
-} from "lucide-react";
+import { Clock, CheckCircle2, BookOpen, GraduationCap, Trophy } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -34,17 +28,32 @@ export default function Home() {
             {
               label: "Vokabeln",
               value: "3.000+",
-              icon: <BookOpen size={18} className="text-yellow" />,
+              icon: (
+                <BookOpen
+                  size={18}
+                  className="text-yellow"
+                />
+              ),
             },
             {
               label: "Lektionen",
               value: "120+",
-              icon: <GraduationCap size={18} className="text-yellow" />,
+              icon: (
+                <GraduationCap
+                  size={18}
+                  className="text-yellow"
+                />
+              ),
             },
             {
               label: "Niveau",
               value: "B1 & B2",
-              icon: <Trophy size={18} className="text-yellow" />,
+              icon: (
+                <Trophy
+                  size={18}
+                  className="text-yellow"
+                />
+              ),
             },
           ]}
         />
@@ -52,7 +61,10 @@ export default function Home() {
 
       {/* Feature Grid - Using standard Card component with rotating border effect */}
       <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
-        <AnimateOnScroll animation="fade-up" delay={200}>
+        <AnimateOnScroll
+          animation="fade-up"
+          delay={200}
+        >
           <Card
             href="/vokabeln"
             title="Vokabeln"
@@ -63,7 +75,10 @@ export default function Home() {
             icon="V"
           />
         </AnimateOnScroll>
-        <AnimateOnScroll animation="fade-up" delay={300}>
+        <AnimateOnScroll
+          animation="fade-up"
+          delay={300}
+        >
           <Card
             href="/grammatik"
             title="Grammatik"
@@ -74,7 +89,10 @@ export default function Home() {
             icon="G"
           />
         </AnimateOnScroll>
-        <AnimateOnScroll animation="fade-up" delay={400}>
+        <AnimateOnScroll
+          animation="fade-up"
+          delay={400}
+        >
           <Card
             href="/pruefung"
             title="Prüfungstraining"
@@ -89,7 +107,10 @@ export default function Home() {
 
       {/* Exam Info Frame - As requested */}
       <section className="mbs-20">
-        <AnimateOnScroll animation="fade-up" delay={500}>
+        <AnimateOnScroll
+          animation="fade-up"
+          delay={500}
+        >
           <Hero
             title="Goethe & ÖSD Zertifikate"
             description="Strukturierte Vorbereitung auf das B1 & B2 Zertifikat"
@@ -98,17 +119,32 @@ export default function Home() {
               {
                 label: "B1 Dauer",
                 value: "B1: ca. 3,5h",
-                icon: <Clock size={18} className="text-yellow" />,
+                icon: (
+                  <Clock
+                    size={18}
+                    className="text-yellow"
+                  />
+                ),
               },
               {
                 label: "B2 Dauer",
                 value: "B2: ca. 3,0h",
-                icon: <Clock size={18} className="text-yellow" />,
+                icon: (
+                  <Clock
+                    size={18}
+                    className="text-yellow"
+                  />
+                ),
               },
               {
                 label: "Bestehen",
                 value: "60% (Pro Modul)",
-                icon: <CheckCircle2 size={18} className="text-yellow" />,
+                icon: (
+                  <CheckCircle2
+                    size={18}
+                    className="text-yellow"
+                  />
+                ),
               },
             ]}
           />
@@ -116,14 +152,16 @@ export default function Home() {
       </section>
 
       <section className="mbs-24 text-center">
-        <AnimateOnScroll animation="blur-in" delay={500}>
+        <AnimateOnScroll
+          animation="blur-in"
+          delay={500}
+        >
           <h2 className="mbe-6 text-shadow-sm">
-            Bereit für den{" "}
-            <span className="title-gradient">nächsten Schritt</span>?
+            Bereit für den <span className="title-gradient">nächsten Schritt</span>?
           </h2>
           <p className="mx-auto mbe-8 max-w-2xl text-mist-500">
-            Egal ob du gerade erst anfängst oder dich auf eine Prüfung
-            vorbereitest – wir haben die richtigen Werkzeuge für dich.
+            Egal ob du gerade erst anfängst oder dich auf eine Prüfung vorbereitest – wir haben die
+            richtigen Werkzeuge für dich.
           </p>
         </AnimateOnScroll>
       </section>

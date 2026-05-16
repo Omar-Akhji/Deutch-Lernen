@@ -1,4 +1,4 @@
-import type { QuizData } from "../model/types";
+import type { QuizData, Question } from "../model/types";
 import { b1Lesen1 } from "./b1-lesen-1";
 import { b1Lesen2 } from "./b1-lesen-2";
 import { b1Lesen3 } from "./b1-lesen-3";
@@ -36,13 +36,16 @@ import { b1Sprechen7 } from "./b1-sprechen-7";
 import { b1Sprechen8 } from "./b1-sprechen-8";
 import { b1Sprechen9 } from "./b1-sprechen-9";
 
-export const quizQuestions: QuizData = new Map([
+export const quizQuestions: QuizData = new Map<
+  string,
+  Map<string, Map<number, Question[]>>
+>([
   [
     "b1",
-    new Map([
+    new Map<string, Map<number, Question[]>>([
       [
         "lesen",
-        new Map([
+        new Map<number, Question[]>([
           [1, b1Lesen1],
           [2, b1Lesen2],
           [3, b1Lesen3],

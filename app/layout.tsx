@@ -16,8 +16,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Deutsch Lernen",
-  description:
-    "Deutsche Sprache lernen - Vokabeln, Grammatik, Prüfungsvorbereitung",
+  description: "Deutsche Sprache lernen - Vokabeln, Grammatik, Prüfungsvorbereitung",
 };
 
 export default function RootLayout({
@@ -28,9 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className="no-js" suppressHydrationWarning>
+    <html
+      lang="de"
+      className="no-js"
+      suppressHydrationWarning
+    >
       <body className={`${poppins.variable} antialiased`}>
-        <Script id="remove-no-js" strategy="beforeInteractive">
+        <Script
+          id="remove-no-js"
+          strategy="beforeInteractive"
+        >
           {`document.documentElement.classList.remove('no-js');`}
         </Script>
         <Suspense fallback={null}>

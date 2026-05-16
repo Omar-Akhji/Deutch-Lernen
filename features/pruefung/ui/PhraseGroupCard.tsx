@@ -60,11 +60,7 @@ export function PhraseGroupCard({
           : null}
         </div>
         <div className="flex items-center gap-4">
-          <div
-            className={`transition-transform duration-500 ${
-              isOpen ? "rotate-180" : ""
-            }`}
-          >
+          <div className={`transition-transform duration-500 ${isOpen ? "rotate-180" : ""}`}>
             <ChevronDown
               className={`size-4 tablet:size-5 ${
                 isChecklistItem ? "text-amber-400/50" : "text-white/30"
@@ -99,10 +95,7 @@ function RenderPhrases({ phrases }: { phrases: (string | PhraseGroup)[] }) {
   if (strings.length === 0) return null;
 
   const groups: { title: string | null; items: string[] }[] = [];
-  let currentGroup: { title: string | null; items: string[] } = {
-    title: null,
-    items: [],
-  };
+  let currentGroup: { title: string | null; items: string[] } = { title: null, items: [] };
 
   for (const string_ of strings) {
     if (string_.startsWith("---") && string_.endsWith("---")) {
@@ -121,7 +114,10 @@ function RenderPhrases({ phrases }: { phrases: (string | PhraseGroup)[] }) {
   return (
     <div className="space-y-6">
       {groups.map((group, gIndex) => (
-        <div key={group.title || gIndex} className="space-y-3">
+        <div
+          key={group.title || gIndex}
+          className="space-y-3"
+        >
           {group.title ?
             <h5 className="px-1 text-[11px] font-semibold tracking-widest text-zinc-500 uppercase">
               {group.title}
@@ -130,7 +126,10 @@ function RenderPhrases({ phrases }: { phrases: (string | PhraseGroup)[] }) {
           <div className="rounded-xl border border-white/5 bg-black/20 p-4">
             <div className="space-y-4">
               {group.items.map((item) => (
-                <div key={item} className="flex items-start gap-4">
+                <div
+                  key={item}
+                  className="flex items-start gap-4"
+                >
                   <div className="flex size-6 shrink-0 items-center justify-center">
                     <div className="size-1.5 rounded-full bg-amber-400/30" />
                   </div>

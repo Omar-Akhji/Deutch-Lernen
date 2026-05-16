@@ -27,10 +27,7 @@ const config = {
 
     /* ─── Unit & value enforcement ───────────────────────────────────────── */
     "unit-allowed-list": ["%", "deg", "px", "rem", "ms", "fr"],
-    "declaration-property-unit-allowed-list": {
-      "/^border/": ["px"],
-      "/^padding|^gap/": ["rem"],
-    },
+    "declaration-property-unit-allowed-list": { "/^border/": ["px"], "/^padding|^gap/": ["rem"] },
     "declaration-property-unit-disallowed-list": {
       "font-size": ["px"],
       "line-height": ["px", "rem"],

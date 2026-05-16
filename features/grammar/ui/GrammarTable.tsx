@@ -35,17 +35,14 @@ export const GrammarTable = ({ data }: { data: GrammarTableProperties }) => {
             </thead>
             <tbody className="divide-y divide-white/5">
               {data.rows.map((row) => {
-                const rowKey = row
-                  .map((c) => (typeof c === "string" ? c : c.text))
-                  .join("|");
+                const rowKey = row.map((c) => (typeof c === "string" ? c : c.text)).join("|");
                 return (
                   <tr
                     key={rowKey}
                     className="transition-colors hover:bg-white/5"
                   >
                     {row.map((cell, index) => {
-                      const cellKey =
-                        typeof cell === "string" ? cell : cell.text;
+                      const cellKey = typeof cell === "string" ? cell : cell.text;
                       return (
                         <td
                           key={cellKey}

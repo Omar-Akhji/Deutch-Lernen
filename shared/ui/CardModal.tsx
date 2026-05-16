@@ -99,9 +99,7 @@ export function CardModal({
                 {subtitle}
               </span>
             : null}
-            <span className="text-xs font-medium text-mist-500">
-              • Deutsch A1
-            </span>
+            <span className="text-xs font-medium text-mist-500">• Deutsch A1</span>
           </div>
           <h2
             id="modal-title"

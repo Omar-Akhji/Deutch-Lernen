@@ -1,7 +1,4 @@
-import {
-  HeroSkeleton,
-  SectionHeaderSkeleton,
-} from "@/shared/ui/SkeletonLayouts";
+import { HeroSkeleton, SectionHeaderSkeleton } from "@/shared/ui/SkeletonLayouts";
 import { Skeleton } from "@/shared/ui/Skeleton";
 
 export default function GrammatikDetailLoading() {

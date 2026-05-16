@@ -6,7 +6,4 @@ export const examLevels: ExamLevel[] = [examLevelB1, examLevelB2];
 
 // Deutsch Lernen - High-Performance React Architecture
 
-export const redemittelData: RedemittelData = {
-  b1: redemittelB1,
-  b2: redemittelB2,
-};
+export const redemittelData: RedemittelData = { b1: redemittelB1, b2: redemittelB2 };

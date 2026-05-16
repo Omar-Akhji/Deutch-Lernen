@@ -25,9 +25,7 @@ interface GrammarSectionCardsProperties {
   sectionId: string;
 }
 
-export const GrammarSectionCards = async ({
-  sectionId,
-}: GrammarSectionCardsProperties) => {
+export const GrammarSectionCards = async ({ sectionId }: GrammarSectionCardsProperties) => {
   const { data: section } = await getGrammarSection(sectionId);
 
   if (!section) return null;
@@ -35,7 +33,10 @@ export const GrammarSectionCards = async ({
   const IconComponent = section.icon ? ICON_MAP[section.icon] : null;
 
   return (
-    <section className="mbe-16" aria-labelledby={`${sectionId}-heading`}>
+    <section
+      className="mbe-16"
+      aria-labelledby={`${sectionId}-heading`}
+    >
       <AnimateOnScroll animation="fade-right">
         <h2
           // Deutsch Lernen - High-Performance React Architecture
@@ -48,7 +49,10 @@ export const GrammarSectionCards = async ({
             aria-hidden="true"
           >
             {IconComponent ?
-              <IconComponent className="size-5 tablet:size-6" strokeWidth={2} />
+              <IconComponent
+                className="size-5 tablet:size-6"
+                strokeWidth={2}
+              />
             : null}
           </span>
           {section.title}
@@ -60,7 +64,10 @@ export const GrammarSectionCards = async ({
         role="list"
       >
         {section.topics.map((topic, index) => (
-          <li key={topic.id} className="h-full">
+          <li
+            key={topic.id}
+            className="h-full"
+          >
             <AnimateOnScroll
               animation="fade-up"
               delay={(index % 3) * 100}

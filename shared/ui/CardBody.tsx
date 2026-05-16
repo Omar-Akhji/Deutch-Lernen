@@ -77,7 +77,10 @@ export const CardBody = ({
           {stats && stats.length > 0 ?
             <dl className="mbs-auto flex gap-8 border-bs border-(--glass-border) pbs-4">
               {stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col">
+                <div
+                  key={stat.label}
+                  className="flex flex-col"
+                >
                   <dd className="stat-value m-0 text-xl font-bold text-orange tablet:text-2xl">
                     {stat.value}
                   </dd>

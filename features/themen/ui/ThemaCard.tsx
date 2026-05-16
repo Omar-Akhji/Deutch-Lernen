@@ -101,9 +101,7 @@ export function ThemaCard({ thema }: ThemaCardProperties) {
               onClick={() => setActiveTab("pro")}
               data-active={activeTab === "pro"}
               className={`relative z-10 flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-300 tablet:text-sm ${
-                activeTab === "pro" ? "text-white" : (
-                  "text-zinc-400 hover:text-white"
-                )
+                activeTab === "pro" ? "text-white" : "text-zinc-400 hover:text-white"
               }`}
             >
               Vorteile
@@ -112,9 +110,7 @@ export function ThemaCard({ thema }: ThemaCardProperties) {
               onClick={() => setActiveTab("con")}
               data-active={activeTab === "con"}
               className={`relative z-10 flex-1 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-300 tablet:text-sm ${
-                activeTab === "con" ? "text-white" : (
-                  "text-zinc-400 hover:text-white"
-                )
+                activeTab === "con" ? "text-white" : "text-zinc-400 hover:text-white"
               }`}
             >
               Nachteile
@@ -128,7 +124,10 @@ export function ThemaCard({ thema }: ThemaCardProperties) {
         : null}
       </div>
 
-      <div ref={contentRef} className="min-h-30">
+      <div
+        ref={contentRef}
+        className="min-h-30"
+      >
         {activeTab === "pro" && thema.pro ?
           <ul className="space-y-3">
             {thema.pro.map((point) => (

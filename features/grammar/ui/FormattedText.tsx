@@ -7,14 +7,20 @@ const FormattedText = ({ text }: { text: string }) => {
       {parts.map((part) => {
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
-            <strong key={part} className="font-bold text-yellow">
+            <strong
+              key={part}
+              className="font-bold text-yellow"
+            >
               {part.slice(2, -2)}
             </strong>
           );
         }
         if (part.startsWith("*") && part.endsWith("*")) {
           return (
-            <span key={part} className="font-medium text-yellow">
+            <span
+              key={part}
+              className="font-medium text-yellow"
+            >
               {part.slice(1, -1)}
             </span>
           );

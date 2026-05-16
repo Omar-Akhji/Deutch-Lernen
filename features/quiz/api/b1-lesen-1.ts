@@ -58,8 +58,7 @@ Mittlerweile habe ich gemerkt, dass es einfach Zeit braucht, sich an ein neues L
   {
     id: 6,
     type: "multiple-choice",
-    question:
-      "Clemens meint, es gibt große Unterschiede zwischen Berlin und New York.",
+    question: "Clemens meint, es gibt große Unterschiede zwischen Berlin und New York.",
     options: ["Richtig", "Falsch"],
     correctAnswer: "Richtig",
   },
@@ -85,8 +84,7 @@ Dass Offenburger Senioren auf Gaststudenten attraktiver wirken als Szenepartys i
       "b) reist jede Woche zu seiner Familie nach China.",
       "c) hat in Deutschland so etwas wie eine Ersatzfamilie gefunden.",
     ],
-    correctAnswer:
-      "c) hat in Deutschland so etwas wie eine Ersatzfamilie gefunden.",
+    correctAnswer: "c) hat in Deutschland so etwas wie eine Ersatzfamilie gefunden.",
   },
   {
     id: 8,
@@ -109,8 +107,7 @@ Dass Offenburger Senioren auf Gaststudenten attraktiver wirken als Szenepartys i
       "b) dass die ausländischen Studenten oft Probleme mit ihren Gasteltern haben.",
       "c) dass sie durch das Projekt selbst viel Neues kennenlernt.",
     ],
-    correctAnswer:
-      "c) dass sie durch das Projekt selbst viel Neues kennenlernt.",
+    correctAnswer: "c) dass sie durch das Projekt selbst viel Neues kennenlernt.",
   },
   {
     id: 10,
@@ -159,8 +156,7 @@ const lesen1Teil3: Question[] = [
   {
     id: 0,
     type: "matching",
-    question:
-      "Herr Meyer möchte sich einen Hund kaufen. Er sucht ein Tier, das nicht zu groß ist.",
+    question: "Herr Meyer möchte sich einen Hund kaufen. Er sucht ein Tier, das nicht zu groß ist.",
     context: `Lesen Sie die Situationen 13-19 und die Anzeigen a-j. Welche Anzeige passt zu welcher Situation?
 Für eine Situation gibt es keine passende Anzeige. In diesem Fall wählen Sie 0.
 
@@ -221,8 +217,7 @@ j) 05.03. Fisch- & Korallentag, 11–16 Uhr Schauaquarium Mundenhof. Verkauf von
   {
     id: 17,
     type: "matching",
-    question:
-      "17. Eva möchte für ihr neues, großes Aquarium noch einige Fische kaufen.",
+    question: "17. Eva möchte für ihr neues, großes Aquarium noch einige Fische kaufen.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "j",
   },
@@ -370,22 +365,12 @@ Museum Shop: Großer Sortiment an technik- und wissenschaftsgeschichtlicher Lite
     id: 30,
     type: "multiple-choice",
     question: "Das Museum erreicht man ...",
-    options: [
-      "a) am besten mit dem Auto.",
-      "b) mit dem Bus Linie 17.",
-      "c) mit der S-Bahn.",
-    ],
+    options: ["a) am besten mit dem Auto.", "b) mit dem Bus Linie 17.", "c) mit der S-Bahn."],
     correctAnswer: "c) mit der S-Bahn.",
   },
 ];
 
 export const b1Lesen1: Question[] = assignTeile(
-  [
-    ...lesen1Teil1,
-    ...lesen1Teil2,
-    ...lesen1Teil3,
-    ...lesen1Teil4,
-    ...lesen1Teil5,
-  ],
+  [...lesen1Teil1, ...lesen1Teil2, ...lesen1Teil3, ...lesen1Teil4, ...lesen1Teil5],
   B1_LESEN_TEILE,
 );

@@ -28,9 +28,7 @@ const groupIntoCouples = (levelMembers: FamilyMember[]) => {
       if (partner && !visited.has(partner.id)) {
         visited.add(partner.id);
         // female first for visual consistency
-        groups.push(
-          member.gender === "female" ? [member, partner] : [partner, member],
-        );
+        groups.push(member.gender === "female" ? [member, partner] : [partner, member]);
         continue;
       }
     }
@@ -85,7 +83,12 @@ export const FamilyTree = ({ members }: FamilyTreeProperties) => {
                     </div>
                   );
                 }
-                return <MemberCard key={group.id} member={group} />;
+                return (
+                  <MemberCard
+                    key={group.id}
+                    member={group}
+                  />
+                );
               })}
             </div>
 
@@ -122,9 +125,7 @@ const MemberCard = ({ member }: { member: FamilyMember }) => {
           ICH
         </span>
       : null}
-      <div className="text-sm font-bold text-text @md:text-base">
-        {member.german}
-      </div>
+      <div className="text-sm font-bold text-text @md:text-base">{member.german}</div>
       <div
         className="font-arabic text-sm font-medium text-white/80 @md:text-base"
         dir="rtl"

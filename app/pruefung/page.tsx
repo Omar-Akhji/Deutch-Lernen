@@ -12,7 +12,10 @@ export const metadata: Metadata = {
 
 export default function PruefungPage() {
   return (
-    <AnimateOnScroll as="main" animation="fade-up">
+    <AnimateOnScroll
+      as="main"
+      animation="fade-up"
+    >
       <PruefungSection />
     </AnimateOnScroll>
   );

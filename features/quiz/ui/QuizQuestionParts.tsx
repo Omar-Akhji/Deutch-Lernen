@@ -7,17 +7,11 @@ interface TeilHeaderProperties {
   teilInstruction: string | undefined;
 }
 
-export function TeilHeader({
-  teil,
-  teilTitle,
-  teilInstruction,
-}: TeilHeaderProperties) {
+export function TeilHeader({ teil, teilTitle, teilInstruction }: TeilHeaderProperties) {
   return (
     <header className="mb-6 border-b-2 border-white/10 pb-2">
       <div className="flex items-baseline gap-2">
-        <span className="text-base font-bold text-yellow tablet:text-lg">
-          Teil {teil}
-        </span>
+        <span className="text-base font-bold text-yellow tablet:text-lg">Teil {teil}</span>
         <h2 className="text-xs font-semibold tracking-wide text-white/90 uppercase tablet:text-sm">
           {teilTitle || "Modul Lesen"}
         </h2>
@@ -99,7 +93,10 @@ export function ContextCard({
               controls
               className="h-10 w-full max-w-md rounded-full bg-zinc-800/50 accent-yellow"
             >
-              <source src={question.audioUrl} type="audio/mpeg" />
+              <source
+                src={question.audioUrl}
+                type="audio/mpeg"
+              />
               Your browser does not support the audio element.
             </audio>
           </div>
@@ -172,9 +169,7 @@ export function AnswerOptions({
           <span className="text-sm font-bold text-yellow drop-shadow-[0_0_10px_rgba(255,191,0,0.3)]">
             {currentStep}.
           </span>
-          <h3 className="text-sm leading-tight font-semibold text-white/90">
-            {questionText}
-          </h3>
+          <h3 className="text-sm leading-tight font-semibold text-white/90">{questionText}</h3>
         </div>
         <div className="grid grid-cols-6 gap-px overflow-hidden rounded-lg border border-white/10 bg-zinc-950/50 backdrop-blur-sm sm:grid-cols-11">
           {options?.map((option) => {
@@ -240,11 +235,7 @@ interface AdDetailDialogProperties {
   onClose: () => void;
 }
 
-export function AdDetailDialog({
-  dialogRef,
-  selectedAd,
-  onClose,
-}: AdDetailDialogProperties) {
+export function AdDetailDialog({ dialogRef, selectedAd, onClose }: AdDetailDialogProperties) {
   return (
     <dialog
       ref={dialogRef}

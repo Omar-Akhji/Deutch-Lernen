@@ -32,7 +32,10 @@ export default function ThemenLoading() {
       <div className="rounded-2xl border border-white/5 bg-zinc-950/50 p-4 shadow-xl backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-2">
           {CATEGORIES.map((id) => (
-            <Skeleton key={id} className="h-10 w-32 rounded-full bg-white/5" />
+            <Skeleton
+              key={id}
+              className="h-10 w-32 rounded-full bg-white/5"
+            />
           ))}
         </div>
       </div>
@@ -65,7 +68,10 @@ export default function ThemenLoading() {
                   {/* Content list */}
                   <div className="space-y-3">
                     {ITEMS.map((itemId) => (
-                      <div key={`${cardId}-${itemId}`} className="flex gap-3">
+                      <div
+                        key={`${cardId}-${itemId}`}
+                        className="flex gap-3"
+                      >
                         <Skeleton className="mt-1 size-1.5 rounded-full bg-white/10" />
                         <Skeleton className="h-4 w-full bg-white/5" />
                       </div>
@@ -90,7 +96,10 @@ export default function ThemenLoading() {
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {TIPS.map((tipId) => (
-            <Skeleton key={tipId} className="h-4 w-full bg-white/5" />
+            <Skeleton
+              key={tipId}
+              className="h-4 w-full bg-white/5"
+            />
           ))}
         </div>
       </div>

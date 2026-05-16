@@ -15,7 +15,10 @@ export default async function ThemenPage() {
   const { data: themen } = await getThemen();
 
   return (
-    <AnimateOnScroll as="main" animation="fade-up">
+    <AnimateOnScroll
+      as="main"
+      animation="fade-up"
+    >
       <ThemenSection initialThemen={themen ?? []} />
     </AnimateOnScroll>
   );

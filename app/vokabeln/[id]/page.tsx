@@ -10,21 +10,15 @@ import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { GlassCard } from "@/shared/ui/GlassCard";
 
 interface PageProperties {
-  params: Promise<{
-    id: string;
-  }>;
+  params: Promise<{ id: string }>;
 }
 
 export async function generateStaticParams() {
   const { data: vocabList } = await getVocabList();
-  return (vocabList ?? []).map((item) => ({
-    id: String(item.id),
-  }));
+  return (vocabList ?? []).map((item) => ({ id: String(item.id) }));
 }
 
-export async function generateMetadata({
-  params,
-}: PageProperties): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProperties): Promise<Metadata> {
   const { id } = await params;
   const { data: item } = await getVocabById(id);
 
@@ -42,9 +36,7 @@ export default async function VokabelnDetailPage({ params }: PageProperties) {
     return (
       <div className="px-8 py-16 text-center">
         <h1 className="mb-4 text-3xl">Lektion nicht gefunden</h1>
-        <p className="mb-8 text-text-muted">
-          Die gewünschte Vokabellektion existiert nicht.
-        </p>
+        <p className="mb-8 text-text-muted">Die gewünschte Vokabellektion existiert nicht.</p>
         <BackButton />
       </div>
     );
@@ -64,12 +56,9 @@ export default async function VokabelnDetailPage({ params }: PageProperties) {
               value: (
                 <span className="rounded-full border border-yellow/30 bg-yellow/10 px-3 py-1 text-sm font-medium text-yellow">
                   {String(
-                    item.sections?.reduce(
-                      (accumulator, sec) => accumulator + sec.topics.length,
-                      0,
-                    ) ||
-                      item.words?.length ||
-                      0,
+                    item.sections?.reduce((accumulator, sec) => accumulator + sec.topics.length, 0)
+                      || item.words?.length
+                      || 0,
                   ) + " Themen"}
                 </span>
               ),
@@ -122,7 +111,10 @@ export default async function VokabelnDetailPage({ params }: PageProperties) {
                             {topic.title}
                           </h3>
                           <div className="flex items-center gap-2 text-sm text-text-muted">
-                            <ArrowRight size={14} className="text-secondary" />
+                            <ArrowRight
+                              size={14}
+                              className="text-secondary"
+                            />
                             <span>Details ansehen</span>
                           </div>
                         </GlassCard>
@@ -137,10 +129,17 @@ export default async function VokabelnDetailPage({ params }: PageProperties) {
             ))}
           </div>
         : /* Fallback for simple word lists */
-          <AnimateOnScroll as="section" animation="fade-up" className="mb-12">
+          <AnimateOnScroll
+            as="section"
+            animation="fade-up"
+            className="mb-12"
+          >
             <h2 className="mb-8 flex items-center gap-4 text-[1.75rem] font-semibold text-text">
               <span className="flex size-12 items-center justify-center rounded-full border-[3px] border-solid border-yellow bg-mist-900/50 text-yellow shadow-sm">
-                <BookOpen size={24} strokeWidth={2} />
+                <BookOpen
+                  size={24}
+                  strokeWidth={2}
+                />
               </span>
               Wortliste
             </h2>
@@ -157,16 +156,12 @@ export default async function VokabelnDetailPage({ params }: PageProperties) {
                       rounded="2xl"
                     >
                       <div className="mb-2 flex items-baseline justify-between">
-                        <h3 className="text-lg font-semibold text-text">
-                          {word.german}
-                        </h3>
+                        <h3 className="text-lg font-semibold text-text">{word.german}</h3>
                       </div>
                       <p className="font-arabic mb-3 text-xl font-medium text-white">
                         {word.arabic}
                       </p>
-                      <p className="text-sm text-text-muted italic">
-                        &quot;{word.example}&quot;
-                      </p>
+                      <p className="text-sm text-text-muted italic">&quot;{word.example}&quot;</p>
                     </GlassCard>
                   </article>
                 ))}

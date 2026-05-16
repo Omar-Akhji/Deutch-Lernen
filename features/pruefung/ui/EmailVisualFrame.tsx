@@ -4,12 +4,7 @@ interface EmailVisualFrameProperties {
   type: "informal" | "formal";
   subject: string;
   recipient: string;
-  sections: {
-    label: string;
-    text: string;
-    description: string;
-    color: string;
-  }[];
+  sections: { label: string; text: string; description: string; color: string }[];
 }
 
 export function EmailVisualFrame({
@@ -30,9 +25,7 @@ export function EmailVisualFrame({
         <div className="flex flex-1 justify-center">
           <div className="flex items-center gap-2 rounded-lg bg-black/20 px-4 py-1 text-xs text-zinc-400">
             <Mail size={12} />
-            <span>
-              Neues Dokument - {type === "informal" ? "Informell" : "Formell"}
-            </span>
+            <span>Neues Dokument - {type === "informal" ? "Informell" : "Formell"}</span>
           </div>
         </div>
       </div>
@@ -40,9 +33,7 @@ export function EmailVisualFrame({
       {/* Email Fields */}
       <div className="space-y-px border-b border-white/10 bg-white/2">
         <div className="flex items-center gap-3 px-6 py-3">
-          <span className="text-xs font-bold tracking-widest text-zinc-500 uppercase">
-            An:
-          </span>
+          <span className="text-xs font-bold tracking-widest text-zinc-500 uppercase">An:</span>
           <div className="flex items-center gap-2 rounded-full bg-amber-400/10 px-3 py-1 text-sm font-medium text-amber-400">
             <User size={14} />
             {recipient}
@@ -53,7 +44,10 @@ export function EmailVisualFrame({
             Betreff:
           </span>
           <div className="flex items-center gap-2 text-sm font-semibold text-white">
-            <Tag size={14} className="text-zinc-400" />
+            <Tag
+              size={14}
+              className="text-zinc-400"
+            />
             {subject}
           </div>
         </div>
@@ -66,7 +60,10 @@ export function EmailVisualFrame({
 
         <div className="relative space-y-6">
           {sections.map((section, sectionIndex) => (
-            <div key={section.label} className="group relative">
+            <div
+              key={section.label}
+              className="group relative"
+            >
               {/* Annotation Label */}
               <div className="absolute top-0 -left-4 hidden -translate-x-full pr-4 opacity-0 transition-opacity group-hover:opacity-100 lg:block">
                 <div
@@ -81,10 +78,8 @@ export function EmailVisualFrame({
                 className={`relative rounded-xl border border-solid p-4 transition-all hover:bg-white/5 ${
                   section.color === "text-amber-400" ? "border-amber-400/30"
                   : section.color === "text-blue-400" ? "border-blue-400/30"
-                  : section.color === "text-fuchsia-400" ?
-                    "border-fuchsia-400/30"
-                  : section.color === "text-emerald-400" ?
-                    "border-emerald-400/30"
+                  : section.color === "text-fuchsia-400" ? "border-fuchsia-400/30"
+                  : section.color === "text-emerald-400" ? "border-emerald-400/30"
                   : section.color === "text-pink-400" ? "border-pink-400/30"
                   : "border-white/20"
                 }`}
@@ -95,13 +90,9 @@ export function EmailVisualFrame({
                   >
                     {sectionIndex + 1}. {section.label}
                   </span>
-                  <span className="text-[10px] text-zinc-500 italic">
-                    {section.description}
-                  </span>
+                  <span className="text-[10px] text-zinc-500 italic">{section.description}</span>
                 </div>
-                <p className="font-serif text-lg leading-relaxed text-zinc-200">
-                  {section.text}
-                </p>
+                <p className="font-serif text-lg leading-relaxed text-zinc-200">{section.text}</p>
               </div>
             </div>
           ))}

@@ -86,10 +86,7 @@ export const B1_HOEREN_TEILE: TeilDefinition[] = [
  * The first question of each Teil gets the title and instruction.
  * All questions in the Teil get the teil number.
  */
-export function assignTeile(
-  questions: Question[],
-  teile: TeilDefinition[],
-): Question[] {
+export function assignTeile(questions: Question[], teile: TeilDefinition[]): Question[] {
   const result: Question[] = [...questions];
   let currentIndex = 0;
 

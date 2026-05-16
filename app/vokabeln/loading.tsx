@@ -7,7 +7,10 @@ export default function VokabelnLoading() {
       <PageHeaderSkeleton />
       <ul className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8 py-4">
         {SKELETONS.map((id) => (
-          <li key={id} className="h-full">
+          <li
+            key={id}
+            className="h-full"
+          >
             <CardSkeleton />
           </li>
         ))}

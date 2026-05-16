@@ -49,17 +49,11 @@ const verbenTopics: GrammarTopic[] = [
         id: "haben-sein-werden-konjugation",
         number: "1.2",
         title: "haben – sein – werden (Konjugation)",
-        description:
-          "Formen in Präsens, Präteritum, Perfekt und Plusquamperfekt",
+        description: "Formen in Präsens, Präteritum, Perfekt und Plusquamperfekt",
         hasTable: true,
         tableData: {
           caption: "Präsens / Präteritum",
-          headers: [
-            "Person",
-            "haben (Präs/Prät)",
-            "sein (Präs/Prät)",
-            "werden (Präs/Prät)",
-          ],
+          headers: ["Person", "haben (Präs/Prät)", "sein (Präs/Prät)", "werden (Präs/Prät)"],
           rows: [
             ["ich", "habe / hatte", "bin / war", "werde / wurde"],
             ["du", "hast / hattest", "bist / warst", "wirst / wurdest"],
@@ -80,11 +74,7 @@ const verbenTopics: GrammarTopic[] = [
           },
           {
             title: "Plusquamperfekt",
-            items: [
-              "**haben**: hatte gehabt",
-              "**sein**: war gewesen",
-              "**werden**: war geworden",
-            ],
+            items: ["**haben**: hatte gehabt", "**sein**: war gewesen", "**werden**: war geworden"],
           },
         ],
       },
@@ -156,68 +146,14 @@ const verbenTopics: GrammarTopic[] = [
         hasTable: true,
         tableData: {
           caption: "Präsens der Modalverben",
-          headers: [
-            "Person",
-            "können",
-            "dürfen",
-            "müssen",
-            "sollen",
-            "wollen",
-            "möchten",
-            "mögen",
-          ],
+          headers: ["Person", "können", "dürfen", "müssen", "sollen", "wollen", "möchten", "mögen"],
           rows: [
             ["ich", "kann", "darf", "muss", "soll", "will", "möchte", "mag"],
-            [
-              "du",
-              "kannst",
-              "darfst",
-              "musst",
-              "sollst",
-              "willst",
-              "möchtest",
-              "magst",
-            ],
-            [
-              "er/sie/es",
-              "kann",
-              "darf",
-              "muss",
-              "soll",
-              "will",
-              "möchte",
-              "mag",
-            ],
-            [
-              "wir",
-              "können",
-              "dürfen",
-              "müssen",
-              "sollen",
-              "wollen",
-              "möchten",
-              "mögen",
-            ],
-            [
-              "ihr",
-              "könnt",
-              "dürft",
-              "müsst",
-              "sollt",
-              "wollt",
-              "möchtet",
-              "mögt",
-            ],
-            [
-              "sie/Sie",
-              "können",
-              "dürfen",
-              "müssen",
-              "sollen",
-              "wollen",
-              "möchten",
-              "mögen",
-            ],
+            ["du", "kannst", "darfst", "musst", "sollst", "willst", "möchtest", "magst"],
+            ["er/sie/es", "kann", "darf", "muss", "soll", "will", "möchte", "mag"],
+            ["wir", "können", "dürfen", "müssen", "sollen", "wollen", "möchten", "mögen"],
+            ["ihr", "könnt", "dürft", "müsst", "sollt", "wollt", "möchtet", "mögt"],
+            ["sie/Sie", "können", "dürfen", "müssen", "sollen", "wollen", "möchten", "mögen"],
           ],
         },
         tips: [
@@ -839,18 +775,8 @@ const verbenTopics: GrammarTopic[] = [
         tableData: {
           headers: ["Typ", "Bildung", "Beispiel", "Bedeutung"],
           rows: [
-            [
-              "Partizip I",
-              "Infinitiv + d",
-              "laufend, singend",
-              "aktiv, gleichzeitig",
-            ],
-            [
-              "Partizip II",
-              "ge- + Stamm + t/en",
-              "gelaufen, gesungen",
-              "passiv, abgeschlossen",
-            ],
+            ["Partizip I", "Infinitiv + d", "laufend, singend", "aktiv, gleichzeitig"],
+            ["Partizip II", "ge- + Stamm + t/en", "gelaufen, gesungen", "passiv, abgeschlossen"],
           ],
         },
       },
@@ -907,21 +833,9 @@ const verbenTopics: GrammarTopic[] = [
         tableData: {
           headers: ["Kasus", "Verben", "Beispiel"],
           rows: [
-            [
-              "nur Akkusativ",
-              "haben, brauchen, sehen, hören",
-              "Ich sehe den Mann.",
-            ],
-            [
-              "nur Dativ",
-              "helfen, danken, gefallen, gehören",
-              "Ich helfe dir.",
-            ],
-            [
-              "Dativ + Akkusativ",
-              "geben, schenken, zeigen, erklären",
-              "Ich gebe dir das Buch.",
-            ],
+            ["nur Akkusativ", "haben, brauchen, sehen, hören", "Ich sehe den Mann."],
+            ["nur Dativ", "helfen, danken, gefallen, gehören", "Ich helfe dir."],
+            ["Dativ + Akkusativ", "geben, schenken, zeigen, erklären", "Ich gebe dir das Buch."],
           ],
         },
       },
@@ -1041,52 +955,16 @@ const verbenTopics: GrammarTopic[] = [
           rows: [
             ["eine Frage stellen", "fragen", "Er stellt eine Frage."],
             ["Kritik üben", "kritisieren", "Sie übt Kritik an dem Plan."],
-            [
-              "zur Verfügung stellen",
-              "bereitstellen",
-              "Wir stellen Ihnen ein Auto zur Verfügung.",
-            ],
-            [
-              "zur Verfügung stehen",
-              "vorhanden sein",
-              "Das Auto steht Ihnen zur Verfügung.",
-            ],
-            [
-              "in Betrieb nehmen",
-              "starten",
-              "Die Maschine wird in Betrieb genommen.",
-            ],
-            [
-              "eine Entscheidung treffen",
-              "entscheiden",
-              "Wir müssen eine Entscheidung treffen.",
-            ],
-            [
-              "einen Antrag stellen",
-              "beantragen",
-              "Sie stellt einen Antrag auf Urlaub.",
-            ],
-            [
-              "Bescheid geben/sagen",
-              "informieren",
-              "Geben Sie mir bitte Bescheid.",
-            ],
+            ["zur Verfügung stellen", "bereitstellen", "Wir stellen Ihnen ein Auto zur Verfügung."],
+            ["zur Verfügung stehen", "vorhanden sein", "Das Auto steht Ihnen zur Verfügung."],
+            ["in Betrieb nehmen", "starten", "Die Maschine wird in Betrieb genommen."],
+            ["eine Entscheidung treffen", "entscheiden", "Wir müssen eine Entscheidung treffen."],
+            ["einen Antrag stellen", "beantragen", "Sie stellt einen Antrag auf Urlaub."],
+            ["Bescheid geben/sagen", "informieren", "Geben Sie mir bitte Bescheid."],
             ["in Frage kommen", "möglich sein", "Das kommt nicht in Frage."],
-            [
-              "in Anspruch nehmen",
-              "nutzen/beanspruchen",
-              "Sie nimmt den Service in Anspruch.",
-            ],
-            [
-              "Rücksicht nehmen",
-              "berücksichtigen",
-              "Nimm bitte Rücksicht auf die Nachbarn.",
-            ],
-            [
-              "Abschied nehmen",
-              "sich verabschieden",
-              "Wir nehmen Abschied von unseren Freunden.",
-            ],
+            ["in Anspruch nehmen", "nutzen/beanspruchen", "Sie nimmt den Service in Anspruch."],
+            ["Rücksicht nehmen", "berücksichtigen", "Nimm bitte Rücksicht auf die Nachbarn."],
+            ["Abschied nehmen", "sich verabschieden", "Wir nehmen Abschied von unseren Freunden."],
           ],
         },
       },
@@ -1158,12 +1036,7 @@ const verbenTopics: GrammarTopic[] = [
         description: "Infinitiv, Präsens (3.P.), Präteritum and Perfekt",
         hasTable: true,
         tableData: {
-          headers: [
-            "Infinitiv",
-            "Präsens (3.P.)",
-            "Präteritum",
-            "Perfekt (Partizip II)",
-          ],
+          headers: ["Infinitiv", "Präsens (3.P.)", "Präteritum", "Perfekt (Partizip II)"],
           rows: [
             ["anfangen", "fängt an", "fing an", "hat angefangen"],
             ["backen", "backt/bäckt", "buk/backte", "hat gebacken"],
@@ -1293,8 +1166,7 @@ const verbenTopics: GrammarTopic[] = [
     number: "16",
     title: "Positionsverben",
     category: "Verben",
-    description:
-      "Wo? (Position) vs. Wohin? (Richtung) – stehen/stellen, liegen/legen ...",
+    description: "Wo? (Position) vs. Wohin? (Richtung) – stehen/stellen, liegen/legen ...",
     gradients: verbenGradients,
     subtopics: [
       {
@@ -1697,34 +1569,10 @@ const nomenTopics = [
         tableData: {
           headers: ["Kasus", "Maskulin", "Feminin", "Neutral", "Plural"],
           rows: [
-            [
-              "Nominativ",
-              "frischer Kaffee",
-              "kalte Milch",
-              "deutsches Bier",
-              "kleine Kinder",
-            ],
-            [
-              "Akkusativ",
-              "frischen Kaffee",
-              "kalte Milch",
-              "deutsches Bier",
-              "kleine Kinder",
-            ],
-            [
-              "Dativ",
-              "frischem Kaffee",
-              "kalter Milch",
-              "deutschem Bier",
-              "kleinen Kindern",
-            ],
-            [
-              "Genitiv",
-              "frischen Kaffees",
-              "kalter Milch",
-              "deutschen Bieres",
-              "kleiner Kinder",
-            ],
+            ["Nominativ", "frischer Kaffee", "kalte Milch", "deutsches Bier", "kleine Kinder"],
+            ["Akkusativ", "frischen Kaffee", "kalte Milch", "deutsches Bier", "kleine Kinder"],
+            ["Dativ", "frischem Kaffee", "kalter Milch", "deutschem Bier", "kleinen Kindern"],
+            ["Genitiv", "frischen Kaffees", "kalter Milch", "deutschen Bieres", "kleiner Kinder"],
           ],
         },
       },
@@ -1981,8 +1829,7 @@ const nomenTopics = [
         id: "nom-adj-als-nomen",
         number: "10.3",
         title: "Adjektive als Nomen (Personen)",
-        description:
-          "Adjektive bezeichnen Personen und werden wie Adjektive dekliniert",
+        description: "Adjektive bezeichnen Personen und werden wie Adjektive dekliniert",
         content: [
           {
             title: "Regeln",
@@ -2155,19 +2002,13 @@ const praepositionenTopics = [
           rows: [
             ["Akkusativ", "durch, für, gegen, ohne, um, bis, entlang"],
             ["Dativ", "aus, bei, mit, nach, seit, von, zu, ab, gegenüber"],
-            [
-              "Wechsel (Akk/Dat)",
-              "in, an, auf, unter, über, vor, hinter, neben, zwischen",
-            ],
+            ["Wechsel (Akk/Dat)", "in, an, auf, unter, über, vor, hinter, neben, zwischen"],
             ["Genitiv", "wegen, trotz, während, innerhalb, außerhalb, statt"],
           ],
         },
       },
     ],
-    tips: [
-      "**Akkusativ**: Wohin? (Bewegung)",
-      "**Dativ**: Wo? (Zustand/Position)",
-    ],
+    tips: ["**Akkusativ**: Wohin? (Bewegung)", "**Dativ**: Wo? (Zustand/Position)"],
   },
   {
     id: "genitiv-praep",
@@ -2233,11 +2074,7 @@ const praepositionenTopics = [
           caption: "Wo? (Dativ) ↔ Wohin? (Akkusativ)",
           headers: ["Präposition", "Wo? (Dativ)", "Wohin? (Akkusativ)"],
           rows: [
-            [
-              "an",
-              "Das Bild hängt an **der** Wand.",
-              "Ich hänge das Bild an **die** Wand.",
-            ],
+            ["an", "Das Bild hängt an **der** Wand.", "Ich hänge das Bild an **die** Wand."],
             [
               "auf",
               "Der Schlüssel liegt auf **dem** Tisch.",
@@ -2248,11 +2085,7 @@ const praepositionenTopics = [
               "Der Hund sitzt hinter **dem** Sofa.",
               "Der Hund läuft hinter **das** Sofa.",
             ],
-            [
-              "in",
-              "Die Katze sitzt in **dem** Karton.",
-              "Die Katze klettert in **den** Karton.",
-            ],
+            ["in", "Die Katze sitzt in **dem** Karton.", "Die Katze klettert in **den** Karton."],
             ["neben", "Ich sitze neben **dir**.", "Setz dich neben **mich**."],
             [
               "über",
@@ -2264,11 +2097,7 @@ const praepositionenTopics = [
               "Der Hund schläft unter **der** Decke.",
               "Der Hund kriecht unter **die** Decke.",
             ],
-            [
-              "vor",
-              "Das Paket steht vor **der** Tür.",
-              "Stell das Paket vor **die** Tür.",
-            ],
+            ["vor", "Das Paket steht vor **der** Tür.", "Stell das Paket vor **die** Tür."],
             [
               "zwischen",
               "Das Kind steht zwischen **den** Eltern.",
@@ -2641,18 +2470,8 @@ const satzTopics: GrammarTopic[] = [
         tableData: {
           headers: ["Typ", "Position", "Beispiele", "Verbposition"],
           rows: [
-            [
-              "Koordinierend",
-              "0",
-              "und, aber, denn, oder, sondern",
-              "Position 2",
-            ],
-            [
-              "Subordinierend",
-              "NS",
-              "weil, dass, wenn, obwohl, als",
-              "Satzende",
-            ],
+            ["Koordinierend", "0", "und, aber, denn, oder, sondern", "Position 2"],
+            ["Subordinierend", "NS", "weil, dass, wenn, obwohl, als", "Satzende"],
             [
               "Adverbial",
               "1",
@@ -2756,12 +2575,7 @@ const adverbienTopics = [
         number: "1.3",
         title: "Reihenfolge",
         description: "Abläufe strukturieren",
-        content: [
-          {
-            title: "Beispiele",
-            items: ["zuerst, dann, danach, schließlich, zuletzt"],
-          },
-        ],
+        content: [{ title: "Beispiele", items: ["zuerst, dann, danach, schließlich, zuletzt"] }],
       },
     ],
     tips: [
@@ -2843,12 +2657,7 @@ const adverbienTopics = [
         number: "3.2",
         title: "Kausal (Warum?)",
         description: "Gründe und Folgen",
-        content: [
-          {
-            title: "Beispiele",
-            items: ["deshalb, darum, deswegen, folglich"],
-          },
-        ],
+        content: [{ title: "Beispiele", items: ["deshalb, darum, deswegen, folglich"] }],
       },
     ],
     tips: [
@@ -3034,12 +2843,7 @@ const partikelnTopics = [
         number: "3.1",
         title: "Fokus",
         description: "Hervorhebung von Satzteilen",
-        content: [
-          {
-            title: "Beispiele",
-            items: ["nur, auch, sogar, selbst, besonders"],
-          },
-        ],
+        content: [{ title: "Beispiele", items: ["nur, auch, sogar, selbst, besonders"] }],
       },
       {
         id: "part-grad",
@@ -3049,10 +2853,7 @@ const partikelnTopics = [
         content: [
           {
             title: "Beispiele",
-            items: [
-              "sehr, ziemlich, total, völlig, etwas, ein bisschen",
-              "kaum, fast",
-            ],
+            items: ["sehr, ziemlich, total, völlig, etwas, ein bisschen", "kaum, fast"],
           },
         ],
       },
@@ -3073,13 +2874,7 @@ export const grammarSections: GrammarSection[] = [
     topics: verbenTopics,
     gradients: verbenGradients,
   },
-  {
-    id: "nomen",
-    title: "Nomen",
-    icon: "FileText",
-    topics: nomenTopics,
-    gradients: nomenGradients,
-  },
+  { id: "nomen", title: "Nomen", icon: "FileText", topics: nomenTopics, gradients: nomenGradients },
   {
     id: "praepositionen",
     title: "Präpositionen",
@@ -3087,13 +2882,7 @@ export const grammarSections: GrammarSection[] = [
     topics: praepositionenTopics,
     gradients: praepositionenGradients,
   },
-  {
-    id: "satz",
-    title: "Satz",
-    icon: "LayoutList",
-    topics: satzTopics,
-    gradients: satzGradients,
-  },
+  { id: "satz", title: "Satz", icon: "LayoutList", topics: satzTopics, gradients: satzGradients },
   {
     id: "adverbien",
     title: "Adverbien",

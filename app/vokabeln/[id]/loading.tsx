@@ -1,8 +1,4 @@
-import {
-  HeroSkeleton,
-  SectionHeaderSkeleton,
-  TableSkeleton,
-} from "@/shared/ui/SkeletonLayouts";
+import { HeroSkeleton, SectionHeaderSkeleton, TableSkeleton } from "@/shared/ui/SkeletonLayouts";
 import { Skeleton } from "@/shared/ui/Skeleton";
 
 export default function VokabelnDetailLoading() {
@@ -24,7 +20,10 @@ export default function VokabelnDetailLoading() {
         <section className="mb-16">
           <div className="flex flex-col gap-8">
             {BLOCKS.map((blkId) => (
-              <div key={blkId} className="space-y-4">
+              <div
+                key={blkId}
+                className="space-y-4"
+              >
                 <Skeleton className="h-7 w-48 bg-white/10" />
                 <div className="grid gap-3">
                   {BLOCK_ITEMS.map((itmId) => (

@@ -4,14 +4,7 @@ import { Skeleton } from "@/shared/ui/Skeleton";
 export default function ModuleStudyLoading() {
   const PARTS = ["part-1", "part-2", "part-3"];
   const STEPS = ["step-1", "step-2", "step-3", "step-4"];
-  const TOPICS = [
-    "topic-1",
-    "topic-2",
-    "topic-3",
-    "topic-4",
-    "topic-5",
-    "topic-6",
-  ];
+  const TOPICS = ["topic-1", "topic-2", "topic-3", "topic-4", "topic-5", "topic-6"];
 
   return (
     <div className="relative min-h-screen py-8">
@@ -21,7 +14,10 @@ export default function ModuleStudyLoading() {
         <div className="space-y-16">
           {/* Exam Parts */}
           {PARTS.map((partId) => (
-            <section key={partId} className="space-y-8">
+            <section
+              key={partId}
+              className="space-y-8"
+            >
               {/* Part Header */}
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div className="space-y-2">

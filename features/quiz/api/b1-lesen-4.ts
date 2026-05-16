@@ -174,8 +174,7 @@ j) Fisch- & Korallentag. Verkauf von Fischen, Pflanzen, Zubehör.`,
   {
     id: 17,
     type: "matching",
-    question:
-      "17. Eva möchte für ihr neues, großes Aquarium einige Fische kaufen.",
+    question: "17. Eva möchte für ihr neues, großes Aquarium einige Fische kaufen.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "j",
     teil: 3,
@@ -321,23 +320,13 @@ Verkehr: Alle S-Bahnen (Isartor), U1/U2 (Fraunhoferstraße), Tram 17/18.`,
     id: 30,
     type: "multiple-choice",
     question: "Das Museum erreicht man ...",
-    options: [
-      "a) am besten mit dem Auto.",
-      "b) mit dem Bus Linie 17.",
-      "c) mit jeder S-Bahn.",
-    ],
+    options: ["a) am besten mit dem Auto.", "b) mit dem Bus Linie 17.", "c) mit jeder S-Bahn."],
     correctAnswer: "c) mit jeder S-Bahn.",
     teil: 5,
   },
 ];
 
 export const b1Lesen4: Question[] = assignTeile(
-  [
-    ...lesen4Teil1,
-    ...lesen4Teil2,
-    ...lesen4Teil3,
-    ...lesen4Teil4,
-    ...lesen4Teil5,
-  ],
+  [...lesen4Teil1, ...lesen4Teil2, ...lesen4Teil3, ...lesen4Teil4, ...lesen4Teil5],
   B1_LESEN_TEILE,
 );

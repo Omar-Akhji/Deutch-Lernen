@@ -23,12 +23,7 @@ const SKILL_TITLES = new Map([
   ["sprechen", "Sprechen"],
 ]);
 
-export default function QuizView({
-  level,
-  skill,
-  testId,
-  initialQuestions,
-}: QuizViewProperties) {
+export default function QuizView({ level, skill, testId, initialQuestions }: QuizViewProperties) {
   const { push } = useRouter();
   const questions = initialQuestions;
 
@@ -64,9 +59,7 @@ export default function QuizView({
           <h1 className="text-sm font-semibold tracking-widest text-white/50 uppercase">
             {skillTitle} – Modelltest {testId}
           </h1>
-          <div className="font-mono text-[10px] text-white/30">
-            Level: {level.toUpperCase()}
-          </div>
+          <div className="font-mono text-[10px] text-white/30">Level: {level.toUpperCase()}</div>
         </header>
 
         <div className="flex flex-1 flex-col">
@@ -82,170 +75,125 @@ export default function QuizView({
                 {skill === "lesen" || skill === "hoeren" ?
                   <div className="flex flex-col gap-6">
                     {/* Grouping Logic for Reading/Listening Table Look */}
-                    {[...new Set(questions.map((q) => q.teil))].map(
-                      (teilNumber, teilIndex) => {
-                        const allInTeil = questions.filter(
-                          (q) => q.teil === teilNumber,
-                        );
-                        const examples = allInTeil.filter((q) => q.id === 0);
-                        const group = allInTeil.filter((q) => q.id !== 0);
-                        const firstQuestion = allInTeil[0]!;
-                        const firstIndex = questions.indexOf(firstQuestion);
-                        const isGroupedTeil =
-                          skill === "lesen" ?
-                            teilNumber === 1 || teilNumber === 4
-                          : teilNumber === 3 || teilNumber === 4;
+                    {[...new Set(questions.map((q) => q.teil))].map((teilNumber, teilIndex) => {
+                      const allInTeil = questions.filter((q) => q.teil === teilNumber);
+                      const examples = allInTeil.filter((q) => q.id === 0);
+                      const group = allInTeil.filter((q) => q.id !== 0);
+                      const firstQuestion = allInTeil[0]!;
+                      const firstIndex = questions.indexOf(firstQuestion);
+                      const isGroupedTeil =
+                        skill === "lesen" ?
+                          teilNumber === 1 || teilNumber === 4
+                        : teilNumber === 3 || teilNumber === 4;
 
-                        // Find Context
-                        let activeContext: string | undefined =
-                          firstQuestion.context;
-                        if (!activeContext) {
-                          for (
-                            let index = firstIndex - 1;
-                            index >= 0;
-                            index--
-                          ) {
-                            const previousQ = questions.at(index);
-                            if (
-                              previousQ &&
-                              previousQ.teil === teilNumber &&
-                              previousQ.context
-                            ) {
-                              activeContext = previousQ.context;
-                              break;
-                            }
+                      // Find Context
+                      let activeContext: string | undefined = firstQuestion.context;
+                      if (!activeContext) {
+                        for (let index = firstIndex - 1; index >= 0; index--) {
+                          const previousQ = questions.at(index);
+                          if (previousQ && previousQ.teil === teilNumber && previousQ.context) {
+                            activeContext = previousQ.context;
+                            break;
                           }
                         }
+                      }
 
-                        return (
-                          <section
-                            key={teilNumber ?? `teil-${teilIndex}`}
-                            className="space-y-8"
-                          >
-                            <div
-                              className={
-                                isGroupedTeil ? "space-y-3" : (
-                                  "flex flex-col gap-1"
+                      return (
+                        <section
+                          key={teilNumber ?? `teil-${teilIndex}`}
+                          className="space-y-8"
+                        >
+                          <div className={isGroupedTeil ? "space-y-3" : "flex flex-col gap-1"}>
+                            {/* 1. Header & Context */}
+                            <QuizQuestion
+                              key={`header-${teilNumber}-${firstIndex}`}
+                              question={
+                                isGroupedTeil ? firstQuestion : (
+                                  { ...firstQuestion, context: "", audioUrl: "" }
                                 )
                               }
-                            >
-                              {/* 1. Header & Context */}
-                              <QuizQuestion
-                                key={`header-${teilNumber}-${firstIndex}`}
-                                question={
-                                  isGroupedTeil ? firstQuestion : (
-                                    {
-                                      ...firstQuestion,
-                                      context: "",
-                                      audioUrl: "",
-                                    }
-                                  )
-                                }
-                                currentStep={firstIndex + 1}
-                                onAnswer={() => {}}
-                                skill={skill}
-                                variant="header"
-                                activeContext={
-                                  isGroupedTeil ? activeContext : undefined
-                                }
-                              />
+                              currentStep={firstIndex + 1}
+                              onAnswer={() => {}}
+                              skill={skill}
+                              variant="header"
+                              activeContext={isGroupedTeil ? activeContext : undefined}
+                            />
 
-                              {/* 2. Questions */}
-                              {isGroupedTeil ?
-                                /* Grouped in ONE TABLE (Card) */
-                                <div
-                                  key={`group-${teilNumber}`}
-                                  className="overflow-hidden rounded-xl border border-white/10 bg-zinc-900/10"
-                                >
-                                  {examples.length > 0 && (
-                                    <div className="border-b border-white/10">
-                                      <QuizQuestion
-                                        question={examples[0]!}
-                                        currentStep={0}
-                                        onAnswer={() => {}}
-                                        skill={skill}
-                                        variant="example-row"
-                                        selectedAnswer={
-                                          examples[0]!.correctAnswer
-                                        }
-                                      />
-                                    </div>
-                                  )}
-                                  {group.map((q, index) => (
-                                    <div
-                                      key={q.id || `q-${index}`}
-                                      className={
-                                        index < group.length - 1 ?
-                                          "border-b border-white/5"
-                                        : ""
-                                      }
-                                    >
-                                      <QuizQuestion
-                                        question={q}
-                                        currentStep={q.id}
-                                        onAnswer={(ans) =>
-                                          handleAnswer(
-                                            ans,
-                                            questions.indexOf(q),
-                                          )
-                                        }
-                                        selectedAnswer={userAnswers.at(
-                                          questions.indexOf(q),
-                                        )}
-                                        variant="table-row"
-                                        skill={skill}
-                                      />
-                                    </div>
-                                  ))}
-                                </div>
-                              : /* Standard Individual Cards */
-                                <div className="space-y-6">
-                                  {examples.length > 0 ?
+                            {/* 2. Questions */}
+                            {isGroupedTeil ?
+                              /* Grouped in ONE TABLE (Card) */
+                              <div
+                                key={`group-${teilNumber}`}
+                                className="overflow-hidden rounded-xl border border-white/10 bg-zinc-900/10"
+                              >
+                                {examples.length > 0 && (
+                                  <div className="border-b border-white/10">
                                     <QuizQuestion
                                       question={examples[0]!}
                                       currentStep={0}
                                       onAnswer={() => {}}
                                       skill={skill}
-                                      variant="example"
-                                      selectedAnswer={
-                                        examples[0]!.correctAnswer
-                                      }
+                                      variant="example-row"
+                                      selectedAnswer={examples[0]!.correctAnswer}
                                     />
-                                  : null}
-                                  {group.map((q, index) => (
+                                  </div>
+                                )}
+                                {group.map((q, index) => (
+                                  <div
+                                    key={q.id || `q-${index}`}
+                                    className={
+                                      index < group.length - 1 ? "border-b border-white/5" : ""
+                                    }
+                                  >
                                     <QuizQuestion
-                                      key={q.id || `q-${index}`}
                                       question={q}
                                       currentStep={q.id}
-                                      onAnswer={(ans) =>
-                                        handleAnswer(ans, questions.indexOf(q))
-                                      }
-                                      selectedAnswer={
-                                        userAnswers[questions.indexOf(q)]
-                                      }
+                                      onAnswer={(ans) => handleAnswer(ans, questions.indexOf(q))}
+                                      selectedAnswer={userAnswers.at(questions.indexOf(q))}
+                                      variant="table-row"
                                       skill={skill}
                                     />
-                                  ))}
-                                </div>
-                              }
-                            </div>
-
-                            {/* Decorative Separator between Teils */}
-                            {(
-                              questions.indexOf(group.at(-1)!) <
-                              questions.length - 1
-                            ) ?
-                              <div
-                                key={`sep-${teilNumber}`}
-                                className="flex justify-center py-10"
-                              >
-                                <div className="h-1 w-24 rounded-full bg-linear-to-r from-yellow to-orange shadow-lg shadow-yellow/20" />
+                                  </div>
+                                ))}
                               </div>
-                            : null}
-                          </section>
-                        );
-                      },
-                    )}
+                            : /* Standard Individual Cards */
+                              <div className="space-y-6">
+                                {examples.length > 0 ?
+                                  <QuizQuestion
+                                    question={examples[0]!}
+                                    currentStep={0}
+                                    onAnswer={() => {}}
+                                    skill={skill}
+                                    variant="example"
+                                    selectedAnswer={examples[0]!.correctAnswer}
+                                  />
+                                : null}
+                                {group.map((q, index) => (
+                                  <QuizQuestion
+                                    key={q.id || `q-${index}`}
+                                    question={q}
+                                    currentStep={q.id}
+                                    onAnswer={(ans) => handleAnswer(ans, questions.indexOf(q))}
+                                    selectedAnswer={userAnswers[questions.indexOf(q)]}
+                                    skill={skill}
+                                  />
+                                ))}
+                              </div>
+                            }
+                          </div>
+
+                          {/* Decorative Separator between Teils */}
+                          {questions.indexOf(group.at(-1)!) < questions.length - 1 ?
+                            <div
+                              key={`sep-${teilNumber}`}
+                              className="flex justify-center py-10"
+                            >
+                              <div className="h-1 w-24 rounded-full bg-linear-to-r from-yellow to-orange shadow-lg shadow-yellow/20" />
+                            </div>
+                          : null}
+                        </section>
+                      );
+                    })}
                     <div className="mt-4 flex justify-center border-t border-white/10 pt-4">
                       <button
                         onClick={finishQuiz}

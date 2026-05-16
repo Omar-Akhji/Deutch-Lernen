@@ -161,24 +161,21 @@ j) Luxuskreuzfahrt im Mittelmeer: 14 Tage auf dem Traumschiff. 5-Sterne-Essen, S
   {
     id: 14,
     type: "matching",
-    question:
-      "14. Thomas und Sarah suchen ein entspanntes Wochenende ohne Kinder.",
+    question: "14. Thomas und Sarah suchen ein entspanntes Wochenende ohne Kinder.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "f",
   },
   {
     id: 15,
     type: "matching",
-    question:
-      "15. Lukas (16) möchte in den Ferien Sport machen und andere Jugendliche treffen.",
+    question: "15. Lukas (16) möchte in den Ferien Sport machen und andere Jugendliche treffen.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "d",
   },
   {
     id: 16,
     type: "matching",
-    question:
-      "16. Herr und Frau Meyer wollen eine Reise machen, ohne ihr Gepäck selbst zu tragen.",
+    question: "16. Herr und Frau Meyer wollen eine Reise machen, ohne ihr Gepäck selbst zu tragen.",
     options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "0"],
     correctAnswer: "h",
   },
@@ -233,8 +230,7 @@ Stefan: Mehr Bewegung in der Schule? Auf jeden Fall! Die Statistiken zeigen, das
   {
     id: 21,
     type: "multiple-choice",
-    question:
-      "Katharina ist dafür, dass in Schulen mehr Sport unterrichtet wird.",
+    question: "Katharina ist dafür, dass in Schulen mehr Sport unterrichtet wird.",
     options: ["Ja", "Nein"],
     correctAnswer: "Nein",
   },
@@ -255,8 +251,7 @@ Stefan: Mehr Bewegung in der Schule? Auf jeden Fall! Die Statistiken zeigen, das
   {
     id: 24,
     type: "multiple-choice",
-    question:
-      "Michael ist dafür, dass in Schulen mehr Sport unterrichtet wird.",
+    question: "Michael ist dafür, dass in Schulen mehr Sport unterrichtet wird.",
     options: ["Ja", "Nein"],
     correctAnswer: "Ja",
   },
@@ -332,12 +327,6 @@ const lesen2Teil5: Question[] = [
 ];
 
 export const b1Lesen2: Question[] = assignTeile(
-  [
-    ...lesen2Teil1,
-    ...lesen2Teil2,
-    ...lesen2Teil3,
-    ...lesen2Teil4,
-    ...lesen2Teil5,
-  ],
+  [...lesen2Teil1, ...lesen2Teil2, ...lesen2Teil3, ...lesen2Teil4, ...lesen2Teil5],
   B1_LESEN_TEILE,
 );

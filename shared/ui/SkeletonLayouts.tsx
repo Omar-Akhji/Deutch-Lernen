@@ -5,11 +5,7 @@ import { GlassCard } from "./GlassCard";
  * Standard Card Skeleton that matches CardBody structure
  * (Gradient figure + category badge + subtitle + title + description + stats row)
  */
-export function CardSkeleton({
-  variant = "default",
-}: {
-  variant?: "default" | "large";
-}) {
+export function CardSkeleton({ variant = "default" }: { variant?: "default" | "large" }) {
   return (
     <article className="h-full">
       <div className="relative z-1 flex h-full w-full flex-col overflow-hidden rounded-3xl p-4 shadow-xl ring-1 ring-black/5">
@@ -26,9 +22,7 @@ export function CardSkeleton({
           </div>
 
           {/* Title */}
-          <Skeleton
-            className={`mb-2 ${variant === "large" ? "h-8" : "h-7"} w-3/4 bg-white/8`}
-          />
+          <Skeleton className={`mb-2 ${variant === "large" ? "h-8" : "h-7"} w-3/4 bg-white/8`} />
 
           {/* Description lines */}
           <Skeleton className="mbe-1 h-4 w-full bg-white/5" />
