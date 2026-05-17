@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { getThemen } from "@/features/themen/api/services";
 import { ThemenSection } from "@/features/themen/ui/ThemenSection";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { getThemen } from "@/features/themen/api/services";
 
 export const metadata: Metadata = {
   title: "B1 Themen - Deutsch Lernen",

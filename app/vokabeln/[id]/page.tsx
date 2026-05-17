@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Languages, ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight, BookOpen, Languages } from "lucide-react";
 import { getVocabById, getVocabList } from "@/features/vocabulary";
-import { Hero } from "@/shared/ui/Hero";
-import { BackButton } from "@/shared/ui/BackButton";
-import { getGradient } from "@/shared/lib/utilities";
 import { VOCAB_GRADIENTS } from "@/shared/lib/gradients";
+import { getGradient } from "@/shared/lib/utilities";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { BackButton } from "@/shared/ui/BackButton";
 import { GlassCard } from "@/shared/ui/GlassCard";
+import { Hero } from "@/shared/ui/Hero";
 
 interface PageProperties {
   params: Promise<{ id: string }>;

@@ -1,5 +1,5 @@
-import { HeroSkeleton, SectionHeaderSkeleton, TableSkeleton } from "@/shared/ui/SkeletonLayouts";
 import { Skeleton } from "@/shared/ui/Skeleton";
+import { HeroSkeleton, SectionHeaderSkeleton, TableSkeleton } from "@/shared/ui/SkeletonLayouts";
 
 export default function VokabelnDetailLoading() {
   const BLOCKS = ["blk-1", "blk-2"];

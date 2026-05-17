@@ -1,5 +1,5 @@
-import { HeroSkeleton, SectionHeaderSkeleton } from "@/shared/ui/SkeletonLayouts";
 import { Skeleton } from "@/shared/ui/Skeleton";
+import { HeroSkeleton, SectionHeaderSkeleton } from "@/shared/ui/SkeletonLayouts";
 
 export default function GrammatikDetailLoading() {
   const SECTIONS = ["sec-1", "sec-2"];

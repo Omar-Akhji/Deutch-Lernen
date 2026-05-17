@@ -1,4 +1,4 @@
-import { QuizView, getQuizStaticParams, getQuestions } from "@/features/quiz";
+import { getQuestions, getQuizStaticParams, QuizView } from "@/features/quiz";
 
 interface PageProperties {
   params: Promise<{ level: string; skill: string; testId: string }>;

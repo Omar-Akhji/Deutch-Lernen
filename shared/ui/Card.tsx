@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 import { CardBody } from "./CardBody";
 
@@ -32,7 +33,7 @@ export const Card = ({ href, ...bodyProperties }: CardProperties) => {
 
   return (
     <Link
-      href={href}
+      href={href as Route}
       className="block h-full no-underline"
     >
       <CardBody {...bodyProperties} />

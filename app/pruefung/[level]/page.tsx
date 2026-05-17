@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
-  Clock,
   CheckCircle2,
-  FileEdit,
   ClipboardList,
+  Clock,
+  FileEdit,
   Lightbulb,
   MessageCircle,
 } from "lucide-react";
-import Link from "next/link";
-import { getExamLevels, getExamLevel } from "@/features/pruefung";
-import { Hero } from "@/shared/ui/Hero";
-import { BackButton } from "@/shared/ui/BackButton";
-import { getGradient } from "@/shared/lib/utilities";
+import { getExamLevel, getExamLevels } from "@/features/pruefung";
 import { PRUEFUNG_GRADIENTS } from "@/shared/lib/gradients";
+import { getGradient } from "@/shared/lib/utilities";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { BackButton } from "@/shared/ui/BackButton";
+import { Hero } from "@/shared/ui/Hero";
 
 interface PageProperties {
   params: Promise<{ level: string }>;

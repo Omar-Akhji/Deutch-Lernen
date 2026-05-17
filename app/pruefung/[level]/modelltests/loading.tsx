@@ -1,5 +1,5 @@
-import { HeroSkeleton, SectionHeaderSkeleton, CardSkeleton } from "@/shared/ui/SkeletonLayouts";
 import { Skeleton } from "@/shared/ui/Skeleton";
+import { CardSkeleton, HeroSkeleton, SectionHeaderSkeleton } from "@/shared/ui/SkeletonLayouts";
 
 export default function ModelTestsLoading() {
   return (

@@ -1,6 +1,6 @@
 import { Heart } from "lucide-react";
-import type { FamilyMember } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import type { FamilyMember } from "../model/types";
 
 interface FamilyTreeProperties {
   members: FamilyMember[];

@@ -1,6 +1,6 @@
 import { Lightbulb } from "lucide-react";
-import type { GrammarSectionContent } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import type { GrammarSectionContent } from "../model/types";
 import { ContentItem } from "./FormattedText";
 
 interface GrammarContentBlocksProperties {

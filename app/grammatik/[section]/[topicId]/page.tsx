@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { BookOpen, Languages } from "lucide-react";
-import { getGrammarSections, getGrammarSection, getGrammarTopic } from "@/features/grammar";
-import { Hero } from "@/shared/ui/Hero";
-import { BackButton } from "@/shared/ui/BackButton";
-import { getGradient } from "@/shared/lib/utilities";
-import { GrammarTable } from "@/features/grammar/ui/GrammarTable";
+import { getGrammarSection, getGrammarSections, getGrammarTopic } from "@/features/grammar";
 import { GrammarContentBlocks } from "@/features/grammar/ui/GrammarContentBlocks";
+import { GrammarTable } from "@/features/grammar/ui/GrammarTable";
+import { getGradient } from "@/shared/lib/utilities";
+import { BackButton } from "@/shared/ui/BackButton";
 import { GlassCard } from "@/shared/ui/GlassCard";
+import { Hero } from "@/shared/ui/Hero";
 
 interface PageProperties {
   params: Promise<{ section: string; topicId: string }>;

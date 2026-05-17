@@ -1,4 +1,5 @@
 "use client";
+
 import { ClipboardList } from "lucide-react";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 

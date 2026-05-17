@@ -1,5 +1,5 @@
-import type { Question } from "../model/types";
 import { assignTeile, B1_HOEREN_TEILE } from "../lib/exam-structure";
+import type { Question } from "../model/types";
 
 export const b1Hoeren8: Question[] = assignTeile(
   [

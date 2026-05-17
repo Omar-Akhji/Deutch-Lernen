@@ -1,17 +1,18 @@
 "use client";
+
 import Link from "next/link";
 import {
+  BarChart,
   BookOpen,
   Headphones,
-  PenLine,
   MessageCircle,
-  BarChart,
+  PenLine,
   Puzzle,
   type LucideIcon,
 } from "lucide-react";
-import { Hero } from "@/shared/ui/Hero";
-import { Card } from "@/shared/ui/Card";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { Card } from "@/shared/ui/Card";
+import { Hero } from "@/shared/ui/Hero";
 
 interface Skill {
   id: string;

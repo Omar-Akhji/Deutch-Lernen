@@ -1,8 +1,8 @@
 import { cache } from "react";
 import { wait } from "@/shared/lib/wait";
-import { examLevels, redemittelData } from "./data";
-import type { ExamLevel, RedemittelCategory } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
+import type { ExamLevel, RedemittelCategory } from "../model/types";
+import { examLevels, redemittelData } from "./data";
 
 const LEVELS_DELAY_MS = Number(process.env["EXAM_LEVELS_DELAY_MS"] ?? 800);
 const LEVEL_DELAY_MS = Number(process.env["EXAM_LEVEL_DELAY_MS"] ?? 1200);

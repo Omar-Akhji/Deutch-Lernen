@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { VocabularySection } from "@/features/vocabulary";
 import { Languages } from "lucide-react";
+import { VocabularySection } from "@/features/vocabulary";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export const metadata: Metadata = {

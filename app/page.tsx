@@ -1,8 +1,8 @@
-import { Card } from "@/shared/ui/Card";
-import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { Hero } from "@/shared/ui/Hero";
-import { Clock, CheckCircle2, BookOpen, GraduationCap, Trophy } from "lucide-react";
 import type { Metadata } from "next";
+import { BookOpen, CheckCircle2, Clock, GraduationCap, Trophy } from "lucide-react";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { Card } from "@/shared/ui/Card";
+import { Hero } from "@/shared/ui/Hero";
 
 export const metadata: Metadata = {
   title: "Deutsch Lernen | Deine Plattform für Erfolg",

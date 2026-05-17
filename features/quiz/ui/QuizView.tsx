@@ -1,13 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { QuizStart } from "./QuizStart";
-import { QuizQuestion } from "./QuizQuestion";
-import { QuizResult } from "./QuizResult";
 import { useQuiz } from "../lib/use-quiz";
-
 // Types
 import type { Question } from "../model/types";
+import { QuizQuestion } from "./QuizQuestion";
+import { QuizResult } from "./QuizResult";
+import { QuizStart } from "./QuizStart";
 
 interface QuizViewProperties {
   level: string;

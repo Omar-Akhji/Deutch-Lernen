@@ -1,6 +1,21 @@
 /** @type {import("prettier").Config} */
 const config = {
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: [
+    "prettier-plugin-packagejson",
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss",
+  ],
+
+  importOrder: [
+    "^(react/(.*)$)|^(react$)",
+    "^(next/(.*)$)|^(next$)",
+    "<THIRD_PARTY_MODULES>",
+    "^@/(.*)$",
+    "^[./]",
+    String.raw`^.+\.css$`,
+  ],
+  importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
+  importOrderTypeScriptVersion: "6.0.0",
 
   tailwindStylesheet: "./app/globals.css",
   tailwindFunctions: ["cn", "cva", "clsx", "twMerge"],

@@ -1,4 +1,4 @@
-import { ModelTestsView, getExamLevels, getModelTests } from "@/features/pruefung";
+import { getExamLevels, getModelTests, ModelTestsView } from "@/features/pruefung";
 
 interface PageProperties {
   params: Promise<{ level: string }>;

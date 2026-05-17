@@ -1,5 +1,5 @@
-import { Skeleton } from "./Skeleton";
 import { GlassCard } from "./GlassCard";
+import { Skeleton } from "./Skeleton";
 
 /**
  * Standard Card Skeleton that matches CardBody structure

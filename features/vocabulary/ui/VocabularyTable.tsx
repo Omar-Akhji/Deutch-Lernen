@@ -1,6 +1,6 @@
-import type { Word } from "../model/types";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 import { GlassCard } from "@/shared/ui/GlassCard";
+import type { Word } from "../model/types";
 
 interface VocabularyTableProperties {
   words: Word[];

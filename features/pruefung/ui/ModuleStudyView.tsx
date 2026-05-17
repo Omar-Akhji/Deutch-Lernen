@@ -1,13 +1,13 @@
 "use client";
 
-import type { ExamLevel, RedemittelCategory } from "../model/types";
+import { CheckCircle2, Clock } from "lucide-react";
 import type { Thema } from "@/features/themen/model/types";
-import { Hero } from "@/shared/ui/Hero";
-import { Clock, CheckCircle2 } from "lucide-react";
 import { ThemenSection } from "@/features/themen/ui/ThemenSection";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { PhraseGroupCard } from "./PhraseGroupCard";
+import { Hero } from "@/shared/ui/Hero";
+import type { ExamLevel, RedemittelCategory } from "../model/types";
 import { EmailVisualFrame } from "./EmailVisualFrame";
+import { PhraseGroupCard } from "./PhraseGroupCard";
 
 interface ModuleStudyViewProperties {
   level: string;

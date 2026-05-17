@@ -1,8 +1,8 @@
 import { ClipboardList } from "lucide-react";
-import { Card } from "@/shared/ui/Card";
-import { getGradient } from "@/shared/lib/utilities";
 import { PRUEFUNG_GRADIENTS } from "@/shared/lib/gradients";
+import { getGradient } from "@/shared/lib/utilities";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { Card } from "@/shared/ui/Card";
 import { getExamLevels } from "../api/services";
 
 export const PruefungSection = async () => {

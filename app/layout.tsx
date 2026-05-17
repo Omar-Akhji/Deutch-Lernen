@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/shared/ui/Navigation";
+import { Suspense } from "react";
+import Script from "next/script";
 import { Footer } from "@/shared/ui/Footer";
 import { GsapRefresh } from "@/shared/ui/GsapRefresh";
-import { Suspense } from "react";
-
-import Script from "next/script";
+import { Navigation } from "@/shared/ui/Navigation";
 
 const poppins = Poppins({
   variable: "--font-poppins",

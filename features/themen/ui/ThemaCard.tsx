@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useRef } from "react";
-import type { Thema } from "../model/types";
-import { getCategoryClasses } from "../lib/category-config";
-import gsap from "@/shared/lib/gsap";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
+import gsap from "@/shared/lib/gsap";
+import { getCategoryClasses } from "../lib/category-config";
+import type { Thema } from "../model/types";
 
 interface ThemaCardProperties {
   thema: Thema;

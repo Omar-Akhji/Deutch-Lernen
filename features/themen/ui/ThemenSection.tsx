@@ -1,23 +1,24 @@
 "use client";
+
 import { useState, useTransition, type ReactNode } from "react";
-import { ThemaCard } from "./ThemaCard";
-import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { cn } from "@/shared/lib/utilities";
-import { THEMEN_CATEGORY_COLORS, getCategoryClasses } from "../lib/category-config";
 import {
-  Utensils,
-  Cpu,
-  Users,
-  GraduationCap,
   Activity,
-  Palmtree,
-  Leaf,
-  Briefcase,
   ArrowUp,
-  Lightbulb,
+  Briefcase,
+  Cpu,
+  GraduationCap,
   LayoutGrid,
+  Leaf,
+  Lightbulb,
+  Palmtree,
+  Users,
+  Utensils,
 } from "lucide-react";
+import { cn } from "@/shared/lib/utilities";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { getCategoryClasses, THEMEN_CATEGORY_COLORS } from "../lib/category-config";
 import type { Thema } from "../model/types";
+import { ThemaCard } from "./ThemaCard";
 
 const categoryConfig = new Map<string, { label: string; icon: ReactNode; color: string }>([
   [

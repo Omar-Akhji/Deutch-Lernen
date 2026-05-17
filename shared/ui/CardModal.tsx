@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useEffect, type MouseEvent as ReactMouseEvent } from "react";
+import { useEffect, useRef, type MouseEvent as ReactMouseEvent } from "react";
 import { useRouter } from "next/navigation";
+import type { Route } from "next";
 
 const EMPTY_ARRAY: string[] = [];
 
@@ -46,7 +47,7 @@ export function CardModal({
 
   const handleNavigate = () => {
     onClose();
-    push(href);
+    push(href as Route);
   };
 
   const handleBackdropClick = (e: ReactMouseEvent<HTMLDialogElement>) => {

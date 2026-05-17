@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { GrammarSectionCards } from "@/features/grammar";
 import { BookOpen } from "lucide-react";
+import { GrammarSectionCards } from "@/features/grammar";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "Grammatik | Deutsch Lernen",
   description:
     "Deutsche Grammatik lernen - Verben, Nomen, Präpositionen, Satzstrukturen. Übersichtliche Erklärungen für alle Niveaus.",
 };
-
-import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 export default function GrammatikPage() {
   return (

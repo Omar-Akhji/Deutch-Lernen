@@ -1,8 +1,8 @@
 "use client";
 
-import { type ElementType, type ComponentPropsWithoutRef, useRef } from "react";
-import { twMerge } from "tailwind-merge";
+import { useRef, type ComponentPropsWithoutRef, type ElementType } from "react";
 import { useGSAP } from "@gsap/react";
+import { twMerge } from "tailwind-merge";
 import gsap from "@/shared/lib/gsap";
 
 type AnimationType =

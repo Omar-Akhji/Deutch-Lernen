@@ -1,6 +1,6 @@
+import type { ExamLevel, RedemittelData } from "../model/types";
 import { examLevelB1, redemittelB1 } from "./data-b1";
 import { examLevelB2, redemittelB2 } from "./data-b2";
-import type { ExamLevel, RedemittelData } from "../model/types";
 
 export const examLevels: ExamLevel[] = [examLevelB1, examLevelB2];
 

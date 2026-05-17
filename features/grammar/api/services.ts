@@ -1,8 +1,8 @@
 import { cache } from "react";
 import { wait } from "@/shared/lib/wait";
-import { grammarSections } from "./data";
-import type { GrammarSection, GrammarTopic } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
+import type { GrammarSection, GrammarTopic } from "../model/types";
+import { grammarSections } from "./data";
 
 const SECTIONS_DELAY_MS = Number(process.env["GRAMMAR_SECTIONS_DELAY_MS"] ?? 800);
 const SECTION_DELAY_MS = Number(process.env["GRAMMAR_SECTION_DELAY_MS"] ?? 1000);

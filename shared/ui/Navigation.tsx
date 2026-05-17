@@ -1,11 +1,12 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BackButton } from "./BackButton";
-import { useRef } from "react";
-import gsap from "@/shared/lib/gsap";
+import type { Route } from "next";
 import { useGSAP } from "@gsap/react";
+import gsap from "@/shared/lib/gsap";
+import { BackButton } from "./BackButton";
 import { GlassCard } from "./GlassCard";
 
 export function Navigation() {
@@ -72,11 +73,13 @@ export function Navigation() {
             style={{ pointerEvents: "none" }}
           />
 
-          {[
-            { href: "/vokabeln", label: "Vokabeln" },
-            { href: "/grammatik", label: "Grammatik" },
-            { href: "/pruefung", label: "Prüfung" },
-          ].map(({ href, label }) => {
+          {(
+            [
+              { href: "/vokabeln", label: "Vokabeln" },
+              { href: "/grammatik", label: "Grammatik" },
+              { href: "/pruefung", label: "Prüfung" },
+            ] as { href: Route; label: string }[]
+          ).map(({ href, label }) => {
             const active = isActive(href);
             return (
               <Link

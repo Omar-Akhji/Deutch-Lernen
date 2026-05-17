@@ -1,8 +1,8 @@
 import { cache } from "react";
 import { wait } from "@/shared/lib/wait";
-import { vocabList } from "./data";
-import type { VocabItem } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
+import type { VocabItem } from "../model/types";
+import { vocabList } from "./data";
 
 const LIST_DELAY_MS = Number(process.env["VOCAB_LIST_DELAY_MS"] ?? 800);
 const ITEM_DELAY_MS = Number(process.env["VOCAB_ITEM_DELAY_MS"] ?? 1200);

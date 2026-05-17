@@ -1,16 +1,16 @@
-import { Card } from "@/shared/ui/Card";
-import { getGradient } from "@/shared/lib/utilities";
-import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { getGrammarSection } from "../api/services";
 import {
   BookOpen,
-  FileText,
-  Link,
-  LayoutList,
   Clock,
+  FileText,
+  LayoutList,
+  Link,
   MessageCircle,
   type LucideIcon,
 } from "lucide-react";
+import { getGradient } from "@/shared/lib/utilities";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { Card } from "@/shared/ui/Card";
+import { getGrammarSection } from "../api/services";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   BookOpen,

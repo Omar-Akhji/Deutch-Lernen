@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Question } from "../model/types";
-import { TeilHeader, ContextCard, AnswerOptions, AdDetailDialog } from "./QuizQuestionParts";
+import { AdDetailDialog, AnswerOptions, ContextCard, TeilHeader } from "./QuizQuestionParts";
 
 type QuizQuestionVariant = "standard" | "table-row" | "header" | "example" | "example-row";
 

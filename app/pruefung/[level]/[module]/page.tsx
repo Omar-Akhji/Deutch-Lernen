@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getExamLevel, getRedemittel, getExamLevels } from "@/features/pruefung";
-import { getThemen } from "@/features/themen/api/services";
+import { getExamLevel, getExamLevels, getRedemittel } from "@/features/pruefung";
 import { ModuleStudyView } from "@/features/pruefung/ui/ModuleStudyView";
+import { getThemen } from "@/features/themen/api/services";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
 
 interface PageProperties {

@@ -1,6 +1,6 @@
-import { quizQuestions } from "./data";
-import type { Question } from "../model/types";
 import type { ApiResponse } from "@/shared/model/api";
+import type { Question } from "../model/types";
+import { quizQuestions } from "./data";
 
 export const getQuestions = async (
   level: string,

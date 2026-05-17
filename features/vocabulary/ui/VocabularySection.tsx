@@ -1,7 +1,7 @@
-import { CardWithModal } from "@/shared/ui/CardWithModal";
-import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { getGradient } from "@/shared/lib/utilities";
 import { VOCAB_GRADIENTS } from "@/shared/lib/gradients";
+import { getGradient } from "@/shared/lib/utilities";
+import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { CardWithModal } from "@/shared/ui/CardWithModal";
 import { getVocabList } from "../api/services";
 
 export const VocabularySection = async () => {

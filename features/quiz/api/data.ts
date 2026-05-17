@@ -1,13 +1,4 @@
-import type { QuizData, Question } from "../model/types";
-import { b1Lesen1 } from "./b1-lesen-1";
-import { b1Lesen2 } from "./b1-lesen-2";
-import { b1Lesen3 } from "./b1-lesen-3";
-import { b1Lesen4 } from "./b1-lesen-4";
-import { b1Lesen5 } from "./b1-lesen-5";
-import { b1Lesen6 } from "./b1-lesen-6";
-import { b1Lesen7 } from "./b1-lesen-7";
-import { b1Lesen8 } from "./b1-lesen-8";
-import { b1Lesen9 } from "./b1-lesen-9";
+import type { Question, QuizData } from "../model/types";
 import { b1Hoeren1 } from "./b1-hoeren-1";
 import { b1Hoeren2 } from "./b1-hoeren-2";
 import { b1Hoeren3 } from "./b1-hoeren-3";
@@ -17,6 +8,15 @@ import { b1Hoeren6 } from "./b1-hoeren-6";
 import { b1Hoeren7 } from "./b1-hoeren-7";
 import { b1Hoeren8 } from "./b1-hoeren-8";
 import { b1Hoeren9 } from "./b1-hoeren-9";
+import { b1Lesen1 } from "./b1-lesen-1";
+import { b1Lesen2 } from "./b1-lesen-2";
+import { b1Lesen3 } from "./b1-lesen-3";
+import { b1Lesen4 } from "./b1-lesen-4";
+import { b1Lesen5 } from "./b1-lesen-5";
+import { b1Lesen6 } from "./b1-lesen-6";
+import { b1Lesen7 } from "./b1-lesen-7";
+import { b1Lesen8 } from "./b1-lesen-8";
+import { b1Lesen9 } from "./b1-lesen-9";
 import { b1Schreiben1 } from "./b1-schreiben-1";
 import { b1Schreiben2 } from "./b1-schreiben-2";
 import { b1Schreiben3 } from "./b1-schreiben-3";
@@ -36,10 +36,7 @@ import { b1Sprechen7 } from "./b1-sprechen-7";
 import { b1Sprechen8 } from "./b1-sprechen-8";
 import { b1Sprechen9 } from "./b1-sprechen-9";
 
-export const quizQuestions: QuizData = new Map<
-  string,
-  Map<string, Map<number, Question[]>>
->([
+export const quizQuestions: QuizData = new Map<string, Map<string, Map<number, Question[]>>>([
   [
     "b1",
     new Map<string, Map<number, Question[]>>([

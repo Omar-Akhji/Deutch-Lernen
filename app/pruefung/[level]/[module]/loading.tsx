@@ -1,5 +1,5 @@
-import { HeroSkeleton } from "@/shared/ui/SkeletonLayouts";
 import { Skeleton } from "@/shared/ui/Skeleton";
+import { HeroSkeleton } from "@/shared/ui/SkeletonLayouts";
 
 export default function ModuleStudyLoading() {
   const PARTS = ["part-1", "part-2", "part-3"];

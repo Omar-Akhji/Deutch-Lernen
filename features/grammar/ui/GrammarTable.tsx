@@ -1,6 +1,6 @@
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
-import { ContentItem } from "./FormattedText";
 import { GlassCard } from "@/shared/ui/GlassCard";
+import { ContentItem } from "./FormattedText";
 
 interface GrammarTableProperties {
   caption?: string;

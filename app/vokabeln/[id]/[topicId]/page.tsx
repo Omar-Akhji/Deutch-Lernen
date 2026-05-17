@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { getVocabById, getVocabList, VocabularyTable, FamilyTree } from "@/features/vocabulary";
-import { BackButton } from "@/shared/ui/BackButton";
-import { Hero } from "@/shared/ui/Hero";
+import { FamilyTree, getVocabById, getVocabList, VocabularyTable } from "@/features/vocabulary";
 import { AnimateOnScroll } from "@/shared/ui/AnimateOnScroll";
+import { BackButton } from "@/shared/ui/BackButton";
 import { GlassCard } from "@/shared/ui/GlassCard";
+import { Hero } from "@/shared/ui/Hero";
 
 interface PageProperties {
   params: Promise<{ id: string; topicId: string }>;

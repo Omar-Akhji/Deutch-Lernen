@@ -1,4 +1,4 @@
-import { Mail, User, Tag } from "lucide-react";
+import { Mail, Tag, User } from "lucide-react";
 
 interface EmailVisualFrameProperties {
   type: "informal" | "formal";
