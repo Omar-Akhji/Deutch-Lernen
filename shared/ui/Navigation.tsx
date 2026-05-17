@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef } from "react";
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { Route } from "next";
 import { useGSAP } from "@gsap/react";
 import gsap from "@/shared/lib/gsap";
 import { BackButton } from "./BackButton";

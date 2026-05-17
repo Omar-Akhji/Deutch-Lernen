@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, type MouseEvent as ReactMouseEvent } from "react";
-import { useRouter } from "next/navigation";
 import type { Route } from "next";
+import { useRouter } from "next/navigation";
 
 const EMPTY_ARRAY: string[] = [];
 
